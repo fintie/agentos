@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AgentOS — Routing & Evaluation</title>
+    <style>
+      :root { --bg:#0f1115; --panel:#171a21; --line:#262b36; --muted:#8b94a7; --text:#e6e9ef; --accent:#6ea8fe; }
+      * { box-sizing: border-box; }
+      body { margin:0; font:14px/1.5 ui-sans-serif,system-ui,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--text); }
+      header { padding:16px 24px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:16px; }
+      header h1 { font-size:16px; margin:0; }
+      header .sub { color:var(--muted); font-size:12px; }
+      .wrap { padding:20px 24px; }
+      .stats { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
+      .card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; min-width:120px; }
+      .card .n { font-size:22px; font-weight:600; }
+      .card .l { color:var(--muted); font-size:12px; }
+      .bars span { display:inline-block; margin-right:10px; font-size:12px; color:var(--muted); }
+      .bars b { color:var(--text); }
+      table { width:100%; border-collapse:collapse; background:var(--panel); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+      th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+      th { color:var(--muted); font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+      tr:last-child td { border-bottom:none; }
+      .pill { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid var(--line); }
+      .m-gemini-3-flash { background:#10261f; color:#5fe3a1; }
+      .m-kimi-k2\.6 { background:#1a2233; color:#7fb0ff; }
+      .m-deepseek-v4-pro { background:#2a1d33; color:#c79bff; }
+      .esc { color:#ffb86b; font-weight:600; }
+      .muted { color:var(--muted); }
+      details { cursor:pointer; } pre { white-space:pre-wrap; word-break:break-word; margin:6px 0 0; color:var(--muted); font-size:12px; }
+      button { background:#202634; color:var(--text); border:1px solid var(--line); border-radius:6px; padding:4px 8px; cursor:pointer; font-size:12px; }
+      button:hover { border-color:var(--accent); }
+      .filters { margin-bottom:14px; display:flex; gap:8px; }
+      select, input { background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:6px; padding:6px 8px; }
+      .status-PENDING { color:#ffb86b; } .status-APPROVED { color:#5fe3a1; } .status-REJECTED { color:#ff7a90; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>AgentOS</h1>
+      <span class="sub">Model routing decisions &amp; evaluation log</span>
+    </header>
+    <div class="wrap">
+      <div class="stats" id="stats"></div>
+      <div class="filters">
+        <input id="taskId" placeholder="filter by taskId…" />
+        <select id="model">
+          <option value="">all models</option>
+          <option>gemini-3-flash</option>
+          <option>kimi-k2.6</option>
+          <option>deepseek-v4-pro</option>
+        </select>
+        <button onclick="load()">Refresh</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th><th>Agent</th><th>Model</th><th>Rule / Routing</th>
+            <th>Conf</th><th>Review by</th><th>Human</th><th>Output</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <script>
+      async function jget(u) { return (await fetch(u)).json(); }
+
+      async function load() {
+        const taskId = document.getElementById('taskId').value.trim();
+        const model = document.getElementById('model').value;
+        const qs = new URLSearchParams();
+        if (taskId) qs.set('taskId', taskId);
+        if (model) qs.set('modelName', model);
+
+        const [records, stats] = await Promise.all([
+          jget('/api/records?' + qs.toString()),
+          jget('/api/stats'),
+        ]);
+        renderStats(stats);
+        renderRows(records);
+      }
+
+      function renderStats(s) {
+        const bars = Object.entries(s.byModel).map(([m,n]) => `<span><b>${n}</b> ${m}</span>`).join('');
+        document.getElementById('stats').innerHTML = `
+          <div class="card"><div class="n">${s.total}</div><div class="l">total outputs</div></div>
+          <div class="card"><div class="n esc">${s.escalations}</div><div class="l">escalations</div></div>
+          <div class="card"><div class="n">${s.pendingReview}</div><div class="l">pending human review</div></div>
+          <div class="card" style="flex:1"><div class="l">by model</div><div class="bars">${bars}</div></div>`;
+      }
+
+      function renderRows(records) {
+        document.getElementById('rows').innerHTML = records.map(r => {
+          const trace = r.routingTrace || {};
+          const dec = trace.decision || {};
+          const esc = dec.escalated ? `<span class="esc">⇧ escalated</span>` : '';
+          const rule = `${dec.ruleId || '-'} ${esc}<div class="muted">${dec.reason || ''}</div>`;
+          const out = `<details><summary class="muted">view</summary><pre>${escapeHtml(JSON.stringify(r.parsedOutput, null, 2))}</pre></details>`;
+          const human = r.humanReviewStatus === 'PENDING'
+            ? `<span class="status-PENDING">PENDING</span><br><button onclick="review('${r.id}','APPROVED')">approve</button> <button onclick="review('${r.id}','REJECTED')">reject</button>`
+            : `<span class="status-${r.humanReviewStatus}">${r.humanReviewStatus}</span>`;
+          return `<tr>
+            <td class="muted">${new Date(r.createdAt).toLocaleTimeString()}</td>
+            <td>${r.agentName}</td>
+            <td><span class="pill m-${r.modelName}">${r.modelName}</span></td>
+            <td style="max-width:260px">${rule}</td>
+            <td>${Number(r.confidenceScore).toFixed(2)}</td>
+            <td class="muted">${r.reviewModel || '-'}</td>
+            <td>${human}</td>
+            <td>${out}</td>
+          </tr>`;
+        }).join('') || `<tr><td colspan="8" class="muted">No records. Run <code>npm run seed</code>.</td></tr>`;
+      }
+
+      async function review(id, status) {
+        await fetch('/api/records/' + id + '/review', {
+          method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({ status }),
+        });
+        load();
+      }
+
+      function escapeHtml(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+      load();
+    </script>
+  </body>
+</html>

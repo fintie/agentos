@@ -1,0 +1,43 @@
+// Prisma schema for the AgentOS evaluation / audit log.
+// Only required when AGENTOS_EVAL_STORE=prisma. The in-memory store mirrors
+// these fields exactly (see src/evaluation/store.ts).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum HumanReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  NOT_REQUIRED
+}
+
+model EvaluationRecord {
+  id                 String            @id @default(cuid())
+  taskId             String
+  agentName          String
+  modelName          String
+  promptVersion      String
+  inputHash          String
+  rawInputReference  String
+  rawOutput          String
+  parsedOutput       Json?
+  confidenceScore    Float
+  evaluationScore    Float?
+  reviewModel        String?
+  humanReviewStatus  HumanReviewStatus @default(NOT_REQUIRED)
+  // Free-form routing trace: rule matched, candidates, escalations, costs.
+  routingTrace       Json?
+  createdAt          DateTime          @default(now())
+
+  @@index([taskId])
+  @@index([agentName])
+  @@index([modelName])
+  @@index([createdAt])
+}
