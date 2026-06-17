@@ -22,8 +22,28 @@ cp .env.example .env        # optional — defaults to mock mode
 npm test                    # unit tests (routing, structured output, cascade)
 npm run demo                # run one Care workflow and print the routing trace
 npm run seed                # populate all four workflows into the eval store
-npm run dashboard           # inspect routing decisions + eval logs at :4317
+npm run dashboard           # agent management console at :4317
 ```
+
+## Management console
+
+`npm run dashboard` serves a single-page console ([dashboard/](dashboard/)) to
+**manage agents by use case**:
+
+- **Overview** — fleet stats (agents, use cases, logged outputs, escalations, pending reviews).
+- **Use case pages** (Aged Care / STEM / Voice / Developer / Review & Judge) — the
+  workflow pipeline with the model routed to each step, a one-click **Run workflow**
+  (with an editable JSON input), and cards for every agent in that vertical.
+- **All agents** — the full registry grouped by use case; each card shows task type,
+  routed model, risk, prompt version, multimodal flag, the output **Zod schema**, and a
+  **Run agent** form (prefilled with an example) that executes the agent live.
+- **Evaluation log** — every output with its routing decision, model, confidence,
+  reviewer, and a human-review approve/reject control.
+
+It talks to a small JSON API on the same server (`/api/usecases`, `/api/agents`,
+`/api/run/agent`, `/api/run/workflow`, `/api/records`, `/api/stats`). Use-case
+groupings, example inputs, and workflow runners live in [src/catalog.ts](src/catalog.ts).
+Runs use real providers when keys are present, otherwise the mock adapters.
 
 ## Architecture
 

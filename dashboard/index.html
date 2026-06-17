@@ -3,125 +3,350 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AgentOS — Routing & Evaluation</title>
+    <title>AgentOS — Agent Management</title>
     <style>
-      :root { --bg:#0f1115; --panel:#171a21; --line:#262b36; --muted:#8b94a7; --text:#e6e9ef; --accent:#6ea8fe; }
-      * { box-sizing: border-box; }
-      body { margin:0; font:14px/1.5 ui-sans-serif,system-ui,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--text); }
-      header { padding:16px 24px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:16px; }
-      header h1 { font-size:16px; margin:0; }
+      :root {
+        --bg:#0d0f14; --panel:#161922; --panel2:#1d212c; --line:#272d3a; --muted:#8b94a7;
+        --text:#e6e9ef; --accent:#6ea8fe; --green:#5fe3a1; --amber:#ffb86b; --red:#ff7a90; --purple:#c79bff;
+      }
+      * { box-sizing:border-box; }
+      body { margin:0; font:14px/1.55 ui-sans-serif,system-ui,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--text); }
+      a { color:var(--accent); text-decoration:none; }
+      code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; }
+      header { display:flex; align-items:center; gap:14px; padding:14px 22px; border-bottom:1px solid var(--line); }
+      header h1 { font-size:16px; margin:0; letter-spacing:.02em; }
       header .sub { color:var(--muted); font-size:12px; }
-      .wrap { padding:20px 24px; }
-      .stats { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
-      .card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; min-width:120px; }
-      .card .n { font-size:22px; font-weight:600; }
-      .card .l { color:var(--muted); font-size:12px; }
-      .bars span { display:inline-block; margin-right:10px; font-size:12px; color:var(--muted); }
-      .bars b { color:var(--text); }
-      table { width:100%; border-collapse:collapse; background:var(--panel); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
-      th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
-      th { color:var(--muted); font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+      header .spacer { flex:1; }
+      .badge { font-size:11px; padding:3px 9px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
+      .badge.mock { color:var(--amber); border-color:#4a3a1f; background:#241c10; }
+      .badge.live { color:var(--green); border-color:#1d4533; background:#0f2419; }
+      .layout { display:flex; min-height:calc(100vh - 53px); }
+      nav { width:230px; border-right:1px solid var(--line); padding:14px 10px; flex-shrink:0; }
+      nav .group { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.06em; margin:14px 10px 6px; }
+      nav button { display:block; width:100%; text-align:left; background:none; border:none; color:var(--text);
+        padding:8px 12px; border-radius:8px; cursor:pointer; font-size:13.5px; }
+      nav button:hover { background:var(--panel); }
+      nav button.active { background:var(--panel2); color:#fff; box-shadow:inset 2px 0 0 var(--accent); }
+      main { flex:1; padding:22px 26px; overflow:auto; }
+      h2 { font-size:18px; margin:0 0 4px; }
+      .desc { color:var(--muted); margin:0 0 18px; max-width:680px; }
+      .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px; }
+      .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; }
+      .card h3 { margin:0 0 4px; font-size:15px; }
+      .card .cdesc { color:var(--muted); font-size:13px; min-height:36px; }
+      .pills { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0; }
+      .pill { font-size:11px; padding:2px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
+      .m-gemini-3-flash { background:#10261f; color:var(--green); border-color:#1d4533; }
+      .m-kimi-k2\.6 { background:#11203a; color:#7fb0ff; border-color:#1f3a63; }
+      .m-deepseek-v4-pro { background:#241830; color:var(--purple); border-color:#3a2750; }
+      .m-mock { background:#241c10; color:var(--amber); border-color:#4a3a1f; }
+      .risk-high { color:var(--red); } .risk-medium { color:var(--amber); } .risk-low { color:var(--green); }
+      button.btn { background:var(--accent); color:#06101f; border:none; border-radius:8px; padding:8px 14px;
+        font-weight:600; cursor:pointer; font-size:13px; }
+      button.btn:hover { filter:brightness(1.08); }
+      button.btn.ghost { background:var(--panel2); color:var(--text); border:1px solid var(--line); font-weight:500; }
+      button.btn:disabled { opacity:.5; cursor:default; }
+      textarea { width:100%; min-height:120px; background:#0c0e13; color:var(--text); border:1px solid var(--line);
+        border-radius:8px; padding:10px; font-family:ui-monospace,Menlo,monospace; font-size:12.5px; resize:vertical; }
+      pre { white-space:pre-wrap; word-break:break-word; background:#0c0e13; border:1px solid var(--line);
+        border-radius:8px; padding:10px; margin:8px 0 0; font-size:12.5px; color:#cdd3df; max-height:340px; overflow:auto; }
+      .runbox { margin-top:12px; border-top:1px solid var(--line); padding-top:12px; }
+      .row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+      .meta { color:var(--muted); font-size:12px; }
+      .pipeline { display:flex; align-items:stretch; gap:0; flex-wrap:wrap; margin:6px 0 18px; }
+      .pstep { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:10px 12px; min-width:150px; }
+      .pstep .pname { font-size:13px; font-weight:600; }
+      .arrow { align-self:center; color:var(--muted); padding:0 8px; font-size:18px; }
+      table { width:100%; border-collapse:collapse; background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+      th,td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+      th { color:var(--muted); font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
       tr:last-child td { border-bottom:none; }
-      .pill { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid var(--line); }
-      .m-gemini-3-flash { background:#10261f; color:#5fe3a1; }
-      .m-kimi-k2\.6 { background:#1a2233; color:#7fb0ff; }
-      .m-deepseek-v4-pro { background:#2a1d33; color:#c79bff; }
-      .esc { color:#ffb86b; font-weight:600; }
-      .muted { color:var(--muted); }
-      details { cursor:pointer; } pre { white-space:pre-wrap; word-break:break-word; margin:6px 0 0; color:var(--muted); font-size:12px; }
-      button { background:#202634; color:var(--text); border:1px solid var(--line); border-radius:6px; padding:4px 8px; cursor:pointer; font-size:12px; }
-      button:hover { border-color:var(--accent); }
-      .filters { margin-bottom:14px; display:flex; gap:8px; }
-      select, input { background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:6px; padding:6px 8px; }
-      .status-PENDING { color:#ffb86b; } .status-APPROVED { color:#5fe3a1; } .status-REJECTED { color:#ff7a90; }
+      .esc { color:var(--amber); font-weight:600; }
+      .stats { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
+      .stat { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 18px; min-width:130px; }
+      .stat .n { font-size:24px; font-weight:700; } .stat .l { color:var(--muted); font-size:12px; }
+      .filters { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+      select,input { background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:8px; padding:7px 9px; font-size:13px; }
+      details summary { cursor:pointer; color:var(--muted); font-size:12px; }
+      .status-PENDING { color:var(--amber); } .status-APPROVED { color:var(--green); } .status-REJECTED { color:var(--red); }
+      .spin { display:inline-block; width:13px; height:13px; border:2px solid var(--line); border-top-color:var(--accent);
+        border-radius:50%; animation:s .7s linear infinite; vertical-align:-2px; }
+      @keyframes s { to { transform:rotate(360deg); } }
+      .err { color:var(--red); }
     </style>
   </head>
   <body>
     <header>
       <h1>AgentOS</h1>
-      <span class="sub">Model routing decisions &amp; evaluation log</span>
+      <span class="sub">Agent management console</span>
+      <span class="spacer"></span>
+      <span id="modeBadge" class="badge">…</span>
     </header>
-    <div class="wrap">
-      <div class="stats" id="stats"></div>
-      <div class="filters">
-        <input id="taskId" placeholder="filter by taskId…" />
-        <select id="model">
-          <option value="">all models</option>
-          <option>gemini-3-flash</option>
-          <option>kimi-k2.6</option>
-          <option>deepseek-v4-pro</option>
-        </select>
-        <button onclick="load()">Refresh</button>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Time</th><th>Agent</th><th>Model</th><th>Rule / Routing</th>
-            <th>Conf</th><th>Review by</th><th>Human</th><th>Output</th>
-          </tr>
-        </thead>
-        <tbody id="rows"></tbody>
-      </table>
+    <div class="layout">
+      <nav id="nav"></nav>
+      <main id="main"></main>
     </div>
+
     <script>
-      async function jget(u) { return (await fetch(u)).json(); }
+      // ── tiny helpers ──────────────────────────────────────────────
+      const $ = (sel, el = document) => el.querySelector(sel);
+      const h = (s) => (s || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+      const json = (v) => h(JSON.stringify(v, null, 2));
+      const get = (u) => fetch(u).then((r) => r.json());
+      const post = (u, body) => fetch(u, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) }).then((r) => r.json());
+      const pill = (cls, txt) => `<span class="pill ${cls}">${h(txt)}</span>`;
+      const modelPill = (m) => pill("m-" + m, m);
 
-      async function load() {
-        const taskId = document.getElementById('taskId').value.trim();
-        const model = document.getElementById('model').value;
-        const qs = new URLSearchParams();
-        if (taskId) qs.set('taskId', taskId);
-        if (model) qs.set('modelName', model);
+      const state = { view: "overview", useCases: [], agents: [], config: {} };
 
-        const [records, stats] = await Promise.all([
-          jget('/api/records?' + qs.toString()),
-          jget('/api/stats'),
+      // ── boot ──────────────────────────────────────────────────────
+      async function boot() {
+        [state.useCases, state.agents, state.config] = await Promise.all([
+          get("/api/usecases"), get("/api/agents"), get("/api/config"),
         ]);
-        renderStats(stats);
-        renderRows(records);
+        const badge = $("#modeBadge");
+        if (state.config.mockMode || (state.config.liveModels || []).length === 0) {
+          badge.className = "badge mock"; badge.textContent = "MOCK MODE";
+        } else {
+          badge.className = "badge live"; badge.textContent = "LIVE: " + state.config.liveModels.join(", ");
+        }
+        renderNav();
+        render();
       }
 
-      function renderStats(s) {
-        const bars = Object.entries(s.byModel).map(([m,n]) => `<span><b>${n}</b> ${m}</span>`).join('');
-        document.getElementById('stats').innerHTML = `
-          <div class="card"><div class="n">${s.total}</div><div class="l">total outputs</div></div>
-          <div class="card"><div class="n esc">${s.escalations}</div><div class="l">escalations</div></div>
-          <div class="card"><div class="n">${s.pendingReview}</div><div class="l">pending human review</div></div>
-          <div class="card" style="flex:1"><div class="l">by model</div><div class="bars">${bars}</div></div>`;
+      function renderNav() {
+        const ucBtns = state.useCases.map((uc) =>
+          `<button data-view="uc:${uc.id}">${h(uc.name)}</button>`).join("");
+        $("#nav").innerHTML = `
+          <div class="group">Console</div>
+          <button data-view="overview">Overview</button>
+          <div class="group">Use cases</div>
+          ${ucBtns}
+          <div class="group">Catalog</div>
+          <button data-view="agents">All agents</button>
+          <button data-view="log">Evaluation log</button>`;
+        $("#nav").querySelectorAll("button").forEach((b) =>
+          b.addEventListener("click", () => { state.view = b.dataset.view; render(); }));
       }
 
-      function renderRows(records) {
-        document.getElementById('rows').innerHTML = records.map(r => {
-          const trace = r.routingTrace || {};
-          const dec = trace.decision || {};
-          const esc = dec.escalated ? `<span class="esc">⇧ escalated</span>` : '';
-          const rule = `${dec.ruleId || '-'} ${esc}<div class="muted">${dec.reason || ''}</div>`;
-          const out = `<details><summary class="muted">view</summary><pre>${escapeHtml(JSON.stringify(r.parsedOutput, null, 2))}</pre></details>`;
-          const human = r.humanReviewStatus === 'PENDING'
-            ? `<span class="status-PENDING">PENDING</span><br><button onclick="review('${r.id}','APPROVED')">approve</button> <button onclick="review('${r.id}','REJECTED')">reject</button>`
+      function setActive() {
+        $("#nav").querySelectorAll("button").forEach((b) =>
+          b.classList.toggle("active", b.dataset.view === state.view));
+      }
+
+      // ── views ─────────────────────────────────────────────────────
+      function render() {
+        setActive();
+        const v = state.view;
+        if (v === "overview") return renderOverview();
+        if (v === "agents") return renderAgents(state.agents, "All agents", "Every reusable agent in the registry, grouped by use case.");
+        if (v === "log") return renderLog();
+        if (v.startsWith("uc:")) return renderUseCase(v.slice(3));
+      }
+
+      async function renderOverview() {
+        const stats = await get("/api/stats");
+        const cards = state.useCases.map((uc) => `
+          <div class="card">
+            <h3>${h(uc.name)}</h3>
+            <div class="cdesc">${h(uc.description)}</div>
+            <div class="pills">${uc.agents.map((a) => modelPill(a.routedModel)).join("")}</div>
+            <div class="row">
+              <span class="meta">${uc.agents.length} agents${uc.workflow ? " · workflow" : ""}</span>
+              <span class="spacer"></span>
+              <button class="btn ghost" onclick="state.view='uc:${uc.id}';render()">Open</button>
+            </div>
+          </div>`).join("");
+        $("#main").innerHTML = `
+          <h2>Overview</h2>
+          <p class="desc">Manage agents organised by use case. Run individual agents or full workflows; every run is routed, schema-validated, and logged.</p>
+          <div class="stats">
+            <div class="stat"><div class="n">${state.agents.length}</div><div class="l">agents</div></div>
+            <div class="stat"><div class="n">${state.useCases.length}</div><div class="l">use cases</div></div>
+            <div class="stat"><div class="n">${stats.total}</div><div class="l">logged outputs</div></div>
+            <div class="stat"><div class="n esc">${stats.escalations}</div><div class="l">escalations</div></div>
+            <div class="stat"><div class="n">${stats.pendingReview}</div><div class="l">pending review</div></div>
+          </div>
+          <div class="grid">${cards}</div>`;
+      }
+
+      function renderUseCase(id) {
+        const uc = state.useCases.find((u) => u.id === id);
+        if (!uc) return;
+        let pipeline = "";
+        if (uc.workflow) {
+          const steps = uc.agents.filter((a) => a.name !== "IncidentDraftAgent" || uc.id !== "care");
+          pipeline = `
+            <h3 style="margin:18px 0 6px">Workflow pipeline</h3>
+            <div class="pipeline">${steps.map((a, i) => `
+              ${i ? '<span class="arrow">→</span>' : ""}
+              <div class="pstep"><div class="pname">${h(a.name.replace("Agent",""))}</div>${modelPill(a.routedModel)}</div>`).join("")}
+            </div>
+            <div class="row" style="margin-bottom:8px">
+              <button class="btn" onclick="runWorkflow('${uc.workflow.id}')">Run ${h(uc.workflow.name)}</button>
+              <span class="meta">routes through ${steps.length} agents and logs each step</span>
+            </div>
+            <div id="wfInput"></div>
+            <div id="wfResult"></div>`;
+        }
+        $("#main").innerHTML = `
+          <h2>${h(uc.name)}</h2>
+          <p class="desc">${h(uc.description)}</p>
+          ${pipeline}
+          <h3 style="margin:22px 0 10px">Agents</h3>
+          <div class="grid" id="ucAgents"></div>`;
+        $("#ucAgents").innerHTML = uc.agents.map(agentCard).join("");
+        if (uc.workflow) prepWorkflowInput(uc.workflow.id);
+      }
+
+      function renderAgents(list, title, desc) {
+        // Group agents by which use case(s) they appear in.
+        const byUc = state.useCases.map((uc) => ({
+          uc, agents: list.filter((a) => uc.agents.some((x) => x.name === a.name)),
+        })).filter((g) => g.agents.length);
+        $("#main").innerHTML = `
+          <h2>${h(title)}</h2><p class="desc">${h(desc)}</p>
+          ${byUc.map((g) => `
+            <h3 style="margin:18px 0 10px">${h(g.uc.name)}</h3>
+            <div class="grid">${g.agents.map(agentCard).join("")}</div>`).join("")}`;
+      }
+
+      function agentCard(a) {
+        const id = "run_" + a.name;
+        return `
+          <div class="card">
+            <div class="row"><h3>${h(a.name)}</h3><span class="spacer"></span>${modelPill(a.routedModel)}</div>
+            <div class="cdesc">${h(a.description)}</div>
+            <div class="pills">
+              ${pill("", a.taskType)}
+              <span class="pill risk-${a.defaultRisk}">${a.defaultRisk} risk</span>
+              ${a.multimodal ? pill("", "multimodal") : ""}
+              ${pill("", a.promptVersion)}
+              ${a.live ? "" : pill("m-mock", "mock")}
+            </div>
+            <div class="row">
+              <button class="btn ghost" onclick="toggleRun('${id}','${a.name}')">Run agent</button>
+              <details><summary>schema</summary><pre>${json(a.schema)}</pre></details>
+            </div>
+            <div class="runbox" id="${id}" style="display:none"></div>
+          </div>`;
+      }
+
+      window.toggleRun = (id, name) => {
+        const box = document.getElementById(id);
+        if (box.style.display === "none") {
+          const agent = state.agents.find((a) => a.name === name);
+          box.style.display = "block";
+          box.innerHTML = `
+            <div class="meta" style="margin-bottom:6px">Input (JSON)</div>
+            <textarea id="${id}_in">${json(agent.example)}</textarea>
+            <div class="row" style="margin-top:8px">
+              <button class="btn" onclick="runAgent('${id}','${name}')">Run</button>
+              <span id="${id}_status" class="meta"></span>
+            </div>
+            <div id="${id}_out"></div>`;
+        } else { box.style.display = "none"; }
+      };
+
+      window.runAgent = async (id, name) => {
+        const ta = document.getElementById(id + "_in");
+        const status = document.getElementById(id + "_status");
+        const out = document.getElementById(id + "_out");
+        let input;
+        try { input = JSON.parse(ta.value); }
+        catch { out.innerHTML = `<pre class="err">Invalid JSON input.</pre>`; return; }
+        status.innerHTML = '<span class="spin"></span> running…';
+        const r = await post("/api/run/agent", { agentName: name, input });
+        status.textContent = "";
+        if (!r.ok) { out.innerHTML = `<pre class="err">${h(r.error)}</pre>`; return; }
+        out.innerHTML = `
+          <div class="row" style="margin-top:10px">
+            ${modelPill(r.model)}
+            <span class="meta">confidence ${Number(r.confidence).toFixed(2)}</span>
+            ${r.decision.escalated ? '<span class="esc">⇧ escalated</span>' : ""}
+            <span class="meta">rule: ${h(r.decision.ruleId)}</span>
+          </div>
+          <pre>${json(r.parsed)}</pre>
+          <details><summary>raw output</summary><pre>${h(r.raw)}</pre></details>`;
+      };
+
+      function prepWorkflowInput(wfId) {
+        const uc = state.useCases.find((u) => u.workflow && u.workflow.id === wfId);
+        const example = (uc.agents[0] && uc.agents[0].example) || {};
+        $("#wfInput").innerHTML = `
+          <details style="margin-bottom:10px"><summary>edit workflow input</summary>
+            <textarea id="wf_in" style="margin-top:8px">${json(example)}</textarea></details>`;
+      }
+
+      window.runWorkflow = async (wfId) => {
+        const ta = document.getElementById("wf_in");
+        let input;
+        try { input = ta ? JSON.parse(ta.value) : undefined; }
+        catch { $("#wfResult").innerHTML = `<pre class="err">Invalid JSON input.</pre>`; return; }
+        $("#wfResult").innerHTML = '<div class="meta"><span class="spin"></span> running workflow…</div>';
+        const r = await post("/api/run/workflow", { workflowId: wfId, input });
+        if (!r.ok) { $("#wfResult").innerHTML = `<pre class="err">${h(r.error)}</pre>`; return; }
+        $("#wfResult").innerHTML = `
+          <div class="meta" style="margin:6px 0">task ${h(r.taskId)}</div>
+          ${r.steps.map((s, i) => `
+            <div class="card" style="margin-bottom:10px">
+              <div class="row">
+                <b>${i + 1}. ${h(s.agent)}</b> ${modelPill(s.model)}
+                <span class="meta">conf ${Number(s.confidence).toFixed(2)}</span>
+                ${s.escalated ? '<span class="esc">⇧ escalated</span>' : ""}
+                ${s.ruleId ? `<span class="meta">${h(s.ruleId)}</span>` : ""}
+              </div>
+              <details><summary>output</summary><pre>${json(s.output)}</pre></details>
+            </div>`).join("")}`;
+      };
+
+      // ── evaluation log ────────────────────────────────────────────
+      async function renderLog() {
+        $("#main").innerHTML = `
+          <h2>Evaluation log</h2>
+          <p class="desc">Every AI output: routing decision, model, confidence, reviewer, and human-review status.</p>
+          <div class="filters">
+            <input id="fTask" placeholder="filter by taskId…" />
+            <select id="fModel">
+              <option value="">all models</option>
+              <option>gemini-3-flash</option><option>kimi-k2.6</option><option>deepseek-v4-pro</option>
+            </select>
+            <button class="btn ghost" onclick="loadLog()">Refresh</button>
+          </div>
+          <table><thead><tr>
+            <th>Time</th><th>Agent</th><th>Model</th><th>Routing</th><th>Conf</th><th>Review by</th><th>Human</th><th>Output</th>
+          </tr></thead><tbody id="logRows"></tbody></table>`;
+        $("#fTask").addEventListener("input", loadLog);
+        $("#fModel").addEventListener("change", loadLog);
+        loadLog();
+      }
+
+      window.loadLog = async () => {
+        const qs = new URLSearchParams();
+        const t = $("#fTask")?.value.trim(); const m = $("#fModel")?.value;
+        if (t) qs.set("taskId", t); if (m) qs.set("modelName", m);
+        const records = await get("/api/records?" + qs);
+        $("#logRows").innerHTML = records.map((r) => {
+          const dec = (r.routingTrace || {}).decision || {};
+          const human = r.humanReviewStatus === "PENDING"
+            ? `<span class="status-PENDING">PENDING</span><br><button class="btn ghost" style="padding:3px 7px;margin-top:4px" onclick="review('${r.id}','APPROVED')">approve</button> <button class="btn ghost" style="padding:3px 7px" onclick="review('${r.id}','REJECTED')">reject</button>`
             : `<span class="status-${r.humanReviewStatus}">${r.humanReviewStatus}</span>`;
           return `<tr>
-            <td class="muted">${new Date(r.createdAt).toLocaleTimeString()}</td>
-            <td>${r.agentName}</td>
-            <td><span class="pill m-${r.modelName}">${r.modelName}</span></td>
-            <td style="max-width:260px">${rule}</td>
+            <td class="meta">${new Date(r.createdAt).toLocaleTimeString()}</td>
+            <td>${h(r.agentName)}</td>
+            <td>${modelPill(r.modelName)}</td>
+            <td style="max-width:240px"><code>${h(dec.ruleId || "-")}</code> ${dec.escalated ? '<span class="esc">⇧</span>' : ""}<div class="meta">${h(dec.reason || "")}</div></td>
             <td>${Number(r.confidenceScore).toFixed(2)}</td>
-            <td class="muted">${r.reviewModel || '-'}</td>
+            <td class="meta">${h(r.reviewModel || "-")}</td>
             <td>${human}</td>
-            <td>${out}</td>
+            <td><details><summary>view</summary><pre>${json(r.parsedOutput)}</pre></details></td>
           </tr>`;
-        }).join('') || `<tr><td colspan="8" class="muted">No records. Run <code>npm run seed</code>.</td></tr>`;
-      }
+        }).join("") || `<tr><td colspan="8" class="meta">No records yet — run an agent or workflow, or <code>npm run seed</code>.</td></tr>`;
+      };
 
-      async function review(id, status) {
-        await fetch('/api/records/' + id + '/review', {
-          method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({ status }),
-        });
-        load();
-      }
+      window.review = async (id, status) => { await post("/api/records/" + id + "/review", { status }); loadLog(); };
 
-      function escapeHtml(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
-      load();
+      boot();
     </script>
   </body>
 </html>

@@ -1,8 +1,11 @@
 /**
- * Minimal dashboard to inspect model routing decisions and evaluation logs.
- * Express + a single static HTML page that polls the JSON API.
+ * AgentOS management dashboard.
  *
- *   npm run seed        # populate some data
+ * Browse agents grouped by use case, inspect their routing/model/schema, run a
+ * single agent or a whole vertical workflow, and review routing decisions +
+ * evaluation logs.
+ *
+ *   npm run seed        # optional: populate some history
  *   npm run dashboard   # then open http://localhost:4317
  */
 import express from "express";
@@ -10,22 +13,114 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { loadConfig } from "../src/config.js";
 import { createEvaluationStore } from "../src/evaluation/index.js";
-import type { HumanReviewStatus } from "../src/types.js";
+import { Orchestrator } from "../src/orchestration/runner.js";
+import { AgentRegistry } from "../src/agents/registry.js";
+import { zodToJsonSchema } from "../src/orchestration/zodToJsonSchema.js";
+import { USE_CASES, WORKFLOWS, AGENT_EXAMPLES } from "../src/catalog.js";
+import type { HumanReviewStatus, RoutingContext } from "../src/types.js";
+import { StructuredOutputError } from "../src/orchestration/structured.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const config = loadConfig();
 const store = createEvaluationStore(config);
-const app = express();
-app.use(express.json());
+const orchestrator = new Orchestrator({ config, store });
+const agents = new AgentRegistry();
 
-// ── API ──────────────────────────────────────────────────────────────
-app.get("/api/records", async (req, res) => {
-  const records = await store.list({
-    taskId: str(req.query.taskId),
-    agentName: str(req.query.agentName),
-    modelName: str(req.query.modelName),
+const app = express();
+app.use(express.json({ limit: "1mb" }));
+
+/** Build display metadata for one agent, including the model the router picks. */
+function agentMeta(name: string) {
+  const agent = agents.get(name);
+  const ctx: RoutingContext = {
+    taskType: agent.taskType,
+    riskLevel: agent.defaultRisk,
+    latency: agent.defaultLatency,
+    multimodal: agent.multimodal,
+  };
+  const decision = orchestrator.router.route(ctx);
+  return {
+    name: agent.name,
+    description: agent.description,
+    taskType: agent.taskType,
+    defaultRisk: agent.defaultRisk,
+    defaultLatency: agent.defaultLatency ?? null,
+    promptVersion: agent.promptVersion,
+    multimodal: Boolean(agent.multimodal),
+    routedModel: decision.model,
+    live: orchestrator.registry.isLive(decision.model),
+    candidates: decision.candidates,
+    schema: zodToJsonSchema(agent.schema as any),
+    example: AGENT_EXAMPLES[agent.name] ?? {},
+  };
+}
+
+// ── Catalog ────────────────────────────────────────────────────────────
+app.get("/api/usecases", (_req, res) => {
+  res.json(
+    USE_CASES.map((uc) => ({
+      ...uc,
+      agents: uc.agents.map(agentMeta),
+      workflow: uc.workflowId ? { id: uc.workflowId, name: WORKFLOWS[uc.workflowId]?.name } : null,
+    })),
+  );
+});
+
+app.get("/api/agents", (_req, res) => {
+  res.json(agents.list().map((a) => agentMeta(a.name)));
+});
+
+app.get("/api/config", (_req, res) => {
+  res.json({
+    mockMode: config.forceMock,
+    evalStore: config.evalStore,
+    liveModels: (["gemini-3-flash", "kimi-k2.6", "deepseek-v4-pro"] as const).filter((m) =>
+      orchestrator.registry.isLive(m),
+    ),
   });
-  res.json(records);
+});
+
+// ── Run ──────────────────────────────────────────────────────────────
+app.post("/api/run/agent", async (req, res) => {
+  const { agentName, input } = req.body ?? {};
+  try {
+    const agent = agents.get(agentName);
+    const result = await orchestrator.runAgent(agent, input ?? {});
+    res.json({
+      ok: true,
+      model: result.model,
+      confidence: result.confidence,
+      decision: result.decision,
+      parsed: result.parsed,
+      raw: result.raw,
+      recordId: result.record.id,
+    });
+  } catch (err) {
+    res.status(400).json({ ok: false, error: errorMessage(err) });
+  }
+});
+
+app.post("/api/run/workflow", async (req, res) => {
+  const { workflowId, input } = req.body ?? {};
+  const wf = WORKFLOWS[workflowId];
+  if (!wf) return res.status(404).json({ ok: false, error: `Unknown workflow "${workflowId}".` });
+  try {
+    const result = await wf.run(orchestrator, input ?? wf.example);
+    res.json({ ok: true, ...result });
+  } catch (err) {
+    res.status(400).json({ ok: false, error: errorMessage(err) });
+  }
+});
+
+// ── Evaluation log ─────────────────────────────────────────────────────
+app.get("/api/records", async (req, res) => {
+  res.json(
+    await store.list({
+      taskId: str(req.query.taskId),
+      agentName: str(req.query.agentName),
+      modelName: str(req.query.modelName),
+    }),
+  );
 });
 
 app.get("/api/stats", async (_req, res) => {
@@ -58,9 +153,13 @@ app.get("/", (_req, res) => res.sendFile(join(__dirname, "index.html")));
 
 app.listen(config.dashboardPort, () => {
   console.log(`AgentOS dashboard → http://localhost:${config.dashboardPort}`);
-  console.log(`Eval store: ${config.evalStore} (${config.evalFile})`);
+  console.log(`Mode: ${config.forceMock ? "MOCK" : "live where keys present"} | store: ${config.evalStore}`);
 });
 
 function str(v: unknown): string | undefined {
   return typeof v === "string" && v.length > 0 ? v : undefined;
+}
+function errorMessage(err: unknown): string {
+  if (err instanceof StructuredOutputError) return `Schema validation failed after ${err.attempts} attempts.`;
+  return err instanceof Error ? err.message : String(err);
 }
