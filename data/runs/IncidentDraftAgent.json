@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "model": "deepseek-v4-pro",
+  "confidence": 0.82,
+  "decision": {
+    "model": "deepseek-v4-pro",
+    "ruleId": "long_context_reasoning.default",
+    "reason": "Long-context reasoning → Kimi K2.6. High risk — promoting strongest candidate.",
+    "candidates": [
+      "kimi-k2.6",
+      "deepseek-v4-pro"
+    ],
+    "estimatedCostUsd": 0.0018664,
+    "escalated": true
+  },
+  "parsed": {
+    "incidentType": "fall",
+    "severity": "low",
+    "narrative": "mock-narrative",
+    "immediateActions": [
+      "mock-immediateActions_item"
+    ],
+    "peopleInvolved": [
+      "mock-peopleInvolved_item"
+    ],
+    "notifyFamily": false,
+    "confidence": 0.82
+  },
+  "raw": "{\"incidentType\":\"fall\",\"severity\":\"low\",\"narrative\":\"mock-narrative\",\"immediateActions\":[\"mock-immediateActions_item\"],\"peopleInvolved\":[\"mock-peopleInvolved_item\"],\"notifyFamily\":false,\"confidence\":0.82}",
+  "recordId": "d9e0112f-9092-465e-bfba-df3886f74dd1"
+}

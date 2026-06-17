@@ -1,0 +1,26 @@
+{
+  "total": 31,
+  "byModel": {
+    "kimi-k2.6": 8,
+    "deepseek-v4-pro": 12,
+    "gemini-3-flash": 11
+  },
+  "byAgent": {
+    "DeveloperAgent": 2,
+    "CodeReviewAgent": 2,
+    "ReportAgent": 5,
+    "CallSummaryAgent": 2,
+    "FollowUpPlanAgent": 2,
+    "EscalationAgent": 2,
+    "TutorFeedbackAgent": 2,
+    "CorrectnessAgent": 2,
+    "NextPracticeAgent": 2,
+    "IncidentDraftAgent": 2,
+    "ComplianceReviewAgent": 3,
+    "ShiftNoteParseAgent": 2,
+    "CareNoteAgent": 2,
+    "JudgeAgent": 1
+  },
+  "escalations": 2,
+  "pendingReview": 0
+}

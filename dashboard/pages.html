@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AgentOS — Agent Management (static demo)</title>
+    <style>
+      :root {
+        --bg:#0d0f14; --panel:#161922; --panel2:#1d212c; --line:#272d3a; --muted:#8b94a7;
+        --text:#e6e9ef; --accent:#6ea8fe; --green:#5fe3a1; --amber:#ffb86b; --red:#ff7a90; --purple:#c79bff;
+      }
+      * { box-sizing:border-box; }
+      body { margin:0; font:14px/1.55 ui-sans-serif,system-ui,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--text); }
+      a { color:var(--accent); text-decoration:none; }
+      code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; }
+      header { display:flex; align-items:center; gap:14px; padding:14px 22px; border-bottom:1px solid var(--line); }
+      header h1 { font-size:16px; margin:0; letter-spacing:.02em; }
+      header .sub { color:var(--muted); font-size:12px; }
+      header .spacer { flex:1; }
+      .badge { font-size:11px; padding:3px 9px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
+      .badge.mock { color:var(--amber); border-color:#4a3a1f; background:#241c10; }
+      .notice { background:#1a1407; border-bottom:1px solid #4a3a1f; color:var(--amber); padding:8px 22px; font-size:12.5px; }
+      .notice code { color:#ffd8a0; }
+      .layout { display:flex; min-height:calc(100vh - 90px); }
+      nav { width:230px; border-right:1px solid var(--line); padding:14px 10px; flex-shrink:0; }
+      nav .group { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.06em; margin:14px 10px 6px; }
+      nav button { display:block; width:100%; text-align:left; background:none; border:none; color:var(--text);
+        padding:8px 12px; border-radius:8px; cursor:pointer; font-size:13.5px; }
+      nav button:hover { background:var(--panel); }
+      nav button.active { background:var(--panel2); color:#fff; box-shadow:inset 2px 0 0 var(--accent); }
+      main { flex:1; padding:22px 26px; overflow:auto; }
+      h2 { font-size:18px; margin:0 0 4px; }
+      .desc { color:var(--muted); margin:0 0 18px; max-width:680px; }
+      .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px; }
+      .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; }
+      .card h3 { margin:0 0 4px; font-size:15px; }
+      .card .cdesc { color:var(--muted); font-size:13px; min-height:36px; }
+      .pills { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0; }
+      .pill { font-size:11px; padding:2px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
+      .m-gemini-3-flash { background:#10261f; color:var(--green); border-color:#1d4533; }
+      .m-kimi-k2\.6 { background:#11203a; color:#7fb0ff; border-color:#1f3a63; }
+      .m-deepseek-v4-pro { background:#241830; color:var(--purple); border-color:#3a2750; }
+      .m-mock { background:#241c10; color:var(--amber); border-color:#4a3a1f; }
+      .risk-high { color:var(--red); } .risk-medium { color:var(--amber); } .risk-low { color:var(--green); }
+      button.btn { background:var(--accent); color:#06101f; border:none; border-radius:8px; padding:8px 14px;
+        font-weight:600; cursor:pointer; font-size:13px; }
+      button.btn:hover { filter:brightness(1.08); }
+      button.btn.ghost { background:var(--panel2); color:var(--text); border:1px solid var(--line); font-weight:500; }
+      textarea { width:100%; min-height:120px; background:#0c0e13; color:var(--text); border:1px solid var(--line);
+        border-radius:8px; padding:10px; font-family:ui-monospace,Menlo,monospace; font-size:12.5px; resize:vertical; }
+      pre { white-space:pre-wrap; word-break:break-word; background:#0c0e13; border:1px solid var(--line);
+        border-radius:8px; padding:10px; margin:8px 0 0; font-size:12.5px; color:#cdd3df; max-height:340px; overflow:auto; }
+      .runbox { margin-top:12px; border-top:1px solid var(--line); padding-top:12px; }
+      .row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+      .meta { color:var(--muted); font-size:12px; }
+      .pipeline { display:flex; align-items:stretch; gap:0; flex-wrap:wrap; margin:6px 0 18px; }
+      .pstep { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:10px 12px; min-width:150px; }
+      .pstep .pname { font-size:13px; font-weight:600; }
+      .arrow { align-self:center; color:var(--muted); padding:0 8px; font-size:18px; }
+      table { width:100%; border-collapse:collapse; background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+      th,td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+      th { color:var(--muted); font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+      tr:last-child td { border-bottom:none; }
+      .esc { color:var(--amber); font-weight:600; }
+      .stats { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
+      .stat { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 18px; min-width:130px; }
+      .stat .n { font-size:24px; font-weight:700; } .stat .l { color:var(--muted); font-size:12px; }
+      .filters { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+      select,input { background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:8px; padding:7px 9px; font-size:13px; }
+      details summary { cursor:pointer; color:var(--muted); font-size:12px; }
+      .status-PENDING { color:var(--amber); } .status-APPROVED { color:var(--green); } .status-REJECTED { color:var(--red); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>AgentOS</h1>
+      <span class="sub">Agent management console</span>
+      <span class="spacer"></span>
+      <span class="badge mock">STATIC DEMO · MOCK</span>
+    </header>
+    <div class="notice">
+      Read-only static deployment on GitHub Pages. Catalog, schemas, routing and the evaluation log are real;
+      “Run” shows pre-computed example traces. For live execution against models run
+      <code>npm run dashboard</code> locally. Source: <a href="https://github.com/fintie/agentos">github.com/fintie/agentos</a>.
+    </div>
+    <div class="layout">
+      <nav id="nav"></nav>
+      <main id="main"></main>
+    </div>
+
+    <script>
+      const $ = (sel, el = document) => el.querySelector(sel);
+      const h = (s) => (s || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+      const json = (v) => h(JSON.stringify(v, null, 2));
+      const data = (name) => fetch("data/" + name + ".json").then((r) => r.json());
+      const pill = (cls, txt) => `<span class="pill ${cls}">${h(txt)}</span>`;
+      const modelPill = (m) => pill("m-" + m, m);
+
+      const state = { view: "overview", useCases: [], agents: [], stats: {}, records: [] };
+
+      async function boot() {
+        [state.useCases, state.agents, state.stats, state.records] = await Promise.all([
+          data("usecases"), data("agents"), data("stats"), data("records"),
+        ]);
+        renderNav(); render();
+      }
+
+      function renderNav() {
+        const ucBtns = state.useCases.map((uc) => `<button data-view="uc:${uc.id}">${h(uc.name)}</button>`).join("");
+        $("#nav").innerHTML = `
+          <div class="group">Console</div>
+          <button data-view="overview">Overview</button>
+          <div class="group">Use cases</div>${ucBtns}
+          <div class="group">Catalog</div>
+          <button data-view="agents">All agents</button>
+          <button data-view="log">Evaluation log</button>`;
+        $("#nav").querySelectorAll("button").forEach((b) =>
+          b.addEventListener("click", () => { state.view = b.dataset.view; render(); }));
+      }
+      function setActive() {
+        $("#nav").querySelectorAll("button").forEach((b) => b.classList.toggle("active", b.dataset.view === state.view));
+      }
+
+      function render() {
+        setActive();
+        const v = state.view;
+        if (v === "overview") return renderOverview();
+        if (v === "agents") return renderAgents();
+        if (v === "log") return renderLog();
+        if (v.startsWith("uc:")) return renderUseCase(v.slice(3));
+      }
+
+      function renderOverview() {
+        const s = state.stats;
+        const cards = state.useCases.map((uc) => `
+          <div class="card">
+            <h3>${h(uc.name)}</h3>
+            <div class="cdesc">${h(uc.description)}</div>
+            <div class="pills">${uc.agents.map((a) => modelPill(a.routedModel)).join("")}</div>
+            <div class="row"><span class="meta">${uc.agents.length} agents${uc.workflow ? " · workflow" : ""}</span>
+              <span class="spacer"></span>
+              <button class="btn ghost" onclick="state.view='uc:${uc.id}';render()">Open</button></div>
+          </div>`).join("");
+        $("#main").innerHTML = `
+          <h2>Overview</h2>
+          <p class="desc">Agents organised by use case. Browse routing, schemas and the evaluation log; run pre-computed example traces.</p>
+          <div class="stats">
+            <div class="stat"><div class="n">${state.agents.length}</div><div class="l">agents</div></div>
+            <div class="stat"><div class="n">${state.useCases.length}</div><div class="l">use cases</div></div>
+            <div class="stat"><div class="n">${s.total}</div><div class="l">logged outputs</div></div>
+            <div class="stat"><div class="n esc">${s.escalations}</div><div class="l">escalations</div></div>
+            <div class="stat"><div class="n">${s.pendingReview}</div><div class="l">pending review</div></div>
+          </div>
+          <div class="grid">${cards}</div>`;
+      }
+
+      function renderUseCase(id) {
+        const uc = state.useCases.find((u) => u.id === id);
+        if (!uc) return;
+        let pipeline = "";
+        if (uc.workflow) {
+          const steps = uc.agents.filter((a) => !(a.name === "IncidentDraftAgent" && uc.id === "care"));
+          pipeline = `
+            <h3 style="margin:18px 0 6px">Workflow pipeline</h3>
+            <div class="pipeline">${steps.map((a, i) => `
+              ${i ? '<span class="arrow">→</span>' : ""}
+              <div class="pstep"><div class="pname">${h(a.name.replace("Agent",""))}</div>${modelPill(a.routedModel)}</div>`).join("")}
+            </div>
+            <div class="row" style="margin-bottom:8px">
+              <button class="btn" onclick="runWorkflow('${uc.workflow.id}')">Show ${h(uc.workflow.name)} trace</button>
+              <span class="meta">pre-computed example: routes through ${steps.length} agents</span>
+            </div>
+            <div id="wfResult"></div>`;
+        }
+        $("#main").innerHTML = `
+          <h2>${h(uc.name)}</h2><p class="desc">${h(uc.description)}</p>${pipeline}
+          <h3 style="margin:22px 0 10px">Agents</h3><div class="grid" id="ucAgents"></div>`;
+        $("#ucAgents").innerHTML = uc.agents.map(agentCard).join("");
+      }
+
+      function renderAgents() {
+        const byUc = state.useCases.map((uc) => ({
+          uc, agents: state.agents.filter((a) => uc.agents.some((x) => x.name === a.name)),
+        })).filter((g) => g.agents.length);
+        $("#main").innerHTML = `
+          <h2>All agents</h2><p class="desc">Every reusable agent in the registry, grouped by use case.</p>
+          ${byUc.map((g) => `<h3 style="margin:18px 0 10px">${h(g.uc.name)}</h3>
+            <div class="grid">${g.agents.map(agentCard).join("")}</div>`).join("")}`;
+      }
+
+      function agentCard(a) {
+        const id = "run_" + a.name;
+        return `
+          <div class="card">
+            <div class="row"><h3>${h(a.name)}</h3><span class="spacer"></span>${modelPill(a.routedModel)}</div>
+            <div class="cdesc">${h(a.description)}</div>
+            <div class="pills">
+              ${pill("", a.taskType)}<span class="pill risk-${a.defaultRisk}">${a.defaultRisk} risk</span>
+              ${a.multimodal ? pill("", "multimodal") : ""}${pill("", a.promptVersion)}
+            </div>
+            <div class="row">
+              <button class="btn ghost" onclick="showRun('${id}','${a.name}')">Show example run</button>
+              <details><summary>schema</summary><pre>${json(a.schema)}</pre></details>
+            </div>
+            <div class="runbox" id="${id}" style="display:none"></div>`;
+      }
+
+      window.showRun = async (id, name) => {
+        const box = document.getElementById(id);
+        if (box.style.display !== "none") { box.style.display = "none"; return; }
+        box.style.display = "block";
+        box.innerHTML = '<div class="meta">loading example…</div>';
+        const r = await data("runs/" + name);
+        box.innerHTML = `
+          <div class="row">${modelPill(r.model)}
+            <span class="meta">confidence ${Number(r.confidence).toFixed(2)}</span>
+            ${r.decision.escalated ? '<span class="esc">⇧ escalated</span>' : ""}
+            <span class="meta">rule: ${h(r.decision.ruleId)}</span></div>
+          <div class="meta" style="margin-top:6px">input</div><pre>${json(state.agents.find(a=>a.name===name).example)}</pre>
+          <div class="meta" style="margin-top:6px">output</div><pre>${json(r.parsed)}</pre>`;
+      };
+
+      window.runWorkflow = async (wfId) => {
+        $("#wfResult").innerHTML = '<div class="meta">loading example trace…</div>';
+        const r = await data("workflows/" + wfId);
+        $("#wfResult").innerHTML = `
+          <div class="meta" style="margin:6px 0">task ${h(r.taskId)}</div>
+          ${r.steps.map((s, i) => `
+            <div class="card" style="margin-bottom:10px">
+              <div class="row"><b>${i + 1}. ${h(s.agent)}</b> ${modelPill(s.model)}
+                <span class="meta">conf ${Number(s.confidence).toFixed(2)}</span>
+                ${s.escalated ? '<span class="esc">⇧ escalated</span>' : ""}
+                ${s.ruleId ? `<span class="meta">${h(s.ruleId)}</span>` : ""}</div>
+              <details><summary>output</summary><pre>${json(s.output)}</pre></details>
+            </div>`).join("")}`;
+      };
+
+      function renderLog() {
+        $("#main").innerHTML = `
+          <h2>Evaluation log</h2>
+          <p class="desc">Every AI output from the baked example runs: routing decision, model, confidence, reviewer, human-review status.</p>
+          <div class="filters">
+            <input id="fTask" placeholder="filter by taskId…" />
+            <select id="fModel"><option value="">all models</option>
+              <option>gemini-3-flash</option><option>kimi-k2.6</option><option>deepseek-v4-pro</option></select>
+          </div>
+          <table><thead><tr><th>Time</th><th>Agent</th><th>Model</th><th>Routing</th><th>Conf</th><th>Review by</th><th>Human</th><th>Output</th></tr></thead>
+          <tbody id="logRows"></tbody></table>`;
+        $("#fTask").addEventListener("input", loadLog);
+        $("#fModel").addEventListener("change", loadLog);
+        loadLog();
+      }
+
+      function loadLog() {
+        const t = ($("#fTask")?.value || "").trim().toLowerCase();
+        const m = $("#fModel")?.value || "";
+        const rows = state.records.filter((r) =>
+          (!t || r.taskId.toLowerCase().includes(t)) && (!m || r.modelName === m));
+        $("#logRows").innerHTML = rows.map((r) => {
+          const dec = (r.routingTrace || {}).decision || {};
+          return `<tr>
+            <td class="meta">${new Date(r.createdAt).toLocaleTimeString()}</td>
+            <td>${h(r.agentName)}</td><td>${modelPill(r.modelName)}</td>
+            <td style="max-width:240px"><code>${h(dec.ruleId || "-")}</code> ${dec.escalated ? '<span class="esc">⇧</span>' : ""}<div class="meta">${h(dec.reason || "")}</div></td>
+            <td>${Number(r.confidenceScore).toFixed(2)}</td>
+            <td class="meta">${h(r.reviewModel || "-")}</td>
+            <td><span class="status-${r.humanReviewStatus}">${r.humanReviewStatus}</span></td>
+            <td><details><summary>view</summary><pre>${json(r.parsedOutput)}</pre></details></td>
+          </tr>`;
+        }).join("") || `<tr><td colspan="8" class="meta">No records match.</td></tr>`;
+      }
+
+      boot();
+    </script>
+  </body>
+</html>

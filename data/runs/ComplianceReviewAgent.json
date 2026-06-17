@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "model": "deepseek-v4-pro",
+  "confidence": 0.82,
+  "decision": {
+    "model": "deepseek-v4-pro",
+    "ruleId": "compliance_review.default",
+    "reason": "Compliance review → DeepSeek V4 Pro.",
+    "candidates": [
+      "deepseek-v4-pro"
+    ],
+    "estimatedCostUsd": 0.001872,
+    "escalated": false
+  },
+  "parsed": {
+    "compliant": true,
+    "framework": "mock-framework",
+    "riskScore": 0.82,
+    "violations": [
+      {
+        "rule": "mock-rule",
+        "severity": "low",
+        "detail": "mock-detail"
+      }
+    ],
+    "recommendations": [
+      "mock-recommendations_item"
+    ],
+    "requiresHumanReview": false,
+    "confidence": 0.82
+  },
+  "raw": "{\"compliant\":true,\"framework\":\"mock-framework\",\"riskScore\":0.82,\"violations\":[{\"rule\":\"mock-rule\",\"severity\":\"low\",\"detail\":\"mock-detail\"}],\"recommendations\":[\"mock-recommendations_item\"],\"requiresHumanReview\":false,\"confidence\":0.82}",
+  "recordId": "9468d3d2-45bd-41cc-8dee-72a9bc528dd8"
+}

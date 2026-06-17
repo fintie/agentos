@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "model": "deepseek-v4-pro",
+  "confidence": 0.82,
+  "decision": {
+    "model": "deepseek-v4-pro",
+    "ruleId": "compliance_review.default",
+    "reason": "Compliance review → DeepSeek V4 Pro.",
+    "candidates": [
+      "deepseek-v4-pro"
+    ],
+    "estimatedCostUsd": 0.0018544,
+    "escalated": false
+  },
+  "parsed": {
+    "escalate": false,
+    "reason": "Mock reason: system: You assess risk and compliance signals in calls (complaints, safety, leg",
+    "urgency": "none",
+    "confidence": 0.82
+  },
+  "raw": "{\"escalate\":false,\"reason\":\"Mock reason: system: You assess risk and compliance signals in calls (complaints, safety, leg\",\"urgency\":\"none\",\"confidence\":0.82}",
+  "recordId": "d8aa21e5-6148-4bf5-8061-b554d3b7fe8c"
+}

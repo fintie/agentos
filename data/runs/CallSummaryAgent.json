@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "model": "gemini-3-flash",
+  "confidence": 0.82,
+  "decision": {
+    "model": "gemini-3-flash",
+    "ruleId": "fast_summary.default",
+    "reason": "Fast, low-cost summaries → Gemini 3 Flash.",
+    "candidates": [
+      "gemini-3-flash",
+      "kimi-k2.6"
+    ],
+    "estimatedCostUsd": 0.000245,
+    "escalated": false
+  },
+  "parsed": {
+    "topic": "mock-topic",
+    "summary": "Mock summary: system: You summarise customer/support calls concisely and extract action items.",
+    "sentiment": "positive",
+    "actionItems": [
+      "mock-actionItems_item"
+    ],
+    "confidence": 0.82
+  },
+  "raw": "{\"topic\":\"mock-topic\",\"summary\":\"Mock summary: system: You summarise customer/support calls concisely and extract action items.\",\"sentiment\":\"positive\",\"actionItems\":[\"mock-actionItems_item\"],\"confidence\":0.82}",
+  "recordId": "3990a3f0-a8d1-43a8-a316-806c2df5931a"
+}

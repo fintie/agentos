@@ -1,0 +1,6 @@
+{
+  "static": true,
+  "mockMode": true,
+  "evalStore": "static",
+  "liveModels": []
+}

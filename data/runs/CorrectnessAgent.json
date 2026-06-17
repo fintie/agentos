@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "model": "deepseek-v4-pro",
+  "confidence": 0.82,
+  "decision": {
+    "model": "deepseek-v4-pro",
+    "ruleId": "final_judge.default",
+    "reason": "LLM-as-judge / final validation → DeepSeek V4 Pro.",
+    "candidates": [
+      "deepseek-v4-pro"
+    ],
+    "estimatedCostUsd": 0.0018456,
+    "escalated": false
+  },
+  "parsed": {
+    "verifiedCorrect": true,
+    "expectedAnswer": "mock-expectedAnswer",
+    "errorAnalysis": "mock-errorAnalysis",
+    "confidence": 0.82
+  },
+  "raw": "{\"verifiedCorrect\":true,\"expectedAnswer\":\"mock-expectedAnswer\",\"errorAnalysis\":\"mock-errorAnalysis\",\"confidence\":0.82}",
+  "recordId": "ec76c653-751d-4a64-b8b0-4915038a99f1"
+}

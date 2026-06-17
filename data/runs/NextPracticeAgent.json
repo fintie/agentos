@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "model": "kimi-k2.6",
+  "confidence": 0.82,
+  "decision": {
+    "model": "kimi-k2.6",
+    "ruleId": "agent_planning.default",
+    "reason": "Agent / multi-agent planning → Kimi K2.6.",
+    "candidates": [
+      "kimi-k2.6",
+      "deepseek-v4-pro"
+    ],
+    "estimatedCostUsd": 0.0015377999999999998,
+    "escalated": false
+  },
+  "parsed": {
+    "rationale": "mock-rationale",
+    "problems": [
+      {
+        "prompt": "mock-prompt",
+        "difficulty": "easier",
+        "skill": "mock-skill"
+      }
+    ],
+    "confidence": 0.82
+  },
+  "raw": "{\"rationale\":\"mock-rationale\",\"problems\":[{\"prompt\":\"mock-prompt\",\"difficulty\":\"easier\",\"skill\":\"mock-skill\"}],\"confidence\":0.82}",
+  "recordId": "6064a670-9b69-4de7-afe7-a247a5d2d87f"
+}

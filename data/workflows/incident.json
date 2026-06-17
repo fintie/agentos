@@ -1,0 +1,49 @@
+{
+  "taskId": "incident-bca00dea-29cf-47b8-8eaa-6f0d337d50ed",
+  "steps": [
+    {
+      "agent": "IncidentDraftAgent",
+      "model": "kimi-k2.6",
+      "confidence": 0.82,
+      "escalated": false,
+      "ruleId": "forceModel",
+      "output": {
+        "incidentType": "fall",
+        "severity": "low",
+        "narrative": "mock-narrative",
+        "immediateActions": [
+          "mock-immediateActions_item"
+        ],
+        "peopleInvolved": [
+          "mock-peopleInvolved_item"
+        ],
+        "notifyFamily": false,
+        "confidence": 0.82
+      }
+    },
+    {
+      "agent": "ComplianceReviewAgent",
+      "model": "deepseek-v4-pro",
+      "confidence": 0.82,
+      "escalated": false,
+      "ruleId": "compliance_review.default",
+      "output": {
+        "compliant": true,
+        "framework": "mock-framework",
+        "riskScore": 0.82,
+        "violations": [
+          {
+            "rule": "mock-rule",
+            "severity": "low",
+            "detail": "mock-detail"
+          }
+        ],
+        "recommendations": [
+          "mock-recommendations_item"
+        ],
+        "requiresHumanReview": false,
+        "confidence": 0.82
+      }
+    }
+  ]
+}

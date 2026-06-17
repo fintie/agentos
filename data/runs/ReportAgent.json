@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "model": "gemini-3-flash",
+  "confidence": 0.82,
+  "decision": {
+    "model": "gemini-3-flash",
+    "ruleId": "fast_summary.default",
+    "reason": "Fast, low-cost summaries → Gemini 3 Flash.",
+    "candidates": [
+      "gemini-3-flash",
+      "kimi-k2.6"
+    ],
+    "estimatedCostUsd": 0.0002447,
+    "escalated": false
+  },
+  "parsed": {
+    "title": "mock-title",
+    "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
+    "highlights": [
+      "mock-highlights_item"
+    ],
+    "confidence": 0.82
+  },
+  "raw": "{\"title\":\"mock-title\",\"summary\":\"Mock summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"mock-highlights_item\"],\"confidence\":0.82}",
+  "recordId": "63119e31-d04f-4b8f-83e5-fc0c9f979201"
+}

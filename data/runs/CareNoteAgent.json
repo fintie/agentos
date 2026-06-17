@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "model": "deepseek-v4-pro",
+  "confidence": 0.82,
+  "decision": {
+    "model": "deepseek-v4-pro",
+    "ruleId": "long_context_reasoning.default",
+    "reason": "Long-context reasoning → Kimi K2.6. High risk — promoting strongest candidate.",
+    "candidates": [
+      "kimi-k2.6",
+      "deepseek-v4-pro"
+    ],
+    "estimatedCostUsd": 0.0018752,
+    "escalated": true
+  },
+  "parsed": {
+    "residentId": "mock-residentId",
+    "shiftDate": "mock-shiftDate",
+    "summary": "Mock summary: system: You are an aged-care documentation assistant. Produce a precise, factual",
+    "observations": [
+      "mock-observations_item"
+    ],
+    "medications": [
+      {
+        "name": "mock-name",
+        "administered": false,
+        "notes": "Mock notes: system: You are an aged-care documentation assistant. Produce a precise, factual"
+      }
+    ],
+    "concerns": [
+      "mock-concerns_item"
+    ],
+    "followUps": [
+      "mock-followUps_item"
+    ],
+    "confidence": 0.82
+  },
+  "raw": "{\"residentId\":\"mock-residentId\",\"shiftDate\":\"mock-shiftDate\",\"summary\":\"Mock summary: system: You are an aged-care documentation assistant. Produce a precise, factual\",\"observations\":[\"mock-observations_item\"],\"medications\":[{\"name\":\"mock-name\",\"administered\":false,\"notes\":\"Mock notes: system: You are an aged-care documentation assistant. Produce a precise, factual\"}],\"concerns\":[\"mock-concerns_item\"],\"followUps\":[\"mock-followUps_item\"],\"confidence\":0.82}",
+  "recordId": "97173ac9-9f57-45cc-b72e-b7bbb564f7cf"
+}

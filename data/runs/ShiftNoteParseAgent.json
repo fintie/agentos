@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "model": "gemini-3-flash",
+  "confidence": 0.82,
+  "decision": {
+    "model": "gemini-3-flash",
+    "ruleId": "multimodal_parse.default",
+    "reason": "Image/audio/video parsing → Gemini 3 Flash (multimodal).",
+    "candidates": [
+      "gemini-3-flash"
+    ],
+    "estimatedCostUsd": 0.0002475,
+    "escalated": false
+  },
+  "parsed": {
+    "cleanedText": "Mock cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand",
+    "entities": {
+      "residents": [
+        "mock-residents_item"
+      ],
+      "times": [
+        "mock-times_item"
+      ],
+      "medications": [
+        "mock-medications_item"
+      ]
+    },
+    "confidence": 0.82
+  },
+  "raw": "{\"cleanedText\":\"Mock cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand\",\"entities\":{\"residents\":[\"mock-residents_item\"],\"times\":[\"mock-times_item\"],\"medications\":[\"mock-medications_item\"]},\"confidence\":0.82}",
+  "recordId": "4275dfde-e8eb-43e2-bc8d-df2a4be7386e"
+}

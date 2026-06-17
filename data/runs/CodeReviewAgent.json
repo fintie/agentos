@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "model": "deepseek-v4-pro",
+  "confidence": 0.82,
+  "decision": {
+    "model": "deepseek-v4-pro",
+    "ruleId": "code_review.default",
+    "reason": "Code review → DeepSeek V4 Pro.",
+    "candidates": [
+      "deepseek-v4-pro"
+    ],
+    "estimatedCostUsd": 0.0018583999999999999,
+    "escalated": false
+  },
+  "parsed": {
+    "approved": true,
+    "summary": "Mock summary: system: You are a rigorous code reviewer. Identify correctness, security, and ma",
+    "issues": [
+      {
+        "severity": "nit",
+        "file": "mock-file",
+        "detail": "mock-detail"
+      }
+    ],
+    "confidence": 0.82
+  },
+  "raw": "{\"approved\":true,\"summary\":\"Mock summary: system: You are a rigorous code reviewer. Identify correctness, security, and ma\",\"issues\":[{\"severity\":\"nit\",\"file\":\"mock-file\",\"detail\":\"mock-detail\"}],\"confidence\":0.82}",
+  "recordId": "0d36bb17-2abf-40bb-8c4a-2036dac86875"
+}

@@ -1,0 +1,95 @@
+{
+  "taskId": "care-9cdece40-4539-428e-a4a8-08afae089c1a",
+  "steps": [
+    {
+      "agent": "ShiftNoteParseAgent",
+      "model": "gemini-3-flash",
+      "confidence": 0.82,
+      "escalated": false,
+      "ruleId": "multimodal_parse.default",
+      "output": {
+        "cleanedText": "Mock cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand",
+        "entities": {
+          "residents": [
+            "mock-residents_item"
+          ],
+          "times": [
+            "mock-times_item"
+          ],
+          "medications": [
+            "mock-medications_item"
+          ]
+        },
+        "confidence": 0.82
+      }
+    },
+    {
+      "agent": "CareNoteAgent",
+      "model": "kimi-k2.6",
+      "confidence": 0.82,
+      "escalated": false,
+      "ruleId": "forceModel",
+      "output": {
+        "residentId": "mock-residentId",
+        "shiftDate": "mock-shiftDate",
+        "summary": "Mock summary: system: You are an aged-care documentation assistant. Produce a precise, factual",
+        "observations": [
+          "mock-observations_item"
+        ],
+        "medications": [
+          {
+            "name": "mock-name",
+            "administered": false,
+            "notes": "Mock notes: system: You are an aged-care documentation assistant. Produce a precise, factual"
+          }
+        ],
+        "concerns": [
+          "mock-concerns_item"
+        ],
+        "followUps": [
+          "mock-followUps_item"
+        ],
+        "confidence": 0.82
+      }
+    },
+    {
+      "agent": "ComplianceReviewAgent",
+      "model": "deepseek-v4-pro",
+      "confidence": 0.82,
+      "escalated": false,
+      "ruleId": "compliance_review.default",
+      "output": {
+        "compliant": true,
+        "framework": "mock-framework",
+        "riskScore": 0.82,
+        "violations": [
+          {
+            "rule": "mock-rule",
+            "severity": "low",
+            "detail": "mock-detail"
+          }
+        ],
+        "recommendations": [
+          "mock-recommendations_item"
+        ],
+        "requiresHumanReview": false,
+        "confidence": 0.82
+      }
+    },
+    {
+      "agent": "ReportAgent",
+      "model": "gemini-3-flash",
+      "confidence": 0.82,
+      "escalated": false,
+      "ruleId": "fast_summary.default",
+      "output": {
+        "title": "mock-title",
+        "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
+        "highlights": [
+          "mock-highlights_item"
+        ],
+        "confidence": 0.82
+      }
+    }
+  ]
+}

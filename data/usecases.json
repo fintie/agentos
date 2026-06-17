@@ -1,0 +1,1150 @@
+[
+  {
+    "id": "care",
+    "name": "Aged Care",
+    "description": "Turn messy shift notes into compliant, audit-ready care documentation with a human approval gate.",
+    "agents": [
+      {
+        "name": "ShiftNoteParseAgent",
+        "description": "Parse and normalise a raw/handwritten shift note into clean text + entities.",
+        "taskType": "multimodal_parse",
+        "defaultRisk": "low",
+        "defaultLatency": "interactive",
+        "promptVersion": "care.parse.v1",
+        "multimodal": true,
+        "routedModel": "gemini-3-flash",
+        "live": false,
+        "candidates": [
+          "gemini-3-flash"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "cleanedText": {
+              "type": "string"
+            },
+            "entities": {
+              "type": "object",
+              "properties": {
+                "residents": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "times": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "medications": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "cleanedText",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "residentId": "R-1042",
+          "shiftDate": "2026-06-17",
+          "rawNote": "resident unsteady this am, refused breakfast, took meds 8am paracetamol, hip pain. fam to call."
+        }
+      },
+      {
+        "name": "CareNoteAgent",
+        "description": "Produce a structured, compliant care note from cleaned shift text.",
+        "taskType": "long_context_reasoning",
+        "defaultRisk": "high",
+        "defaultLatency": null,
+        "promptVersion": "care.note.v1",
+        "multimodal": false,
+        "routedModel": "deepseek-v4-pro",
+        "live": false,
+        "candidates": [
+          "kimi-k2.6",
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "residentId": {
+              "type": "string"
+            },
+            "shiftDate": {
+              "type": "string"
+            },
+            "summary": {
+              "type": "string"
+            },
+            "observations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "medications": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "administered": {
+                    "type": "boolean"
+                  },
+                  "notes": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "administered"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "concerns": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "followUps": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "residentId",
+            "shiftDate",
+            "summary",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "residentId": "R-1042",
+          "shiftDate": "2026-06-17",
+          "cleanedText": "Resident was unsteady this morning, refused breakfast, took 8am paracetamol, reported hip pain."
+        }
+      },
+      {
+        "name": "IncidentDraftAgent",
+        "description": "Draft a structured incident report for review.",
+        "taskType": "long_context_reasoning",
+        "defaultRisk": "high",
+        "defaultLatency": null,
+        "promptVersion": "care.incident.v1",
+        "multimodal": false,
+        "routedModel": "deepseek-v4-pro",
+        "live": false,
+        "candidates": [
+          "kimi-k2.6",
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "incidentType": {
+              "type": "string",
+              "enum": [
+                "fall",
+                "medication",
+                "behaviour",
+                "injury",
+                "other"
+              ]
+            },
+            "severity": {
+              "type": "string",
+              "enum": [
+                "low",
+                "medium",
+                "high",
+                "critical"
+              ]
+            },
+            "narrative": {
+              "type": "string"
+            },
+            "immediateActions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "peopleInvolved": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "notifyFamily": {
+              "type": "boolean"
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "incidentType",
+            "severity",
+            "narrative",
+            "notifyFamily",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "residentId": "R-1042",
+          "shiftDate": "2026-06-17",
+          "description": "Resident slipped near the bathroom around 9:15am, no visible injury, assisted up by two staff."
+        }
+      },
+      {
+        "name": "ComplianceReviewAgent",
+        "description": "Review an artifact against a compliance framework and score risk.",
+        "taskType": "compliance_review",
+        "defaultRisk": "high",
+        "defaultLatency": null,
+        "promptVersion": "compliance.v1",
+        "multimodal": false,
+        "routedModel": "deepseek-v4-pro",
+        "live": false,
+        "candidates": [
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "compliant": {
+              "type": "boolean"
+            },
+            "framework": {
+              "type": "string"
+            },
+            "riskScore": {
+              "type": "number"
+            },
+            "violations": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "rule": {
+                    "type": "string"
+                  },
+                  "severity": {
+                    "type": "string",
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high"
+                    ]
+                  },
+                  "detail": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "rule",
+                  "severity",
+                  "detail"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "recommendations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "requiresHumanReview": {
+              "type": "boolean"
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "compliant",
+            "framework",
+            "riskScore",
+            "requiresHumanReview",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "framework": "Aged Care Quality Standards",
+          "content": "Care note: resident refused breakfast and reported hip pain; medication administered."
+        }
+      },
+      {
+        "name": "ReportAgent",
+        "description": "Generate a readable summary/report for export from structured source material.",
+        "taskType": "fast_summary",
+        "defaultRisk": "low",
+        "defaultLatency": "interactive",
+        "promptVersion": "report.v1",
+        "multimodal": false,
+        "routedModel": "gemini-3-flash",
+        "live": false,
+        "candidates": [
+          "gemini-3-flash",
+          "kimi-k2.6"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "summary": {
+              "type": "string"
+            },
+            "highlights": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "title",
+            "summary",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "title": "Care report — R-1042 (2026-06-17)",
+          "source": "Resident stable, ate lunch, BP normal."
+        }
+      }
+    ],
+    "workflowId": "care",
+    "workflow": {
+      "id": "care",
+      "name": "Care Workflow"
+    }
+  },
+  {
+    "id": "stem",
+    "name": "STEM Tutoring",
+    "description": "Give fast feedback, verify correctness rigorously, and plan personalised next practice.",
+    "agents": [
+      {
+        "name": "TutorFeedbackAgent",
+        "description": "Give fast, encouraging formative feedback on a student answer.",
+        "taskType": "fast_summary",
+        "defaultRisk": "low",
+        "defaultLatency": "interactive",
+        "promptVersion": "stem.feedback.v1",
+        "multimodal": false,
+        "routedModel": "gemini-3-flash",
+        "live": false,
+        "candidates": [
+          "gemini-3-flash",
+          "kimi-k2.6"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "isCorrect": {
+              "type": "boolean"
+            },
+            "score": {
+              "type": "number"
+            },
+            "feedback": {
+              "type": "string"
+            },
+            "misconceptions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "encouragement": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "isCorrect",
+            "score",
+            "feedback",
+            "encouragement",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "question": "What is the derivative of x^2?",
+          "studentAnswer": "x",
+          "gradeLevel": "Year 11"
+        }
+      },
+      {
+        "name": "CorrectnessAgent",
+        "description": "Independently verify whether a student's answer is correct.",
+        "taskType": "final_judge",
+        "defaultRisk": "medium",
+        "defaultLatency": null,
+        "promptVersion": "stem.correctness.v1",
+        "multimodal": false,
+        "routedModel": "deepseek-v4-pro",
+        "live": false,
+        "candidates": [
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "verifiedCorrect": {
+              "type": "boolean"
+            },
+            "expectedAnswer": {
+              "type": "string"
+            },
+            "errorAnalysis": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "verifiedCorrect",
+            "expectedAnswer",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "question": "What is the derivative of x^2?",
+          "studentAnswer": "x"
+        }
+      },
+      {
+        "name": "NextPracticeAgent",
+        "description": "Plan a personalised next set of practice problems.",
+        "taskType": "agent_planning",
+        "defaultRisk": "low",
+        "defaultLatency": null,
+        "promptVersion": "stem.nextpractice.v1",
+        "multimodal": false,
+        "routedModel": "kimi-k2.6",
+        "live": false,
+        "candidates": [
+          "kimi-k2.6",
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "rationale": {
+              "type": "string"
+            },
+            "problems": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "prompt": {
+                    "type": "string"
+                  },
+                  "difficulty": {
+                    "type": "string",
+                    "enum": [
+                      "easier",
+                      "same",
+                      "harder"
+                    ]
+                  },
+                  "skill": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "prompt",
+                  "difficulty",
+                  "skill"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "rationale",
+            "problems",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "question": "What is the derivative of x^2?",
+          "studentAnswer": "x",
+          "wasCorrect": false,
+          "misconceptions": [
+            "forgot the power rule coefficient"
+          ]
+        }
+      },
+      {
+        "name": "ReportAgent",
+        "description": "Generate a readable summary/report for export from structured source material.",
+        "taskType": "fast_summary",
+        "defaultRisk": "low",
+        "defaultLatency": "interactive",
+        "promptVersion": "report.v1",
+        "multimodal": false,
+        "routedModel": "gemini-3-flash",
+        "live": false,
+        "candidates": [
+          "gemini-3-flash",
+          "kimi-k2.6"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "summary": {
+              "type": "string"
+            },
+            "highlights": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "title",
+            "summary",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "title": "Care report — R-1042 (2026-06-17)",
+          "source": "Resident stable, ate lunch, BP normal."
+        }
+      }
+    ],
+    "workflowId": "stem",
+    "workflow": {
+      "id": "stem",
+      "name": "STEM Workflow"
+    }
+  },
+  {
+    "id": "voice",
+    "name": "Voice Gateway",
+    "description": "Summarise calls, plan follow-ups, and flag escalations into CRM notes.",
+    "agents": [
+      {
+        "name": "CallSummaryAgent",
+        "description": "Summarise a call transcript with sentiment and action items.",
+        "taskType": "fast_summary",
+        "defaultRisk": "low",
+        "defaultLatency": "interactive",
+        "promptVersion": "voice.summary.v1",
+        "multimodal": false,
+        "routedModel": "gemini-3-flash",
+        "live": false,
+        "candidates": [
+          "gemini-3-flash",
+          "kimi-k2.6"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "topic": {
+              "type": "string"
+            },
+            "summary": {
+              "type": "string"
+            },
+            "sentiment": {
+              "type": "string",
+              "enum": [
+                "positive",
+                "neutral",
+                "negative"
+              ]
+            },
+            "actionItems": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "topic",
+            "summary",
+            "sentiment",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "callId": "C-9001",
+          "transcript": "Customer: my invoice is wrong again and I'm furious. Agent: I'm sorry, let me check…"
+        }
+      },
+      {
+        "name": "FollowUpPlanAgent",
+        "description": "Turn a call summary into an owned, scheduled follow-up plan.",
+        "taskType": "agent_planning",
+        "defaultRisk": "medium",
+        "defaultLatency": null,
+        "promptVersion": "voice.followup.v1",
+        "multimodal": false,
+        "routedModel": "kimi-k2.6",
+        "live": false,
+        "candidates": [
+          "kimi-k2.6",
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "steps": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string"
+                  },
+                  "owner": {
+                    "type": "string"
+                  },
+                  "dueInDays": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "action",
+                  "owner",
+                  "dueInDays"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "priority": {
+              "type": "string",
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ]
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "steps",
+            "priority",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "summary": "Customer billed incorrectly for the third time, very upset.",
+          "actionItems": [
+            "correct invoice",
+            "call back"
+          ]
+        }
+      },
+      {
+        "name": "EscalationAgent",
+        "description": "Decide whether a call requires escalation and how urgently.",
+        "taskType": "compliance_review",
+        "defaultRisk": "high",
+        "defaultLatency": null,
+        "promptVersion": "voice.escalation.v1",
+        "multimodal": false,
+        "routedModel": "deepseek-v4-pro",
+        "live": false,
+        "candidates": [
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "escalate": {
+              "type": "boolean"
+            },
+            "reason": {
+              "type": "string"
+            },
+            "urgency": {
+              "type": "string",
+              "enum": [
+                "none",
+                "soon",
+                "immediate"
+              ]
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "escalate",
+            "reason",
+            "urgency",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "summary": "Customer billed incorrectly for the third time, very upset.",
+          "transcript": "Customer: this is the third time, I want to cancel."
+        }
+      },
+      {
+        "name": "ReportAgent",
+        "description": "Generate a readable summary/report for export from structured source material.",
+        "taskType": "fast_summary",
+        "defaultRisk": "low",
+        "defaultLatency": "interactive",
+        "promptVersion": "report.v1",
+        "multimodal": false,
+        "routedModel": "gemini-3-flash",
+        "live": false,
+        "candidates": [
+          "gemini-3-flash",
+          "kimi-k2.6"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "summary": {
+              "type": "string"
+            },
+            "highlights": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "title",
+            "summary",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "title": "Care report — R-1042 (2026-06-17)",
+          "source": "Resident stable, ate lunch, BP normal."
+        }
+      }
+    ],
+    "workflowId": "voice",
+    "workflow": {
+      "id": "voice",
+      "name": "Voice Workflow"
+    }
+  },
+  {
+    "id": "developer",
+    "name": "Developer",
+    "description": "From product requirement to architecture plan, rigorous review, and documentation.",
+    "agents": [
+      {
+        "name": "DeveloperAgent",
+        "description": "Produce an architecture/implementation plan from a product requirement.",
+        "taskType": "agent_planning",
+        "defaultRisk": "medium",
+        "defaultLatency": null,
+        "promptVersion": "dev.architecture.v1",
+        "multimodal": false,
+        "routedModel": "kimi-k2.6",
+        "live": false,
+        "candidates": [
+          "kimi-k2.6",
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "overview": {
+              "type": "string"
+            },
+            "components": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "responsibility": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "responsibility"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "risks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "milestones": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "overview",
+            "components",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "title": "Offline-first sync",
+          "requirement": "Add offline-first data sync to the mobile app with conflict resolution.",
+          "constraints": [
+            "must work on flaky networks",
+            "no data loss"
+          ]
+        }
+      },
+      {
+        "name": "CodeReviewAgent",
+        "description": "Review code/diffs for correctness, security, and design issues.",
+        "taskType": "code_review",
+        "defaultRisk": "high",
+        "defaultLatency": null,
+        "promptVersion": "dev.review.v1",
+        "multimodal": false,
+        "routedModel": "deepseek-v4-pro",
+        "live": false,
+        "candidates": [
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "approved": {
+              "type": "boolean"
+            },
+            "summary": {
+              "type": "string"
+            },
+            "issues": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "severity": {
+                    "type": "string",
+                    "enum": [
+                      "nit",
+                      "minor",
+                      "major",
+                      "blocker"
+                    ]
+                  },
+                  "file": {
+                    "type": "string"
+                  },
+                  "detail": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "severity",
+                  "detail"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "approved",
+            "summary",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "context": "Reviewing a sync conflict-resolution module.",
+          "diffOrCode": "function merge(a, b) { return { ...a, ...b }; }"
+        }
+      },
+      {
+        "name": "ReportAgent",
+        "description": "Generate a readable summary/report for export from structured source material.",
+        "taskType": "fast_summary",
+        "defaultRisk": "low",
+        "defaultLatency": "interactive",
+        "promptVersion": "report.v1",
+        "multimodal": false,
+        "routedModel": "gemini-3-flash",
+        "live": false,
+        "candidates": [
+          "gemini-3-flash",
+          "kimi-k2.6"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "summary": {
+              "type": "string"
+            },
+            "highlights": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "title",
+            "summary",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "title": "Care report — R-1042 (2026-06-17)",
+          "source": "Resident stable, ate lunch, BP normal."
+        }
+      }
+    ],
+    "workflowId": "developer",
+    "workflow": {
+      "id": "developer",
+      "name": "Developer Workflow"
+    }
+  },
+  {
+    "id": "review",
+    "name": "Review & Judge",
+    "description": "Cross-cutting compliance review and LLM-as-judge evaluation used by every vertical.",
+    "agents": [
+      {
+        "name": "ComplianceReviewAgent",
+        "description": "Review an artifact against a compliance framework and score risk.",
+        "taskType": "compliance_review",
+        "defaultRisk": "high",
+        "defaultLatency": null,
+        "promptVersion": "compliance.v1",
+        "multimodal": false,
+        "routedModel": "deepseek-v4-pro",
+        "live": false,
+        "candidates": [
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "compliant": {
+              "type": "boolean"
+            },
+            "framework": {
+              "type": "string"
+            },
+            "riskScore": {
+              "type": "number"
+            },
+            "violations": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "rule": {
+                    "type": "string"
+                  },
+                  "severity": {
+                    "type": "string",
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high"
+                    ]
+                  },
+                  "detail": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "rule",
+                  "severity",
+                  "detail"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "recommendations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "requiresHumanReview": {
+              "type": "boolean"
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "compliant",
+            "framework",
+            "riskScore",
+            "requiresHumanReview",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "framework": "Aged Care Quality Standards",
+          "content": "Care note: resident refused breakfast and reported hip pain; medication administered."
+        }
+      },
+      {
+        "name": "JudgeAgent",
+        "description": "Score a candidate output as an impartial judge against a rubric.",
+        "taskType": "final_judge",
+        "defaultRisk": "high",
+        "defaultLatency": null,
+        "promptVersion": "judge.v1",
+        "multimodal": false,
+        "routedModel": "deepseek-v4-pro",
+        "live": false,
+        "candidates": [
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "number"
+            },
+            "verdict": {
+              "type": "string",
+              "enum": [
+                "pass",
+                "revise",
+                "fail"
+              ]
+            },
+            "reasoning": {
+              "type": "string"
+            },
+            "dimensions": {
+              "type": "object",
+              "properties": {
+                "accuracy": {
+                  "type": "number"
+                },
+                "completeness": {
+                  "type": "number"
+                },
+                "safety": {
+                  "type": "number"
+                },
+                "clarity": {
+                  "type": "number"
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "score",
+            "verdict",
+            "reasoning",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "task": "Summarise a support call",
+          "candidateOutput": "Customer is unhappy about a billing error and wants it fixed.",
+          "rubric": "accuracy, completeness, safety, clarity"
+        }
+      }
+    ],
+    "workflow": null
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "model": "deepseek-v4-pro",
+  "confidence": 0.82,
+  "decision": {
+    "model": "deepseek-v4-pro",
+    "ruleId": "final_judge.default",
+    "reason": "LLM-as-judge / final validation → DeepSeek V4 Pro.",
+    "candidates": [
+      "deepseek-v4-pro"
+    ],
+    "estimatedCostUsd": 0.0018696,
+    "escalated": false
+  },
+  "parsed": {
+    "score": 0.82,
+    "verdict": "pass",
+    "reasoning": "Mock reasoning: system: You are an impartial evaluator. Score the candidate output 0..1 across a",
+    "dimensions": {
+      "accuracy": 1,
+      "completeness": 1,
+      "safety": 1,
+      "clarity": 1
+    },
+    "confidence": 0.82
+  },
+  "raw": "{\"score\":0.82,\"verdict\":\"pass\",\"reasoning\":\"Mock reasoning: system: You are an impartial evaluator. Score the candidate output 0..1 across a\",\"dimensions\":{\"accuracy\":1,\"completeness\":1,\"safety\":1,\"clarity\":1},\"confidence\":0.82}",
+  "recordId": "0b0096bf-e39f-4ceb-a60b-d09fbc270b45"
+}

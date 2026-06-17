@@ -1,0 +1,68 @@
+{
+  "taskId": "stem-be4eba77-1db6-448f-821b-cc99026d4fa7",
+  "steps": [
+    {
+      "agent": "TutorFeedbackAgent",
+      "model": "gemini-3-flash",
+      "confidence": 0.82,
+      "escalated": false,
+      "ruleId": "fast_summary.default",
+      "output": {
+        "isCorrect": true,
+        "score": 0.82,
+        "feedback": "Mock feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f",
+        "misconceptions": [
+          "mock-misconceptions_item"
+        ],
+        "encouragement": "mock-encouragement",
+        "confidence": 0.82
+      }
+    },
+    {
+      "agent": "CorrectnessAgent",
+      "model": "deepseek-v4-pro",
+      "confidence": 0.82,
+      "escalated": false,
+      "ruleId": "final_judge.default",
+      "output": {
+        "verifiedCorrect": true,
+        "expectedAnswer": "mock-expectedAnswer",
+        "errorAnalysis": "mock-errorAnalysis",
+        "confidence": 0.82
+      }
+    },
+    {
+      "agent": "NextPracticeAgent",
+      "model": "kimi-k2.6",
+      "confidence": 0.82,
+      "escalated": false,
+      "ruleId": "agent_planning.default",
+      "output": {
+        "rationale": "mock-rationale",
+        "problems": [
+          {
+            "prompt": "mock-prompt",
+            "difficulty": "easier",
+            "skill": "mock-skill"
+          }
+        ],
+        "confidence": 0.82
+      }
+    },
+    {
+      "agent": "ReportAgent",
+      "model": "gemini-3-flash",
+      "confidence": 0.82,
+      "escalated": false,
+      "ruleId": "fast_summary.default",
+      "output": {
+        "title": "mock-title",
+        "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
+        "highlights": [
+          "mock-highlights_item"
+        ],
+        "confidence": 0.82
+      }
+    }
+  ]
+}

@@ -15,6 +15,7 @@
     "demo": "tsx scripts/demo.ts",
     "seed": "tsx scripts/seed.ts",
     "dashboard": "tsx dashboard/server.ts",
+    "build:pages": "tsx scripts/build-static.ts",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev"
   },

@@ -1,5 +1,7 @@
 # AgentOS — Multi-Model Orchestration Layer
 
+**Live demo:** https://agentos.nextgenius.com.au (static, read-only console on GitHub Pages)
+
 A TypeScript orchestration layer that routes tasks across three model families,
 cascades from cheap → strong models, runs dual-model review, validates every
 output against Zod schemas, and writes a full evaluation/audit log.
@@ -44,6 +46,15 @@ It talks to a small JSON API on the same server (`/api/usecases`, `/api/agents`,
 `/api/run/agent`, `/api/run/workflow`, `/api/records`, `/api/stats`). Use-case
 groupings, example inputs, and workflow runners live in [src/catalog.ts](src/catalog.ts).
 Runs use real providers when keys are present, otherwise the mock adapters.
+
+### Static deployment (GitHub Pages)
+
+GitHub Pages serves static files only, so `npm run build:pages`
+([scripts/build-static.ts](scripts/build-static.ts)) pre-computes the catalog,
+schemas, a seeded evaluation log, and a pre-baked example run for every agent and
+workflow into `data/*.json`, and emits a static `index.html`
+([dashboard/pages.html](dashboard/pages.html)). The published site is a fully
+browsable, read-only mirror — live execution still requires `npm run dashboard`.
 
 ## Architecture
 
