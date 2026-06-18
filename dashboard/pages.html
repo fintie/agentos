@@ -69,12 +69,81 @@
       select,input { background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:8px; padding:7px 9px; font-size:13px; }
       details summary { cursor:pointer; color:var(--muted); font-size:12px; }
       .status-PENDING { color:var(--amber); } .status-APPROVED { color:var(--green); } .status-REJECTED { color:var(--red); }
+      header { min-height:48px; padding:9px 18px; background:#10141dee; backdrop-filter:blur(14px); position:sticky; top:0; z-index:5; }
+      header h1 { font-size:15px; letter-spacing:0; }
+      .traffic { display:flex; gap:7px; }
+      .dot { width:11px; height:11px; border-radius:50%; background:var(--red); box-shadow:inset 0 0 0 1px #0004; }
+      .dot:nth-child(2) { background:var(--amber); } .dot:nth-child(3) { background:var(--green); }
+      .brand { display:flex; align-items:center; gap:10px; min-width:190px; }
+      .brandmark { width:28px; height:28px; border-radius:8px; display:grid; place-items:center; color:#071017;
+        background:linear-gradient(135deg,#71d5ff,#8ff0bf); font-weight:800; }
+      .menus { display:flex; align-items:center; gap:4px; }
+      .menu { position:relative; }
+      .menu > button { background:transparent; color:var(--text); border:1px solid transparent; border-radius:7px; padding:6px 9px; cursor:pointer; }
+      .menu:hover > button { background:var(--panel2); border-color:var(--line); }
+      .menu .drop { display:none; position:absolute; top:34px; left:0; min-width:210px; background:#171d28f8; border:1px solid var(--line);
+        border-radius:8px; box-shadow:0 18px 60px #0008; padding:6px; }
+      .menu:hover .drop { display:block; }
+      .drop a, .drop button { display:block; width:100%; color:var(--text); background:transparent; border:none; text-align:left; padding:8px 9px;
+        border-radius:6px; cursor:pointer; font-size:13px; }
+      .drop a:hover, .drop button:hover { background:#262e3d; }
+      .layout { min-height:calc(100vh - 86px); background:radial-gradient(circle at top left,#18324b 0,#101722 34%,#0b0d12 100%); }
+      nav { width:250px; background:#0f141df0; }
+      nav button { display:flex; align-items:center; gap:10px; border:1px solid transparent; }
+      nav button:hover { border-color:var(--line); }
+      nav button.active { border-color:#3d4b61; box-shadow:inset 3px 0 0 var(--accent); }
+      .navicon { width:30px; height:30px; border-radius:8px; display:grid; place-items:center; background:#273244; color:#71d5ff; font-weight:800; }
+      h2 { font-size:22px; letter-spacing:0; }
+      .card, .window { border-radius:8px; box-shadow:0 10px 34px #0004; }
+      .window { background:#151a24ee; border:1px solid var(--line); padding:0; overflow:hidden; margin-bottom:16px; }
+      .titlebar { display:flex; align-items:center; gap:9px; padding:10px 13px; background:#202735; border-bottom:1px solid var(--line); }
+      .titlebar .wtitle { font-weight:700; font-size:13px; }
+      .winbody { padding:16px; }
+      .desktop { display:grid; grid-template-columns:minmax(0,1.7fr) minmax(280px,.9fr); gap:16px; align-items:start; }
+      .icon-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(124px,1fr)); gap:12px; }
+      .appicon { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:center; min-height:112px; padding:12px;
+        border:1px solid var(--line); border-radius:8px; background:#111822cc; color:var(--text); cursor:pointer; text-align:center; }
+      .appicon:hover { background:#1a2330; border-color:#4b5b70; }
+      .glyph { width:42px; height:42px; border-radius:10px; display:grid; place-items:center; color:#081018;
+        background:linear-gradient(135deg,#71d5ff,#8ff0bf); font-weight:900; font-size:19px; }
+      .appicon .label { font-weight:700; font-size:12.5px; }
+      .split { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+      .terminal { background:#090d12; color:#d9f2e7; border:1px solid #263341; border-radius:8px; padding:12px; font-family:ui-monospace,Menlo,monospace;
+        font-size:12px; overflow:auto; }
+      .repo-actions { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; }
+      .repo-actions a, .repo-actions button { display:flex; align-items:center; justify-content:center; gap:8px; background:var(--panel2);
+        color:var(--text); border:1px solid var(--line); border-radius:8px; padding:10px; cursor:pointer; font-weight:650; }
+      .repo-actions a:hover, .repo-actions button:hover { border-color:#557087; background:#263244; }
+      @media (max-width: 860px) {
+        header { flex-wrap:wrap; position:static; }
+        .menus { order:3; width:100%; overflow:auto; }
+        .layout { display:block; }
+        nav { width:auto; display:flex; gap:8px; overflow:auto; border-right:0; border-bottom:1px solid var(--line); }
+        nav .group { display:none; }
+        nav button { min-width:122px; justify-content:flex-start; }
+        main { padding:16px; }
+        .desktop, .split { grid-template-columns:1fr; }
+      }
     </style>
   </head>
   <body>
     <header>
-      <h1>AgentOS</h1>
-      <span class="sub">Agent management console</span>
+      <div class="traffic"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="brand"><span class="brandmark">A</span><div><h1>AgentOS</h1><span class="sub">agent operating workspace</span></div></div>
+      <div class="menus">
+        <div class="menu"><button>AgentOS</button><div class="drop">
+          <button onclick="state.view='overview';render()">Home desktop</button>
+          <a href="docs.html">Documentation</a>
+          <button onclick="state.view='agents';render()">Agent catalog</button>
+          <button onclick="state.view='developer';render()">Developer workspace</button>
+        </div></div>
+        <div class="menu"><button>Workflows</button><div class="drop" id="workflowMenu"></div></div>
+        <div class="menu"><button>Repository</button><div class="drop">
+          <a href="https://github.com/fintie/agentos" target="_blank" rel="noreferrer">Open GitHub repo</a>
+          <a href="https://github.com/fintie/agentos/issues" target="_blank" rel="noreferrer">Issues</a>
+          <a href="https://github.com/fintie/agentos/pulls" target="_blank" rel="noreferrer">Pull requests</a>
+        </div></div>
+      </div>
       <span class="spacer"></span>
       <span class="badge mock">STATIC DEMO · MOCK</span>
     </header>
@@ -96,26 +165,39 @@
       const pill = (cls, txt) => `<span class="pill ${cls}">${h(txt)}</span>`;
       const modelPill = (m) => pill("m-" + m, m);
 
+      const repo = {
+        url: "https://github.com/fintie/agentos",
+        clone: "git clone https://github.com/fintie/agentos.git",
+        branch: "git switch -c feature/agent-workspace",
+      };
       const state = { view: "overview", useCases: [], agents: [], stats: {}, records: [] };
 
       async function boot() {
         [state.useCases, state.agents, state.stats, state.records] = await Promise.all([
           data("usecases"), data("agents"), data("stats"), data("records"),
         ]);
-        renderNav(); render();
+        renderNav(); renderWorkflowMenu(); render();
       }
 
       function renderNav() {
-        const ucBtns = state.useCases.map((uc) => `<button data-view="uc:${uc.id}">${h(uc.name)}</button>`).join("");
+        const ucBtns = state.useCases.map((uc) => `<button data-view="uc:${uc.id}"><span class="navicon">${iconFor(uc.id)}</span><span>${h(uc.name)}</span></button>`).join("");
         $("#nav").innerHTML = `
           <div class="group">Console</div>
-          <button data-view="overview">Overview</button>
+          <button data-view="overview"><span class="navicon">OS</span><span>Desktop</span></button>
           <div class="group">Use cases</div>${ucBtns}
           <div class="group">Catalog</div>
-          <button data-view="agents">All agents</button>
-          <button data-view="log">Evaluation log</button>`;
+          <button data-view="agents"><span class="navicon">AG</span><span>All agents</span></button>
+          <button data-view="developer"><span class="navicon">GIT</span><span>Developer</span></button>
+          <button data-view="log"><span class="navicon">LOG</span><span>Evaluation log</span></button>`;
         $("#nav").querySelectorAll("button").forEach((b) =>
           b.addEventListener("click", () => { state.view = b.dataset.view; render(); }));
+      }
+      function renderWorkflowMenu() {
+        $("#workflowMenu").innerHTML = state.useCases.map((uc) =>
+          `<button onclick="state.view='uc:${uc.id}';render()">${h(uc.name)}</button>`).join("");
+      }
+      function iconFor(id) {
+        return ({ care: "CA", stem: "ST", voice: "VO", developer: "DV", review: "RV", incident: "IN" }[id] || "UC");
       }
       function setActive() {
         $("#nav").querySelectorAll("button").forEach((b) => b.classList.toggle("active", b.dataset.view === state.view));
@@ -126,6 +208,7 @@
         const v = state.view;
         if (v === "overview") return renderOverview();
         if (v === "agents") return renderAgents();
+        if (v === "developer") return renderDeveloper();
         if (v === "log") return renderLog();
         if (v.startsWith("uc:")) return renderUseCase(v.slice(3));
       }
@@ -133,25 +216,94 @@
       function renderOverview() {
         const s = state.stats;
         const cards = state.useCases.map((uc) => `
-          <div class="card">
-            <h3>${h(uc.name)}</h3>
-            <div class="cdesc">${h(uc.description)}</div>
-            <div class="pills">${uc.agents.map((a) => modelPill(a.routedModel)).join("")}</div>
-            <div class="row"><span class="meta">${uc.agents.length} agents${uc.workflow ? " · workflow" : ""}</span>
-              <span class="spacer"></span>
-              <button class="btn ghost" onclick="state.view='uc:${uc.id}';render()">Open</button></div>
-          </div>`).join("");
+          <button class="appicon" onclick="state.view='uc:${uc.id}';render()">
+            <span class="glyph">${iconFor(uc.id)}</span>
+            <span class="label">${h(uc.name)}</span>
+            <span class="meta">${uc.agents.length} agents${uc.workflow ? " + workflow" : ""}</span>
+          </button>`).join("");
         $("#main").innerHTML = `
-          <h2>Overview</h2>
-          <p class="desc">Agents organised by use case. Browse routing, schemas and the evaluation log; run pre-computed example traces.</p>
-          <div class="stats">
-            <div class="stat"><div class="n">${state.agents.length}</div><div class="l">agents</div></div>
-            <div class="stat"><div class="n">${state.useCases.length}</div><div class="l">use cases</div></div>
-            <div class="stat"><div class="n">${s.total}</div><div class="l">logged outputs</div></div>
-            <div class="stat"><div class="n esc">${s.escalations}</div><div class="l">escalations</div></div>
-            <div class="stat"><div class="n">${s.pendingReview}</div><div class="l">pending review</div></div>
-          </div>
-          <div class="grid">${cards}</div>`;
+          <div class="desktop">
+            <div class="window">
+              <div class="titlebar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="wtitle">AgentOS Desktop</span></div>
+              <div class="winbody">
+                <h2>Agent operating system</h2>
+                <p class="desc">A developer-facing workspace for model routing, multi-agent workflows, plugin-like use cases, evaluation logs, and repository collaboration.</p>
+                <div class="icon-grid">
+                  ${cards}
+                  <button class="appicon" onclick="state.view='agents';render()"><span class="glyph">AG</span><span class="label">Agent catalog</span><span class="meta">${state.agents.length} runnable agents</span></button>
+                  <button class="appicon" onclick="state.view='developer';render()"><span class="glyph">GIT</span><span class="label">Developer workspace</span><span class="meta">clone, branch, test, PR</span></button>
+                  <button class="appicon" onclick="state.view='log';render()"><span class="glyph">LOG</span><span class="label">Evaluation log</span><span class="meta">${s.total} outputs tracked</span></button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="window">
+                <div class="titlebar"><span class="wtitle">System Monitor</span></div>
+                <div class="winbody">
+                  <div class="stats">
+                    <div class="stat"><div class="n">${state.agents.length}</div><div class="l">agents</div></div>
+                    <div class="stat"><div class="n">${state.useCases.length}</div><div class="l">use cases</div></div>
+                    <div class="stat"><div class="n">${s.total}</div><div class="l">logged outputs</div></div>
+                    <div class="stat"><div class="n esc">${s.escalations}</div><div class="l">escalations</div></div>
+                    <div class="stat"><div class="n">${s.pendingReview}</div><div class="l">pending review</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="window">
+                <div class="titlebar"><span class="wtitle">Repository</span></div>
+                <div class="winbody">
+                  <p class="desc">Read-only GitHub Pages mirror with clear entry points for contributors who want to build locally.</p>
+                  <div class="repo-actions">
+                    <a href="${repo.url}" target="_blank" rel="noreferrer">Open repo</a>
+                    <a href="docs.html">Docs</a>
+                    <a href="${repo.url}/issues" target="_blank" rel="noreferrer">Issues</a>
+                    <a href="${repo.url}/pulls" target="_blank" rel="noreferrer">Pull requests</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>`;
+      }
+
+      function renderDeveloper() {
+        $("#main").innerHTML = `
+          <div class="window">
+            <div class="titlebar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="wtitle">Developer Workspace</span></div>
+            <div class="winbody">
+              <h2>Build on AgentOS</h2>
+              <p class="desc">A repo-first workspace for contributors: clone, create a branch, run the dashboard, add agents or workflows, and open a pull request.</p>
+              <div class="repo-actions" style="margin-bottom:14px">
+                <a href="${repo.url}" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="${repo.url}/fork" target="_blank" rel="noreferrer">Fork</a>
+                <a href="${repo.url}/issues/new" target="_blank" rel="noreferrer">New issue</a>
+                <a href="${repo.url}/compare" target="_blank" rel="noreferrer">Open PR</a>
+              </div>
+              <div class="split">
+                <div class="card"><h3>Quick start</h3><div class="terminal">$ ${repo.clone}
+$ cd agentos
+$ npm install
+$ npm test
+$ npm run dashboard</div></div>
+                <div class="card"><h3>Contribution path</h3><div class="terminal">$ ${repo.branch}
+$ npm run typecheck
+$ npm run build:pages
+$ git add .
+$ git commit -m "Improve agent workspace"
+$ git push origin HEAD</div></div>
+              </div>
+              <h3 style="margin:18px 0 10px">Extension points</h3>
+              <div class="grid">
+                ${devCard("Agents", "Add declarative agent metadata, prompt builders, and schemas in src/agents.")}
+                ${devCard("Workflows", "Compose specialist agents into vertical flows in src/workflows and register them in the catalog.")}
+                ${devCard("Models", "Add adapters behind the shared ModelAdapter interface and let the router pick them.")}
+                ${devCard("Evaluations", "Use the audit log and review statuses to compare routing decisions and output quality.")}
+              </div>
+            </div>
+          </div>`;
+      }
+
+      function devCard(title, desc) {
+        return `<div class="card"><h3>${h(title)}</h3><div class="cdesc">${h(desc)}</div></div>`;
       }
 
       function renderUseCase(id) {

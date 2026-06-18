@@ -104,6 +104,7 @@ async function main() {
 
   // 5. Copy the static SPA template to the repo root as index.html, + .nojekyll.
   copyFileSync(join(__dirname, "..", "dashboard", "pages.html"), join(ROOT, "index.html"));
+  copyFileSync(join(__dirname, "..", "dashboard", "docs.html"), join(ROOT, "docs.html"));
   writeFileSync(join(ROOT, ".nojekyll"), "");
   if (!existsSync(join(ROOT, "CNAME"))) {
     // Preserve the custom domain if it ever goes missing.

@@ -150,6 +150,7 @@ app.post("/api/records/:id/review", async (req, res) => {
 
 // ── Static page ──────────────────────────────────────────────────────
 app.get("/", (_req, res) => res.sendFile(join(__dirname, "index.html")));
+app.get("/docs", (_req, res) => res.sendFile(join(__dirname, "docs.html")));
 
 app.listen(config.dashboardPort, () => {
   console.log(`AgentOS dashboard → http://localhost:${config.dashboardPort}`);
