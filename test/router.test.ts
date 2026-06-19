@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { ModelRouter } from "../src/router/router.js";
 import { AdapterRegistry } from "../src/adapters/index.js";
 import { loadConfig } from "../src/config.js";
+import { ModelHealthRegistry } from "../src/router/health.js";
 import type { RoutingContext, TaskType } from "../src/types.js";
 
 // Force mock so adapters report each family's real context/multimodal profile.
@@ -95,5 +96,48 @@ describe("ModelRouter — forceModel escape hatch", () => {
     const d = route({ taskType: "fast_summary", forceModel: "deepseek-v4-pro" });
     expect(d.model).toBe("deepseek-v4-pro");
     expect(d.ruleId).toBe("forceModel");
+  });
+});
+
+describe("ModelRouter — circuit breaker health", () => {
+  it("avoids a model whose circuit breaker is open", () => {
+    const health = new ModelHealthRegistry({ failureThreshold: 1, cooldownMs: 10_000 });
+    health.recordFailure("kimi-k2.6");
+    const router = new ModelRouter({ registry, health });
+
+    const d = router.route({ taskType: "code_generation" });
+
+    expect(d.model).toBe("deepseek-v4-pro");
+    expect(d.avoidedModels).toEqual(["kimi-k2.6"]);
+    expect(d.reason).toContain("Avoided unhealthy");
+  });
+
+  it("allows a half-open model after cooldown", () => {
+    let now = 1000;
+    const health = new ModelHealthRegistry({
+      failureThreshold: 1,
+      cooldownMs: 500,
+      now: () => now,
+    });
+    health.recordFailure("kimi-k2.6");
+    now = 2000;
+    const router = new ModelRouter({ registry, health });
+
+    const d = router.route({ taskType: "code_generation" });
+
+    expect(health.snapshot("kimi-k2.6").status).toBe("half_open");
+    expect(d.model).toBe("kimi-k2.6");
+    expect(d.avoidedModels).toBeUndefined();
+  });
+
+  it("fails over outside a single-candidate rule when that candidate is unhealthy", () => {
+    const health = new ModelHealthRegistry({ failureThreshold: 1, cooldownMs: 10_000 });
+    health.recordFailure("deepseek-v4-pro");
+    const router = new ModelRouter({ registry, health });
+
+    const d = router.route({ taskType: "code_review" });
+
+    expect(d.model).not.toBe("deepseek-v4-pro");
+    expect(d.avoidedModels).toEqual(["deepseek-v4-pro"]);
   });
 });

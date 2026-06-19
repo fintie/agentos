@@ -78,6 +78,14 @@ Rules live in [rules.ts](src/router/rules.ts) (`fast_summary → Gemini`,
 and **escalates to the strongest candidate** when confidence is low or risk is high.
 Every decision returns a full trace (rule id, candidates, estimated cost, escalation flag).
 
+The router also includes an EvoClaw-inspired model health registry
+([health.ts](src/router/health.ts)): repeated provider failures open a lightweight
+circuit breaker, routing avoids unhealthy models, and single-candidate rules can
+fail over to the next viable healthy family instead of cascading an upstream outage
+through the workflow. Successful calls close the breaker again. Each run stores the
+attempted model chain, model health snapshots, actual cost, and a value-for-money
+score in the evaluation trace.
+
 ### 2. Model Adapters — [src/adapters](src/adapters)
 Common interface (`generate`, `generateStructured`, `stream`, `estimateCost`,
 `supportsMultimodal`, `maxContextTokens`). Implementations: `GeminiFlashAdapter`

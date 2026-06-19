@@ -46,6 +46,8 @@ export interface RoutingDecision {
   reason: string;
   /** Models considered, in preference order. */
   candidates: ModelFamily[];
+  /** Candidates skipped because their circuit breaker is currently open. */
+  avoidedModels?: ModelFamily[];
   estimatedCostUsd: number;
   /** Whether this decision was an escalation from a cheaper model. */
   escalated: boolean;

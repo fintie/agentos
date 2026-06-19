@@ -1,6 +1,7 @@
 import { AdapterRegistry } from "../adapters/index.js";
 import { estimateTokens } from "../adapters/base.js";
 import type { ModelFamily, RoutingContext, RoutingDecision } from "../types.js";
+import { ModelHealthRegistry } from "./health.js";
 import { DEFAULT_RULES, matchRule, type RoutingRule } from "./rules.js";
 
 /** Default output size assumed when estimating cost during routing. */
@@ -9,6 +10,7 @@ const ASSUMED_OUTPUT_TOKENS = 600;
 export interface RouterOptions {
   rules?: RoutingRule[];
   registry?: AdapterRegistry;
+  health?: ModelHealthRegistry;
 }
 
 /**
@@ -21,10 +23,12 @@ export interface RouterOptions {
 export class ModelRouter {
   private readonly rules: RoutingRule[];
   private readonly registry: AdapterRegistry;
+  readonly health: ModelHealthRegistry;
 
   constructor(opts: RouterOptions = {}) {
     this.rules = opts.rules ?? DEFAULT_RULES;
     this.registry = opts.registry ?? new AdapterRegistry();
+    this.health = opts.health ?? new ModelHealthRegistry();
   }
 
   route(ctx: RoutingContext): RoutingDecision {
@@ -39,6 +43,18 @@ export class ModelRouter {
     }
 
     let candidates = [...rule.candidates];
+    const avoidedModels = candidates.filter((m) => !this.health.isAvailable(m));
+    const available = candidates.filter((m) => this.health.isAvailable(m));
+    let usedHealthFallback = false;
+    if (available.length > 0) {
+      candidates = available;
+    } else if (avoidedModels.length > 0) {
+      const healthyFallback = this.fallbackForConstraints(ctx, rule).filter((m) => this.health.isAvailable(m));
+      if (healthyFallback.length > 0) {
+        candidates = healthyFallback;
+        usedHealthFallback = true;
+      }
+    }
 
     // (2) Hard constraints.
     if (ctx.multimodal) {
@@ -65,11 +81,15 @@ export class ModelRouter {
         ctx.riskLevel === "high"
           ? "High risk — promoting strongest candidate."
           : `Low confidence (${ctx.confidenceScore}) — promoting strongest candidate.`;
-      return this.decision(strongest, ordered, rule.id, `${rule.description} ${reason}`, ctx, true);
+      return this.decision(strongest, ordered, rule.id, `${rule.description} ${reason}`, ctx, true, avoidedModels);
     }
 
     const chosen = ordered[0]!;
-    return this.decision(chosen, ordered, rule.id, rule.description, ctx, false);
+    const healthReason =
+      avoidedModels.length > 0 && (available.length > 0 || usedHealthFallback)
+        ? ` Avoided unhealthy candidate(s): ${avoidedModels.join(", ")}.`
+        : "";
+    return this.decision(chosen, ordered, rule.id, `${rule.description}${healthReason}`, ctx, false, avoidedModels);
   }
 
   /** Order candidates by the soft signals without dropping any. */
@@ -140,12 +160,14 @@ export class ModelRouter {
     reason: string,
     ctx: RoutingContext,
     escalated: boolean,
+    avoidedModels: ModelFamily[] = [],
   ): RoutingDecision {
     return {
       model,
       ruleId,
       reason,
       candidates,
+      avoidedModels: avoidedModels.length ? avoidedModels : undefined,
       estimatedCostUsd: this.estimateCost(model, ctx),
       escalated,
     };

@@ -73,22 +73,51 @@ export class Orchestrator {
     };
 
     const decision = this.router.route(ctx);
-    const adapter = this.registry.get(decision.model);
+    const attemptedModels: Array<{ model: ModelFamily; ok: boolean; error?: string }> = [];
+    const candidateChain = uniqueModels([decision.model, ...decision.candidates]);
+    let structured: Awaited<ReturnType<typeof runStructured<TOutput>>> | undefined;
+    let model = decision.model;
+    let lastError: unknown;
 
-    const structured = await runStructured({
-      adapter,
-      messages,
-      schema: agent.schema,
-      schemaName: agent.name,
-      maxRetries: opts.maxRetries,
-      signal: opts.signal,
-    });
+    for (const candidate of candidateChain) {
+      const adapter = this.registry.get(candidate);
+      try {
+        structured = await runStructured({
+          adapter,
+          messages,
+          schema: agent.schema,
+          schemaName: agent.name,
+          maxRetries: opts.maxRetries,
+          signal: opts.signal,
+        });
+        model = candidate;
+        attemptedModels.push({ model: candidate, ok: true });
+        this.router.health.recordSuccess(candidate);
+        break;
+      } catch (err) {
+        lastError = err;
+        attemptedModels.push({ model: candidate, ok: false, error: errorMessage(err) });
+        this.router.health.recordFailure(candidate);
+      }
+    }
+
+    if (!structured) {
+      throw lastError instanceof Error ? lastError : new Error(String(lastError));
+    }
 
     const confidence = structured.parsed.confidence;
+    const adapter = this.registry.get(model);
+    const actualCost = adapter.estimateCost(structured.usage);
+    const vfm = valueForMoney({
+      actualCostUsd: actualCost.totalUsd,
+      estimatedCostUsd: decision.estimatedCostUsd,
+      confidence,
+      attempts: structured.attempts,
+    });
     const record = await this.store.record({
       taskId: opts.taskId ?? randomUUID(),
       agentName: agent.name,
-      modelName: decision.model,
+      modelName: model,
       promptVersion: agent.promptVersion,
       inputHash: hashInput(input as unknown),
       rawInputReference: opts.rawInputReference ?? "inline",
@@ -100,13 +129,52 @@ export class Orchestrator {
       humanReviewStatus: opts.humanReviewStatus ?? "NOT_REQUIRED",
       routingTrace: {
         context: ctx,
-        decision,
+        decision: model === decision.model ? decision : { ...decision, model },
+        attemptedModels,
         attempts: structured.attempts,
         usage: structured.usage,
-        live: this.registry.isLive(decision.model),
+        cost: actualCost,
+        valueForMoney: vfm,
+        health: this.router.health.snapshots(candidateChain),
+        live: this.registry.isLive(model),
       },
     });
 
-    return { parsed: structured.parsed, raw: structured.raw, model: decision.model, confidence, decision, record };
+    return {
+      parsed: structured.parsed,
+      raw: structured.raw,
+      model,
+      confidence,
+      decision: model === decision.model ? decision : { ...decision, model },
+      record,
+    };
   }
+}
+
+function uniqueModels(models: ModelFamily[]): ModelFamily[] {
+  return [...new Set(models)];
+}
+
+function errorMessage(err: unknown): string {
+  return err instanceof Error ? err.message : String(err);
+}
+
+function valueForMoney(opts: {
+  actualCostUsd: number;
+  estimatedCostUsd: number;
+  confidence: number;
+  attempts: number;
+}) {
+  const retryPenalty = Math.max(0, opts.attempts - 1) * 0.1;
+  const costAccuracy =
+    opts.estimatedCostUsd <= 0
+      ? 1
+      : Math.max(0, 1 - Math.abs(opts.actualCostUsd - opts.estimatedCostUsd) / opts.estimatedCostUsd);
+  const score = Math.max(0, Math.min(1, opts.confidence * 0.7 + costAccuracy * 0.3 - retryPenalty));
+  return {
+    score,
+    actualCostUsd: opts.actualCostUsd,
+    estimatedCostUsd: opts.estimatedCostUsd,
+    costAccuracy,
+  };
 }
