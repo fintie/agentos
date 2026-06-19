@@ -114,6 +114,36 @@
       .repo-actions a, .repo-actions button { display:flex; align-items:center; justify-content:center; gap:8px; background:var(--panel2);
         color:var(--text); border:1px solid var(--line); border-radius:8px; padding:10px; cursor:pointer; font-weight:650; }
       .repo-actions a:hover, .repo-actions button:hover { border-color:#557087; background:#263244; }
+      .agent-stage { display:grid; gap:14px; margin:18px 0; }
+      .agent-chain { position:relative; display:grid; grid-template-columns:repeat(5,minmax(110px,1fr)); gap:12px; align-items:stretch; }
+      .agent-chain::before { content:""; position:absolute; left:7%; right:7%; top:50%; height:2px; background:linear-gradient(90deg,#3a4a5f,#71d5ff,#8ff0bf,#3a4a5f);
+        opacity:.75; animation:flowline 3.6s linear infinite; }
+      .agent-node { position:relative; z-index:1; min-height:108px; display:flex; flex-direction:column; justify-content:space-between;
+        padding:13px; border:1px solid #3a4657; border-radius:8px; background:#111923f5; box-shadow:0 14px 32px #0005; overflow:hidden; }
+      .agent-node::after { content:""; position:absolute; inset:0; border-top:2px solid transparent; background:linear-gradient(90deg,transparent,#71d5ff55,transparent);
+        transform:translateX(-100%); animation:scan 4.2s ease-in-out infinite; pointer-events:none; }
+      .agent-node .node-k { color:#8ff0bf; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; }
+      .agent-node .node-name { font-size:14px; font-weight:800; line-height:1.2; }
+      .agent-node .node-role { color:var(--muted); font-size:12px; }
+      .packet { position:absolute; z-index:2; top:calc(50% - 5px); left:7%; width:10px; height:10px; border-radius:999px; background:#8ff0bf;
+        box-shadow:0 0 18px #8ff0bf; animation:packet 3.6s linear infinite; }
+      .packet.p2 { animation-delay:1.2s; background:#71d5ff; box-shadow:0 0 18px #71d5ff; }
+      .packet.p3 { animation-delay:2.4s; background:var(--amber); box-shadow:0 0 18px var(--amber); }
+      .module-board { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-top:14px; }
+      .module-card { position:relative; min-height:118px; padding:14px; border:1px solid var(--line); border-radius:8px; background:#111923d8; overflow:hidden; }
+      .module-card::before { content:""; position:absolute; inset:auto 14px 14px 14px; height:3px; border-radius:999px; background:linear-gradient(90deg,#71d5ff,#8ff0bf);
+        transform-origin:left; animation:moduleload 4s ease-in-out infinite; }
+      .module-card h3 { margin:0 0 6px; font-size:14px; }
+      .module-card p { margin:0; color:var(--muted); font-size:12.5px; }
+      .module-chip { display:inline-flex; align-items:center; gap:6px; margin-bottom:9px; color:#071017; background:linear-gradient(135deg,#71d5ff,#8ff0bf);
+        border-radius:7px; padding:4px 7px; font-size:11px; font-weight:900; }
+      @keyframes flowline { 0% { filter:hue-rotate(0deg); } 100% { filter:hue-rotate(360deg); } }
+      @keyframes packet { 0% { left:7%; opacity:0; } 8% { opacity:1; } 92% { opacity:1; } 100% { left:93%; opacity:0; } }
+      @keyframes scan { 0%, 46% { transform:translateX(-100%); } 60%, 100% { transform:translateX(100%); } }
+      @keyframes moduleload { 0%, 100% { transform:scaleX(.18); opacity:.55; } 50% { transform:scaleX(1); opacity:1; } }
+      @media (prefers-reduced-motion: reduce) {
+        .agent-chain::before, .agent-node::after, .packet, .module-card::before { animation:none; }
+      }
       @media (max-width: 860px) {
         header { flex-wrap:wrap; position:static; }
         .menus { order:3; width:100%; overflow:auto; }
@@ -122,7 +152,8 @@
         nav .group { display:none; }
         nav button { min-width:122px; justify-content:flex-start; }
         main { padding:16px; }
-        .desktop, .split { grid-template-columns:1fr; }
+        .desktop, .split, .agent-chain { grid-template-columns:1fr; }
+        .agent-chain::before, .packet { display:none; }
       }
     </style>
   </head>
@@ -199,6 +230,38 @@
       function iconFor(id) {
         return ({ care: "CA", stem: "ST", voice: "VO", developer: "DV", review: "RV", incident: "IN" }[id] || "UC");
       }
+      function agentFlow() {
+        const workflow = state.useCases.find((uc) => uc.workflow)?.agents || state.agents;
+        const nodes = workflow.slice(0, 5).map((agent, i) => ({
+          k: ["intake", "parse", "plan", "review", "report"][i] || "agent",
+          name: agent.name.replace("Agent", ""),
+          role: agent.taskType.replaceAll("_", " "),
+        }));
+        return `
+          <div class="agent-stage">
+            <div class="agent-chain">
+              <span class="packet"></span><span class="packet p2"></span><span class="packet p3"></span>
+              ${nodes.map((node) => `
+                <div class="agent-node">
+                  <span class="node-k">${h(node.k)}</span>
+                  <span class="node-name">${h(node.name)}</span>
+                  <span class="node-role">${h(node.role)}</span>
+                </div>`).join("")}
+            </div>
+          </div>`;
+      }
+      function moduleBoard() {
+        return `
+          <div class="module-board">
+            ${moduleCard("router", "Model Router", "Chooses a model family using risk, latency, context, cost, and health.")}
+            ${moduleCard("agents", "Agent Registry", "Composable prompt, schema, task type, and examples for every specialist.")}
+            ${moduleCard("flow", "Workflow Runner", "Chains agents into vertical use cases with shared task IDs and audit trails.")}
+            ${moduleCard("eval", "Evaluation Store", "Persists outputs, routing traces, confidence, review state, and VFM signals.")}
+          </div>`;
+      }
+      function moduleCard(k, title, desc) {
+        return `<div class="module-card"><span class="module-chip">${h(k)}</span><h3>${h(title)}</h3><p>${h(desc)}</p></div>`;
+      }
       function setActive() {
         $("#nav").querySelectorAll("button").forEach((b) => b.classList.toggle("active", b.dataset.view === state.view));
       }
@@ -228,6 +291,9 @@
               <div class="winbody">
                 <h2>Agent operating system</h2>
                 <p class="desc">A developer-facing workspace for model routing, multi-agent workflows, plugin-like use cases, evaluation logs, and repository collaboration.</p>
+                ${agentFlow()}
+                ${moduleBoard()}
+                <h3 style="margin:22px 0 10px">Launch surfaces</h3>
                 <div class="icon-grid">
                   ${cards}
                   <button class="appicon" onclick="state.view='agents';render()"><span class="glyph">AG</span><span class="label">Agent catalog</span><span class="meta">${state.agents.length} runnable agents</span></button>
