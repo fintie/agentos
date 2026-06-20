@@ -3,6 +3,38 @@ const tradingViews = [
   ["portfolio", "Portfolio"], ["news", "News"], ["activity", "Agent Activity"],
 ];
 
+function renderTradingSystem() {
+  const snapshot = state.trading;
+  const system = state.useCases.find((item) => item.id === "trading");
+  if (!snapshot || !system) { $("#main").innerHTML = '<div class="meta">Loading Trading Agent System...</div>'; return; }
+  const active = snapshot.signals.filter((signal) => signal.status === "actionable");
+  $("#main").innerHTML = `<div class="trading-shell">
+    <div class="trading-head">
+      <div class="trading-title"><span class="market-mark">TA</span><div><h2>Trading Agent System</h2><p>${e(system.description)}</p></div></div>
+      <div class="trading-status"><span class="live-dot"></span><span class="badge">${e(snapshot.mode).toUpperCase()} DATA</span><span class="badge">US ${e(snapshot.schedule.US)}</span><span class="badge">ASX ${e(snapshot.schedule.ASX)}</span></div>
+    </div>
+    <div class="trade-kpis">
+      ${tradeKpi(snapshot.signals.length, "Candidates", "US + ASX scan")}
+      ${tradeKpi(active.length, "Actionable", "Passed strategy and risk")}
+      ${tradeKpi(snapshot.signals.filter((s) => s.risk.accepted).length, "Risk approved", "Minimum 2.0 RR")}
+      ${tradeKpi(Math.max(...snapshot.signals.map((s) => s.confidence)) + "%", "Top confidence", snapshot.signals[0].symbol)}
+    </div>
+    <h3 class="system-section-title">Shared AgentOS modules</h3>
+    ${renderSharedModules(system)}
+    <h3 class="system-section-title">Specialist agent workflow</h3>
+    ${tradingActivity(snapshot)}
+    <h3 class="system-section-title">Watchlist and opportunity discovery</h3>
+    ${tradingWatchlist(snapshot)}
+    <h3 class="system-section-title">Actionable signals</h3>
+    ${tradingSignals(snapshot)}
+    <h3 class="system-section-title">Portfolio construction</h3>
+    ${tradingPortfolio(snapshot)}
+    <details class="system-module"><summary>Backtesting module <span>30D / 90D / 1Y results</span></summary>${tradingBacktests(snapshot)}</details>
+    <details class="system-module"><summary>News catalyst module <span>${snapshot.signals.length} researched candidates</span></summary>${tradingNews(snapshot)}</details>
+    <div class="trade-disclaimer">Research workspace only. Demo data is synthetic and delayed; outputs are not financial advice or an offer to trade. Connect an approved market-data provider and broker compliance controls before live use.</div>
+  </div>`;
+}
+
 function renderTrading(view) {
   const snapshot = state.trading;
   if (!snapshot) { $("#main").innerHTML = '<div class="meta">Loading trading workspace...</div>'; return; }

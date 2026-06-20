@@ -162,12 +162,9 @@
       <div class="brand"><span class="brandmark">A</span><div><h1>AgentOS</h1><span class="sub">agent operating workspace</span></div></div>
       <div class="menus">
         <div class="menu"><button>AgentOS</button><div class="drop">
-          <button onclick="state.view='overview';render()">Home desktop</button>
           <a href="/docs">Documentation</a>
-          <button onclick="state.view='agents';render()">Agent catalog</button>
-          <button onclick="state.view='developer';render()">Developer workspace</button>
         </div></div>
-        <div class="menu"><button>Workflows</button><div class="drop" id="workflowMenu"></div></div>
+        <div class="menu"><button>Systems</button><div class="drop" id="workflowMenu"></div></div>
         <div class="menu"><button>Repository</button><div class="drop">
           <a href="https://github.com/fintie/agentos" target="_blank" rel="noreferrer">Open GitHub repo</a>
           <a href="https://github.com/fintie/agentos/issues" target="_blank" rel="noreferrer">Issues</a>
@@ -197,7 +194,7 @@
         clone: "git clone https://github.com/fintie/agentos.git",
         branch: "git switch -c feature/agent-workspace",
       };
-      const state = { view: "overview", useCases: [], agents: [], config: {}, trading: null, tradingProfile: "balanced" };
+      const state = { view: "system:trading", useCases: [], agents: [], config: {}, trading: null, tradingProfile: "balanced" };
 
       // ── boot ──────────────────────────────────────────────────────
       async function boot() {
@@ -217,30 +214,16 @@
 
       function renderNav() {
         const ucBtns = state.useCases.map((uc) =>
-          `<button data-view="uc:${uc.id}"><span class="navicon">${iconFor(uc.id)}</span><span>${h(uc.name)}</span></button>`).join("");
+          `<button data-view="system:${uc.id}"><span class="navicon">${iconFor(uc.id)}</span><span>${h(uc.name)}</span></button>`).join("");
         $("#nav").innerHTML = `
-          <div class="group">Console</div>
-          <button data-view="overview"><span class="navicon">OS</span><span>Desktop</span></button>
-          <div class="group">Trading OS</div>
-          <button data-view="trading:watchlist"><span class="navicon">WL</span><span>Watchlist</span></button>
-          <button data-view="trading:signals"><span class="navicon">SG</span><span>Signals</span></button>
-          <button data-view="trading:backtests"><span class="navicon">BT</span><span>Backtests</span></button>
-          <button data-view="trading:portfolio"><span class="navicon">PF</span><span>Portfolio</span></button>
-          <button data-view="trading:news"><span class="navicon">NW</span><span>News</span></button>
-          <button data-view="trading:activity"><span class="navicon">AC</span><span>Agent Activity</span></button>
-          <div class="group">Use cases</div>
-          ${ucBtns}
-          <div class="group">Catalog</div>
-          <button data-view="agents"><span class="navicon">AG</span><span>All agents</span></button>
-          <button data-view="developer"><span class="navicon">GIT</span><span>Developer</span></button>
-          <button data-view="log"><span class="navicon">LOG</span><span>Evaluation log</span></button>`;
+          <div class="group">Agent Systems</div>${ucBtns}`;
         $("#nav").querySelectorAll("button").forEach((b) =>
           b.addEventListener("click", () => { state.view = b.dataset.view; render(); }));
       }
 
       function renderWorkflowMenu() {
         $("#workflowMenu").innerHTML = state.useCases.map((uc) =>
-          `<button onclick="state.view='uc:${uc.id}';render()">${h(uc.name)}</button>`).join("");
+          `<button onclick="state.view='system:${uc.id}';render()">${h(uc.name)}</button>`).join("");
       }
 
       function iconFor(id) {
@@ -282,6 +265,24 @@
         return `<div class="module-card"><span class="module-chip">${h(k)}</span><h3>${h(title)}</h3><p>${h(desc)}</p></div>`;
       }
 
+      const sharedModuleMeta = {
+        "model-router": ["RT", "Model Router", "Selects a healthy model for risk, latency, cost, and context."],
+        "agent-memory": ["MM", "Agent Memory", "Carries structured context and prior outputs between agents."],
+        "workflow-runtime": ["WF", "Workflow Runtime", "Coordinates events, dependencies, retries, and task IDs."],
+        "evaluation": ["EV", "Evaluation", "Scores confidence, output quality, and value for money."],
+        "scheduler": ["SC", "Scheduler", "Runs recurring and event-triggered workflows."],
+        "notifications": ["NT", "Notifications", "Delivers approved outputs to configured channels."],
+        "human-review": ["HR", "Human Review", "Adds approval gates for consequential decisions."],
+        "audit-log": ["AL", "Audit Log", "Preserves evidence, routing, decisions, and review history."],
+      };
+      function renderSharedModules(uc) {
+        return `<div class="module-board">${uc.sharedModules.map((id) => {
+          const meta = sharedModuleMeta[id];
+          const reused = state.useCases.filter((system) => system.sharedModules.includes(id)).length;
+          return `<div class="module-card"><span class="module-chip">${meta[0]}</span><h3>${meta[1]}</h3><p>${meta[2]}</p><span class="meta" style="position:absolute;bottom:13px">shared by ${reused} systems</span></div>`;
+        }).join("")}</div>`;
+      }
+
       function setActive() {
         $("#nav").querySelectorAll("button").forEach((b) =>
           b.classList.toggle("active", b.dataset.view === state.view));
@@ -291,12 +292,8 @@
       function render() {
         setActive();
         const v = state.view;
-        if (v === "overview") return renderOverview();
-        if (v === "agents") return renderAgents(state.agents, "All agents", "Every reusable agent in the registry, grouped by use case.");
-        if (v === "developer") return renderDeveloper();
-        if (v === "log") return renderLog();
-        if (v.startsWith("trading:")) return renderTrading(v);
-        if (v.startsWith("uc:")) return renderUseCase(v.slice(3));
+        if (v === "system:trading") return renderTradingSystem();
+        if (v.startsWith("system:")) return renderUseCase(v.slice(7));
       }
 
       async function renderOverview() {
@@ -423,8 +420,10 @@ $ git push origin HEAD</div>
         $("#main").innerHTML = `
           <h2>${h(uc.name)}</h2>
           <p class="desc">${h(uc.description)}</p>
+          <h3 style="margin:18px 0 8px">Shared AgentOS modules</h3>
+          ${renderSharedModules(uc)}
           ${pipeline}
-          <h3 style="margin:22px 0 10px">Agents</h3>
+          <h3 style="margin:22px 0 10px">Specialist agents</h3>
           <div class="grid" id="ucAgents"></div>`;
         $("#ucAgents").innerHTML = uc.agents.map(agentCard).join("");
         if (uc.workflow) prepWorkflowInput(uc.workflow.id);

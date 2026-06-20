@@ -1,7 +1,7 @@
 [
   {
     "id": "trading",
-    "name": "Trading Agents",
+    "name": "Trading Agent System",
     "description": "Discover, validate, backtest, risk-check, rank, and deliver market opportunities through an event-driven agent pipeline.",
     "agents": [
       {
@@ -552,11 +552,20 @@
         }
       }
     ],
+    "sharedModules": [
+      "model-router",
+      "agent-memory",
+      "workflow-runtime",
+      "evaluation",
+      "scheduler",
+      "notifications",
+      "audit-log"
+    ],
     "workflow": null
   },
   {
     "id": "care",
-    "name": "Aged Care",
+    "name": "Healthcare Agent System",
     "description": "Turn messy shift notes into compliant, audit-ready care documentation with a human approval gate.",
     "agents": [
       {
@@ -903,6 +912,15 @@
       }
     ],
     "workflowId": "care",
+    "sharedModules": [
+      "model-router",
+      "agent-memory",
+      "workflow-runtime",
+      "evaluation",
+      "notifications",
+      "human-review",
+      "audit-log"
+    ],
     "workflow": {
       "id": "care",
       "name": "Care Workflow"
@@ -910,7 +928,7 @@
   },
   {
     "id": "stem",
-    "name": "STEM Tutoring",
+    "name": "Education Agent System",
     "description": "Give fast feedback, verify correctness rigorously, and plan personalised next practice.",
     "agents": [
       {
@@ -1123,6 +1141,13 @@
       }
     ],
     "workflowId": "stem",
+    "sharedModules": [
+      "model-router",
+      "agent-memory",
+      "workflow-runtime",
+      "evaluation",
+      "notifications"
+    ],
     "workflow": {
       "id": "stem",
       "name": "STEM Workflow"
@@ -1130,8 +1155,8 @@
   },
   {
     "id": "voice",
-    "name": "Voice Gateway",
-    "description": "Summarise calls, plan follow-ups, and flag escalations into CRM notes.",
+    "name": "Marketing Agent System",
+    "description": "Turn customer conversations into campaign insight, follow-up actions, escalation signals, and CRM-ready content.",
     "agents": [
       {
         "name": "CallSummaryAgent",
@@ -1348,6 +1373,14 @@
       }
     ],
     "workflowId": "voice",
+    "sharedModules": [
+      "model-router",
+      "agent-memory",
+      "workflow-runtime",
+      "evaluation",
+      "scheduler",
+      "notifications"
+    ],
     "workflow": {
       "id": "voice",
       "name": "Voice Workflow"
@@ -1355,7 +1388,7 @@
   },
   {
     "id": "developer",
-    "name": "Developer",
+    "name": "Software Engineering Agent System",
     "description": "From product requirement to architecture plan, rigorous review, and documentation.",
     "agents": [
       {
@@ -1542,6 +1575,14 @@
       }
     ],
     "workflowId": "developer",
+    "sharedModules": [
+      "model-router",
+      "agent-memory",
+      "workflow-runtime",
+      "evaluation",
+      "human-review",
+      "audit-log"
+    ],
     "workflow": {
       "id": "developer",
       "name": "Developer Workflow"
@@ -1549,8 +1590,8 @@
   },
   {
     "id": "review",
-    "name": "Review & Judge",
-    "description": "Cross-cutting compliance review and LLM-as-judge evaluation used by every vertical.",
+    "name": "Research Agent System",
+    "description": "Investigate source material, compare evidence, review claims, and produce judged research outputs.",
     "agents": [
       {
         "name": "ComplianceReviewAgent",
@@ -1699,6 +1740,14 @@
           "rubric": "accuracy, completeness, safety, clarity"
         }
       }
+    ],
+    "sharedModules": [
+      "model-router",
+      "agent-memory",
+      "workflow-runtime",
+      "evaluation",
+      "human-review",
+      "audit-log"
     ],
     "workflow": null
   }

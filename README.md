@@ -42,6 +42,13 @@ npm run dashboard           # agent management console at :4317
 - **Evaluation log** — every output with its routing decision, model, confidence,
   reviewer, and a human-review approve/reject control.
 
+The primary navigation is organised around six composable systems: **Trading,
+Healthcare, Education, Marketing, Software Engineering, and Research**. Shared
+platform modules such as model routing, memory, workflow runtime, evaluation,
+scheduling, notifications, human review, and audit logging are declared once and
+visibly reused across systems. Trading tools such as Watchlist, Signals,
+Backtests, Portfolio, News, and Agent Activity live inside the Trading system.
+
 It talks to a small JSON API on the same server (`/api/usecases`, `/api/agents`,
 `/api/run/agent`, `/api/run/workflow`, `/api/records`, `/api/stats`). Use-case
 groupings, example inputs, and workflow runners live in [src/catalog.ts](src/catalog.ts).

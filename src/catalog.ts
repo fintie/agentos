@@ -19,49 +19,59 @@ export interface UseCase {
   agents: AgentName[];
   /** Workflow id this use case can run end-to-end (optional). */
   workflowId?: string;
+  /** AgentOS platform modules reused by this system. */
+  sharedModules: SharedModuleId[];
 }
+
+export type SharedModuleId = "model-router" | "agent-memory" | "workflow-runtime" | "evaluation" | "scheduler" | "notifications" | "human-review" | "audit-log";
 
 export const USE_CASES: UseCase[] = [
   {
     id: "trading",
-    name: "Trading Agents",
+    name: "Trading Agent System",
     description: "Discover, validate, backtest, risk-check, rank, and deliver market opportunities through an event-driven agent pipeline.",
     agents: ["MarketScannerAgent", "NewsCatalystAgent", "TechnicalAnalysisAgent", "StrategyEvaluationAgent", "BacktestingAgent", "RiskManagementAgent", "PortfolioManagerAgent", "NotificationAgent"],
+    sharedModules: ["model-router", "agent-memory", "workflow-runtime", "evaluation", "scheduler", "notifications", "audit-log"],
   },
   {
     id: "care",
-    name: "Aged Care",
+    name: "Healthcare Agent System",
     description:
       "Turn messy shift notes into compliant, audit-ready care documentation with a human approval gate.",
     agents: ["ShiftNoteParseAgent", "CareNoteAgent", "IncidentDraftAgent", "ComplianceReviewAgent", "ReportAgent"],
     workflowId: "care",
+    sharedModules: ["model-router", "agent-memory", "workflow-runtime", "evaluation", "notifications", "human-review", "audit-log"],
   },
   {
     id: "stem",
-    name: "STEM Tutoring",
+    name: "Education Agent System",
     description: "Give fast feedback, verify correctness rigorously, and plan personalised next practice.",
     agents: ["TutorFeedbackAgent", "CorrectnessAgent", "NextPracticeAgent", "ReportAgent"],
     workflowId: "stem",
+    sharedModules: ["model-router", "agent-memory", "workflow-runtime", "evaluation", "notifications"],
   },
   {
     id: "voice",
-    name: "Voice Gateway",
-    description: "Summarise calls, plan follow-ups, and flag escalations into CRM notes.",
+    name: "Marketing Agent System",
+    description: "Turn customer conversations into campaign insight, follow-up actions, escalation signals, and CRM-ready content.",
     agents: ["CallSummaryAgent", "FollowUpPlanAgent", "EscalationAgent", "ReportAgent"],
     workflowId: "voice",
+    sharedModules: ["model-router", "agent-memory", "workflow-runtime", "evaluation", "scheduler", "notifications"],
   },
   {
     id: "developer",
-    name: "Developer",
+    name: "Software Engineering Agent System",
     description: "From product requirement to architecture plan, rigorous review, and documentation.",
     agents: ["DeveloperAgent", "CodeReviewAgent", "ReportAgent"],
     workflowId: "developer",
+    sharedModules: ["model-router", "agent-memory", "workflow-runtime", "evaluation", "human-review", "audit-log"],
   },
   {
     id: "review",
-    name: "Review & Judge",
-    description: "Cross-cutting compliance review and LLM-as-judge evaluation used by every vertical.",
+    name: "Research Agent System",
+    description: "Investigate source material, compare evidence, review claims, and produce judged research outputs.",
     agents: ["ComplianceReviewAgent", "JudgeAgent"],
+    sharedModules: ["model-router", "agent-memory", "workflow-runtime", "evaluation", "human-review", "audit-log"],
   },
 ];
 
