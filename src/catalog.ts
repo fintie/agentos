@@ -23,6 +23,12 @@ export interface UseCase {
 
 export const USE_CASES: UseCase[] = [
   {
+    id: "trading",
+    name: "Trading Agents",
+    description: "Discover, validate, backtest, risk-check, rank, and deliver market opportunities through an event-driven agent pipeline.",
+    agents: ["MarketScannerAgent", "NewsCatalystAgent", "TechnicalAnalysisAgent", "StrategyEvaluationAgent", "BacktestingAgent", "RiskManagementAgent", "PortfolioManagerAgent", "NotificationAgent"],
+  },
+  {
     id: "care",
     name: "Aged Care",
     description:
@@ -61,6 +67,14 @@ export const USE_CASES: UseCase[] = [
 
 /** Example inputs used to prefill the dashboard "run agent" forms. */
 export const AGENT_EXAMPLES: Record<string, unknown> = {
+  MarketScannerAgent: { markets: ["US", "ASX"], filters: { minRelativeVolume: 2, minPrice: 2 } },
+  NewsCatalystAgent: { symbol: "NVDA", lookbackHours: 72 },
+  TechnicalAnalysisAgent: { symbol: "NVDA", timeframe: "1D", bars: "provider://market-data/NVDA" },
+  StrategyEvaluationAgent: { symbol: "NVDA", strategies: ["Trend Join Long", "Mean Reversion", "Earnings Momentum", "Gap And Go"] },
+  BacktestingAgent: { symbol: "NVDA", strategy: "Trend Join Long", windows: ["30D", "90D", "1Y"] },
+  RiskManagementAgent: { symbol: "NVDA", accountSize: 100000, riskPercent: 1, minimumRiskReward: 2 },
+  PortfolioManagerAgent: { profile: "balanced", maxPositions: 7, candidates: "workflow://approved-signals" },
+  NotificationAgent: { symbol: "NVDA", channels: ["Dashboard"], signal: "workflow://top-ranked-signal" },
   ShiftNoteParseAgent: {
     residentId: "R-1042",
     shiftDate: "2026-06-17",

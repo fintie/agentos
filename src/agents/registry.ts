@@ -4,6 +4,16 @@ import { CorrectnessAgent, NextPracticeAgent, TutorFeedbackAgent } from "./stem.
 import { CallSummaryAgent, EscalationAgent, FollowUpPlanAgent } from "./voice.js";
 import { CodeReviewAgent, DeveloperAgent, ReportAgent } from "./developer.js";
 import { ComplianceReviewAgent, JudgeAgent } from "./review.js";
+import {
+  BacktestingAgent,
+  MarketScannerAgent,
+  NewsCatalystAgent,
+  NotificationAgent,
+  PortfolioManagerAgent,
+  RiskManagementAgent,
+  StrategyEvaluationAgent,
+  TechnicalAnalysisAgent,
+} from "./trading.js";
 
 export * from "./types.js";
 export * from "./care.js";
@@ -11,6 +21,7 @@ export * from "./stem.js";
 export * from "./voice.js";
 export * from "./developer.js";
 export * from "./review.js";
+export * from "./trading.js";
 
 /**
  * Central registry of reusable agents. The eight headline agents from the spec
@@ -33,6 +44,14 @@ export const AGENTS = {
   FollowUpPlanAgent,
   EscalationAgent,
   CodeReviewAgent,
+  MarketScannerAgent,
+  NewsCatalystAgent,
+  TechnicalAnalysisAgent,
+  StrategyEvaluationAgent,
+  BacktestingAgent,
+  RiskManagementAgent,
+  PortfolioManagerAgent,
+  NotificationAgent,
 } as const;
 
 export type AgentName = keyof typeof AGENTS;

@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "model": "gemini-3-flash",
+  "confidence": 0.82,
+  "decision": {
+    "model": "gemini-3-flash",
+    "ruleId": "batch_generation.default",
+    "reason": "High-volume batch generation → Gemini 3 Flash.",
+    "candidates": [
+      "gemini-3-flash"
+    ],
+    "estimatedCostUsd": 0.0002455,
+    "escalated": false
+  },
+  "parsed": {
+    "results": [
+      {
+        "period": "30D",
+        "trades": 1,
+        "win_rate": 1,
+        "profit_factor": 1,
+        "sharpe_ratio": 1,
+        "max_drawdown": 1
+      }
+    ],
+    "ranking_score": 0.82,
+    "confidence": 0.82
+  },
+  "raw": "{\"results\":[{\"period\":\"30D\",\"trades\":1,\"win_rate\":1,\"profit_factor\":1,\"sharpe_ratio\":1,\"max_drawdown\":1}],\"ranking_score\":0.82,\"confidence\":0.82}",
+  "recordId": "b9e3c06e-5e41-4803-b001-60bcc8605389"
+}

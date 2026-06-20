@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "model": "kimi-k2.6",
+  "confidence": 0.82,
+  "decision": {
+    "model": "kimi-k2.6",
+    "ruleId": "long_context_reasoning.default",
+    "reason": "Long-context reasoning → Kimi K2.6.",
+    "candidates": [
+      "kimi-k2.6",
+      "deepseek-v4-pro"
+    ],
+    "estimatedCostUsd": 0.0015275999999999998,
+    "escalated": false
+  },
+  "parsed": {
+    "catalyst_score": 0.82,
+    "summary": "Mock summary: system: You are the AgentOS NewsCatalystAgent. Return only structured JSON. Trea",
+    "sentiment": "positive",
+    "confidence": 0.82
+  },
+  "raw": "{\"catalyst_score\":0.82,\"summary\":\"Mock summary: system: You are the AgentOS NewsCatalystAgent. Return only structured JSON. Trea\",\"sentiment\":\"positive\",\"confidence\":0.82}",
+  "recordId": "12f0c42e-1c3e-464c-99fa-8a5af7bcc67e"
+}

@@ -30,5 +30,5 @@
     "confidence": 0.82
   },
   "raw": "{\"compliant\":true,\"framework\":\"mock-framework\",\"riskScore\":0.82,\"violations\":[{\"rule\":\"mock-rule\",\"severity\":\"low\",\"detail\":\"mock-detail\"}],\"recommendations\":[\"mock-recommendations_item\"],\"requiresHumanReview\":false,\"confidence\":0.82}",
-  "recordId": "9468d3d2-45bd-41cc-8dee-72a9bc528dd8"
+  "recordId": "b5947481-075b-4cfa-b766-4a732e368923"
 }

@@ -1,6 +1,6 @@
 [
   {
-    "taskId": "dev-416b2e37-3045-4a8e-a0d5-27dc6c8dd8f4",
+    "taskId": "dev-cbb3c72d-e076-4dae-a892-2ed2986daacd",
     "agentName": "DeveloperAgent",
     "modelName": "kimi-k2.6",
     "promptVersion": "dev.architecture.v1",
@@ -42,18 +42,47 @@
         "estimatedCostUsd": 0.0015443999999999998,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "kimi-k2.6",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 78,
         "outputTokens": 47
       },
+      "cost": {
+        "inputCostUsd": 0.0000468,
+        "outputCostUsd": 0.0001175,
+        "totalUsd": 0.00016429999999999998
+      },
+      "valueForMoney": {
+        "score": 0.6059153069153069,
+        "actualCostUsd": 0.00016429999999999998,
+        "estimatedCostUsd": 0.0015443999999999998,
+        "costAccuracy": 0.1063843563843564
+      },
+      "health": [
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "abc8feea-fafb-4a2e-b680-42ae67ec39cf",
-    "createdAt": "2026-06-17T04:20:51.980Z"
+    "id": "6f88b364-0176-492c-a266-0a910f381bb0",
+    "createdAt": "2026-06-20T00:33:52.836Z"
   },
   {
-    "taskId": "dev-416b2e37-3045-4a8e-a0d5-27dc6c8dd8f4",
+    "taskId": "dev-cbb3c72d-e076-4dae-a892-2ed2986daacd",
     "agentName": "CodeReviewAgent",
     "modelName": "deepseek-v4-pro",
     "promptVersion": "dev.review.v1",
@@ -91,18 +120,42 @@
         "estimatedCostUsd": 0.0018992,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 128,
         "outputTokens": 54
       },
+      "cost": {
+        "inputCostUsd": 0.0001024,
+        "outputCostUsd": 0.00016199999999999998,
+        "totalUsd": 0.0002644
+      },
+      "valueForMoney": {
+        "score": 0.6157649536647009,
+        "actualCostUsd": 0.0002644,
+        "estimatedCostUsd": 0.0018992,
+        "costAccuracy": 0.13921651221566966
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "982352b3-896d-4f0b-b00b-bcdb67218ba5",
-    "createdAt": "2026-06-17T04:20:51.980Z"
+    "id": "326be22c-5063-44ed-af73-eb3414cc73c5",
+    "createdAt": "2026-06-20T00:33:52.836Z"
   },
   {
-    "taskId": "dev-416b2e37-3045-4a8e-a0d5-27dc6c8dd8f4",
+    "taskId": "dev-cbb3c72d-e076-4dae-a892-2ed2986daacd",
     "agentName": "ReportAgent",
     "modelName": "gemini-3-flash",
     "promptVersion": "report.v1",
@@ -137,18 +190,122 @@
         "estimatedCostUsd": 0.0002587,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 191,
         "outputTokens": 47
       },
+      "cost": {
+        "inputCostUsd": 0.000019100000000000003,
+        "outputCostUsd": 0.0000188,
+        "totalUsd": 0.0000379
+      },
+      "valueForMoney": {
+        "score": 0.617950521839969,
+        "actualCostUsd": 0.0000379,
+        "estimatedCostUsd": 0.0002587,
+        "costAccuracy": 0.14650173946656364
+      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "3a7c495c-704a-4af8-8b7b-095d2b0c04af",
-    "createdAt": "2026-06-17T04:20:51.980Z"
+    "id": "2eb99a53-a7d1-422b-bacf-da16216e8871",
+    "createdAt": "2026-06-20T00:33:52.836Z"
   },
   {
-    "taskId": "voice-f77d2b46-2155-43a6-8e0f-9ad52a9a6eca",
+    "taskId": "voice-c90f0575-f495-4afe-9aff-3986c5098f12",
+    "agentName": "ReportAgent",
+    "modelName": "gemini-3-flash",
+    "promptVersion": "report.v1",
+    "inputHash": "716e134fd242549b08c875bb99203e504d3f2a4acb9675650420c688029aae28",
+    "rawInputReference": "inline",
+    "rawOutput": "{\"title\":\"mock-title\",\"summary\":\"Mock summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"mock-highlights_item\"],\"confidence\":0.82}",
+    "parsedOutput": {
+      "title": "mock-title",
+      "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
+      "highlights": [
+        "mock-highlights_item"
+      ],
+      "confidence": 0.82
+    },
+    "confidenceScore": 0.82,
+    "humanReviewStatus": "NOT_REQUIRED",
+    "routingTrace": {
+      "context": {
+        "taskType": "fast_summary",
+        "riskLevel": "low",
+        "latency": "interactive",
+        "contextTokens": 201
+      },
+      "decision": {
+        "model": "gemini-3-flash",
+        "ruleId": "fast_summary.default",
+        "reason": "Fast, low-cost summaries → Gemini 3 Flash.",
+        "candidates": [
+          "gemini-3-flash",
+          "kimi-k2.6"
+        ],
+        "estimatedCostUsd": 0.0002601,
+        "escalated": false
+      },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 205,
+        "outputTokens": 47
+      },
+      "cost": {
+        "inputCostUsd": 0.0000205,
+        "outputCostUsd": 0.0000188,
+        "totalUsd": 0.0000393
+      },
+      "valueForMoney": {
+        "score": 0.6193287197231834,
+        "actualCostUsd": 0.0000393,
+        "estimatedCostUsd": 0.0002601,
+        "costAccuracy": 0.15109573241061136
+      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
+      "live": false
+    },
+    "id": "29138374-66c7-435a-8b2c-bf76c5aae189",
+    "createdAt": "2026-06-20T00:33:52.835Z"
+  },
+  {
+    "taskId": "voice-c90f0575-f495-4afe-9aff-3986c5098f12",
     "agentName": "CallSummaryAgent",
     "modelName": "gemini-3-flash",
     "promptVersion": "voice.summary.v1",
@@ -184,18 +341,47 @@
         "estimatedCostUsd": 0.000245,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 54,
         "outputTokens": 53
       },
+      "cost": {
+        "inputCostUsd": 0.0000054,
+        "outputCostUsd": 0.0000212,
+        "totalUsd": 0.0000266
+      },
+      "valueForMoney": {
+        "score": 0.6065714285714285,
+        "actualCostUsd": 0.0000266,
+        "estimatedCostUsd": 0.000245,
+        "costAccuracy": 0.10857142857142854
+      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "45d05ebb-9d02-470b-bd43-3213cd686f1c",
-    "createdAt": "2026-06-17T04:20:51.979Z"
+    "id": "52806b40-397d-4bc8-b5fd-a36ba4d49722",
+    "createdAt": "2026-06-20T00:33:52.834Z"
   },
   {
-    "taskId": "voice-f77d2b46-2155-43a6-8e0f-9ad52a9a6eca",
+    "taskId": "voice-c90f0575-f495-4afe-9aff-3986c5098f12",
     "agentName": "FollowUpPlanAgent",
     "modelName": "kimi-k2.6",
     "promptVersion": "voice.followup.v1",
@@ -232,18 +418,47 @@
         "estimatedCostUsd": 0.0015329999999999999,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "kimi-k2.6",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 59,
         "outputTokens": 27
       },
+      "cost": {
+        "inputCostUsd": 0.0000354,
+        "outputCostUsd": 0.0000675,
+        "totalUsd": 0.00010290000000000001
+      },
+      "valueForMoney": {
+        "score": 0.5941369863013698,
+        "actualCostUsd": 0.00010290000000000001,
+        "estimatedCostUsd": 0.0015329999999999999,
+        "costAccuracy": 0.06712328767123288
+      },
+      "health": [
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "a1384d1c-5e74-4437-a8ba-d1051a06d029",
-    "createdAt": "2026-06-17T04:20:51.979Z"
+    "id": "f1c5e4c2-270d-432f-a380-8cd46db32592",
+    "createdAt": "2026-06-20T00:33:52.834Z"
   },
   {
-    "taskId": "voice-f77d2b46-2155-43a6-8e0f-9ad52a9a6eca",
+    "taskId": "voice-c90f0575-f495-4afe-9aff-3986c5098f12",
     "agentName": "EscalationAgent",
     "modelName": "deepseek-v4-pro",
     "promptVersion": "voice.escalation.v1",
@@ -275,69 +490,47 @@
         "estimatedCostUsd": 0.0018679999999999999,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 89,
         "outputTokens": 40
       },
-      "live": false
-    },
-    "id": "643dc259-26ff-40f9-9846-5c6112ec7dd3",
-    "createdAt": "2026-06-17T04:20:51.979Z"
-  },
-  {
-    "taskId": "voice-f77d2b46-2155-43a6-8e0f-9ad52a9a6eca",
-    "agentName": "ReportAgent",
-    "modelName": "gemini-3-flash",
-    "promptVersion": "report.v1",
-    "inputHash": "716e134fd242549b08c875bb99203e504d3f2a4acb9675650420c688029aae28",
-    "rawInputReference": "inline",
-    "rawOutput": "{\"title\":\"mock-title\",\"summary\":\"Mock summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"mock-highlights_item\"],\"confidence\":0.82}",
-    "parsedOutput": {
-      "title": "mock-title",
-      "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
-      "highlights": [
-        "mock-highlights_item"
+      "cost": {
+        "inputCostUsd": 0.0000712,
+        "outputCostUsd": 0.00012000000000000002,
+        "totalUsd": 0.0001912
+      },
+      "valueForMoney": {
+        "score": 0.6047066381156316,
+        "actualCostUsd": 0.0001912,
+        "estimatedCostUsd": 0.0018679999999999999,
+        "costAccuracy": 0.10235546038543908
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
       ],
-      "confidence": 0.82
-    },
-    "confidenceScore": 0.82,
-    "humanReviewStatus": "NOT_REQUIRED",
-    "routingTrace": {
-      "context": {
-        "taskType": "fast_summary",
-        "riskLevel": "low",
-        "latency": "interactive",
-        "contextTokens": 201
-      },
-      "decision": {
-        "model": "gemini-3-flash",
-        "ruleId": "fast_summary.default",
-        "reason": "Fast, low-cost summaries → Gemini 3 Flash.",
-        "candidates": [
-          "gemini-3-flash",
-          "kimi-k2.6"
-        ],
-        "estimatedCostUsd": 0.0002601,
-        "escalated": false
-      },
-      "attempts": 1,
-      "usage": {
-        "inputTokens": 205,
-        "outputTokens": 47
-      },
       "live": false
     },
-    "id": "dbfebb0f-06f4-4e6e-8e33-2da7fd06e93c",
-    "createdAt": "2026-06-17T04:20:51.979Z"
+    "id": "dce152e8-9f5b-45ac-9005-c726d2465149",
+    "createdAt": "2026-06-20T00:33:52.834Z"
   },
   {
-    "taskId": "stem-be4eba77-1db6-448f-821b-cc99026d4fa7",
+    "taskId": "stem-dc6c556e-775c-46dd-82c6-f0258ee40554",
     "agentName": "TutorFeedbackAgent",
     "modelName": "gemini-3-flash",
     "promptVersion": "stem.feedback.v1",
     "inputHash": "69fc21fd66cec0d6a04aa00851bb4dad672dc38526c0221af65fe4a1b4feb4d4",
-    "rawInputReference": "student-answer:stem-be4eba77-1db6-448f-821b-cc99026d4fa7",
+    "rawInputReference": "student-answer:stem-dc6c556e-775c-46dd-82c6-f0258ee40554",
     "rawOutput": "{\"isCorrect\":true,\"score\":0.82,\"feedback\":\"Mock feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f\",\"misconceptions\":[\"mock-misconceptions_item\"],\"encouragement\":\"mock-encouragement\",\"confidence\":0.82}",
     "parsedOutput": {
       "isCorrect": true,
@@ -369,18 +562,47 @@
         "estimatedCostUsd": 0.000245,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 54,
         "outputTokens": 61
       },
+      "cost": {
+        "inputCostUsd": 0.0000054,
+        "outputCostUsd": 0.0000244,
+        "totalUsd": 0.0000298
+      },
+      "valueForMoney": {
+        "score": 0.6104897959183673,
+        "actualCostUsd": 0.0000298,
+        "estimatedCostUsd": 0.000245,
+        "costAccuracy": 0.1216326530612245
+      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "df6b4f9a-64b5-425a-8974-4dc3b2a33dd0",
-    "createdAt": "2026-06-17T04:20:51.978Z"
+    "id": "a2f997fb-3504-4f6d-a46a-babbdae52ffb",
+    "createdAt": "2026-06-20T00:33:52.833Z"
   },
   {
-    "taskId": "stem-be4eba77-1db6-448f-821b-cc99026d4fa7",
+    "taskId": "stem-dc6c556e-775c-46dd-82c6-f0258ee40554",
     "agentName": "CorrectnessAgent",
     "modelName": "deepseek-v4-pro",
     "promptVersion": "stem.correctness.v1",
@@ -412,18 +634,42 @@
         "estimatedCostUsd": 0.0018456,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 61,
         "outputTokens": 30
       },
+      "cost": {
+        "inputCostUsd": 0.0000488,
+        "outputCostUsd": 0.00009,
+        "totalUsd": 0.0001388
+      },
+      "valueForMoney": {
+        "score": 0.5965617685305591,
+        "actualCostUsd": 0.0001388,
+        "estimatedCostUsd": 0.0018456,
+        "costAccuracy": 0.07520589510186382
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "c5141761-18f0-4886-8b8d-3895a1bafd84",
-    "createdAt": "2026-06-17T04:20:51.978Z"
+    "id": "7c0fabec-935b-4210-844c-a4d0e6503bfb",
+    "createdAt": "2026-06-20T00:33:52.833Z"
   },
   {
-    "taskId": "stem-be4eba77-1db6-448f-821b-cc99026d4fa7",
+    "taskId": "stem-dc6c556e-775c-46dd-82c6-f0258ee40554",
     "agentName": "NextPracticeAgent",
     "modelName": "kimi-k2.6",
     "promptVersion": "stem.nextpractice.v1",
@@ -460,18 +706,47 @@
         "estimatedCostUsd": 0.0015359999999999998,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "kimi-k2.6",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 64,
         "outputTokens": 33
       },
+      "cost": {
+        "inputCostUsd": 0.0000384,
+        "outputCostUsd": 0.0000825,
+        "totalUsd": 0.0001209
+      },
+      "valueForMoney": {
+        "score": 0.5976132812499999,
+        "actualCostUsd": 0.0001209,
+        "estimatedCostUsd": 0.0015359999999999998,
+        "costAccuracy": 0.07871093750000002
+      },
+      "health": [
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "5bf253b1-b4cf-45a6-8711-858cfa92a97c",
-    "createdAt": "2026-06-17T04:20:51.978Z"
+    "id": "567f18da-f855-46fe-adef-fa7532f1e84e",
+    "createdAt": "2026-06-20T00:33:52.833Z"
   },
   {
-    "taskId": "stem-be4eba77-1db6-448f-821b-cc99026d4fa7",
+    "taskId": "stem-dc6c556e-775c-46dd-82c6-f0258ee40554",
     "agentName": "ReportAgent",
     "modelName": "gemini-3-flash",
     "promptVersion": "report.v1",
@@ -506,68 +781,47 @@
         "estimatedCostUsd": 0.00025,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 104,
         "outputTokens": 47
       },
+      "cost": {
+        "inputCostUsd": 0.0000104,
+        "outputCostUsd": 0.0000188,
+        "totalUsd": 0.000029199999999999998
+      },
+      "valueForMoney": {
+        "score": 0.6090399999999999,
+        "actualCostUsd": 0.000029199999999999998,
+        "estimatedCostUsd": 0.00025,
+        "costAccuracy": 0.11680000000000001
+      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "22a0ad88-139a-475b-8160-288bb1782858",
-    "createdAt": "2026-06-17T04:20:51.978Z"
+    "id": "267c42b5-0641-43a8-b20d-7d5f38ced255",
+    "createdAt": "2026-06-20T00:33:52.833Z"
   },
   {
-    "taskId": "incident-bca00dea-29cf-47b8-8eaa-6f0d337d50ed",
-    "agentName": "IncidentDraftAgent",
-    "modelName": "kimi-k2.6",
-    "promptVersion": "care.incident.v1",
-    "inputHash": "fe609059ee036fbd265face2301ba14a04dfe0f51eb1ffe128537d441141a608",
-    "rawInputReference": "inline",
-    "rawOutput": "{\"incidentType\":\"fall\",\"severity\":\"low\",\"narrative\":\"mock-narrative\",\"immediateActions\":[\"mock-immediateActions_item\"],\"peopleInvolved\":[\"mock-peopleInvolved_item\"],\"notifyFamily\":false,\"confidence\":0.82}",
-    "parsedOutput": {
-      "incidentType": "fall",
-      "severity": "low",
-      "narrative": "mock-narrative",
-      "immediateActions": [
-        "mock-immediateActions_item"
-      ],
-      "peopleInvolved": [
-        "mock-peopleInvolved_item"
-      ],
-      "notifyFamily": false,
-      "confidence": 0.82
-    },
-    "confidenceScore": 0.82,
-    "humanReviewStatus": "NOT_REQUIRED",
-    "routingTrace": {
-      "context": {
-        "taskType": "long_context_reasoning",
-        "riskLevel": "high",
-        "contextTokens": 83,
-        "forceModel": "kimi-k2.6"
-      },
-      "decision": {
-        "model": "kimi-k2.6",
-        "ruleId": "forceModel",
-        "reason": "Forced to kimi-k2.6.",
-        "candidates": [
-          "kimi-k2.6"
-        ],
-        "estimatedCostUsd": 0.0015497999999999998,
-        "escalated": false
-      },
-      "attempts": 1,
-      "usage": {
-        "inputTokens": 87,
-        "outputTokens": 51
-      },
-      "live": false
-    },
-    "id": "7ea3bbf0-90fc-4395-ae48-ecda27efd9c1",
-    "createdAt": "2026-06-17T04:20:51.977Z"
-  },
-  {
-    "taskId": "incident-bca00dea-29cf-47b8-8eaa-6f0d337d50ed",
+    "taskId": "incident-ea1c0f58-2d17-4b4c-97ae-1a3757cfca69",
     "agentName": "ComplianceReviewAgent",
     "modelName": "deepseek-v4-pro",
     "promptVersion": "compliance.v1",
@@ -610,18 +864,191 @@
         "estimatedCostUsd": 0.0019048,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 134,
         "outputTokens": 59
       },
+      "cost": {
+        "inputCostUsd": 0.0001072,
+        "outputCostUsd": 0.000177,
+        "totalUsd": 0.00028419999999999997
+      },
+      "valueForMoney": {
+        "score": 0.6187606047879042,
+        "actualCostUsd": 0.00028419999999999997,
+        "estimatedCostUsd": 0.0019048,
+        "costAccuracy": 0.14920201595968086
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "bfbdb3bd-d08c-4335-8e3c-76865b803144",
-    "createdAt": "2026-06-17T04:20:51.977Z"
+    "id": "3efc1a69-82e5-46c2-bdfe-dde0726a50cc",
+    "createdAt": "2026-06-20T00:33:52.832Z"
   },
   {
-    "taskId": "care-9cdece40-4539-428e-a4a8-08afae089c1a",
+    "taskId": "care-0cadd4b4-2fd2-4fa3-be90-0c6ea5a6a849",
+    "agentName": "ReportAgent",
+    "modelName": "gemini-3-flash",
+    "promptVersion": "report.v1",
+    "inputHash": "cb9fcb9d3756edc18687e3cff0ba502b2dace6d6d82940f9bb7cd622c956bb74",
+    "rawInputReference": "inline",
+    "rawOutput": "{\"title\":\"mock-title\",\"summary\":\"Mock summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"mock-highlights_item\"],\"confidence\":0.82}",
+    "parsedOutput": {
+      "title": "mock-title",
+      "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
+      "highlights": [
+        "mock-highlights_item"
+      ],
+      "confidence": 0.82
+    },
+    "confidenceScore": 0.82,
+    "humanReviewStatus": "NOT_REQUIRED",
+    "routingTrace": {
+      "context": {
+        "taskType": "fast_summary",
+        "riskLevel": "low",
+        "latency": "interactive",
+        "contextTokens": 280
+      },
+      "decision": {
+        "model": "gemini-3-flash",
+        "ruleId": "fast_summary.default",
+        "reason": "Fast, low-cost summaries → Gemini 3 Flash.",
+        "candidates": [
+          "gemini-3-flash",
+          "kimi-k2.6"
+        ],
+        "estimatedCostUsd": 0.00026799999999999995,
+        "escalated": false
+      },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 284,
+        "outputTokens": 47
+      },
+      "cost": {
+        "inputCostUsd": 0.000028400000000000003,
+        "outputCostUsd": 0.0000188,
+        "totalUsd": 0.0000472
+      },
+      "valueForMoney": {
+        "score": 0.6268358208955224,
+        "actualCostUsd": 0.0000472,
+        "estimatedCostUsd": 0.00026799999999999995,
+        "costAccuracy": 0.17611940298507467
+      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
+      "live": false
+    },
+    "id": "0ded234b-842d-45eb-ac42-923034bb9498",
+    "createdAt": "2026-06-20T00:33:52.831Z"
+  },
+  {
+    "taskId": "incident-ea1c0f58-2d17-4b4c-97ae-1a3757cfca69",
+    "agentName": "IncidentDraftAgent",
+    "modelName": "kimi-k2.6",
+    "promptVersion": "care.incident.v1",
+    "inputHash": "fe609059ee036fbd265face2301ba14a04dfe0f51eb1ffe128537d441141a608",
+    "rawInputReference": "inline",
+    "rawOutput": "{\"incidentType\":\"fall\",\"severity\":\"low\",\"narrative\":\"mock-narrative\",\"immediateActions\":[\"mock-immediateActions_item\"],\"peopleInvolved\":[\"mock-peopleInvolved_item\"],\"notifyFamily\":false,\"confidence\":0.82}",
+    "parsedOutput": {
+      "incidentType": "fall",
+      "severity": "low",
+      "narrative": "mock-narrative",
+      "immediateActions": [
+        "mock-immediateActions_item"
+      ],
+      "peopleInvolved": [
+        "mock-peopleInvolved_item"
+      ],
+      "notifyFamily": false,
+      "confidence": 0.82
+    },
+    "confidenceScore": 0.82,
+    "humanReviewStatus": "NOT_REQUIRED",
+    "routingTrace": {
+      "context": {
+        "taskType": "long_context_reasoning",
+        "riskLevel": "high",
+        "contextTokens": 83,
+        "forceModel": "kimi-k2.6"
+      },
+      "decision": {
+        "model": "kimi-k2.6",
+        "ruleId": "forceModel",
+        "reason": "Forced to kimi-k2.6.",
+        "candidates": [
+          "kimi-k2.6"
+        ],
+        "estimatedCostUsd": 0.0015497999999999998,
+        "escalated": false
+      },
+      "attemptedModels": [
+        {
+          "model": "kimi-k2.6",
+          "ok": true
+        }
+      ],
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 87,
+        "outputTokens": 51
+      },
+      "cost": {
+        "inputCostUsd": 0.0000522,
+        "outputCostUsd": 0.0001275,
+        "totalUsd": 0.0001797
+      },
+      "valueForMoney": {
+        "score": 0.6087851335656214,
+        "actualCostUsd": 0.0001797,
+        "estimatedCostUsd": 0.0015497999999999998,
+        "costAccuracy": 0.11595044521873799
+      },
+      "health": [
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
+      "live": false
+    },
+    "id": "11162a52-3d00-49c9-a13a-442eea6589f3",
+    "createdAt": "2026-06-20T00:33:52.831Z"
+  },
+  {
+    "taskId": "care-0cadd4b4-2fd2-4fa3-be90-0c6ea5a6a849",
     "agentName": "ShiftNoteParseAgent",
     "modelName": "gemini-3-flash",
     "promptVersion": "care.parse.v1",
@@ -663,18 +1090,42 @@
         "estimatedCostUsd": 0.0002475,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 79,
         "outputTokens": 63
       },
+      "cost": {
+        "inputCostUsd": 0.0000079,
+        "outputCostUsd": 0.000025200000000000003,
+        "totalUsd": 0.000033100000000000005
+      },
+      "valueForMoney": {
+        "score": 0.6141212121212121,
+        "actualCostUsd": 0.000033100000000000005,
+        "estimatedCostUsd": 0.0002475,
+        "costAccuracy": 0.1337373737373737
+      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "e4246769-1852-4fa8-9494-76e1cacde9c6",
-    "createdAt": "2026-06-17T04:20:51.976Z"
+    "id": "9cc68cec-eb69-4852-8a7b-91841999869a",
+    "createdAt": "2026-06-20T00:33:52.830Z"
   },
   {
-    "taskId": "care-9cdece40-4539-428e-a4a8-08afae089c1a",
+    "taskId": "care-0cadd4b4-2fd2-4fa3-be90-0c6ea5a6a849",
     "agentName": "CareNoteAgent",
     "modelName": "kimi-k2.6",
     "promptVersion": "care.note.v1",
@@ -722,18 +1173,42 @@
         "estimatedCostUsd": 0.0015569999999999998,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "kimi-k2.6",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 99,
         "outputTokens": 115
       },
+      "cost": {
+        "inputCostUsd": 0.000059399999999999994,
+        "outputCostUsd": 0.0002875,
+        "totalUsd": 0.0003469
+      },
+      "valueForMoney": {
+        "score": 0.6408400770712909,
+        "actualCostUsd": 0.0003469,
+        "estimatedCostUsd": 0.0015569999999999998,
+        "costAccuracy": 0.22280025690430316
+      },
+      "health": [
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "dff3c622-9a6f-4bf0-9872-2587f8a2f19c",
-    "createdAt": "2026-06-17T04:20:51.976Z"
+    "id": "3d097ddd-0c6a-4ffb-8ecb-df78b9b09004",
+    "createdAt": "2026-06-20T00:33:52.830Z"
   },
   {
-    "taskId": "care-9cdece40-4539-428e-a4a8-08afae089c1a",
+    "taskId": "care-0cadd4b4-2fd2-4fa3-be90-0c6ea5a6a849",
     "agentName": "ComplianceReviewAgent",
     "modelName": "deepseek-v4-pro",
     "promptVersion": "compliance.v1",
@@ -776,30 +1251,133 @@
         "estimatedCostUsd": 0.0019656,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 211,
         "outputTokens": 59
       },
+      "cost": {
+        "inputCostUsd": 0.0001688,
+        "outputCostUsd": 0.000177,
+        "totalUsd": 0.0003458
+      },
+      "valueForMoney": {
+        "score": 0.6267777777777778,
+        "actualCostUsd": 0.0003458,
+        "estimatedCostUsd": 0.0019656,
+        "costAccuracy": 0.17592592592592593
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "e0c174d7-710b-4566-80c4-389c951091a0",
-    "createdAt": "2026-06-17T04:20:51.976Z"
+    "id": "93dbf72d-9ae5-4ed3-b681-dcfb5e75020d",
+    "createdAt": "2026-06-20T00:33:52.830Z"
   },
   {
-    "taskId": "care-9cdece40-4539-428e-a4a8-08afae089c1a",
-    "agentName": "ReportAgent",
-    "modelName": "gemini-3-flash",
-    "promptVersion": "report.v1",
-    "inputHash": "cb9fcb9d3756edc18687e3cff0ba502b2dace6d6d82940f9bb7cd622c956bb74",
+    "taskId": "46981b0a-8c4f-4322-bf2b-996d12b0bcf2",
+    "agentName": "PortfolioManagerAgent",
+    "modelName": "deepseek-v4-pro",
+    "promptVersion": "trading.portfoliomanager.v1",
+    "inputHash": "640b9562436ba7fc30dd944a201f84b5e62ffe23f6324dd64b431bb52431e82c",
     "rawInputReference": "inline",
-    "rawOutput": "{\"title\":\"mock-title\",\"summary\":\"Mock summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"mock-highlights_item\"],\"confidence\":0.82}",
+    "rawOutput": "{\"profile\":\"conservative\",\"positions\":[{\"symbol\":\"mock-symbol\",\"weight_percent\":1,\"score\":0.82}],\"cash_reserve_percent\":1,\"confidence\":0.82}",
+    "parsedOutput": {
+      "profile": "conservative",
+      "positions": [
+        {
+          "symbol": "mock-symbol",
+          "weight_percent": 1,
+          "score": 0.82
+        }
+      ],
+      "cash_reserve_percent": 1,
+      "confidence": 0.82
+    },
+    "confidenceScore": 0.82,
+    "humanReviewStatus": "NOT_REQUIRED",
+    "routingTrace": {
+      "context": {
+        "taskType": "agent_planning",
+        "riskLevel": "high",
+        "contextTokens": 58
+      },
+      "decision": {
+        "model": "deepseek-v4-pro",
+        "ruleId": "agent_planning.default",
+        "reason": "Agent / multi-agent planning → Kimi K2.6. High risk — promoting strongest candidate.",
+        "candidates": [
+          "kimi-k2.6",
+          "deepseek-v4-pro"
+        ],
+        "estimatedCostUsd": 0.0018464,
+        "escalated": true
+      },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 62,
+        "outputTokens": 35
+      },
+      "cost": {
+        "inputCostUsd": 0.000049600000000000006,
+        "outputCostUsd": 0.00010499999999999999,
+        "totalUsd": 0.0001546
+      },
+      "valueForMoney": {
+        "score": 0.599119150779896,
+        "actualCostUsd": 0.0001546,
+        "estimatedCostUsd": 0.0018464,
+        "costAccuracy": 0.08373050259965331
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
+      "live": false
+    },
+    "id": "f65d753c-bdf8-46f8-9a7d-626617f9776f",
+    "createdAt": "2026-06-20T00:33:52.829Z"
+  },
+  {
+    "taskId": "ae5b3427-5ac3-44c5-8e9e-2bc61f466a56",
+    "agentName": "NotificationAgent",
+    "modelName": "gemini-3-flash",
+    "promptVersion": "trading.notification.v1",
+    "inputHash": "9ea41ab51d4d3d078213b2ca21c85a61257db0670979f31ccaacdf5182813b64",
+    "rawInputReference": "inline",
+    "rawOutput": "{\"title\":\"mock-title\",\"message\":\"mock-message\",\"channels\":[\"Telegram\"],\"delivered\":false,\"confidence\":0.82}",
     "parsedOutput": {
       "title": "mock-title",
-      "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
-      "highlights": [
-        "mock-highlights_item"
+      "message": "mock-message",
+      "channels": [
+        "Telegram"
       ],
+      "delivered": false,
       "confidence": 0.82
     },
     "confidenceScore": 0.82,
@@ -807,9 +1385,8 @@
     "routingTrace": {
       "context": {
         "taskType": "fast_summary",
-        "riskLevel": "low",
-        "latency": "interactive",
-        "contextTokens": 280
+        "riskLevel": "medium",
+        "contextTokens": 57
       },
       "decision": {
         "model": "gemini-3-flash",
@@ -819,63 +1396,498 @@
           "gemini-3-flash",
           "kimi-k2.6"
         ],
-        "estimatedCostUsd": 0.00026799999999999995,
+        "estimatedCostUsd": 0.00024569999999999995,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
-        "inputTokens": 284,
-        "outputTokens": 47
+        "inputTokens": 61,
+        "outputTokens": 27
       },
+      "cost": {
+        "inputCostUsd": 0.0000061,
+        "outputCostUsd": 0.0000108,
+        "totalUsd": 0.0000169
+      },
+      "valueForMoney": {
+        "score": 0.5946349206349206,
+        "actualCostUsd": 0.0000169,
+        "estimatedCostUsd": 0.00024569999999999995,
+        "costAccuracy": 0.06878306878306883
+      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "bdbe2409-e25f-4ca6-988a-8e18f74dec92",
-    "createdAt": "2026-06-17T04:20:51.976Z"
+    "id": "f5a13630-a78a-40ae-9f09-8cda4c2e27d7",
+    "createdAt": "2026-06-20T00:33:52.829Z"
   },
   {
-    "taskId": "cd53bdb0-5550-404e-b4f9-2ec01590e366",
-    "agentName": "EscalationAgent",
-    "modelName": "deepseek-v4-pro",
-    "promptVersion": "voice.escalation.v1",
-    "inputHash": "6b8bd55a713419a4b8530c2453ebca5aa76ab8b1a676e87b6bbc191d52252b36",
+    "taskId": "7a9edf10-1a4a-464e-8f62-4a0e062f30ab",
+    "agentName": "BacktestingAgent",
+    "modelName": "gemini-3-flash",
+    "promptVersion": "trading.backtesting.v1",
+    "inputHash": "07fdff7c2fa4e47d8f3b4be631de0cf48c59286a4cbab9d573dc3cfd7302fca8",
     "rawInputReference": "inline",
-    "rawOutput": "{\"escalate\":false,\"reason\":\"Mock reason: system: You assess risk and compliance signals in calls (complaints, safety, leg\",\"urgency\":\"none\",\"confidence\":0.82}",
+    "rawOutput": "{\"results\":[{\"period\":\"30D\",\"trades\":1,\"win_rate\":1,\"profit_factor\":1,\"sharpe_ratio\":1,\"max_drawdown\":1}],\"ranking_score\":0.82,\"confidence\":0.82}",
     "parsedOutput": {
-      "escalate": false,
-      "reason": "Mock reason: system: You assess risk and compliance signals in calls (complaints, safety, leg",
-      "urgency": "none",
+      "results": [
+        {
+          "period": "30D",
+          "trades": 1,
+          "win_rate": 1,
+          "profit_factor": 1,
+          "sharpe_ratio": 1,
+          "max_drawdown": 1
+        }
+      ],
+      "ranking_score": 0.82,
       "confidence": 0.82
     },
     "confidenceScore": 0.82,
     "humanReviewStatus": "NOT_REQUIRED",
     "routingTrace": {
       "context": {
-        "taskType": "compliance_review",
+        "taskType": "batch_generation",
         "riskLevel": "high",
-        "contextTokens": 68
+        "contextTokens": 55
+      },
+      "decision": {
+        "model": "gemini-3-flash",
+        "ruleId": "batch_generation.default",
+        "reason": "High-volume batch generation → Gemini 3 Flash.",
+        "candidates": [
+          "gemini-3-flash"
+        ],
+        "estimatedCostUsd": 0.0002455,
+        "escalated": false
+      },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 59,
+        "outputTokens": 37
+      },
+      "cost": {
+        "inputCostUsd": 0.0000059,
+        "outputCostUsd": 0.0000148,
+        "totalUsd": 0.000020700000000000002
+      },
+      "valueForMoney": {
+        "score": 0.599295315682281,
+        "actualCostUsd": 0.000020700000000000002,
+        "estimatedCostUsd": 0.0002455,
+        "costAccuracy": 0.08431771894093687
+      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
+      "live": false
+    },
+    "id": "b9e3c06e-5e41-4803-b001-60bcc8605389",
+    "createdAt": "2026-06-20T00:33:52.828Z"
+  },
+  {
+    "taskId": "d53c7e9d-fd3c-4a2e-a3bf-a65dd700cfa6",
+    "agentName": "RiskManagementAgent",
+    "modelName": "deepseek-v4-pro",
+    "promptVersion": "trading.riskmanagement.v1",
+    "inputHash": "374faf0acaf740c17c2abc675ac0680faae6f19298b82a892035cdfc22df619e",
+    "rawInputReference": "inline",
+    "rawOutput": "{\"accepted\":false,\"position_size\":1,\"entry\":1,\"stop_loss\":1,\"take_profit\":1,\"risk_reward_ratio\":1,\"rejection_reason\":\"Mock rejection_reason: system: You are the AgentOS RiskManagementAgent. Return only structured JSON. Tr\",\"confidence\":0.82}",
+    "parsedOutput": {
+      "accepted": false,
+      "position_size": 1,
+      "entry": 1,
+      "stop_loss": 1,
+      "take_profit": 1,
+      "risk_reward_ratio": 1,
+      "rejection_reason": "Mock rejection_reason: system: You are the AgentOS RiskManagementAgent. Return only structured JSON. Tr",
+      "confidence": 0.82
+    },
+    "confidenceScore": 0.82,
+    "humanReviewStatus": "NOT_REQUIRED",
+    "routingTrace": {
+      "context": {
+        "taskType": "final_judge",
+        "riskLevel": "high",
+        "contextTokens": 56
       },
       "decision": {
         "model": "deepseek-v4-pro",
-        "ruleId": "compliance_review.default",
-        "reason": "Compliance review → DeepSeek V4 Pro.",
+        "ruleId": "final_judge.default",
+        "reason": "LLM-as-judge / final validation → DeepSeek V4 Pro.",
         "candidates": [
           "deepseek-v4-pro"
         ],
-        "estimatedCostUsd": 0.0018544,
+        "estimatedCostUsd": 0.0018448,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
-        "inputTokens": 72,
-        "outputTokens": 40
+        "inputTokens": 60,
+        "outputTokens": 61
       },
+      "cost": {
+        "inputCostUsd": 0.000048,
+        "outputCostUsd": 0.000183,
+        "totalUsd": 0.000231
+      },
+      "valueForMoney": {
+        "score": 0.6115650477016479,
+        "actualCostUsd": 0.000231,
+        "estimatedCostUsd": 0.0018448,
+        "costAccuracy": 0.12521682567215964
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "d8aa21e5-6148-4bf5-8061-b554d3b7fe8c",
-    "createdAt": "2026-06-17T04:20:51.975Z"
+    "id": "fad3cd1f-c0a6-4b0c-bcb7-372009d2628b",
+    "createdAt": "2026-06-20T00:33:52.828Z"
   },
   {
-    "taskId": "267eaf6d-2a38-4d6f-859b-ca1870cb6682",
+    "taskId": "75c43851-2af9-47cb-a09e-9bb0d39974d3",
+    "agentName": "TechnicalAnalysisAgent",
+    "modelName": "gemini-3-flash",
+    "promptVersion": "trading.technicalanalysis.v1",
+    "inputHash": "c12a593e6fa63a9167a8aba1019923a11f0fca4c22a7eebadfa7efaaedc9bde0",
+    "rawInputReference": "inline",
+    "rawOutput": "{\"sma20\":1,\"sma50\":1,\"sma200\":1,\"rsi\":1,\"macd\":1,\"vwap\":1,\"premarket_high\":1,\"previous_day_high\":1,\"trend_score\":0.82,\"breakout_probability\":1,\"support_levels\":[1],\"resistance_levels\":[1],\"confidence\":0.82}",
+    "parsedOutput": {
+      "sma20": 1,
+      "sma50": 1,
+      "sma200": 1,
+      "rsi": 1,
+      "macd": 1,
+      "vwap": 1,
+      "premarket_high": 1,
+      "previous_day_high": 1,
+      "trend_score": 0.82,
+      "breakout_probability": 1,
+      "support_levels": [
+        1
+      ],
+      "resistance_levels": [
+        1
+      ],
+      "confidence": 0.82
+    },
+    "confidenceScore": 0.82,
+    "humanReviewStatus": "NOT_REQUIRED",
+    "routingTrace": {
+      "context": {
+        "taskType": "batch_generation",
+        "riskLevel": "medium",
+        "contextTokens": 56
+      },
+      "decision": {
+        "model": "gemini-3-flash",
+        "ruleId": "batch_generation.default",
+        "reason": "High-volume batch generation → Gemini 3 Flash.",
+        "candidates": [
+          "gemini-3-flash"
+        ],
+        "estimatedCostUsd": 0.0002456,
+        "escalated": false
+      },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 60,
+        "outputTokens": 52
+      },
+      "cost": {
+        "inputCostUsd": 0.000006,
+        "outputCostUsd": 0.0000208,
+        "totalUsd": 0.0000268
+      },
+      "valueForMoney": {
+        "score": 0.6067361563517915,
+        "actualCostUsd": 0.0000268,
+        "estimatedCostUsd": 0.0002456,
+        "costAccuracy": 0.10912052117263848
+      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
+      "live": false
+    },
+    "id": "011047cc-aad9-47b1-8f41-73681e2f4bc8",
+    "createdAt": "2026-06-20T00:33:52.827Z"
+  },
+  {
+    "taskId": "970316ab-a3a3-402e-8be2-e6c7ffb048bb",
+    "agentName": "StrategyEvaluationAgent",
+    "modelName": "deepseek-v4-pro",
+    "promptVersion": "trading.strategyevaluation.v1",
+    "inputHash": "a0ab07f94fe7c34d9cd69140fe40ff9f5f8b0f948d1426515053bc23a96fba98",
+    "rawInputReference": "inline",
+    "rawOutput": "{\"strategy\":\"Trend Join Long\",\"score\":0.82,\"conditions_met\":[\"mock-conditions_met_item\"],\"rationale\":[\"mock-rationale_item\"],\"confidence\":0.82}",
+    "parsedOutput": {
+      "strategy": "Trend Join Long",
+      "score": 0.82,
+      "conditions_met": [
+        "mock-conditions_met_item"
+      ],
+      "rationale": [
+        "mock-rationale_item"
+      ],
+      "confidence": 0.82
+    },
+    "confidenceScore": 0.82,
+    "humanReviewStatus": "NOT_REQUIRED",
+    "routingTrace": {
+      "context": {
+        "taskType": "agent_planning",
+        "riskLevel": "high",
+        "contextTokens": 63
+      },
+      "decision": {
+        "model": "deepseek-v4-pro",
+        "ruleId": "agent_planning.default",
+        "reason": "Agent / multi-agent planning → Kimi K2.6. High risk — promoting strongest candidate.",
+        "candidates": [
+          "kimi-k2.6",
+          "deepseek-v4-pro"
+        ],
+        "estimatedCostUsd": 0.0018503999999999999,
+        "escalated": true
+      },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 67,
+        "outputTokens": 36
+      },
+      "cost": {
+        "inputCostUsd": 0.0000536,
+        "outputCostUsd": 0.000108,
+        "totalUsd": 0.0001616
+      },
+      "valueForMoney": {
+        "score": 0.6001997405966277,
+        "actualCostUsd": 0.0001616,
+        "estimatedCostUsd": 0.0018503999999999999,
+        "costAccuracy": 0.08733246865542588
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
+      "live": false
+    },
+    "id": "f0d5931e-54b5-4d54-94d9-20142b88d551",
+    "createdAt": "2026-06-20T00:33:52.827Z"
+  },
+  {
+    "taskId": "a4465a4e-7225-401d-b2ff-3e7de950e1c6",
+    "agentName": "MarketScannerAgent",
+    "modelName": "gemini-3-flash",
+    "promptVersion": "trading.marketscanner.v1",
+    "inputHash": "53bc7f542a33fe4960d1dc6da8bb10e10d0f9e8c1a1f40292faee737d36382bb",
+    "rawInputReference": "inline",
+    "rawOutput": "{\"candidates\":[{\"symbol\":\"mock-symbol\",\"market\":\"US\",\"price\":1,\"volume\":1,\"gap_percent\":1,\"relative_volume\":1,\"tags\":[\"mock-tags_item\"]}],\"confidence\":0.82}",
+    "parsedOutput": {
+      "candidates": [
+        {
+          "symbol": "mock-symbol",
+          "market": "US",
+          "price": 1,
+          "volume": 1,
+          "gap_percent": 1,
+          "relative_volume": 1,
+          "tags": [
+            "mock-tags_item"
+          ]
+        }
+      ],
+      "confidence": 0.82
+    },
+    "confidenceScore": 0.82,
+    "humanReviewStatus": "NOT_REQUIRED",
+    "routingTrace": {
+      "context": {
+        "taskType": "batch_generation",
+        "riskLevel": "low",
+        "contextTokens": 55
+      },
+      "decision": {
+        "model": "gemini-3-flash",
+        "ruleId": "batch_generation.default",
+        "reason": "High-volume batch generation → Gemini 3 Flash.",
+        "candidates": [
+          "gemini-3-flash"
+        ],
+        "estimatedCostUsd": 0.0002455,
+        "escalated": false
+      },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 59,
+        "outputTokens": 39
+      },
+      "cost": {
+        "inputCostUsd": 0.0000059,
+        "outputCostUsd": 0.0000156,
+        "totalUsd": 0.0000215
+      },
+      "valueForMoney": {
+        "score": 0.6002729124236252,
+        "actualCostUsd": 0.0000215,
+        "estimatedCostUsd": 0.0002455,
+        "costAccuracy": 0.08757637474541757
+      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
+      "live": false
+    },
+    "id": "7d55ec66-bc26-4586-b1e3-e75cb304839d",
+    "createdAt": "2026-06-20T00:33:52.826Z"
+  },
+  {
+    "taskId": "7d4e9b45-6b13-408c-b733-2ffdfc18d177",
+    "agentName": "NewsCatalystAgent",
+    "modelName": "kimi-k2.6",
+    "promptVersion": "trading.newscatalyst.v1",
+    "inputHash": "8c02b1146f0ef9dd11b0898e33a1ea1de3fd233099bd6493e1995ac96e32dc5a",
+    "rawInputReference": "inline",
+    "rawOutput": "{\"catalyst_score\":0.82,\"summary\":\"Mock summary: system: You are the AgentOS NewsCatalystAgent. Return only structured JSON. Trea\",\"sentiment\":\"positive\",\"confidence\":0.82}",
+    "parsedOutput": {
+      "catalyst_score": 0.82,
+      "summary": "Mock summary: system: You are the AgentOS NewsCatalystAgent. Return only structured JSON. Trea",
+      "sentiment": "positive",
+      "confidence": 0.82
+    },
+    "confidenceScore": 0.82,
+    "humanReviewStatus": "NOT_REQUIRED",
+    "routingTrace": {
+      "context": {
+        "taskType": "long_context_reasoning",
+        "riskLevel": "medium",
+        "contextTokens": 46
+      },
+      "decision": {
+        "model": "kimi-k2.6",
+        "ruleId": "long_context_reasoning.default",
+        "reason": "Long-context reasoning → Kimi K2.6.",
+        "candidates": [
+          "kimi-k2.6",
+          "deepseek-v4-pro"
+        ],
+        "estimatedCostUsd": 0.0015275999999999998,
+        "escalated": false
+      },
+      "attemptedModels": [
+        {
+          "model": "kimi-k2.6",
+          "ok": true
+        }
+      ],
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 50,
+        "outputTokens": 43
+      },
+      "cost": {
+        "inputCostUsd": 0.00003,
+        "outputCostUsd": 0.00010750000000000001,
+        "totalUsd": 0.0001375
+      },
+      "valueForMoney": {
+        "score": 0.6010031421838177,
+        "actualCostUsd": 0.0001375,
+        "estimatedCostUsd": 0.0015275999999999998,
+        "costAccuracy": 0.09001047394605921
+      },
+      "health": [
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
+      "live": false
+    },
+    "id": "12f0c42e-1c3e-464c-99fa-8a5af7bcc67e",
+    "createdAt": "2026-06-20T00:33:52.826Z"
+  },
+  {
+    "taskId": "dc0a1a8b-3f83-41ad-a0d3-72c6b9035ff3",
     "agentName": "CodeReviewAgent",
     "modelName": "deepseek-v4-pro",
     "promptVersion": "dev.review.v1",
@@ -912,18 +1924,108 @@
         "estimatedCostUsd": 0.0018583999999999999,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 77,
         "outputTokens": 54
       },
+      "cost": {
+        "inputCostUsd": 0.0000616,
+        "outputCostUsd": 0.00016199999999999998,
+        "totalUsd": 0.0002236
+      },
+      "valueForMoney": {
+        "score": 0.6100955660783469,
+        "actualCostUsd": 0.0002236,
+        "estimatedCostUsd": 0.0018583999999999999,
+        "costAccuracy": 0.12031855359448995
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "0d36bb17-2abf-40bb-8c4a-2036dac86875",
-    "createdAt": "2026-06-17T04:20:51.975Z"
+    "id": "5bbfe50b-af58-474e-84d8-ef6ac4f808ca",
+    "createdAt": "2026-06-20T00:33:52.825Z"
   },
   {
-    "taskId": "14e195cc-7dcc-4c34-a0ed-9d83c193c547",
+    "taskId": "1c5693d3-358b-4af2-ab46-d74e07f50351",
+    "agentName": "EscalationAgent",
+    "modelName": "deepseek-v4-pro",
+    "promptVersion": "voice.escalation.v1",
+    "inputHash": "6b8bd55a713419a4b8530c2453ebca5aa76ab8b1a676e87b6bbc191d52252b36",
+    "rawInputReference": "inline",
+    "rawOutput": "{\"escalate\":false,\"reason\":\"Mock reason: system: You assess risk and compliance signals in calls (complaints, safety, leg\",\"urgency\":\"none\",\"confidence\":0.82}",
+    "parsedOutput": {
+      "escalate": false,
+      "reason": "Mock reason: system: You assess risk and compliance signals in calls (complaints, safety, leg",
+      "urgency": "none",
+      "confidence": 0.82
+    },
+    "confidenceScore": 0.82,
+    "humanReviewStatus": "NOT_REQUIRED",
+    "routingTrace": {
+      "context": {
+        "taskType": "compliance_review",
+        "riskLevel": "high",
+        "contextTokens": 68
+      },
+      "decision": {
+        "model": "deepseek-v4-pro",
+        "ruleId": "compliance_review.default",
+        "reason": "Compliance review → DeepSeek V4 Pro.",
+        "candidates": [
+          "deepseek-v4-pro"
+        ],
+        "estimatedCostUsd": 0.0018544,
+        "escalated": false
+      },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 72,
+        "outputTokens": 40
+      },
+      "cost": {
+        "inputCostUsd": 0.000057600000000000004,
+        "outputCostUsd": 0.00012000000000000002,
+        "totalUsd": 0.00017760000000000003
+      },
+      "valueForMoney": {
+        "score": 0.6027316652286453,
+        "actualCostUsd": 0.00017760000000000003,
+        "estimatedCostUsd": 0.0018544,
+        "costAccuracy": 0.09577221742881792
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
+      "live": false
+    },
+    "id": "0a3160ad-bd06-4fd9-899e-4c6b3abd91a8",
+    "createdAt": "2026-06-20T00:33:52.824Z"
+  },
+  {
+    "taskId": "028ceb95-018c-426f-8b4e-c625ff7d5ad8",
     "agentName": "NextPracticeAgent",
     "modelName": "kimi-k2.6",
     "promptVersion": "stem.nextpractice.v1",
@@ -960,18 +2062,47 @@
         "estimatedCostUsd": 0.0015377999999999998,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "kimi-k2.6",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 67,
         "outputTokens": 33
       },
+      "cost": {
+        "inputCostUsd": 0.0000402,
+        "outputCostUsd": 0.0000825,
+        "totalUsd": 0.0001227
+      },
+      "valueForMoney": {
+        "score": 0.5979367928209129,
+        "actualCostUsd": 0.0001227,
+        "estimatedCostUsd": 0.0015377999999999998,
+        "costAccuracy": 0.0797893094030433
+      },
+      "health": [
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "6064a670-9b69-4de7-afe7-a247a5d2d87f",
-    "createdAt": "2026-06-17T04:20:51.974Z"
+    "id": "03775735-f39b-4547-ae77-3b4bffd25ee5",
+    "createdAt": "2026-06-20T00:33:52.823Z"
   },
   {
-    "taskId": "2d594e54-de44-4963-99ee-2a9a1214d3af",
+    "taskId": "e550521e-1468-491d-99f0-c7b0d45c6033",
     "agentName": "FollowUpPlanAgent",
     "modelName": "kimi-k2.6",
     "promptVersion": "voice.followup.v1",
@@ -1008,18 +2139,185 @@
         "estimatedCostUsd": 0.0015287999999999999,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "kimi-k2.6",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 51,
         "outputTokens": 27
       },
+      "cost": {
+        "inputCostUsd": 0.0000306,
+        "outputCostUsd": 0.0000675,
+        "totalUsd": 0.0000981
+      },
+      "valueForMoney": {
+        "score": 0.5932503924646781,
+        "actualCostUsd": 0.0000981,
+        "estimatedCostUsd": 0.0015287999999999999,
+        "costAccuracy": 0.06416797488226067
+      },
+      "health": [
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "4280c331-5f71-414a-9954-0a07368eb86f",
-    "createdAt": "2026-06-17T04:20:51.974Z"
+    "id": "71504a36-ca85-4391-a874-3c64211260cf",
+    "createdAt": "2026-06-20T00:33:52.823Z"
   },
   {
-    "taskId": "b6e0f1a5-e367-48a2-aec5-58c3a6f0fe9c",
+    "taskId": "29583a95-c0e3-49bf-8eb7-e38d2153b603",
+    "agentName": "CorrectnessAgent",
+    "modelName": "deepseek-v4-pro",
+    "promptVersion": "stem.correctness.v1",
+    "inputHash": "d5a4576995fb8dc86142eb76af024f771103967dc75d867026d1f6a4664a9c2e",
+    "rawInputReference": "inline",
+    "rawOutput": "{\"verifiedCorrect\":true,\"expectedAnswer\":\"mock-expectedAnswer\",\"errorAnalysis\":\"mock-errorAnalysis\",\"confidence\":0.82}",
+    "parsedOutput": {
+      "verifiedCorrect": true,
+      "expectedAnswer": "mock-expectedAnswer",
+      "errorAnalysis": "mock-errorAnalysis",
+      "confidence": 0.82
+    },
+    "confidenceScore": 0.82,
+    "humanReviewStatus": "NOT_REQUIRED",
+    "routingTrace": {
+      "context": {
+        "taskType": "final_judge",
+        "riskLevel": "medium",
+        "contextTokens": 57
+      },
+      "decision": {
+        "model": "deepseek-v4-pro",
+        "ruleId": "final_judge.default",
+        "reason": "LLM-as-judge / final validation → DeepSeek V4 Pro.",
+        "candidates": [
+          "deepseek-v4-pro"
+        ],
+        "estimatedCostUsd": 0.0018456,
+        "escalated": false
+      },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 61,
+        "outputTokens": 30
+      },
+      "cost": {
+        "inputCostUsd": 0.0000488,
+        "outputCostUsd": 0.00009,
+        "totalUsd": 0.0001388
+      },
+      "valueForMoney": {
+        "score": 0.5965617685305591,
+        "actualCostUsd": 0.0001388,
+        "estimatedCostUsd": 0.0018456,
+        "costAccuracy": 0.07520589510186382
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
+      "live": false
+    },
+    "id": "b11804d9-bd4a-467c-8ebc-5dbd5c6f8221",
+    "createdAt": "2026-06-20T00:33:52.822Z"
+  },
+  {
+    "taskId": "5d8c6987-4ec0-4914-ae76-394692ffebc4",
+    "agentName": "JudgeAgent",
+    "modelName": "deepseek-v4-pro",
+    "promptVersion": "judge.v1",
+    "inputHash": "2c7593c45dbe42fe30753b1d9e67d2a2f1df731537b3f77b9ffb2c1d6bd6bf80",
+    "rawInputReference": "inline",
+    "rawOutput": "{\"score\":0.82,\"verdict\":\"pass\",\"reasoning\":\"Mock reasoning: system: You are an impartial evaluator. Score the candidate output 0..1 across a\",\"dimensions\":{\"accuracy\":1,\"completeness\":1,\"safety\":1,\"clarity\":1},\"confidence\":0.82}",
+    "parsedOutput": {
+      "score": 0.82,
+      "verdict": "pass",
+      "reasoning": "Mock reasoning: system: You are an impartial evaluator. Score the candidate output 0..1 across a",
+      "dimensions": {
+        "accuracy": 1,
+        "completeness": 1,
+        "safety": 1,
+        "clarity": 1
+      },
+      "confidence": 0.82
+    },
+    "confidenceScore": 0.82,
+    "humanReviewStatus": "NOT_REQUIRED",
+    "routingTrace": {
+      "context": {
+        "taskType": "final_judge",
+        "riskLevel": "high",
+        "contextTokens": 87
+      },
+      "decision": {
+        "model": "deepseek-v4-pro",
+        "ruleId": "final_judge.default",
+        "reason": "LLM-as-judge / final validation → DeepSeek V4 Pro.",
+        "candidates": [
+          "deepseek-v4-pro"
+        ],
+        "estimatedCostUsd": 0.0018696,
+        "escalated": false
+      },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 90,
+        "outputTokens": 57
+      },
+      "cost": {
+        "inputCostUsd": 0.000072,
+        "outputCostUsd": 0.000171,
+        "totalUsd": 0.000243
+      },
+      "valueForMoney": {
+        "score": 0.6129922978177149,
+        "actualCostUsd": 0.000243,
+        "estimatedCostUsd": 0.0018696,
+        "costAccuracy": 0.12997432605905002
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
+      "live": false
+    },
+    "id": "c3627d00-c60a-4f31-83ee-c0767d246773",
+    "createdAt": "2026-06-20T00:33:52.821Z"
+  },
+  {
+    "taskId": "0455cb1a-dd48-4e4d-b83f-fb1279a1c3c1",
     "agentName": "ShiftNoteParseAgent",
     "modelName": "gemini-3-flash",
     "promptVersion": "care.parse.v1",
@@ -1061,60 +2359,42 @@
         "estimatedCostUsd": 0.0002475,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 79,
         "outputTokens": 63
       },
+      "cost": {
+        "inputCostUsd": 0.0000079,
+        "outputCostUsd": 0.000025200000000000003,
+        "totalUsd": 0.000033100000000000005
+      },
+      "valueForMoney": {
+        "score": 0.6141212121212121,
+        "actualCostUsd": 0.000033100000000000005,
+        "estimatedCostUsd": 0.0002475,
+        "costAccuracy": 0.1337373737373737
+      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "4275dfde-e8eb-43e2-bc8d-df2a4be7386e",
-    "createdAt": "2026-06-17T04:20:51.973Z"
+    "id": "66465c28-c927-4140-b0bc-aa957bf998af",
+    "createdAt": "2026-06-20T00:33:52.821Z"
   },
   {
-    "taskId": "2b107f7b-ec3b-495a-a590-92f2b4ec399f",
-    "agentName": "CorrectnessAgent",
-    "modelName": "deepseek-v4-pro",
-    "promptVersion": "stem.correctness.v1",
-    "inputHash": "d5a4576995fb8dc86142eb76af024f771103967dc75d867026d1f6a4664a9c2e",
-    "rawInputReference": "inline",
-    "rawOutput": "{\"verifiedCorrect\":true,\"expectedAnswer\":\"mock-expectedAnswer\",\"errorAnalysis\":\"mock-errorAnalysis\",\"confidence\":0.82}",
-    "parsedOutput": {
-      "verifiedCorrect": true,
-      "expectedAnswer": "mock-expectedAnswer",
-      "errorAnalysis": "mock-errorAnalysis",
-      "confidence": 0.82
-    },
-    "confidenceScore": 0.82,
-    "humanReviewStatus": "NOT_REQUIRED",
-    "routingTrace": {
-      "context": {
-        "taskType": "final_judge",
-        "riskLevel": "medium",
-        "contextTokens": 57
-      },
-      "decision": {
-        "model": "deepseek-v4-pro",
-        "ruleId": "final_judge.default",
-        "reason": "LLM-as-judge / final validation → DeepSeek V4 Pro.",
-        "candidates": [
-          "deepseek-v4-pro"
-        ],
-        "estimatedCostUsd": 0.0018456,
-        "escalated": false
-      },
-      "attempts": 1,
-      "usage": {
-        "inputTokens": 61,
-        "outputTokens": 30
-      },
-      "live": false
-    },
-    "id": "ec76c653-751d-4a64-b8b0-4915038a99f1",
-    "createdAt": "2026-06-17T04:20:51.973Z"
-  },
-  {
-    "taskId": "c6a72979-6318-4d3c-89a6-c91f21053e95",
+    "taskId": "e1ca71e0-cb77-4468-a9ca-5622a25d10fd",
     "agentName": "ComplianceReviewAgent",
     "modelName": "deepseek-v4-pro",
     "promptVersion": "compliance.v1",
@@ -1156,66 +2436,117 @@
         "estimatedCostUsd": 0.001872,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 94,
         "outputTokens": 59
       },
+      "cost": {
+        "inputCostUsd": 0.0000752,
+        "outputCostUsd": 0.000177,
+        "totalUsd": 0.0002522
+      },
+      "valueForMoney": {
+        "score": 0.6144166666666666,
+        "actualCostUsd": 0.0002522,
+        "estimatedCostUsd": 0.001872,
+        "costAccuracy": 0.1347222222222222
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "9468d3d2-45bd-41cc-8dee-72a9bc528dd8",
-    "createdAt": "2026-06-17T04:20:51.972Z"
+    "id": "b5947481-075b-4cfa-b766-4a732e368923",
+    "createdAt": "2026-06-20T00:33:52.820Z"
   },
   {
-    "taskId": "968f4308-da59-4571-9858-2949efdeb7a8",
-    "agentName": "JudgeAgent",
-    "modelName": "deepseek-v4-pro",
-    "promptVersion": "judge.v1",
-    "inputHash": "2c7593c45dbe42fe30753b1d9e67d2a2f1df731537b3f77b9ffb2c1d6bd6bf80",
+    "taskId": "16c984b4-7cf9-4a25-947a-821d60be5bb7",
+    "agentName": "ReportAgent",
+    "modelName": "gemini-3-flash",
+    "promptVersion": "report.v1",
+    "inputHash": "1c97913828724a1f22bd8454222b62ca883281897e663a406ce6d62867d5679f",
     "rawInputReference": "inline",
-    "rawOutput": "{\"score\":0.82,\"verdict\":\"pass\",\"reasoning\":\"Mock reasoning: system: You are an impartial evaluator. Score the candidate output 0..1 across a\",\"dimensions\":{\"accuracy\":1,\"completeness\":1,\"safety\":1,\"clarity\":1},\"confidence\":0.82}",
+    "rawOutput": "{\"title\":\"mock-title\",\"summary\":\"Mock summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"mock-highlights_item\"],\"confidence\":0.82}",
     "parsedOutput": {
-      "score": 0.82,
-      "verdict": "pass",
-      "reasoning": "Mock reasoning: system: You are an impartial evaluator. Score the candidate output 0..1 across a",
-      "dimensions": {
-        "accuracy": 1,
-        "completeness": 1,
-        "safety": 1,
-        "clarity": 1
-      },
+      "title": "mock-title",
+      "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
+      "highlights": [
+        "mock-highlights_item"
+      ],
       "confidence": 0.82
     },
     "confidenceScore": 0.82,
     "humanReviewStatus": "NOT_REQUIRED",
     "routingTrace": {
       "context": {
-        "taskType": "final_judge",
-        "riskLevel": "high",
-        "contextTokens": 87
+        "taskType": "fast_summary",
+        "riskLevel": "low",
+        "latency": "interactive",
+        "contextTokens": 47
       },
       "decision": {
-        "model": "deepseek-v4-pro",
-        "ruleId": "final_judge.default",
-        "reason": "LLM-as-judge / final validation → DeepSeek V4 Pro.",
+        "model": "gemini-3-flash",
+        "ruleId": "fast_summary.default",
+        "reason": "Fast, low-cost summaries → Gemini 3 Flash.",
         "candidates": [
-          "deepseek-v4-pro"
+          "gemini-3-flash",
+          "kimi-k2.6"
         ],
-        "estimatedCostUsd": 0.0018696,
+        "estimatedCostUsd": 0.0002447,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
-        "inputTokens": 90,
-        "outputTokens": 57
+        "inputTokens": 51,
+        "outputTokens": 47
       },
+      "cost": {
+        "inputCostUsd": 0.0000051,
+        "outputCostUsd": 0.0000188,
+        "totalUsd": 0.000023899999999999998
+      },
+      "valueForMoney": {
+        "score": 0.6033011851246424,
+        "actualCostUsd": 0.000023899999999999998,
+        "estimatedCostUsd": 0.0002447,
+        "costAccuracy": 0.09767061708214131
+      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "0b0096bf-e39f-4ceb-a60b-d09fbc270b45",
-    "createdAt": "2026-06-17T04:20:51.972Z"
+    "id": "5f387e6c-6918-4861-abd2-057a62f5952c",
+    "createdAt": "2026-06-20T00:33:52.819Z"
   },
   {
-    "taskId": "9626a64a-6aa3-4b39-8a41-aa3b03db83c9",
+    "taskId": "f8a5652f-5c65-43f4-b7e0-14bc6c2ae95f",
     "agentName": "DeveloperAgent",
     "modelName": "kimi-k2.6",
     "promptVersion": "dev.architecture.v1",
@@ -1257,29 +2588,59 @@
         "estimatedCostUsd": 0.0015443999999999998,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "kimi-k2.6",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 78,
         "outputTokens": 47
       },
+      "cost": {
+        "inputCostUsd": 0.0000468,
+        "outputCostUsd": 0.0001175,
+        "totalUsd": 0.00016429999999999998
+      },
+      "valueForMoney": {
+        "score": 0.6059153069153069,
+        "actualCostUsd": 0.00016429999999999998,
+        "estimatedCostUsd": 0.0015443999999999998,
+        "costAccuracy": 0.1063843563843564
+      },
+      "health": [
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "1c23ef2e-68c8-4245-bbc8-8c72e2de63a5",
-    "createdAt": "2026-06-17T04:20:51.971Z"
+    "id": "5c44c5cc-484e-4485-a6b1-65d9275d5d51",
+    "createdAt": "2026-06-20T00:33:52.818Z"
   },
   {
-    "taskId": "60356055-1cb8-4d90-89f8-d8356547fe28",
-    "agentName": "ReportAgent",
+    "taskId": "368ecb00-5526-4709-a8fa-04f4f6d7e590",
+    "agentName": "CallSummaryAgent",
     "modelName": "gemini-3-flash",
-    "promptVersion": "report.v1",
-    "inputHash": "1c97913828724a1f22bd8454222b62ca883281897e663a406ce6d62867d5679f",
+    "promptVersion": "voice.summary.v1",
+    "inputHash": "bc9170518033bfc8537b568cf192ecbdfd6acd447eb3bc4474928537d25cec4d",
     "rawInputReference": "inline",
-    "rawOutput": "{\"title\":\"mock-title\",\"summary\":\"Mock summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"mock-highlights_item\"],\"confidence\":0.82}",
+    "rawOutput": "{\"topic\":\"mock-topic\",\"summary\":\"Mock summary: system: You summarise customer/support calls concisely and extract action items.\",\"sentiment\":\"positive\",\"actionItems\":[\"mock-actionItems_item\"],\"confidence\":0.82}",
     "parsedOutput": {
-      "title": "mock-title",
-      "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
-      "highlights": [
-        "mock-highlights_item"
+      "topic": "mock-topic",
+      "summary": "Mock summary: system: You summarise customer/support calls concisely and extract action items.",
+      "sentiment": "positive",
+      "actionItems": [
+        "mock-actionItems_item"
       ],
       "confidence": 0.82
     },
@@ -1290,7 +2651,7 @@
         "taskType": "fast_summary",
         "riskLevel": "low",
         "latency": "interactive",
-        "contextTokens": 47
+        "contextTokens": 50
       },
       "decision": {
         "model": "gemini-3-flash",
@@ -1300,21 +2661,50 @@
           "gemini-3-flash",
           "kimi-k2.6"
         ],
-        "estimatedCostUsd": 0.0002447,
+        "estimatedCostUsd": 0.000245,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
-        "inputTokens": 51,
-        "outputTokens": 47
+        "inputTokens": 54,
+        "outputTokens": 53
       },
+      "cost": {
+        "inputCostUsd": 0.0000054,
+        "outputCostUsd": 0.0000212,
+        "totalUsd": 0.0000266
+      },
+      "valueForMoney": {
+        "score": 0.6065714285714285,
+        "actualCostUsd": 0.0000266,
+        "estimatedCostUsd": 0.000245,
+        "costAccuracy": 0.10857142857142854
+      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "63119e31-d04f-4b8f-83e5-fc0c9f979201",
-    "createdAt": "2026-06-17T04:20:51.971Z"
+    "id": "b7ba356d-f3b5-4c61-8a5c-4b27064e2a93",
+    "createdAt": "2026-06-20T00:33:52.817Z"
   },
   {
-    "taskId": "fb601c01-b69c-4c41-a1af-8b9951e66145",
+    "taskId": "f358942a-3fbb-48e2-8fec-300efb9f2411",
     "agentName": "TutorFeedbackAgent",
     "modelName": "gemini-3-flash",
     "promptVersion": "stem.feedback.v1",
@@ -1351,65 +2741,47 @@
         "estimatedCostUsd": 0.000245,
         "escalated": false
       },
+      "attemptedModels": [
+        {
+          "model": "gemini-3-flash",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 54,
         "outputTokens": 61
       },
-      "live": false
-    },
-    "id": "a9a90323-d2d9-43bb-bad7-4d294c92ab92",
-    "createdAt": "2026-06-17T04:20:51.970Z"
-  },
-  {
-    "taskId": "a6c12826-de8a-4f48-89e3-fd5680df7791",
-    "agentName": "CallSummaryAgent",
-    "modelName": "gemini-3-flash",
-    "promptVersion": "voice.summary.v1",
-    "inputHash": "bc9170518033bfc8537b568cf192ecbdfd6acd447eb3bc4474928537d25cec4d",
-    "rawInputReference": "inline",
-    "rawOutput": "{\"topic\":\"mock-topic\",\"summary\":\"Mock summary: system: You summarise customer/support calls concisely and extract action items.\",\"sentiment\":\"positive\",\"actionItems\":[\"mock-actionItems_item\"],\"confidence\":0.82}",
-    "parsedOutput": {
-      "topic": "mock-topic",
-      "summary": "Mock summary: system: You summarise customer/support calls concisely and extract action items.",
-      "sentiment": "positive",
-      "actionItems": [
-        "mock-actionItems_item"
-      ],
-      "confidence": 0.82
-    },
-    "confidenceScore": 0.82,
-    "humanReviewStatus": "NOT_REQUIRED",
-    "routingTrace": {
-      "context": {
-        "taskType": "fast_summary",
-        "riskLevel": "low",
-        "latency": "interactive",
-        "contextTokens": 50
+      "cost": {
+        "inputCostUsd": 0.0000054,
+        "outputCostUsd": 0.0000244,
+        "totalUsd": 0.0000298
       },
-      "decision": {
-        "model": "gemini-3-flash",
-        "ruleId": "fast_summary.default",
-        "reason": "Fast, low-cost summaries → Gemini 3 Flash.",
-        "candidates": [
-          "gemini-3-flash",
-          "kimi-k2.6"
-        ],
+      "valueForMoney": {
+        "score": 0.6104897959183673,
+        "actualCostUsd": 0.0000298,
         "estimatedCostUsd": 0.000245,
-        "escalated": false
+        "costAccuracy": 0.1216326530612245
       },
-      "attempts": 1,
-      "usage": {
-        "inputTokens": 54,
-        "outputTokens": 53
-      },
+      "health": [
+        {
+          "model": "gemini-3-flash",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "3990a3f0-a8d1-43a8-a316-806c2df5931a",
-    "createdAt": "2026-06-17T04:20:51.970Z"
+    "id": "42b2e6a2-342e-4a54-b9d9-e8ee549b5905",
+    "createdAt": "2026-06-20T00:33:52.815Z"
   },
   {
-    "taskId": "a26096d9-d5c2-4ea9-b4f1-c4b2eb77026a",
+    "taskId": "7586e37b-cf5e-4df7-a319-1664bd1898c7",
     "agentName": "IncidentDraftAgent",
     "modelName": "deepseek-v4-pro",
     "promptVersion": "care.incident.v1",
@@ -1448,18 +2820,47 @@
         "estimatedCostUsd": 0.0018664,
         "escalated": true
       },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 87,
         "outputTokens": 51
       },
+      "cost": {
+        "inputCostUsd": 0.0000696,
+        "outputCostUsd": 0.000153,
+        "totalUsd": 0.0002226
+      },
+      "valueForMoney": {
+        "score": 0.6097801114444921,
+        "actualCostUsd": 0.0002226,
+        "estimatedCostUsd": 0.0018664,
+        "costAccuracy": 0.11926703814830697
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "d9e0112f-9092-465e-bfba-df3886f74dd1",
-    "createdAt": "2026-06-17T04:20:51.969Z"
+    "id": "e7b2c1db-ce48-4af5-9ba6-2b6a12aef4a7",
+    "createdAt": "2026-06-20T00:33:52.814Z"
   },
   {
-    "taskId": "4962af1d-0cbd-48ad-be50-b0165e613612",
+    "taskId": "b9d8dba7-ba0c-4713-8045-619e2694f91e",
     "agentName": "CareNoteAgent",
     "modelName": "deepseek-v4-pro",
     "promptVersion": "care.note.v1",
@@ -1507,14 +2908,43 @@
         "estimatedCostUsd": 0.0018752,
         "escalated": true
       },
+      "attemptedModels": [
+        {
+          "model": "deepseek-v4-pro",
+          "ok": true
+        }
+      ],
       "attempts": 1,
       "usage": {
         "inputTokens": 98,
         "outputTokens": 115
       },
+      "cost": {
+        "inputCostUsd": 0.00007840000000000001,
+        "outputCostUsd": 0.00034500000000000004,
+        "totalUsd": 0.00042340000000000005
+      },
+      "valueForMoney": {
+        "score": 0.6417367747440272,
+        "actualCostUsd": 0.00042340000000000005,
+        "estimatedCostUsd": 0.0018752,
+        "costAccuracy": 0.2257892491467577
+      },
+      "health": [
+        {
+          "model": "deepseek-v4-pro",
+          "status": "closed",
+          "failures": 0
+        },
+        {
+          "model": "kimi-k2.6",
+          "status": "closed",
+          "failures": 0
+        }
+      ],
       "live": false
     },
-    "id": "97173ac9-9f57-45cc-b72e-b7bbb564f7cf",
-    "createdAt": "2026-06-17T04:20:51.966Z"
+    "id": "12694c89-378d-4968-b722-a0448f2ec03a",
+    "createdAt": "2026-06-20T00:33:52.811Z"
   }
 ]

@@ -1,0 +1,1298 @@
+{
+  "generatedAt": "2026-06-20T02:15:00.000Z",
+  "mode": "demo",
+  "schedule": {
+    "US": "Every 15 minutes",
+    "ASX": "Every 30 minutes"
+  },
+  "signals": [
+    {
+      "rank": 1,
+      "symbol": "PLTR",
+      "market": "US",
+      "price": 142.4,
+      "volume": 31100000,
+      "gapPercent": 6.1,
+      "relativeVolume": 4.2,
+      "tags": [
+        "Gapper",
+        "High RVOL",
+        "Momentum",
+        "Breakout"
+      ],
+      "catalyst": {
+        "catalystScore": 91,
+        "summary": "New government AI platform partnership",
+        "sentiment": "positive",
+        "confidence": 0.9,
+        "category": "partnership"
+      },
+      "technical": {
+        "sma20": 140,
+        "sma50": 137.45,
+        "sma200": 126.3,
+        "rsi": 79.19,
+        "macd": 1.4,
+        "vwap": 125.12,
+        "premarketHigh": 141.55,
+        "previousDayHigh": 139.84,
+        "trendScore": 100,
+        "breakoutProbability": 65,
+        "supportLevels": [
+          125.12,
+          137.45
+        ],
+        "resistanceLevels": [
+          141.55,
+          148.1
+        ]
+      },
+      "strategy": {
+        "strategy": "Trend Join Long",
+        "score": 100,
+        "rationale": [
+          "Price and moving-average alignment",
+          "4.2x relative volume",
+          "Breakout level confirmation"
+        ]
+      },
+      "risk": {
+        "accepted": true,
+        "positionSize": 200,
+        "entry": 142.4,
+        "stopLoss": 137.42,
+        "takeProfit": 157.34,
+        "riskRewardRatio": 3,
+        "riskDollars": 1000
+      },
+      "backtests": [
+        {
+          "period": "30D",
+          "trades": 12,
+          "winRate": 71,
+          "profitFactor": 2.14,
+          "sharpeRatio": 1.86,
+          "maxDrawdown": 11
+        },
+        {
+          "period": "90D",
+          "trades": 34,
+          "winRate": 70,
+          "profitFactor": 2.1,
+          "sharpeRatio": 1.81,
+          "maxDrawdown": 12.4
+        },
+        {
+          "period": "1Y",
+          "trades": 108,
+          "winRate": 69,
+          "profitFactor": 2.06,
+          "sharpeRatio": 1.76,
+          "maxDrawdown": 13.8
+        }
+      ],
+      "confidence": 95,
+      "status": "actionable",
+      "generatedAt": "2026-06-20T02:15:00.000Z"
+    },
+    {
+      "rank": 2,
+      "symbol": "ZIP",
+      "market": "ASX",
+      "price": 4.12,
+      "volume": 22600000,
+      "gapPercent": 7.3,
+      "relativeVolume": 5.1,
+      "tags": [
+        "Gapper",
+        "High RVOL",
+        "Momentum",
+        "Breakout"
+      ],
+      "catalyst": {
+        "catalystScore": 96,
+        "summary": "US transaction volume and cash earnings accelerate",
+        "sentiment": "positive",
+        "confidence": 0.94,
+        "category": "earnings"
+      },
+      "technical": {
+        "sma20": 4.04,
+        "sma50": 3.97,
+        "sma200": 3.65,
+        "rsi": 73.33,
+        "macd": 0.04,
+        "vwap": 3.62,
+        "premarketHigh": 4.1,
+        "previousDayHigh": 4.05,
+        "trendScore": 100,
+        "breakoutProbability": 86,
+        "supportLevels": [
+          3.62,
+          3.97
+        ],
+        "resistanceLevels": [
+          4.1,
+          4.28
+        ]
+      },
+      "strategy": {
+        "strategy": "Gap And Go",
+        "score": 100,
+        "rationale": [
+          "7.3% opening gap",
+          "Premarket high test",
+          "Opening volume expansion"
+        ]
+      },
+      "risk": {
+        "accepted": true,
+        "positionSize": 7142,
+        "entry": 4.12,
+        "stopLoss": 3.98,
+        "takeProfit": 4.54,
+        "riskRewardRatio": 3,
+        "riskDollars": 1000
+      },
+      "backtests": [
+        {
+          "period": "30D",
+          "trades": 12,
+          "winRate": 64,
+          "profitFactor": 1.9,
+          "sharpeRatio": 1.57,
+          "maxDrawdown": 11
+        },
+        {
+          "period": "90D",
+          "trades": 34,
+          "winRate": 63,
+          "profitFactor": 1.86,
+          "sharpeRatio": 1.52,
+          "maxDrawdown": 12.4
+        },
+        {
+          "period": "1Y",
+          "trades": 108,
+          "winRate": 62,
+          "profitFactor": 1.82,
+          "sharpeRatio": 1.47,
+          "maxDrawdown": 13.8
+        }
+      ],
+      "confidence": 95,
+      "status": "actionable",
+      "generatedAt": "2026-06-20T02:15:00.000Z"
+    },
+    {
+      "rank": 3,
+      "symbol": "CRWD",
+      "market": "US",
+      "price": 518.7,
+      "volume": 8900000,
+      "gapPercent": 5.4,
+      "relativeVolume": 3.1,
+      "tags": [
+        "Gapper",
+        "High RVOL",
+        "Momentum",
+        "Breakout"
+      ],
+      "catalyst": {
+        "catalystScore": 86,
+        "summary": "Security platform earnings beat and guidance raise",
+        "sentiment": "positive",
+        "confidence": 0.84,
+        "category": "earnings"
+      },
+      "technical": {
+        "sma20": 509.94,
+        "sma50": 500.68,
+        "sma200": 460.05,
+        "rsi": 79.25,
+        "macd": 5.09,
+        "vwap": 455.45,
+        "premarketHigh": 515.59,
+        "previousDayHigh": 509.36,
+        "trendScore": 100,
+        "breakoutProbability": 65,
+        "supportLevels": [
+          455.45,
+          500.68
+        ],
+        "resistanceLevels": [
+          515.59,
+          539.45
+        ]
+      },
+      "strategy": {
+        "strategy": "Trend Join Long",
+        "score": 100,
+        "rationale": [
+          "Price and moving-average alignment",
+          "3.1x relative volume",
+          "Breakout level confirmation"
+        ]
+      },
+      "risk": {
+        "accepted": true,
+        "positionSize": 55,
+        "entry": 518.7,
+        "stopLoss": 500.55,
+        "takeProfit": 573.15,
+        "riskRewardRatio": 3,
+        "riskDollars": 1000
+      },
+      "backtests": [
+        {
+          "period": "30D",
+          "trades": 12,
+          "winRate": 71,
+          "profitFactor": 2.14,
+          "sharpeRatio": 1.86,
+          "maxDrawdown": 11
+        },
+        {
+          "period": "90D",
+          "trades": 34,
+          "winRate": 70,
+          "profitFactor": 2.1,
+          "sharpeRatio": 1.81,
+          "maxDrawdown": 12.4
+        },
+        {
+          "period": "1Y",
+          "trades": 108,
+          "winRate": 69,
+          "profitFactor": 2.06,
+          "sharpeRatio": 1.76,
+          "maxDrawdown": 13.8
+        }
+      ],
+      "confidence": 94,
+      "status": "actionable",
+      "generatedAt": "2026-06-20T02:15:00.000Z"
+    },
+    {
+      "rank": 4,
+      "symbol": "NVDA",
+      "market": "US",
+      "price": 225,
+      "volume": 48200000,
+      "gapPercent": 4.8,
+      "relativeVolume": 3.7,
+      "tags": [
+        "Gapper",
+        "High RVOL",
+        "Momentum",
+        "Breakout"
+      ],
+      "catalyst": {
+        "catalystScore": 85,
+        "summary": "AI infrastructure demand and raised data-center outlook",
+        "sentiment": "positive",
+        "confidence": 0.88,
+        "category": "earnings"
+      },
+      "technical": {
+        "sma20": 221.2,
+        "sma50": 217.18,
+        "sma200": 199.56,
+        "rsi": 79.17,
+        "macd": 2.21,
+        "vwap": 197.64,
+        "premarketHigh": 223.65,
+        "previousDayHigh": 220.95,
+        "trendScore": 100,
+        "breakoutProbability": 65,
+        "supportLevels": [
+          197.64,
+          217.18
+        ],
+        "resistanceLevels": [
+          223.65,
+          234
+        ]
+      },
+      "strategy": {
+        "strategy": "Trend Join Long",
+        "score": 100,
+        "rationale": [
+          "Price and moving-average alignment",
+          "3.7x relative volume",
+          "Breakout level confirmation"
+        ]
+      },
+      "risk": {
+        "accepted": true,
+        "positionSize": 127,
+        "entry": 225,
+        "stopLoss": 217.13,
+        "takeProfit": 248.61,
+        "riskRewardRatio": 3,
+        "riskDollars": 1000
+      },
+      "backtests": [
+        {
+          "period": "30D",
+          "trades": 12,
+          "winRate": 64,
+          "profitFactor": 1.9,
+          "sharpeRatio": 1.57,
+          "maxDrawdown": 11
+        },
+        {
+          "period": "90D",
+          "trades": 34,
+          "winRate": 63,
+          "profitFactor": 1.86,
+          "sharpeRatio": 1.52,
+          "maxDrawdown": 12.4
+        },
+        {
+          "period": "1Y",
+          "trades": 108,
+          "winRate": 62,
+          "profitFactor": 1.82,
+          "sharpeRatio": 1.47,
+          "maxDrawdown": 13.8
+        }
+      ],
+      "confidence": 93,
+      "status": "actionable",
+      "generatedAt": "2026-06-20T02:15:00.000Z"
+    },
+    {
+      "rank": 5,
+      "symbol": "COIN",
+      "market": "US",
+      "price": 318.5,
+      "volume": 14700000,
+      "gapPercent": 4.1,
+      "relativeVolume": 3.4,
+      "tags": [
+        "Gapper",
+        "High RVOL",
+        "Momentum",
+        "Breakout"
+      ],
+      "catalyst": {
+        "catalystScore": 81,
+        "summary": "Digital asset volumes accelerate with institutional inflows",
+        "sentiment": "positive",
+        "confidence": 0.86,
+        "category": "industry"
+      },
+      "technical": {
+        "sma20": 313.12,
+        "sma50": 307.43,
+        "sma200": 282.49,
+        "rsi": 79.17,
+        "macd": 3.13,
+        "vwap": 279.71,
+        "premarketHigh": 316.59,
+        "previousDayHigh": 312.77,
+        "trendScore": 100,
+        "breakoutProbability": 65,
+        "supportLevels": [
+          279.71,
+          307.43
+        ],
+        "resistanceLevels": [
+          316.59,
+          331.24
+        ]
+      },
+      "strategy": {
+        "strategy": "Trend Join Long",
+        "score": 100,
+        "rationale": [
+          "Price and moving-average alignment",
+          "3.4x relative volume",
+          "Breakout level confirmation"
+        ]
+      },
+      "risk": {
+        "accepted": true,
+        "positionSize": 89,
+        "entry": 318.5,
+        "stopLoss": 307.35,
+        "takeProfit": 351.95,
+        "riskRewardRatio": 3,
+        "riskDollars": 1000
+      },
+      "backtests": [
+        {
+          "period": "30D",
+          "trades": 12,
+          "winRate": 64,
+          "profitFactor": 1.9,
+          "sharpeRatio": 1.57,
+          "maxDrawdown": 11
+        },
+        {
+          "period": "90D",
+          "trades": 34,
+          "winRate": 63,
+          "profitFactor": 1.86,
+          "sharpeRatio": 1.52,
+          "maxDrawdown": 12.4
+        },
+        {
+          "period": "1Y",
+          "trades": 108,
+          "winRate": 62,
+          "profitFactor": 1.82,
+          "sharpeRatio": 1.47,
+          "maxDrawdown": 13.8
+        }
+      ],
+      "confidence": 92,
+      "status": "actionable",
+      "generatedAt": "2026-06-20T02:15:00.000Z"
+    },
+    {
+      "rank": 6,
+      "symbol": "XRO",
+      "market": "ASX",
+      "price": 203.9,
+      "volume": 2900000,
+      "gapPercent": 4.4,
+      "relativeVolume": 3,
+      "tags": [
+        "Gapper",
+        "High RVOL",
+        "Momentum",
+        "Breakout"
+      ],
+      "catalyst": {
+        "catalystScore": 82,
+        "summary": "Subscriber growth exceeds consensus expectations",
+        "sentiment": "positive",
+        "confidence": 0.84,
+        "category": "earnings"
+      },
+      "technical": {
+        "sma20": 200,
+        "sma50": 196.46,
+        "sma200": 180.58,
+        "rsi": 71.54,
+        "macd": 1.84,
+        "vwap": 178.79,
+        "premarketHigh": 202.68,
+        "previousDayHigh": 200.23,
+        "trendScore": 100,
+        "breakoutProbability": 86,
+        "supportLevels": [
+          178.79,
+          196.46
+        ],
+        "resistanceLevels": [
+          202.68,
+          212.06
+        ]
+      },
+      "strategy": {
+        "strategy": "Trend Join Long",
+        "score": 100,
+        "rationale": [
+          "Price and moving-average alignment",
+          "3.0x relative volume",
+          "Breakout level confirmation"
+        ]
+      },
+      "risk": {
+        "accepted": true,
+        "positionSize": 140,
+        "entry": 203.9,
+        "stopLoss": 196.76,
+        "takeProfit": 225.32,
+        "riskRewardRatio": 3,
+        "riskDollars": 1000
+      },
+      "backtests": [
+        {
+          "period": "30D",
+          "trades": 12,
+          "winRate": 70,
+          "profitFactor": 2.1,
+          "sharpeRatio": 1.82,
+          "maxDrawdown": 11
+        },
+        {
+          "period": "90D",
+          "trades": 34,
+          "winRate": 69,
+          "profitFactor": 2.06,
+          "sharpeRatio": 1.77,
+          "maxDrawdown": 12.4
+        },
+        {
+          "period": "1Y",
+          "trades": 108,
+          "winRate": 68,
+          "profitFactor": 2.02,
+          "sharpeRatio": 1.72,
+          "maxDrawdown": 13.8
+        }
+      ],
+      "confidence": 92,
+      "status": "actionable",
+      "generatedAt": "2026-06-20T02:15:00.000Z"
+    },
+    {
+      "rank": 7,
+      "symbol": "AMD",
+      "market": "US",
+      "price": 184.8,
+      "volume": 27800000,
+      "gapPercent": 3.2,
+      "relativeVolume": 2.8,
+      "tags": [
+        "Gapper",
+        "High RVOL",
+        "Momentum"
+      ],
+      "catalyst": {
+        "catalystScore": 76,
+        "summary": "Analyst upgrade on accelerator market share",
+        "sentiment": "positive",
+        "confidence": 0.83,
+        "category": "upgrade"
+      },
+      "technical": {
+        "sma20": 181.27,
+        "sma50": 178.06,
+        "sma200": 163.66,
+        "rsi": 71.57,
+        "macd": 1.67,
+        "vwap": 162.03,
+        "premarketHigh": 183.69,
+        "previousDayHigh": 181.47,
+        "trendScore": 100,
+        "breakoutProbability": 86,
+        "supportLevels": [
+          162.03,
+          178.06
+        ],
+        "resistanceLevels": [
+          183.69,
+          192.19
+        ]
+      },
+      "strategy": {
+        "strategy": "Trend Join Long",
+        "score": 100,
+        "rationale": [
+          "Price and moving-average alignment",
+          "2.8x relative volume",
+          "Breakout level confirmation"
+        ]
+      },
+      "risk": {
+        "accepted": true,
+        "positionSize": 154,
+        "entry": 184.8,
+        "stopLoss": 178.33,
+        "takeProfit": 204.21,
+        "riskRewardRatio": 3,
+        "riskDollars": 1000
+      },
+      "backtests": [
+        {
+          "period": "30D",
+          "trades": 12,
+          "winRate": 67,
+          "profitFactor": 2,
+          "sharpeRatio": 1.69,
+          "maxDrawdown": 11
+        },
+        {
+          "period": "90D",
+          "trades": 34,
+          "winRate": 66,
+          "profitFactor": 1.96,
+          "sharpeRatio": 1.64,
+          "maxDrawdown": 12.4
+        },
+        {
+          "period": "1Y",
+          "trades": 108,
+          "winRate": 65,
+          "profitFactor": 1.92,
+          "sharpeRatio": 1.59,
+          "maxDrawdown": 13.8
+        }
+      ],
+      "confidence": 91,
+      "status": "actionable",
+      "generatedAt": "2026-06-20T02:15:00.000Z"
+    },
+    {
+      "rank": 8,
+      "symbol": "WTC",
+      "market": "ASX",
+      "price": 151.6,
+      "volume": 3200000,
+      "gapPercent": 3.8,
+      "relativeVolume": 2.7,
+      "tags": [
+        "Gapper",
+        "High RVOL",
+        "Momentum",
+        "Breakout"
+      ],
+      "catalyst": {
+        "catalystScore": 79,
+        "summary": "Logistics software partnership expands global network",
+        "sentiment": "positive",
+        "confidence": 0.82,
+        "category": "partnership"
+      },
+      "technical": {
+        "sma20": 148.7,
+        "sma50": 146.07,
+        "sma200": 134.26,
+        "rsi": 71.55,
+        "macd": 1.37,
+        "vwap": 132.91,
+        "premarketHigh": 150.69,
+        "previousDayHigh": 148.87,
+        "trendScore": 100,
+        "breakoutProbability": 86,
+        "supportLevels": [
+          132.91,
+          146.07
+        ],
+        "resistanceLevels": [
+          150.69,
+          157.66
+        ]
+      },
+      "strategy": {
+        "strategy": "Trend Join Long",
+        "score": 100,
+        "rationale": [
+          "Price and moving-average alignment",
+          "2.7x relative volume",
+          "Breakout level confirmation"
+        ]
+      },
+      "risk": {
+        "accepted": true,
+        "positionSize": 188,
+        "entry": 151.6,
+        "stopLoss": 146.29,
+        "takeProfit": 167.53,
+        "riskRewardRatio": 3,
+        "riskDollars": 1000
+      },
+      "backtests": [
+        {
+          "period": "30D",
+          "trades": 12,
+          "winRate": 68,
+          "profitFactor": 2.04,
+          "sharpeRatio": 1.74,
+          "maxDrawdown": 11
+        },
+        {
+          "period": "90D",
+          "trades": 34,
+          "winRate": 67,
+          "profitFactor": 2,
+          "sharpeRatio": 1.69,
+          "maxDrawdown": 12.4
+        },
+        {
+          "period": "1Y",
+          "trades": 108,
+          "winRate": 66,
+          "profitFactor": 1.96,
+          "sharpeRatio": 1.64,
+          "maxDrawdown": 13.8
+        }
+      ],
+      "confidence": 91,
+      "status": "actionable",
+      "generatedAt": "2026-06-20T02:15:00.000Z"
+    },
+    {
+      "rank": 9,
+      "symbol": "BHP",
+      "market": "ASX",
+      "price": 46.2,
+      "volume": 12400000,
+      "gapPercent": 2.2,
+      "relativeVolume": 2.3,
+      "tags": [
+        "High RVOL",
+        "Momentum"
+      ],
+      "catalyst": {
+        "catalystScore": 71,
+        "summary": "Iron ore outlook improves on regional demand",
+        "sentiment": "positive",
+        "confidence": 0.8,
+        "category": "industry"
+      },
+      "technical": {
+        "sma20": 45.32,
+        "sma50": 44.51,
+        "sma200": 40.92,
+        "rsi": 71.59,
+        "macd": 0.42,
+        "vwap": 40.49,
+        "premarketHigh": 45.92,
+        "previousDayHigh": 45.37,
+        "trendScore": 100,
+        "breakoutProbability": 86,
+        "supportLevels": [
+          40.49,
+          44.51
+        ],
+        "resistanceLevels": [
+          45.92,
+          48.05
+        ]
+      },
+      "strategy": {
+        "strategy": "Trend Join Long",
+        "score": 100,
+        "rationale": [
+          "Price and moving-average alignment",
+          "2.3x relative volume",
+          "Breakout level confirmation"
+        ]
+      },
+      "risk": {
+        "accepted": true,
+        "positionSize": 617,
+        "entry": 46.2,
+        "stopLoss": 44.58,
+        "takeProfit": 51.06,
+        "riskRewardRatio": 3,
+        "riskDollars": 1000
+      },
+      "backtests": [
+        {
+          "period": "30D",
+          "trades": 12,
+          "winRate": 66,
+          "profitFactor": 1.97,
+          "sharpeRatio": 1.65,
+          "maxDrawdown": 11
+        },
+        {
+          "period": "90D",
+          "trades": 34,
+          "winRate": 65,
+          "profitFactor": 1.93,
+          "sharpeRatio": 1.6,
+          "maxDrawdown": 12.4
+        },
+        {
+          "period": "1Y",
+          "trades": 108,
+          "winRate": 64,
+          "profitFactor": 1.89,
+          "sharpeRatio": 1.55,
+          "maxDrawdown": 13.8
+        }
+      ],
+      "confidence": 89,
+      "status": "actionable",
+      "generatedAt": "2026-06-20T02:15:00.000Z"
+    },
+    {
+      "rank": 10,
+      "symbol": "CBA",
+      "market": "ASX",
+      "price": 198.3,
+      "volume": 4800000,
+      "gapPercent": 1.7,
+      "relativeVolume": 1.9,
+      "tags": [],
+      "catalyst": {
+        "catalystScore": 69,
+        "summary": "Broker raises target following margin resilience",
+        "sentiment": "positive",
+        "confidence": 0.78,
+        "category": "upgrade"
+      },
+      "technical": {
+        "sma20": 194.51,
+        "sma50": 191.06,
+        "sma200": 175.62,
+        "rsi": 71.54,
+        "macd": 1.79,
+        "vwap": 173.76,
+        "premarketHigh": 197.11,
+        "previousDayHigh": 194.73,
+        "trendScore": 100,
+        "breakoutProbability": 86,
+        "supportLevels": [
+          173.76,
+          191.06
+        ],
+        "resistanceLevels": [
+          197.11,
+          206.23
+        ]
+      },
+      "strategy": {
+        "strategy": "Trend Join Long",
+        "score": 80,
+        "rationale": [
+          "Price and moving-average alignment",
+          "1.9x relative volume",
+          "Breakout level confirmation"
+        ]
+      },
+      "risk": {
+        "accepted": true,
+        "positionSize": 144,
+        "entry": 198.3,
+        "stopLoss": 191.36,
+        "takeProfit": 219.12,
+        "riskRewardRatio": 3,
+        "riskDollars": 1000
+      },
+      "backtests": [
+        {
+          "period": "30D",
+          "trades": 12,
+          "winRate": 59.6,
+          "profitFactor": 1.69,
+          "sharpeRatio": 1.33,
+          "maxDrawdown": 13.2
+        },
+        {
+          "period": "90D",
+          "trades": 34,
+          "winRate": 58.6,
+          "profitFactor": 1.65,
+          "sharpeRatio": 1.28,
+          "maxDrawdown": 14.6
+        },
+        {
+          "period": "1Y",
+          "trades": 108,
+          "winRate": 57.6,
+          "profitFactor": 1.61,
+          "sharpeRatio": 1.23,
+          "maxDrawdown": 16
+        }
+      ],
+      "confidence": 79,
+      "status": "actionable",
+      "generatedAt": "2026-06-20T02:15:00.000Z"
+    },
+    {
+      "rank": 11,
+      "symbol": "FMG",
+      "market": "ASX",
+      "price": 21.7,
+      "volume": 18300000,
+      "gapPercent": -3.1,
+      "relativeVolume": 2.6,
+      "tags": [
+        "Gapper",
+        "High RVOL"
+      ],
+      "catalyst": {
+        "catalystScore": 76,
+        "summary": "Production filing flags higher near-term costs",
+        "sentiment": "negative",
+        "confidence": 0.82,
+        "category": "filing"
+      },
+      "technical": {
+        "sma20": 21.61,
+        "sma50": 21.74,
+        "sma200": 22.49,
+        "rsi": 41.98,
+        "macd": -0.04,
+        "vwap": 22.59,
+        "premarketHigh": 21.87,
+        "previousDayHigh": 22,
+        "trendScore": 23,
+        "breakoutProbability": 0,
+        "supportLevels": [
+          21.61,
+          21.74
+        ],
+        "resistanceLevels": [
+          22,
+          22.57
+        ]
+      },
+      "strategy": {
+        "strategy": "Earnings Momentum",
+        "score": 51,
+        "rationale": [
+          "Production filing flags higher near-term costs",
+          "Catalyst quality and volume persistence"
+        ]
+      },
+      "risk": {
+        "accepted": false,
+        "positionSize": 9090,
+        "entry": 21.7,
+        "stopLoss": 21.59,
+        "takeProfit": 21.88,
+        "riskRewardRatio": 1.64,
+        "riskDollars": 1000,
+        "rejectionReason": "Risk/reward below 2.0"
+      },
+      "backtests": [
+        {
+          "period": "30D",
+          "trades": 12,
+          "winRate": 55.22,
+          "profitFactor": 1.45,
+          "sharpeRatio": 1.06,
+          "maxDrawdown": 16.39
+        },
+        {
+          "period": "90D",
+          "trades": 34,
+          "winRate": 54.22,
+          "profitFactor": 1.41,
+          "sharpeRatio": 1.01,
+          "maxDrawdown": 17.79
+        },
+        {
+          "period": "1Y",
+          "trades": 108,
+          "winRate": 53.22,
+          "profitFactor": 1.37,
+          "sharpeRatio": 0.96,
+          "maxDrawdown": 19.19
+        }
+      ],
+      "confidence": 53,
+      "status": "rejected",
+      "generatedAt": "2026-06-20T02:15:00.000Z"
+    },
+    {
+      "rank": 12,
+      "symbol": "TSLA",
+      "market": "US",
+      "price": 392.1,
+      "volume": 39600000,
+      "gapPercent": -2.6,
+      "relativeVolume": 2.4,
+      "tags": [
+        "High RVOL"
+      ],
+      "catalyst": {
+        "catalystScore": 73,
+        "summary": "Delivery update draws mixed analyst revisions",
+        "sentiment": "neutral",
+        "confidence": 0.81,
+        "category": "industry"
+      },
+      "technical": {
+        "sma20": 391.37,
+        "sma50": 393.55,
+        "sma200": 406.99,
+        "rsi": 48.65,
+        "macd": -0.45,
+        "vwap": 408.77,
+        "premarketHigh": 395.24,
+        "previousDayHigh": 397.59,
+        "trendScore": 23,
+        "breakoutProbability": 0,
+        "supportLevels": [
+          391.37,
+          393.55
+        ],
+        "resistanceLevels": [
+          397.59,
+          407.78
+        ]
+      },
+      "strategy": {
+        "strategy": "Earnings Momentum",
+        "score": 49,
+        "rationale": [
+          "Delivery update draws mixed analyst revisions",
+          "Catalyst quality and volume persistence"
+        ]
+      },
+      "risk": {
+        "accepted": false,
+        "positionSize": 510,
+        "entry": 392.1,
+        "stopLoss": 390.14,
+        "takeProfit": 395.33,
+        "riskRewardRatio": 1.65,
+        "riskDollars": 1000,
+        "rejectionReason": "Risk/reward below 2.0"
+      },
+      "backtests": [
+        {
+          "period": "30D",
+          "trades": 12,
+          "winRate": 54.78,
+          "profitFactor": 1.43,
+          "sharpeRatio": 1.03,
+          "maxDrawdown": 16.61
+        },
+        {
+          "period": "90D",
+          "trades": 34,
+          "winRate": 53.78,
+          "profitFactor": 1.39,
+          "sharpeRatio": 0.98,
+          "maxDrawdown": 18.01
+        },
+        {
+          "period": "1Y",
+          "trades": 108,
+          "winRate": 52.78,
+          "profitFactor": 1.35,
+          "sharpeRatio": 0.93,
+          "maxDrawdown": 19.41
+        }
+      ],
+      "confidence": 51,
+      "status": "rejected",
+      "generatedAt": "2026-06-20T02:15:00.000Z"
+    }
+  ],
+  "portfolios": [
+    {
+      "profile": "conservative",
+      "maxPositions": 4,
+      "cashReservePercent": 35,
+      "positions": [
+        {
+          "symbol": "PLTR",
+          "weightPercent": 16.38,
+          "score": 95,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "ZIP",
+          "weightPercent": 16.38,
+          "score": 95,
+          "strategy": "Gap And Go"
+        },
+        {
+          "symbol": "CRWD",
+          "weightPercent": 16.21,
+          "score": 94,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "NVDA",
+          "weightPercent": 16.03,
+          "score": 93,
+          "strategy": "Trend Join Long"
+        }
+      ]
+    },
+    {
+      "profile": "balanced",
+      "maxPositions": 7,
+      "cashReservePercent": 20,
+      "positions": [
+        {
+          "symbol": "PLTR",
+          "weightPercent": 11.66,
+          "score": 95,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "ZIP",
+          "weightPercent": 11.66,
+          "score": 95,
+          "strategy": "Gap And Go"
+        },
+        {
+          "symbol": "CRWD",
+          "weightPercent": 11.53,
+          "score": 94,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "NVDA",
+          "weightPercent": 11.41,
+          "score": 93,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "COIN",
+          "weightPercent": 11.29,
+          "score": 92,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "XRO",
+          "weightPercent": 11.29,
+          "score": 92,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "AMD",
+          "weightPercent": 11.17,
+          "score": 91,
+          "strategy": "Trend Join Long"
+        }
+      ]
+    },
+    {
+      "profile": "aggressive",
+      "maxPositions": 10,
+      "cashReservePercent": 8,
+      "positions": [
+        {
+          "symbol": "PLTR",
+          "weightPercent": 9.59,
+          "score": 95,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "ZIP",
+          "weightPercent": 9.59,
+          "score": 95,
+          "strategy": "Gap And Go"
+        },
+        {
+          "symbol": "CRWD",
+          "weightPercent": 9.49,
+          "score": 94,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "NVDA",
+          "weightPercent": 9.39,
+          "score": 93,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "COIN",
+          "weightPercent": 9.29,
+          "score": 92,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "XRO",
+          "weightPercent": 9.29,
+          "score": 92,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "AMD",
+          "weightPercent": 9.19,
+          "score": 91,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "WTC",
+          "weightPercent": 9.19,
+          "score": 91,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "BHP",
+          "weightPercent": 8.99,
+          "score": 89,
+          "strategy": "Trend Join Long"
+        },
+        {
+          "symbol": "CBA",
+          "weightPercent": 7.98,
+          "score": 79,
+          "strategy": "Trend Join Long"
+        }
+      ]
+    }
+  ],
+  "activity": [
+    {
+      "id": "d2caa0e9-fa23-4bde-b289-2fd22fbb0573",
+      "agent": "Market Scanner Agent",
+      "status": "complete",
+      "message": "12 candidates found across US and ASX",
+      "timestamp": "2026-06-20T02:15:00.000Z",
+      "durationMs": 842
+    },
+    {
+      "id": "b8c0793b-c9a0-4ae4-9dc1-79d2c1f9963f",
+      "agent": "News Catalyst Agent",
+      "status": "complete",
+      "message": "12 catalyst briefs scored",
+      "timestamp": "2026-06-20T02:15:00.000Z",
+      "durationMs": 1126
+    },
+    {
+      "id": "ad205fda-cbad-4f6f-883f-dd3f925ab9e5",
+      "agent": "Technical Analysis Agent",
+      "status": "complete",
+      "message": "SMA, RSI, MACD, VWAP and breakout levels calculated",
+      "timestamp": "2026-06-20T02:15:00.000Z",
+      "durationMs": 416
+    },
+    {
+      "id": "1e0b9a85-f804-4687-aee1-8bd2d10c0c4c",
+      "agent": "Strategy Evaluation Agent",
+      "status": "complete",
+      "message": "Four strategy families evaluated for every candidate",
+      "timestamp": "2026-06-20T02:15:00.000Z",
+      "durationMs": 583
+    },
+    {
+      "id": "4b1589ef-8a6f-457c-944c-dd8da44e0ec1",
+      "agent": "Backtesting Agent",
+      "status": "complete",
+      "message": "30D, 90D and 1Y simulations completed",
+      "timestamp": "2026-06-20T02:15:00.000Z",
+      "durationMs": 1942
+    },
+    {
+      "id": "ee70be75-4b15-4618-a9f1-051095997006",
+      "agent": "Risk Management Agent",
+      "status": "complete",
+      "message": "10 setups passed minimum 2.0 RR",
+      "timestamp": "2026-06-20T02:15:00.000Z",
+      "durationMs": 205
+    },
+    {
+      "id": "e8702725-96ce-4748-81ad-3ce42bb8a883",
+      "agent": "Portfolio Manager Agent",
+      "status": "complete",
+      "message": "Conservative, balanced and aggressive portfolios ranked",
+      "timestamp": "2026-06-20T02:15:00.000Z",
+      "durationMs": 168
+    },
+    {
+      "id": "e0f446e3-9a8b-43ba-9f4e-d16ee5b7f355",
+      "agent": "Notification Agent",
+      "status": "complete",
+      "message": "10 actionable alerts queued",
+      "timestamp": "2026-06-20T02:15:00.000Z",
+      "durationMs": 91
+    }
+  ],
+  "notificationChannels": [
+    {
+      "channel": "Telegram",
+      "enabled": false
+    },
+    {
+      "channel": "Discord",
+      "enabled": false
+    },
+    {
+      "channel": "Email",
+      "enabled": false
+    },
+    {
+      "channel": "Dashboard",
+      "enabled": true
+    }
+  ]
+}

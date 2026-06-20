@@ -19,6 +19,7 @@ import { zodToJsonSchema } from "../src/orchestration/zodToJsonSchema.js";
 import { USE_CASES, WORKFLOWS, AGENT_EXAMPLES } from "../src/catalog.js";
 import type { HumanReviewStatus, RoutingContext } from "../src/types.js";
 import { StructuredOutputError } from "../src/orchestration/structured.js";
+import { runTradingWorkflow } from "../src/trading/engine.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const config = loadConfig();
@@ -78,6 +79,10 @@ app.get("/api/config", (_req, res) => {
       orchestrator.registry.isLive(m),
     ),
   });
+});
+
+app.get("/api/trading", async (_req, res) => {
+  res.json(await runTradingWorkflow());
 });
 
 // ── Run ──────────────────────────────────────────────────────────────
@@ -151,6 +156,8 @@ app.post("/api/records/:id/review", async (req, res) => {
 // ── Static page ──────────────────────────────────────────────────────
 app.get("/", (_req, res) => res.sendFile(join(__dirname, "index.html")));
 app.get("/docs", (_req, res) => res.sendFile(join(__dirname, "docs.html")));
+app.get("/trading.css", (_req, res) => res.sendFile(join(__dirname, "trading.css")));
+app.get("/trading.js", (_req, res) => res.sendFile(join(__dirname, "trading.js")));
 
 app.listen(config.dashboardPort, () => {
   console.log(`AgentOS dashboard → http://localhost:${config.dashboardPort}`);

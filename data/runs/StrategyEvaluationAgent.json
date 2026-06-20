@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "model": "deepseek-v4-pro",
+  "confidence": 0.82,
+  "decision": {
+    "model": "deepseek-v4-pro",
+    "ruleId": "agent_planning.default",
+    "reason": "Agent / multi-agent planning → Kimi K2.6. High risk — promoting strongest candidate.",
+    "candidates": [
+      "kimi-k2.6",
+      "deepseek-v4-pro"
+    ],
+    "estimatedCostUsd": 0.0018503999999999999,
+    "escalated": true
+  },
+  "parsed": {
+    "strategy": "Trend Join Long",
+    "score": 0.82,
+    "conditions_met": [
+      "mock-conditions_met_item"
+    ],
+    "rationale": [
+      "mock-rationale_item"
+    ],
+    "confidence": 0.82
+  },
+  "raw": "{\"strategy\":\"Trend Join Long\",\"score\":0.82,\"conditions_met\":[\"mock-conditions_met_item\"],\"rationale\":[\"mock-rationale_item\"],\"confidence\":0.82}",
+  "recordId": "f0d5931e-54b5-4d54-94d9-20142b88d551"
+}

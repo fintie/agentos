@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "model": "gemini-3-flash",
+  "confidence": 0.82,
+  "decision": {
+    "model": "gemini-3-flash",
+    "ruleId": "fast_summary.default",
+    "reason": "Fast, low-cost summaries → Gemini 3 Flash.",
+    "candidates": [
+      "gemini-3-flash",
+      "kimi-k2.6"
+    ],
+    "estimatedCostUsd": 0.00024569999999999995,
+    "escalated": false
+  },
+  "parsed": {
+    "title": "mock-title",
+    "message": "mock-message",
+    "channels": [
+      "Telegram"
+    ],
+    "delivered": false,
+    "confidence": 0.82
+  },
+  "raw": "{\"title\":\"mock-title\",\"message\":\"mock-message\",\"channels\":[\"Telegram\"],\"delivered\":false,\"confidence\":0.82}",
+  "recordId": "f5a13630-a78a-40ae-9f09-8cda4c2e27d7"
+}

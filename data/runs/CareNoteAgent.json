@@ -36,5 +36,5 @@
     "confidence": 0.82
   },
   "raw": "{\"residentId\":\"mock-residentId\",\"shiftDate\":\"mock-shiftDate\",\"summary\":\"Mock summary: system: You are an aged-care documentation assistant. Produce a precise, factual\",\"observations\":[\"mock-observations_item\"],\"medications\":[{\"name\":\"mock-name\",\"administered\":false,\"notes\":\"Mock notes: system: You are an aged-care documentation assistant. Produce a precise, factual\"}],\"concerns\":[\"mock-concerns_item\"],\"followUps\":[\"mock-followUps_item\"],\"confidence\":0.82}",
-  "recordId": "97173ac9-9f57-45cc-b72e-b7bbb564f7cf"
+  "recordId": "12694c89-378d-4968-b722-a0448f2ec03a"
 }

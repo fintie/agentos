@@ -1,0 +1,33 @@
+{
+  "ok": true,
+  "model": "gemini-3-flash",
+  "confidence": 0.82,
+  "decision": {
+    "model": "gemini-3-flash",
+    "ruleId": "batch_generation.default",
+    "reason": "High-volume batch generation → Gemini 3 Flash.",
+    "candidates": [
+      "gemini-3-flash"
+    ],
+    "estimatedCostUsd": 0.0002455,
+    "escalated": false
+  },
+  "parsed": {
+    "candidates": [
+      {
+        "symbol": "mock-symbol",
+        "market": "US",
+        "price": 1,
+        "volume": 1,
+        "gap_percent": 1,
+        "relative_volume": 1,
+        "tags": [
+          "mock-tags_item"
+        ]
+      }
+    ],
+    "confidence": 0.82
+  },
+  "raw": "{\"candidates\":[{\"symbol\":\"mock-symbol\",\"market\":\"US\",\"price\":1,\"volume\":1,\"gap_percent\":1,\"relative_volume\":1,\"tags\":[\"mock-tags_item\"]}],\"confidence\":0.82}",
+  "recordId": "7d55ec66-bc26-4586-b1e3-e75cb304839d"
+}

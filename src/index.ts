@@ -14,3 +14,4 @@ export * from "./agents/registry.js";
 export * from "./orchestration/index.js";
 export * from "./evaluation/index.js";
 export * from "./workflows/index.js";
+export * from "./trading/index.js";

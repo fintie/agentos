@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "model": "gemini-3-flash",
+  "confidence": 0.82,
+  "decision": {
+    "model": "gemini-3-flash",
+    "ruleId": "batch_generation.default",
+    "reason": "High-volume batch generation → Gemini 3 Flash.",
+    "candidates": [
+      "gemini-3-flash"
+    ],
+    "estimatedCostUsd": 0.0002456,
+    "escalated": false
+  },
+  "parsed": {
+    "sma20": 1,
+    "sma50": 1,
+    "sma200": 1,
+    "rsi": 1,
+    "macd": 1,
+    "vwap": 1,
+    "premarket_high": 1,
+    "previous_day_high": 1,
+    "trend_score": 0.82,
+    "breakout_probability": 1,
+    "support_levels": [
+      1
+    ],
+    "resistance_levels": [
+      1
+    ],
+    "confidence": 0.82
+  },
+  "raw": "{\"sma20\":1,\"sma50\":1,\"sma200\":1,\"rsi\":1,\"macd\":1,\"vwap\":1,\"premarket_high\":1,\"previous_day_high\":1,\"trend_score\":0.82,\"breakout_probability\":1,\"support_levels\":[1],\"resistance_levels\":[1],\"confidence\":0.82}",
+  "recordId": "011047cc-aad9-47b1-8f41-73681e2f4bc8"
+}

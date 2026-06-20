@@ -126,6 +126,9 @@ Pluggable store: `MemoryEvaluationStore` (JSON file, default) or
 - **STEM**: answer → Gemini feedback → DeepSeek correctness → Kimi next practice → parent report
 - **Voice**: transcript → Gemini summary → Kimi follow-up → DeepSeek escalation → CRM note
 - **Developer**: requirement → Kimi architecture plan → DeepSeek review → Gemini docs
+- **Trading Agent OS**: US/ASX scan → catalyst research + technical analysis → strategy scoring → 30D/90D/1Y backtests → hard risk gate → portfolio construction → channel notifications. The domain implementation lives in [src/trading](src/trading), including a 15-minute US / 30-minute ASX scheduler, provider interface, deterministic demo provider, event bus, and pluggable Telegram/Discord/Email/Dashboard notification adapters.
+
+The dashboard exposes dedicated **Watchlist, Signals, Backtests, Portfolio, News, and Agent Activity** applications. Demo data is synthetic; production deployments should supply licensed market/news providers and secure notification transports through `TradingDataProvider` and `CallbackNotificationChannel`.
 
 ## Configuration
 

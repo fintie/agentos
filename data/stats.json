@@ -1,9 +1,9 @@
 {
-  "total": 31,
+  "total": 39,
   "byModel": {
-    "kimi-k2.6": 8,
-    "deepseek-v4-pro": 12,
-    "gemini-3-flash": 11
+    "kimi-k2.6": 9,
+    "deepseek-v4-pro": 15,
+    "gemini-3-flash": 15
   },
   "byAgent": {
     "DeveloperAgent": 2,
@@ -15,12 +15,20 @@
     "TutorFeedbackAgent": 2,
     "CorrectnessAgent": 2,
     "NextPracticeAgent": 2,
-    "IncidentDraftAgent": 2,
     "ComplianceReviewAgent": 3,
+    "IncidentDraftAgent": 2,
     "ShiftNoteParseAgent": 2,
     "CareNoteAgent": 2,
+    "PortfolioManagerAgent": 1,
+    "NotificationAgent": 1,
+    "BacktestingAgent": 1,
+    "RiskManagementAgent": 1,
+    "TechnicalAnalysisAgent": 1,
+    "StrategyEvaluationAgent": 1,
+    "MarketScannerAgent": 1,
+    "NewsCatalystAgent": 1,
     "JudgeAgent": 1
   },
-  "escalations": 2,
+  "escalations": 4,
   "pendingReview": 0
 }

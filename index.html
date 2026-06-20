@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>AgentOS — Agent Management (static demo)</title>
+    <link rel="stylesheet" href="trading.css" />
     <style>
       :root {
         --bg:#0d0f14; --panel:#161922; --panel2:#1d212c; --line:#272d3a; --muted:#8b94a7;
@@ -201,11 +202,11 @@
         clone: "git clone https://github.com/fintie/agentos.git",
         branch: "git switch -c feature/agent-workspace",
       };
-      const state = { view: "overview", useCases: [], agents: [], stats: {}, records: [] };
+      const state = { view: "overview", useCases: [], agents: [], stats: {}, records: [], trading: null, tradingProfile: "balanced" };
 
       async function boot() {
-        [state.useCases, state.agents, state.stats, state.records] = await Promise.all([
-          data("usecases"), data("agents"), data("stats"), data("records"),
+        [state.useCases, state.agents, state.stats, state.records, state.trading] = await Promise.all([
+          data("usecases"), data("agents"), data("stats"), data("records"), data("trading"),
         ]);
         renderNav(); renderWorkflowMenu(); render();
       }
@@ -215,6 +216,13 @@
         $("#nav").innerHTML = `
           <div class="group">Console</div>
           <button data-view="overview"><span class="navicon">OS</span><span>Desktop</span></button>
+          <div class="group">Trading OS</div>
+          <button data-view="trading:watchlist"><span class="navicon">WL</span><span>Watchlist</span></button>
+          <button data-view="trading:signals"><span class="navicon">SG</span><span>Signals</span></button>
+          <button data-view="trading:backtests"><span class="navicon">BT</span><span>Backtests</span></button>
+          <button data-view="trading:portfolio"><span class="navicon">PF</span><span>Portfolio</span></button>
+          <button data-view="trading:news"><span class="navicon">NW</span><span>News</span></button>
+          <button data-view="trading:activity"><span class="navicon">AC</span><span>Agent Activity</span></button>
           <div class="group">Use cases</div>${ucBtns}
           <div class="group">Catalog</div>
           <button data-view="agents"><span class="navicon">AG</span><span>All agents</span></button>
@@ -228,7 +236,7 @@
           `<button onclick="state.view='uc:${uc.id}';render()">${h(uc.name)}</button>`).join("");
       }
       function iconFor(id) {
-        return ({ care: "CA", stem: "ST", voice: "VO", developer: "DV", review: "RV", incident: "IN" }[id] || "UC");
+        return ({ trading: "TA", care: "CA", stem: "ST", voice: "VO", developer: "DV", review: "RV", incident: "IN" }[id] || "UC");
       }
       function agentFlow() {
         const workflow = state.useCases.find((uc) => uc.workflow)?.agents || state.agents;
@@ -273,6 +281,7 @@
         if (v === "agents") return renderAgents();
         if (v === "developer") return renderDeveloper();
         if (v === "log") return renderLog();
+        if (v.startsWith("trading:")) return renderTrading(v);
         if (v.startsWith("uc:")) return renderUseCase(v.slice(3));
       }
 
@@ -490,5 +499,6 @@ $ git push origin HEAD</div></div>
 
       boot();
     </script>
+    <script src="trading.js"></script>
   </body>
 </html>

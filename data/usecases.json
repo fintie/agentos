@@ -1,5 +1,560 @@
 [
   {
+    "id": "trading",
+    "name": "Trading Agents",
+    "description": "Discover, validate, backtest, risk-check, rank, and deliver market opportunities through an event-driven agent pipeline.",
+    "agents": [
+      {
+        "name": "MarketScannerAgent",
+        "description": "Scan US and ASX markets for gappers, relative volume, options activity, breakouts, and momentum.",
+        "taskType": "batch_generation",
+        "defaultRisk": "low",
+        "defaultLatency": null,
+        "promptVersion": "trading.marketscanner.v1",
+        "multimodal": false,
+        "routedModel": "gemini-3-flash",
+        "live": false,
+        "candidates": [
+          "gemini-3-flash"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "candidates": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "symbol": {
+                    "type": "string"
+                  },
+                  "market": {
+                    "type": "string",
+                    "enum": [
+                      "US",
+                      "ASX"
+                    ]
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "volume": {
+                    "type": "number"
+                  },
+                  "gap_percent": {
+                    "type": "number"
+                  },
+                  "relative_volume": {
+                    "type": "number"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "symbol",
+                  "market",
+                  "price",
+                  "volume",
+                  "gap_percent",
+                  "relative_volume",
+                  "tags"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "candidates",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "markets": [
+            "US",
+            "ASX"
+          ],
+          "filters": {
+            "minRelativeVolume": 2,
+            "minPrice": 2
+          }
+        }
+      },
+      {
+        "name": "NewsCatalystAgent",
+        "description": "Research earnings, upgrades, filings, acquisitions, partnerships, and industry catalysts.",
+        "taskType": "long_context_reasoning",
+        "defaultRisk": "medium",
+        "defaultLatency": null,
+        "promptVersion": "trading.newscatalyst.v1",
+        "multimodal": false,
+        "routedModel": "kimi-k2.6",
+        "live": false,
+        "candidates": [
+          "kimi-k2.6",
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "catalyst_score": {
+              "type": "number"
+            },
+            "summary": {
+              "type": "string"
+            },
+            "sentiment": {
+              "type": "string",
+              "enum": [
+                "positive",
+                "neutral",
+                "negative"
+              ]
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "catalyst_score",
+            "summary",
+            "sentiment",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "symbol": "NVDA",
+          "lookbackHours": 72
+        }
+      },
+      {
+        "name": "TechnicalAnalysisAgent",
+        "description": "Calculate trend, momentum, VWAP, breakout levels, support, and resistance.",
+        "taskType": "batch_generation",
+        "defaultRisk": "medium",
+        "defaultLatency": null,
+        "promptVersion": "trading.technicalanalysis.v1",
+        "multimodal": false,
+        "routedModel": "gemini-3-flash",
+        "live": false,
+        "candidates": [
+          "gemini-3-flash"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "sma20": {
+              "type": "number"
+            },
+            "sma50": {
+              "type": "number"
+            },
+            "sma200": {
+              "type": "number"
+            },
+            "rsi": {
+              "type": "number"
+            },
+            "macd": {
+              "type": "number"
+            },
+            "vwap": {
+              "type": "number"
+            },
+            "premarket_high": {
+              "type": "number"
+            },
+            "previous_day_high": {
+              "type": "number"
+            },
+            "trend_score": {
+              "type": "number"
+            },
+            "breakout_probability": {
+              "type": "number"
+            },
+            "support_levels": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "resistance_levels": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "sma20",
+            "sma50",
+            "sma200",
+            "rsi",
+            "macd",
+            "vwap",
+            "premarket_high",
+            "previous_day_high",
+            "trend_score",
+            "breakout_probability",
+            "support_levels",
+            "resistance_levels",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "symbol": "NVDA",
+          "timeframe": "1D",
+          "bars": "provider://market-data/NVDA"
+        }
+      },
+      {
+        "name": "StrategyEvaluationAgent",
+        "description": "Score Trend Join, Mean Reversion, Earnings Momentum, and Gap And Go setups.",
+        "taskType": "agent_planning",
+        "defaultRisk": "high",
+        "defaultLatency": null,
+        "promptVersion": "trading.strategyevaluation.v1",
+        "multimodal": false,
+        "routedModel": "deepseek-v4-pro",
+        "live": false,
+        "candidates": [
+          "kimi-k2.6",
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "strategy": {
+              "type": "string",
+              "enum": [
+                "Trend Join Long",
+                "Mean Reversion",
+                "Earnings Momentum",
+                "Gap And Go"
+              ]
+            },
+            "score": {
+              "type": "number"
+            },
+            "conditions_met": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "rationale": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "strategy",
+            "score",
+            "conditions_met",
+            "rationale",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "symbol": "NVDA",
+          "strategies": [
+            "Trend Join Long",
+            "Mean Reversion",
+            "Earnings Momentum",
+            "Gap And Go"
+          ]
+        }
+      },
+      {
+        "name": "BacktestingAgent",
+        "description": "Evaluate strategy behavior across 30-day, 90-day, and one-year windows.",
+        "taskType": "batch_generation",
+        "defaultRisk": "high",
+        "defaultLatency": null,
+        "promptVersion": "trading.backtesting.v1",
+        "multimodal": false,
+        "routedModel": "gemini-3-flash",
+        "live": false,
+        "candidates": [
+          "gemini-3-flash"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "results": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "period": {
+                    "type": "string",
+                    "enum": [
+                      "30D",
+                      "90D",
+                      "1Y"
+                    ]
+                  },
+                  "trades": {
+                    "type": "number"
+                  },
+                  "win_rate": {
+                    "type": "number"
+                  },
+                  "profit_factor": {
+                    "type": "number"
+                  },
+                  "sharpe_ratio": {
+                    "type": "number"
+                  },
+                  "max_drawdown": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "period",
+                  "trades",
+                  "win_rate",
+                  "profit_factor",
+                  "sharpe_ratio",
+                  "max_drawdown"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "ranking_score": {
+              "type": "number"
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "results",
+            "ranking_score",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "symbol": "NVDA",
+          "strategy": "Trend Join Long",
+          "windows": [
+            "30D",
+            "90D",
+            "1Y"
+          ]
+        }
+      },
+      {
+        "name": "RiskManagementAgent",
+        "description": "Set position size, stop, target, and reject setups below 2.0 risk/reward.",
+        "taskType": "final_judge",
+        "defaultRisk": "high",
+        "defaultLatency": null,
+        "promptVersion": "trading.riskmanagement.v1",
+        "multimodal": false,
+        "routedModel": "deepseek-v4-pro",
+        "live": false,
+        "candidates": [
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "accepted": {
+              "type": "boolean"
+            },
+            "position_size": {
+              "type": "number"
+            },
+            "entry": {
+              "type": "number"
+            },
+            "stop_loss": {
+              "type": "number"
+            },
+            "take_profit": {
+              "type": "number"
+            },
+            "risk_reward_ratio": {
+              "type": "number"
+            },
+            "rejection_reason": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "accepted",
+            "position_size",
+            "entry",
+            "stop_loss",
+            "take_profit",
+            "risk_reward_ratio",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "symbol": "NVDA",
+          "accountSize": 100000,
+          "riskPercent": 1,
+          "minimumRiskReward": 2
+        }
+      },
+      {
+        "name": "PortfolioManagerAgent",
+        "description": "Rank approved opportunities into conservative, balanced, and aggressive portfolios.",
+        "taskType": "agent_planning",
+        "defaultRisk": "high",
+        "defaultLatency": null,
+        "promptVersion": "trading.portfoliomanager.v1",
+        "multimodal": false,
+        "routedModel": "deepseek-v4-pro",
+        "live": false,
+        "candidates": [
+          "kimi-k2.6",
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "profile": {
+              "type": "string",
+              "enum": [
+                "conservative",
+                "balanced",
+                "aggressive"
+              ]
+            },
+            "positions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "symbol": {
+                    "type": "string"
+                  },
+                  "weight_percent": {
+                    "type": "number"
+                  },
+                  "score": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "symbol",
+                  "weight_percent",
+                  "score"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "cash_reserve_percent": {
+              "type": "number"
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "profile",
+            "positions",
+            "cash_reserve_percent",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "profile": "balanced",
+          "maxPositions": 7,
+          "candidates": "workflow://approved-signals"
+        }
+      },
+      {
+        "name": "NotificationAgent",
+        "description": "Format and dispatch actionable signals to configured user channels.",
+        "taskType": "fast_summary",
+        "defaultRisk": "medium",
+        "defaultLatency": null,
+        "promptVersion": "trading.notification.v1",
+        "multimodal": false,
+        "routedModel": "gemini-3-flash",
+        "live": false,
+        "candidates": [
+          "gemini-3-flash",
+          "kimi-k2.6"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            },
+            "channels": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Telegram",
+                  "Discord",
+                  "Email",
+                  "Dashboard"
+                ]
+              }
+            },
+            "delivered": {
+              "type": "boolean"
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "title",
+            "message",
+            "channels",
+            "delivered",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "symbol": "NVDA",
+          "channels": [
+            "Dashboard"
+          ],
+          "signal": "workflow://top-ranked-signal"
+        }
+      }
+    ],
+    "workflow": null
+  },
+  {
     "id": "care",
     "name": "Aged Care",
     "description": "Turn messy shift notes into compliant, audit-ready care documentation with a human approval gate.",
