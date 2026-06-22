@@ -164,6 +164,7 @@ export class ModelRouter {
   ): RoutingDecision {
     return {
       model,
+      backend: ctx.executionBackend ?? "provider",
       ruleId,
       reason,
       candidates,

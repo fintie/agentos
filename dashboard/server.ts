@@ -20,6 +20,9 @@ import { USE_CASES, WORKFLOWS, AGENT_EXAMPLES } from "../src/catalog.js";
 import type { HumanReviewStatus, RoutingContext } from "../src/types.js";
 import { StructuredOutputError } from "../src/orchestration/structured.js";
 import { runTradingWorkflow } from "../src/trading/engine.js";
+import { buildDistributedInferenceDemo } from "../src/shard/dashboardData.js";
+import { DEMO_SHARD_TOPOLOGIES } from "../src/shard/demoTopologies.js";
+import type { ExecutionBackend } from "../src/types.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const config = loadConfig();
@@ -84,13 +87,19 @@ app.get("/api/config", (_req, res) => {
 app.get("/api/trading", async (_req, res) => {
   res.json(await runTradingWorkflow());
 });
+app.get("/api/shard", (_req, res) => {
+  res.json(buildDistributedInferenceDemo());
+});
 
 // ── Run ──────────────────────────────────────────────────────────────
 app.post("/api/run/agent", async (req, res) => {
-  const { agentName, input } = req.body ?? {};
+  const { agentName, input, executionBackend, topologyId } = req.body ?? {};
   try {
     const agent = agents.get(agentName);
-    const result = await orchestrator.runAgent(agent, input ?? {});
+    const backend = (["provider", "local", "sharded"].includes(executionBackend) ? executionBackend : "provider") as ExecutionBackend;
+    const topology = topologyId ? DEMO_SHARD_TOPOLOGIES.find((item) => item.topologyId === topologyId) : undefined;
+    if (topologyId && !topology) return res.status(400).json({ ok: false, error: `Unknown topology "${topologyId}".` });
+    const result = await orchestrator.runAgent(agent, input ?? {}, { executionBackend: backend, shardTopology: topology });
     res.json({
       ok: true,
       model: result.model,
@@ -99,6 +108,9 @@ app.post("/api/run/agent", async (req, res) => {
       parsed: result.parsed,
       raw: result.raw,
       recordId: result.record.id,
+      executionBackend: result.record.executionBackend,
+      shardReceipt: result.record.shardReceipt,
+      settlementRecords: result.record.settlementRecords,
     });
   } catch (err) {
     res.status(400).json({ ok: false, error: errorMessage(err) });
@@ -158,6 +170,8 @@ app.get("/", (_req, res) => res.sendFile(join(__dirname, "index.html")));
 app.get("/docs", (_req, res) => res.sendFile(join(__dirname, "docs.html")));
 app.get("/trading.css", (_req, res) => res.sendFile(join(__dirname, "trading.css")));
 app.get("/trading.js", (_req, res) => res.sendFile(join(__dirname, "trading.js")));
+app.get("/shard.css", (_req, res) => res.sendFile(join(__dirname, "shard.css")));
+app.get("/shard.js", (_req, res) => res.sendFile(join(__dirname, "shard.js")));
 
 app.listen(config.dashboardPort, () => {
   console.log(`AgentOS dashboard → http://localhost:${config.dashboardPort}`);

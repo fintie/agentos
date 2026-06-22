@@ -15,3 +15,5 @@ export * from "./orchestration/index.js";
 export * from "./evaluation/index.js";
 export * from "./workflows/index.js";
 export * from "./trading/index.js";
+export * from "./shard/index.js";
+export * from "./settlement/index.js";

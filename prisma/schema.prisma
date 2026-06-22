@@ -34,6 +34,9 @@ model EvaluationRecord {
   humanReviewStatus  HumanReviewStatus @default(NOT_REQUIRED)
   // Free-form routing trace: rule matched, candidates, escalations, costs.
   routingTrace       Json?
+  executionBackend   String?
+  shardReceipt       Json?
+  settlementRecords  Json?
   createdAt          DateTime          @default(now())
 
   @@index([taskId])

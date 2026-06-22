@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>AgentOS — Agent Management (static demo)</title>
     <link rel="stylesheet" href="trading.css" />
+    <link rel="stylesheet" href="shard.css" />
     <style>
       :root {
         --bg:#0d0f14; --panel:#161922; --panel2:#1d212c; --line:#272d3a; --muted:#8b94a7;
@@ -199,11 +200,11 @@
         clone: "git clone https://github.com/fintie/agentos.git",
         branch: "git switch -c feature/agent-workspace",
       };
-      const state = { view: "system:trading", useCases: [], agents: [], stats: {}, records: [], trading: null, tradingProfile: "balanced" };
+      const state = { view: "system:trading", useCases: [], agents: [], stats: {}, records: [], trading: null, shard: null, tradingProfile: "balanced" };
 
       async function boot() {
-        [state.useCases, state.agents, state.stats, state.records, state.trading] = await Promise.all([
-          data("usecases"), data("agents"), data("stats"), data("records"), data("trading"),
+        [state.useCases, state.agents, state.stats, state.records, state.trading, state.shard] = await Promise.all([
+          data("usecases"), data("agents"), data("stats"), data("records"), data("trading"), data("shard"),
         ]);
         renderNav(); renderWorkflowMenu(); render();
       }
@@ -397,7 +398,7 @@ $ git push origin HEAD</div></div>
             <div id="wfResult"></div>`;
         }
         $("#main").innerHTML = `
-          <h2>${h(uc.name)}</h2><p class="desc">${h(uc.description)}</p>
+          <h2>${h(uc.name)}</h2><p class="desc">${h(uc.description)}</p>${id === "developer" ? renderDistributedInference(state.shard) : ""}
           <h3 style="margin:18px 0 8px">Shared AgentOS modules</h3>${renderSharedModules(uc)}${pipeline}
           <h3 style="margin:22px 0 10px">Specialist agents</h3><div class="grid" id="ucAgents"></div>`;
         $("#ucAgents").innerHTML = uc.agents.map(agentCard).join("");
@@ -498,5 +499,6 @@ $ git push origin HEAD</div></div>
       boot();
     </script>
     <script src="trading.js"></script>
+    <script src="shard.js"></script>
   </body>
 </html>

@@ -21,6 +21,7 @@ import { zodToJsonSchema } from "../src/orchestration/zodToJsonSchema.js";
 import { USE_CASES, WORKFLOWS, AGENT_EXAMPLES } from "../src/catalog.js";
 import type { RoutingContext } from "../src/types.js";
 import { runTradingWorkflow } from "../src/trading/engine.js";
+import { buildDistributedInferenceDemo } from "../src/shard/dashboardData.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -77,6 +78,7 @@ async function main() {
   write("agents.json", agents.list().map((a) => agentMeta(a.name)));
   write("config.json", { static: true, mockMode: true, evalStore: "static", liveModels: [] });
   write("trading.json", await runTradingWorkflow({ now: () => new Date("2026-06-20T02:15:00.000Z") }));
+  write("shard.json", buildDistributedInferenceDemo());
 
   // 2. Pre-baked single-agent runs.
   for (const a of agents.list()) {
@@ -109,6 +111,8 @@ async function main() {
   copyFileSync(join(__dirname, "..", "dashboard", "docs.html"), join(ROOT, "docs.html"));
   copyFileSync(join(__dirname, "..", "dashboard", "trading.css"), join(ROOT, "trading.css"));
   copyFileSync(join(__dirname, "..", "dashboard", "trading.js"), join(ROOT, "trading.js"));
+  copyFileSync(join(__dirname, "..", "dashboard", "shard.css"), join(ROOT, "shard.css"));
+  copyFileSync(join(__dirname, "..", "dashboard", "shard.js"), join(ROOT, "shard.js"));
   writeFileSync(join(ROOT, ".nojekyll"), "");
   if (!existsSync(join(ROOT, "CNAME"))) {
     // Preserve the custom domain if it ever goes missing.

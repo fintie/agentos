@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { AdapterRegistry } from "../adapters/index.js";
+import { MockModelAdapter } from "../adapters/mock.js";
 import { loadConfig, type AgentOSConfig } from "../config.js";
 import { createEvaluationStore } from "../evaluation/index.js";
 import { hashInput, type EvaluationRecord, type EvaluationStore } from "../evaluation/types.js";
@@ -12,6 +13,13 @@ import type {
 } from "../types.js";
 import type { AgentDefinition } from "../agents/types.js";
 import { runStructured } from "./structured.js";
+import { zodToJsonSchema } from "./zodToJsonSchema.js";
+import { GLM_52_WAN_TOPOLOGY } from "../shard/demoTopologies.js";
+import { buildShardRunReceipt } from "../shard/proofReceipt.js";
+import { simulateShardRun, type ShardSimulationInput } from "../shard/simulator.js";
+import type { ShardTopology } from "../shard/topology.js";
+import { calculateShardPayout } from "../settlement/shardSettlement.js";
+import type { ExecutionBackend } from "../types.js";
 
 export interface RunOptions {
   /** Group multiple calls under one logical task (workflow run). */
@@ -26,12 +34,15 @@ export interface RunOptions {
   humanReviewStatus?: HumanReviewStatus;
   maxRetries?: number;
   signal?: AbortSignal;
+  executionBackend?: ExecutionBackend;
+  shardTopology?: ShardTopology;
+  shardSimulation?: Omit<ShardSimulationInput, "prompt">;
 }
 
 export interface AgentRunResult<T> {
   parsed: T;
   raw: string;
-  model: ModelFamily;
+  model: string;
   confidence: number;
   decision: RoutingDecision;
   record: EvaluationRecord;
@@ -69,10 +80,60 @@ export class Orchestrator {
       latency: agent.defaultLatency,
       multimodal: agent.multimodal,
       contextTokens: Math.ceil(contextText.length / 4),
+      executionBackend: opts.executionBackend,
       ...opts.routing,
     };
 
     const decision = this.router.route(ctx);
+    const backend = decision.backend;
+    const taskId = opts.taskId ?? randomUUID();
+    if (backend === "sharded") {
+      const topology = opts.shardTopology ?? GLM_52_WAN_TOPOLOGY;
+      const adapter = new MockModelAdapter("mock");
+      const structured = await runStructured({
+        adapter, messages, schema: agent.schema, schemaName: agent.name,
+        maxRetries: opts.maxRetries, signal: opts.signal,
+      });
+      const confidence = structured.parsed.confidence;
+      const simulation = simulateShardRun({
+        prompt: { agent: agent.name, messages },
+        outputTokenTarget: Math.max(16, structured.usage.outputTokens),
+        ...opts.shardSimulation,
+      }, topology);
+      const receipt = buildShardRunReceipt({
+        taskId, agentName: agent.name, topology, simulation, input,
+        output: structured.parsed, schema: zodToJsonSchema(agent.schema as any),
+        evaluationScore: opts.evaluationScore ?? confidence,
+      });
+      const settlements = calculateShardPayout(receipt, topology);
+      const record = await this.store.record({
+        taskId,
+        agentName: agent.name,
+        modelName: topology.modelName,
+        promptVersion: agent.promptVersion,
+        inputHash: hashInput(input as unknown),
+        rawInputReference: opts.rawInputReference ?? "inline",
+        rawOutput: structured.raw,
+        parsedOutput: structured.parsed,
+        confidenceScore: confidence,
+        evaluationScore: opts.evaluationScore ?? confidence,
+        reviewModel: opts.reviewModel,
+        humanReviewStatus: opts.humanReviewStatus ?? "NOT_REQUIRED",
+        executionBackend: backend,
+        shardReceipt: receipt,
+        settlementRecords: settlements,
+        routingTrace: {
+          context: ctx, decision, executionBackend: backend,
+          topologyId: topology.topologyId,
+          simulation,
+          attempts: structured.attempts,
+          usage: structured.usage,
+          settlementTotal: settlements.reduce((sum, item) => sum + item.amount, 0),
+          live: false,
+        },
+      });
+      return { parsed: structured.parsed, raw: structured.raw, model: topology.modelName, confidence, decision, record };
+    }
     const attemptedModels: Array<{ model: ModelFamily; ok: boolean; error?: string }> = [];
     const candidateChain = uniqueModels([decision.model, ...decision.candidates]);
     let structured: Awaited<ReturnType<typeof runStructured<TOutput>>> | undefined;
@@ -80,7 +141,7 @@ export class Orchestrator {
     let lastError: unknown;
 
     for (const candidate of candidateChain) {
-      const adapter = this.registry.get(candidate);
+      const adapter = backend === "local" ? new MockModelAdapter(candidate) : this.registry.get(candidate);
       try {
         structured = await runStructured({
           adapter,
@@ -106,7 +167,7 @@ export class Orchestrator {
     }
 
     const confidence = structured.parsed.confidence;
-    const adapter = this.registry.get(model);
+    const adapter = backend === "local" ? new MockModelAdapter(model) : this.registry.get(model);
     const actualCost = adapter.estimateCost(structured.usage);
     const vfm = valueForMoney({
       actualCostUsd: actualCost.totalUsd,
@@ -115,7 +176,7 @@ export class Orchestrator {
       attempts: structured.attempts,
     });
     const record = await this.store.record({
-      taskId: opts.taskId ?? randomUUID(),
+      taskId,
       agentName: agent.name,
       modelName: model,
       promptVersion: agent.promptVersion,
@@ -127,8 +188,10 @@ export class Orchestrator {
       evaluationScore: opts.evaluationScore,
       reviewModel: opts.reviewModel,
       humanReviewStatus: opts.humanReviewStatus ?? "NOT_REQUIRED",
+      executionBackend: backend,
       routingTrace: {
         context: ctx,
+        executionBackend: backend,
         decision: model === decision.model ? decision : { ...decision, model },
         attemptedModels,
         attempts: structured.attempts,
@@ -136,7 +199,7 @@ export class Orchestrator {
         cost: actualCost,
         valueForMoney: vfm,
         health: this.router.health.snapshots(candidateChain),
-        live: this.registry.isLive(model),
+        live: backend === "provider" && this.registry.isLive(model),
       },
     });
 

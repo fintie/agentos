@@ -99,6 +99,13 @@ describe("ModelRouter — forceModel escape hatch", () => {
   });
 });
 
+describe("ModelRouter — execution backend", () => {
+  it("defaults to provider and preserves a sharded backend request", () => {
+    expect(route({ taskType: "fast_summary" }).backend).toBe("provider");
+    expect(route({ taskType: "fast_summary", executionBackend: "sharded" }).backend).toBe("sharded");
+  });
+});
+
 describe("ModelRouter — circuit breaker health", () => {
   it("avoids a model whose circuit breaker is open", () => {
     const health = new ModelHealthRegistry({ failureThreshold: 1, cooldownMs: 10_000 });

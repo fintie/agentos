@@ -43,6 +43,9 @@ export class PrismaEvaluationStore implements EvaluationStore {
         reviewModel: input.reviewModel,
         humanReviewStatus: input.humanReviewStatus,
         routingTrace: input.routingTrace as any,
+        executionBackend: input.executionBackend,
+        shardReceipt: input.shardReceipt as any,
+        settlementRecords: input.settlementRecords as any,
       },
     });
     return toRecord(row);
@@ -97,6 +100,9 @@ function toRecord(row: any): EvaluationRecord {
     reviewModel: row.reviewModel ?? undefined,
     humanReviewStatus: row.humanReviewStatus,
     routingTrace: row.routingTrace ?? undefined,
+    executionBackend: row.executionBackend ?? undefined,
+    shardReceipt: row.shardReceipt ?? undefined,
+    settlementRecords: row.settlementRecords ?? undefined,
     createdAt: row.createdAt instanceof Date ? row.createdAt.toISOString() : String(row.createdAt),
   };
 }

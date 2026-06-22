@@ -1,0 +1,909 @@
+{
+  "generatedAt": "2026-06-20T04:00:00.000Z",
+  "deterministicMode": true,
+  "runs": [
+    {
+      "topology": {
+        "topologyId": "topology-glm52-wan-6x13",
+        "modelName": "GLM-5.2 style mock model",
+        "totalLayers": 78,
+        "coordinatorNodeId": "glm52-coordinator-wa",
+        "draftModelName": "GLM-4-9B draft mock",
+        "shardNodes": [
+          {
+            "nodeId": "glm52-shard-1",
+            "providerName": "Mock Provider 1",
+            "region": "NV",
+            "publicEndpoint": "mock://glm52/nv",
+            "gpuType": "RTX PRO 6000 Mock",
+            "gpuUuid": "GPU-GLM52-01",
+            "modelFamily": "GLM-5.2-style-mock",
+            "layerStart": 0,
+            "layerEnd": 12,
+            "endpointType": "mock",
+            "latencyMs": 22,
+            "reliabilityScore": 0.99,
+            "healthStatus": "healthy",
+            "costPerToken": 0.0000025,
+            "trustedBoundary": true
+          },
+          {
+            "nodeId": "glm52-shard-2",
+            "providerName": "Mock Provider 2",
+            "region": "TX",
+            "publicEndpoint": "mock://glm52/tx",
+            "gpuType": "RTX PRO 6000 Mock",
+            "gpuUuid": "GPU-GLM52-02",
+            "modelFamily": "GLM-5.2-style-mock",
+            "layerStart": 13,
+            "layerEnd": 25,
+            "endpointType": "mock",
+            "latencyMs": 31,
+            "reliabilityScore": 0.982,
+            "healthStatus": "healthy",
+            "costPerToken": 0.0000027,
+            "trustedBoundary": false
+          },
+          {
+            "nodeId": "glm52-shard-3",
+            "providerName": "Mock Provider 3",
+            "region": "MN",
+            "publicEndpoint": "mock://glm52/mn",
+            "gpuType": "RTX PRO 6000 Mock",
+            "gpuUuid": "GPU-GLM52-03",
+            "modelFamily": "GLM-5.2-style-mock",
+            "layerStart": 26,
+            "layerEnd": 38,
+            "endpointType": "mock",
+            "latencyMs": 40,
+            "reliabilityScore": 0.974,
+            "healthStatus": "healthy",
+            "costPerToken": 0.0000029,
+            "trustedBoundary": false
+          },
+          {
+            "nodeId": "glm52-shard-4",
+            "providerName": "Mock Provider 4",
+            "region": "MO",
+            "publicEndpoint": "mock://glm52/mo",
+            "gpuType": "RTX PRO 6000 Mock",
+            "gpuUuid": "GPU-GLM52-04",
+            "modelFamily": "GLM-5.2-style-mock",
+            "layerStart": 39,
+            "layerEnd": 51,
+            "endpointType": "mock",
+            "latencyMs": 49,
+            "reliabilityScore": 0.966,
+            "healthStatus": "healthy",
+            "costPerToken": 0.0000031,
+            "trustedBoundary": false
+          },
+          {
+            "nodeId": "glm52-shard-5",
+            "providerName": "Mock Provider 5",
+            "region": "UT",
+            "publicEndpoint": "mock://glm52/ut",
+            "gpuType": "RTX PRO 6000 Mock",
+            "gpuUuid": "GPU-GLM52-05",
+            "modelFamily": "GLM-5.2-style-mock",
+            "layerStart": 52,
+            "layerEnd": 64,
+            "endpointType": "mock",
+            "latencyMs": 58,
+            "reliabilityScore": 0.958,
+            "healthStatus": "healthy",
+            "costPerToken": 0.0000033,
+            "trustedBoundary": false
+          },
+          {
+            "nodeId": "glm52-shard-6",
+            "providerName": "Mock Provider 6",
+            "region": "WA",
+            "publicEndpoint": "mock://glm52/wa",
+            "gpuType": "RTX PRO 6000 Mock",
+            "gpuUuid": "GPU-GLM52-06",
+            "modelFamily": "GLM-5.2-style-mock",
+            "layerStart": 65,
+            "layerEnd": 77,
+            "endpointType": "mock",
+            "latencyMs": 67,
+            "reliabilityScore": 0.95,
+            "healthStatus": "healthy",
+            "costPerToken": 0.0000035,
+            "trustedBoundary": true
+          }
+        ],
+        "ringOrder": [
+          "glm52-shard-1",
+          "glm52-shard-2",
+          "glm52-shard-3",
+          "glm52-shard-4",
+          "glm52-shard-5",
+          "glm52-shard-6"
+        ],
+        "directReturnEnabled": true,
+        "speculativeDecodingEnabled": true,
+        "asyncPipeliningEnabled": true
+      },
+      "simulation": {
+        "draftTokensProposed": 96,
+        "acceptedDraftTokens": 72,
+        "rejectedDraftTokens": 24,
+        "outputTokens": [
+          "tok_860729ea",
+          "tok_0729eab6",
+          "tok_29eab6e7",
+          "tok_eab6e7d9",
+          "tok_b6e7d954",
+          "tok_e7d95470",
+          "tok_d9547004",
+          "tok_547004a1",
+          "tok_7004a109",
+          "tok_04a109b1",
+          "tok_a109b106",
+          "tok_09b106b8",
+          "tok_b106b81b",
+          "tok_06b81b7c",
+          "tok_b81b7c29",
+          "tok_1b7c291e",
+          "tok_7c291e29",
+          "tok_291e29de",
+          "tok_1e29de29",
+          "tok_29de29da",
+          "tok_de29daef",
+          "tok_29daeff3",
+          "tok_daeff367",
+          "tok_eff367c6",
+          "tok_f367c606",
+          "tok_67c6066b",
+          "tok_c6066bd3",
+          "tok_066bd3e8",
+          "tok_860729ea",
+          "tok_0729eab6",
+          "tok_29eab6e7",
+          "tok_eab6e7d9",
+          "tok_b6e7d954",
+          "tok_e7d95470",
+          "tok_d9547004",
+          "tok_547004a1",
+          "tok_7004a109",
+          "tok_04a109b1",
+          "tok_a109b106",
+          "tok_09b106b8",
+          "tok_b106b81b",
+          "tok_06b81b7c",
+          "tok_b81b7c29",
+          "tok_1b7c291e",
+          "tok_7c291e29",
+          "tok_291e29de",
+          "tok_1e29de29",
+          "tok_29de29da",
+          "tok_de29daef",
+          "tok_29daeff3",
+          "tok_daeff367",
+          "tok_eff367c6",
+          "tok_f367c606",
+          "tok_67c6066b",
+          "tok_c6066bd3",
+          "tok_066bd3e8",
+          "tok_860729ea",
+          "tok_0729eab6",
+          "tok_29eab6e7",
+          "tok_eab6e7d9",
+          "tok_b6e7d954",
+          "tok_e7d95470",
+          "tok_d9547004",
+          "tok_547004a1",
+          "tok_7004a109",
+          "tok_04a109b1",
+          "tok_a109b106",
+          "tok_09b106b8",
+          "tok_b106b81b",
+          "tok_06b81b7c",
+          "tok_b81b7c29",
+          "tok_1b7c291e"
+        ],
+        "tokensIn": 14,
+        "tokensOut": 72,
+        "latencyMs": 1454.85,
+        "throughputTokPerSec": 49.49,
+        "edgeRtts": [
+          {
+            "fromNodeId": "glm52-shard-1",
+            "toNodeId": "glm52-shard-2",
+            "rttMs": 33,
+            "failed": false,
+            "retried": false
+          },
+          {
+            "fromNodeId": "glm52-shard-2",
+            "toNodeId": "glm52-shard-3",
+            "rttMs": 40,
+            "failed": false,
+            "retried": false
+          },
+          {
+            "fromNodeId": "glm52-shard-3",
+            "toNodeId": "glm52-shard-4",
+            "rttMs": 48,
+            "failed": false,
+            "retried": false
+          },
+          {
+            "fromNodeId": "glm52-shard-4",
+            "toNodeId": "glm52-shard-5",
+            "rttMs": 57,
+            "failed": false,
+            "retried": false
+          },
+          {
+            "fromNodeId": "glm52-shard-5",
+            "toNodeId": "glm52-shard-6",
+            "rttMs": 63,
+            "failed": false,
+            "retried": false
+          },
+          {
+            "fromNodeId": "glm52-shard-6",
+            "toNodeId": "glm52-coordinator-wa",
+            "rttMs": 43,
+            "failed": false,
+            "retried": false
+          }
+        ],
+        "traversal": [
+          {
+            "nodeId": "glm52-shard-1",
+            "layerStart": 0,
+            "layerEnd": 12,
+            "processingMs": 11.12,
+            "status": "success"
+          },
+          {
+            "nodeId": "glm52-shard-2",
+            "layerStart": 13,
+            "layerEnd": 25,
+            "processingMs": 11.84,
+            "status": "success"
+          },
+          {
+            "nodeId": "glm52-shard-3",
+            "layerStart": 26,
+            "layerEnd": 38,
+            "processingMs": 12.56,
+            "status": "success"
+          },
+          {
+            "nodeId": "glm52-shard-4",
+            "layerStart": 39,
+            "layerEnd": 51,
+            "processingMs": 13.28,
+            "status": "success"
+          },
+          {
+            "nodeId": "glm52-shard-5",
+            "layerStart": 52,
+            "layerEnd": 64,
+            "processingMs": 14,
+            "status": "success"
+          },
+          {
+            "nodeId": "glm52-shard-6",
+            "layerStart": 65,
+            "layerEnd": 77,
+            "processingMs": 14.72,
+            "status": "success"
+          }
+        ],
+        "failedEdges": [],
+        "retryCount": 0,
+        "failoverNodeIds": [],
+        "deterministicMode": true
+      },
+      "receipt": {
+        "receiptId": "shard_f71076cb15e5de231bf9970a",
+        "taskId": "demo-shard-1",
+        "agentName": "DeveloperAgent",
+        "modelName": "GLM-5.2 style mock model",
+        "topologyId": "topology-glm52-wan-6x13",
+        "coordinatorNodeId": "glm52-coordinator-wa",
+        "shardNodeIds": [
+          "glm52-shard-1",
+          "glm52-shard-2",
+          "glm52-shard-3",
+          "glm52-shard-4",
+          "glm52-shard-5",
+          "glm52-shard-6"
+        ],
+        "gpuUuids": [
+          "GPU-GLM52-01",
+          "GPU-GLM52-02",
+          "GPU-GLM52-03",
+          "GPU-GLM52-04",
+          "GPU-GLM52-05",
+          "GPU-GLM52-06"
+        ],
+        "regions": [
+          "NV",
+          "TX",
+          "MN",
+          "MO",
+          "UT",
+          "WA"
+        ],
+        "layerAssignments": [
+          {
+            "nodeId": "glm52-shard-1",
+            "layerStart": 0,
+            "layerEnd": 12
+          },
+          {
+            "nodeId": "glm52-shard-2",
+            "layerStart": 13,
+            "layerEnd": 25
+          },
+          {
+            "nodeId": "glm52-shard-3",
+            "layerStart": 26,
+            "layerEnd": 38
+          },
+          {
+            "nodeId": "glm52-shard-4",
+            "layerStart": 39,
+            "layerEnd": 51
+          },
+          {
+            "nodeId": "glm52-shard-5",
+            "layerStart": 52,
+            "layerEnd": 64
+          },
+          {
+            "nodeId": "glm52-shard-6",
+            "layerStart": 65,
+            "layerEnd": 77
+          }
+        ],
+        "edgeRtts": [
+          {
+            "fromNodeId": "glm52-shard-1",
+            "toNodeId": "glm52-shard-2",
+            "rttMs": 33,
+            "failed": false
+          },
+          {
+            "fromNodeId": "glm52-shard-2",
+            "toNodeId": "glm52-shard-3",
+            "rttMs": 40,
+            "failed": false
+          },
+          {
+            "fromNodeId": "glm52-shard-3",
+            "toNodeId": "glm52-shard-4",
+            "rttMs": 48,
+            "failed": false
+          },
+          {
+            "fromNodeId": "glm52-shard-4",
+            "toNodeId": "glm52-shard-5",
+            "rttMs": 57,
+            "failed": false
+          },
+          {
+            "fromNodeId": "glm52-shard-5",
+            "toNodeId": "glm52-shard-6",
+            "rttMs": 63,
+            "failed": false
+          },
+          {
+            "fromNodeId": "glm52-shard-6",
+            "toNodeId": "glm52-coordinator-wa",
+            "rttMs": 43,
+            "failed": false
+          }
+        ],
+        "inputHash": "76246f825f8f33b24843207fcf404d484c4d06b80c0c3976bffc27777ce64415",
+        "outputHash": "79018d130a7a164be76d85f8b0cb0bfa64a9326032031b887718ff8d25ec21e3",
+        "tokenHash": "913e5ab9c1db44a3fcd2bdda69fdf09ef3dbac48bc959e4a5673149bbc82a66d",
+        "schemaHash": "7b9e70600a1a844a01ab7a3f6c703b8d4a9dbac06bad7caea9090ee1e0d6193e",
+        "tokensIn": 14,
+        "tokensOut": 72,
+        "acceptedDraftTokens": 72,
+        "rejectedDraftTokens": 24,
+        "latencyMs": 1454.85,
+        "throughputTokPerSec": 49.49,
+        "deterministicMode": true,
+        "optimizationFlags": {
+          "speculativeDecoding": true,
+          "asyncPipelining": true,
+          "directReturn": true
+        },
+        "healthSnapshots": [
+          {
+            "nodeId": "glm52-shard-1",
+            "status": "healthy",
+            "reliabilityScore": 0.99,
+            "latencyMs": 22
+          },
+          {
+            "nodeId": "glm52-shard-2",
+            "status": "healthy",
+            "reliabilityScore": 0.982,
+            "latencyMs": 31
+          },
+          {
+            "nodeId": "glm52-shard-3",
+            "status": "healthy",
+            "reliabilityScore": 0.974,
+            "latencyMs": 40
+          },
+          {
+            "nodeId": "glm52-shard-4",
+            "status": "healthy",
+            "reliabilityScore": 0.966,
+            "latencyMs": 49
+          },
+          {
+            "nodeId": "glm52-shard-5",
+            "status": "healthy",
+            "reliabilityScore": 0.958,
+            "latencyMs": 58
+          },
+          {
+            "nodeId": "glm52-shard-6",
+            "status": "healthy",
+            "reliabilityScore": 0.95,
+            "latencyMs": 67
+          }
+        ],
+        "verificationStatus": "verified",
+        "evaluationScore": 0.88,
+        "failedNodeIds": [],
+        "timestamp": "2026-06-20T02:00:00.000Z"
+      },
+      "settlements": [
+        {
+          "taskId": "demo-shard-1",
+          "receiptId": "shard_f71076cb15e5de231bf9970a",
+          "nodeId": "glm52-coordinator-wa",
+          "role": "coordinator",
+          "amount": 0.00091238,
+          "contributionReason": "Orchestration, embedding/head execution, ring scheduling, and direct-return coordination.",
+          "settlementStatus": "eligible"
+        },
+        {
+          "taskId": "demo-shard-1",
+          "receiptId": "shard_f71076cb15e5de231bf9970a",
+          "nodeId": "glm52-coordinator-wa:draft",
+          "role": "draft",
+          "amount": 0.00068429,
+          "contributionReason": "GLM-4-9B draft mock proposed 72 accepted speculative tokens.",
+          "settlementStatus": "eligible"
+        },
+        {
+          "taskId": "demo-shard-1",
+          "receiptId": "shard_f71076cb15e5de231bf9970a",
+          "nodeId": "glm52-shard-1",
+          "role": "shard",
+          "amount": 0.00123295,
+          "contributionReason": "13 layers (16.7%), reliability 0.990, trusted boundary bonus.",
+          "settlementStatus": "eligible"
+        },
+        {
+          "taskId": "demo-shard-1",
+          "receiptId": "shard_f71076cb15e5de231bf9970a",
+          "nodeId": "glm52-shard-2",
+          "role": "shard",
+          "amount": 0.00116475,
+          "contributionReason": "13 layers (16.7%), reliability 0.982.",
+          "settlementStatus": "eligible"
+        },
+        {
+          "taskId": "demo-shard-1",
+          "receiptId": "shard_f71076cb15e5de231bf9970a",
+          "nodeId": "glm52-shard-3",
+          "role": "shard",
+          "amount": 0.00115526,
+          "contributionReason": "13 layers (16.7%), reliability 0.974.",
+          "settlementStatus": "eligible"
+        },
+        {
+          "taskId": "demo-shard-1",
+          "receiptId": "shard_f71076cb15e5de231bf9970a",
+          "nodeId": "glm52-shard-4",
+          "role": "shard",
+          "amount": 0.00114577,
+          "contributionReason": "13 layers (16.7%), reliability 0.966.",
+          "settlementStatus": "eligible"
+        },
+        {
+          "taskId": "demo-shard-1",
+          "receiptId": "shard_f71076cb15e5de231bf9970a",
+          "nodeId": "glm52-shard-5",
+          "role": "shard",
+          "amount": 0.00113628,
+          "contributionReason": "13 layers (16.7%), reliability 0.958.",
+          "settlementStatus": "eligible"
+        },
+        {
+          "taskId": "demo-shard-1",
+          "receiptId": "shard_f71076cb15e5de231bf9970a",
+          "nodeId": "glm52-shard-6",
+          "role": "shard",
+          "amount": 0.00118313,
+          "contributionReason": "13 layers (16.7%), reliability 0.950, trusted boundary bonus.",
+          "settlementStatus": "eligible"
+        }
+      ]
+    },
+    {
+      "topology": {
+        "topologyId": "topology-gptoss120b-wan-3x12",
+        "modelName": "gpt-oss-120B style mock model",
+        "totalLayers": 36,
+        "coordinatorNodeId": "gptoss-coordinator-nv",
+        "draftModelName": "gpt-oss-20B draft mock",
+        "shardNodes": [
+          {
+            "nodeId": "gptoss-shard-1",
+            "providerName": "Mock Provider 1",
+            "region": "NV",
+            "publicEndpoint": "mock://gptoss/nv",
+            "gpuType": "RTX 4090 Mock",
+            "gpuUuid": "GPU-GPTOSS-01",
+            "modelFamily": "gpt-oss-120B-style-mock",
+            "layerStart": 0,
+            "layerEnd": 11,
+            "endpointType": "mock",
+            "latencyMs": 22,
+            "reliabilityScore": 0.99,
+            "healthStatus": "healthy",
+            "costPerToken": 0.0000025,
+            "trustedBoundary": true
+          },
+          {
+            "nodeId": "gptoss-shard-2",
+            "providerName": "Mock Provider 2",
+            "region": "TX",
+            "publicEndpoint": "mock://gptoss/tx",
+            "gpuType": "RTX 4090 Mock",
+            "gpuUuid": "GPU-GPTOSS-02",
+            "modelFamily": "gpt-oss-120B-style-mock",
+            "layerStart": 12,
+            "layerEnd": 23,
+            "endpointType": "mock",
+            "latencyMs": 31,
+            "reliabilityScore": 0.982,
+            "healthStatus": "healthy",
+            "costPerToken": 0.0000027,
+            "trustedBoundary": false
+          },
+          {
+            "nodeId": "gptoss-shard-3",
+            "providerName": "Mock Provider 3",
+            "region": "UT",
+            "publicEndpoint": "mock://gptoss/ut",
+            "gpuType": "RTX 4090 Mock",
+            "gpuUuid": "GPU-GPTOSS-03",
+            "modelFamily": "gpt-oss-120B-style-mock",
+            "layerStart": 24,
+            "layerEnd": 35,
+            "endpointType": "mock",
+            "latencyMs": 40,
+            "reliabilityScore": 0.974,
+            "healthStatus": "healthy",
+            "costPerToken": 0.0000029,
+            "trustedBoundary": true
+          }
+        ],
+        "ringOrder": [
+          "gptoss-shard-1",
+          "gptoss-shard-2",
+          "gptoss-shard-3"
+        ],
+        "directReturnEnabled": true,
+        "speculativeDecodingEnabled": true,
+        "asyncPipeliningEnabled": true
+      },
+      "simulation": {
+        "draftTokensProposed": 84,
+        "acceptedDraftTokens": 64,
+        "rejectedDraftTokens": 20,
+        "outputTokens": [
+          "tok_61555366",
+          "tok_555366be",
+          "tok_5366be5d",
+          "tok_66be5d92",
+          "tok_be5d92d4",
+          "tok_5d92d47e",
+          "tok_92d47e85",
+          "tok_d47e85fa",
+          "tok_7e85fa04",
+          "tok_85fa0482",
+          "tok_fa04821e",
+          "tok_04821eb2",
+          "tok_821eb216",
+          "tok_1eb21643",
+          "tok_b2164367",
+          "tok_164367d2",
+          "tok_4367d2b5",
+          "tok_67d2b5d9",
+          "tok_d2b5d939",
+          "tok_b5d9398a",
+          "tok_d9398ade",
+          "tok_398adea3",
+          "tok_8adea3f8",
+          "tok_dea3f86e",
+          "tok_a3f86ecc",
+          "tok_f86ecc24",
+          "tok_6ecc242c",
+          "tok_cc242cf1",
+          "tok_61555366",
+          "tok_555366be",
+          "tok_5366be5d",
+          "tok_66be5d92",
+          "tok_be5d92d4",
+          "tok_5d92d47e",
+          "tok_92d47e85",
+          "tok_d47e85fa",
+          "tok_7e85fa04",
+          "tok_85fa0482",
+          "tok_fa04821e",
+          "tok_04821eb2",
+          "tok_821eb216",
+          "tok_1eb21643",
+          "tok_b2164367",
+          "tok_164367d2",
+          "tok_4367d2b5",
+          "tok_67d2b5d9",
+          "tok_d2b5d939",
+          "tok_b5d9398a",
+          "tok_d9398ade",
+          "tok_398adea3",
+          "tok_8adea3f8",
+          "tok_dea3f86e",
+          "tok_a3f86ecc",
+          "tok_f86ecc24",
+          "tok_6ecc242c",
+          "tok_cc242cf1",
+          "tok_61555366",
+          "tok_555366be",
+          "tok_5366be5d",
+          "tok_66be5d92",
+          "tok_be5d92d4",
+          "tok_5d92d47e",
+          "tok_92d47e85",
+          "tok_d47e85fa"
+        ],
+        "tokensIn": 14,
+        "tokensOut": 64,
+        "latencyMs": 571.58,
+        "throughputTokPerSec": 111.97,
+        "edgeRtts": [
+          {
+            "fromNodeId": "gptoss-shard-1",
+            "toNodeId": "gptoss-shard-2",
+            "rttMs": 33,
+            "failed": false,
+            "retried": false
+          },
+          {
+            "fromNodeId": "gptoss-shard-2",
+            "toNodeId": "gptoss-shard-3",
+            "rttMs": 41,
+            "failed": false,
+            "retried": false
+          },
+          {
+            "fromNodeId": "gptoss-shard-3",
+            "toNodeId": "gptoss-coordinator-nv",
+            "rttMs": 28,
+            "failed": false,
+            "retried": false
+          }
+        ],
+        "traversal": [
+          {
+            "nodeId": "gptoss-shard-1",
+            "layerStart": 0,
+            "layerEnd": 11,
+            "processingMs": 10.4,
+            "status": "success"
+          },
+          {
+            "nodeId": "gptoss-shard-2",
+            "layerStart": 12,
+            "layerEnd": 23,
+            "processingMs": 11.12,
+            "status": "success"
+          },
+          {
+            "nodeId": "gptoss-shard-3",
+            "layerStart": 24,
+            "layerEnd": 35,
+            "processingMs": 11.84,
+            "status": "success"
+          }
+        ],
+        "failedEdges": [],
+        "retryCount": 0,
+        "failoverNodeIds": [],
+        "deterministicMode": true
+      },
+      "receipt": {
+        "receiptId": "shard_925be99fc7ed157ce52c2eb3",
+        "taskId": "demo-shard-2",
+        "agentName": "ReportAgent",
+        "modelName": "gpt-oss-120B style mock model",
+        "topologyId": "topology-gptoss120b-wan-3x12",
+        "coordinatorNodeId": "gptoss-coordinator-nv",
+        "shardNodeIds": [
+          "gptoss-shard-1",
+          "gptoss-shard-2",
+          "gptoss-shard-3"
+        ],
+        "gpuUuids": [
+          "GPU-GPTOSS-01",
+          "GPU-GPTOSS-02",
+          "GPU-GPTOSS-03"
+        ],
+        "regions": [
+          "NV",
+          "TX",
+          "UT"
+        ],
+        "layerAssignments": [
+          {
+            "nodeId": "gptoss-shard-1",
+            "layerStart": 0,
+            "layerEnd": 11
+          },
+          {
+            "nodeId": "gptoss-shard-2",
+            "layerStart": 12,
+            "layerEnd": 23
+          },
+          {
+            "nodeId": "gptoss-shard-3",
+            "layerStart": 24,
+            "layerEnd": 35
+          }
+        ],
+        "edgeRtts": [
+          {
+            "fromNodeId": "gptoss-shard-1",
+            "toNodeId": "gptoss-shard-2",
+            "rttMs": 33,
+            "failed": false
+          },
+          {
+            "fromNodeId": "gptoss-shard-2",
+            "toNodeId": "gptoss-shard-3",
+            "rttMs": 41,
+            "failed": false
+          },
+          {
+            "fromNodeId": "gptoss-shard-3",
+            "toNodeId": "gptoss-coordinator-nv",
+            "rttMs": 28,
+            "failed": false
+          }
+        ],
+        "inputHash": "10cbb80d188191d211c8004d88be6f1d56d49677bdeba33f0bcdcabd1fe5d0ee",
+        "outputHash": "a6801d74265af683c59f83d51e910b8b75982dde8d804688d33a000ffee32e46",
+        "tokenHash": "0feae79b14c2203ce9ae1382db6c021a9d119f8fd733aa02718a82d7f9868767",
+        "schemaHash": "7b9e70600a1a844a01ab7a3f6c703b8d4a9dbac06bad7caea9090ee1e0d6193e",
+        "tokensIn": 14,
+        "tokensOut": 64,
+        "acceptedDraftTokens": 64,
+        "rejectedDraftTokens": 20,
+        "latencyMs": 571.58,
+        "throughputTokPerSec": 111.97,
+        "deterministicMode": true,
+        "optimizationFlags": {
+          "speculativeDecoding": true,
+          "asyncPipelining": true,
+          "directReturn": true
+        },
+        "healthSnapshots": [
+          {
+            "nodeId": "gptoss-shard-1",
+            "status": "healthy",
+            "reliabilityScore": 0.99,
+            "latencyMs": 22
+          },
+          {
+            "nodeId": "gptoss-shard-2",
+            "status": "healthy",
+            "reliabilityScore": 0.982,
+            "latencyMs": 31
+          },
+          {
+            "nodeId": "gptoss-shard-3",
+            "status": "healthy",
+            "reliabilityScore": 0.974,
+            "latencyMs": 40
+          }
+        ],
+        "verificationStatus": "verified",
+        "evaluationScore": 0.84,
+        "failedNodeIds": [],
+        "timestamp": "2026-06-20T03:00:00.000Z"
+      },
+      "settlements": [
+        {
+          "taskId": "demo-shard-2",
+          "receiptId": "shard_925be99fc7ed157ce52c2eb3",
+          "nodeId": "gptoss-coordinator-nv",
+          "role": "coordinator",
+          "amount": 0.00077414,
+          "contributionReason": "Orchestration, embedding/head execution, ring scheduling, and direct-return coordination.",
+          "settlementStatus": "eligible"
+        },
+        {
+          "taskId": "demo-shard-2",
+          "receiptId": "shard_925be99fc7ed157ce52c2eb3",
+          "nodeId": "gptoss-coordinator-nv:draft",
+          "role": "draft",
+          "amount": 0.00058982,
+          "contributionReason": "gpt-oss-20B draft mock proposed 64 accepted speculative tokens.",
+          "settlementStatus": "eligible"
+        },
+        {
+          "taskId": "demo-shard-2",
+          "receiptId": "shard_925be99fc7ed157ce52c2eb3",
+          "nodeId": "gptoss-shard-1",
+          "role": "shard",
+          "amount": 0.00209228,
+          "contributionReason": "12 layers (33.3%), reliability 0.990, trusted boundary bonus.",
+          "settlementStatus": "eligible"
+        },
+        {
+          "taskId": "demo-shard-2",
+          "receiptId": "shard_925be99fc7ed157ce52c2eb3",
+          "nodeId": "gptoss-shard-2",
+          "role": "shard",
+          "amount": 0.00197654,
+          "contributionReason": "12 layers (33.3%), reliability 0.982.",
+          "settlementStatus": "eligible"
+        },
+        {
+          "taskId": "demo-shard-2",
+          "receiptId": "shard_925be99fc7ed157ce52c2eb3",
+          "nodeId": "gptoss-shard-3",
+          "role": "shard",
+          "amount": 0.00205846,
+          "contributionReason": "12 layers (33.3%), reliability 0.974, trusted boundary bonus.",
+          "settlementStatus": "eligible"
+        }
+      ]
+    }
+  ],
+  "normalReceipts": [
+    {
+      "receiptId": "provider-demo-gemini",
+      "backend": "provider",
+      "taskId": "demo-provider-1",
+      "agentName": "ReportAgent",
+      "modelName": "gemini-3-flash",
+      "outputHash": "9b1f7dd0ff386303c797f2dc5bd8f8d7e3c5375078fd0628005a713985dcb201",
+      "tokenHash": "e0d54cceeb4dbfe6a157245c4f48de60017309b2ac6a81a6bcd35d6c06e2e21c",
+      "evaluationScore": 0.86,
+      "payoutEstimate": 0.000018,
+      "settlementStatus": "estimated",
+      "timestamp": "2026-06-20T01:20:00.000Z"
+    },
+    {
+      "receiptId": "local-demo-kimi",
+      "backend": "local",
+      "taskId": "demo-local-1",
+      "agentName": "DeveloperAgent",
+      "modelName": "kimi-k2.6-local",
+      "outputHash": "73cfeeebb641f939c22250f1f9fcc390039e4136c2659a641c363de494bd5382",
+      "tokenHash": "2824fd2dfe52953ee08667aac45e301d7b76f93a62d9cbf7532452ca372e163a",
+      "evaluationScore": 0.82,
+      "payoutEstimate": 0.000014,
+      "settlementStatus": "estimated",
+      "timestamp": "2026-06-20T01:40:00.000Z"
+    }
+  ]
+}

@@ -137,6 +137,28 @@ Pluggable store: `MemoryEvaluationStore` (JSON file, default) or
 
 The dashboard exposes dedicated **Watchlist, Signals, Backtests, Portfolio, News, and Agent Activity** applications. Demo data is synthetic; production deployments should supply licensed market/news providers and secure notification transports through `TradingDataProvider` and `CallbackNotificationChannel`.
 
+## Distributed Inference & Proof Receipts
+
+AgentOS does **not** yet perform real WAN GPU inference. Inspired by the orchestration concepts in
+[leyten/shard](https://github.com/leyten/shard), it models the control and settlement layer required
+for a future distributed inference network without CUDA, activation transport, blockchain, or
+`c0mpute.ai` access.
+
+The deterministic mock implementation in [src/shard](src/shard) provides:
+
+- a shard node registry with GPU identity, region, layer range, health, reliability, cost, and trust-boundary metadata;
+- topology validation for complete contiguous layer coverage, ring order, and unhealthy-node failover policy;
+- WAN traversal simulation with edge RTTs, speculative-token acceptance, async-pipeline/direct-return flags, retries, failover, latency, and throughput;
+- proof receipts covering inputs, outputs, tokens, schemas, GPU UUIDs, regions, layer assignments, health snapshots, and optimization flags;
+- receipt verification for coverage, GPU uniqueness, node participation, output integrity, RTT validity, deterministic consistency, and offline-node exclusion;
+- settlement estimates for coordinators, draft models, and shard nodes, weighted by token output, layer contribution, reliability, evaluation quality, latency, failures, and trusted boundaries.
+
+`Orchestrator.runAgent()` accepts `executionBackend: "provider" | "local" | "sharded"`. A sharded
+run uses deterministic mock structured generation, simulates the selected topology, attaches the
+verified `ShardRunReceipt` and `SettlementRecord[]` to the existing evaluation record, and exposes
+the result through the same audit API. Two included demos model a 78-layer GLM-5.2-style 6×13 WAN
+ring and a 36-layer gpt-oss-120B-style 3×12 WAN ring.
+
 ## Configuration
 
 All keys come from the environment (see [.env.example](.env.example)). Set

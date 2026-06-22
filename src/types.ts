@@ -19,10 +19,13 @@ export type TaskType =
 
 export type RiskLevel = "low" | "medium" | "high";
 export type LatencyRequirement = "realtime" | "interactive" | "batch";
+export type ExecutionBackend = "provider" | "local" | "sharded";
 
 /** Signals the router weighs when choosing a model. */
 export interface RoutingContext {
   taskType: TaskType;
+  /** Execution plane selected for this run. Defaults to a normal provider adapter. */
+  executionBackend?: ExecutionBackend;
   riskLevel?: RiskLevel;
   /** Approximate input size in tokens. */
   contextTokens?: number;
@@ -42,6 +45,7 @@ export interface RoutingContext {
 
 export interface RoutingDecision {
   model: ModelFamily;
+  backend: ExecutionBackend;
   ruleId: string;
   reason: string;
   /** Models considered, in preference order. */

@@ -1,5 +1,8 @@
 import { createHash } from "node:crypto";
 import type { HumanReviewStatus, ModelFamily } from "../types.js";
+import type { ExecutionBackend } from "../types.js";
+import type { ShardRunReceipt } from "../shard/proofReceipt.js";
+import type { SettlementRecord } from "../settlement/shardSettlement.js";
 
 /**
  * One audit/evaluation record per AI output, matching the spec field-for-field
@@ -20,6 +23,9 @@ export interface EvaluationRecord {
   reviewModel?: string;
   humanReviewStatus: HumanReviewStatus;
   routingTrace?: unknown;
+  executionBackend?: ExecutionBackend;
+  shardReceipt?: ShardRunReceipt;
+  settlementRecords?: SettlementRecord[];
   createdAt: string; // ISO timestamp
 }
 
