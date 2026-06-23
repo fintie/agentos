@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "model": "deepseek-v4-pro",
+  "confidence": 0.82,
+  "decision": {
+    "model": "deepseek-v4-pro",
+    "backend": "provider",
+    "ruleId": "compliance_review.default",
+    "reason": "Compliance review → DeepSeek V4 Pro.",
+    "candidates": [
+      "deepseek-v4-pro"
+    ],
+    "estimatedCostUsd": 0.0018544,
+    "escalated": false
+  },
+  "parsed": {
+    "settlement_id": "mock-settlement_id",
+    "receipt_bound": false,
+    "evaluation_bound": false,
+    "actual_amount": 1,
+    "settlement_status": "pending",
+    "contribution_reason": "Mock contribution_reason: system: You are the AgentOS X402 Settlement Agent. Operate in deterministic mock",
+    "confidence": 0.82
+  },
+  "raw": "{\"settlement_id\":\"mock-settlement_id\",\"receipt_bound\":false,\"evaluation_bound\":false,\"actual_amount\":1,\"settlement_status\":\"pending\",\"contribution_reason\":\"Mock contribution_reason: system: You are the AgentOS X402 Settlement Agent. Operate in deterministic mock\",\"confidence\":0.82}",
+  "recordId": "af2227c0-98da-4cc6-9fe8-d52b7ba31253"
+}

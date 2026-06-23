@@ -17,3 +17,4 @@ export * from "./workflows/index.js";
 export * from "./trading/index.js";
 export * from "./shard/index.js";
 export * from "./settlement/index.js";
+export * from "./x402/index.js";

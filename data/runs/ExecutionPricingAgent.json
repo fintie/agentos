@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "model": "deepseek-v4-pro",
+  "confidence": 0.82,
+  "decision": {
+    "model": "deepseek-v4-pro",
+    "backend": "provider",
+    "ruleId": "agent_planning.default",
+    "reason": "Agent / multi-agent planning → Kimi K2.6. High risk — promoting strongest candidate.",
+    "candidates": [
+      "kimi-k2.6",
+      "deepseek-v4-pro"
+    ],
+    "estimatedCostUsd": 0.0018583999999999999,
+    "escalated": true
+  },
+  "parsed": {
+    "quote_id": "mock-quote_id",
+    "pricing_unit": "request",
+    "estimated_amount": 1,
+    "authorized_maximum": 1,
+    "currency": "mock-currency",
+    "within_budget": false,
+    "confidence": 0.82
+  },
+  "raw": "{\"quote_id\":\"mock-quote_id\",\"pricing_unit\":\"request\",\"estimated_amount\":1,\"authorized_maximum\":1,\"currency\":\"mock-currency\",\"within_budget\":false,\"confidence\":0.82}",
+  "recordId": "1f6874b0-473c-438a-93ac-c090aa621606"
+}

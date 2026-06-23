@@ -23,6 +23,7 @@ import { runTradingWorkflow } from "../src/trading/engine.js";
 import { buildDistributedInferenceDemo } from "../src/shard/dashboardData.js";
 import { DEMO_SHARD_TOPOLOGIES } from "../src/shard/demoTopologies.js";
 import type { ExecutionBackend } from "../src/types.js";
+import { buildX402SystemDemo } from "../src/x402/demoData.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const config = loadConfig();
@@ -89,6 +90,9 @@ app.get("/api/trading", async (_req, res) => {
 });
 app.get("/api/shard", (_req, res) => {
   res.json(buildDistributedInferenceDemo());
+});
+app.get("/api/x402", (_req, res) => {
+  res.json(buildX402SystemDemo());
 });
 
 // ── Run ──────────────────────────────────────────────────────────────
@@ -172,6 +176,8 @@ app.get("/trading.css", (_req, res) => res.sendFile(join(__dirname, "trading.css
 app.get("/trading.js", (_req, res) => res.sendFile(join(__dirname, "trading.js")));
 app.get("/shard.css", (_req, res) => res.sendFile(join(__dirname, "shard.css")));
 app.get("/shard.js", (_req, res) => res.sendFile(join(__dirname, "shard.js")));
+app.get("/x402.css", (_req, res) => res.sendFile(join(__dirname, "x402.css")));
+app.get("/x402.js", (_req, res) => res.sendFile(join(__dirname, "x402.js")));
 
 app.listen(config.dashboardPort, () => {
   console.log(`AgentOS dashboard → http://localhost:${config.dashboardPort}`);

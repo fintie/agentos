@@ -6,6 +6,7 @@
     <title>AgentOS — Agent Management</title>
     <link rel="stylesheet" href="/trading.css" />
     <link rel="stylesheet" href="/shard.css" />
+    <link rel="stylesheet" href="/x402.css" />
     <style>
       :root {
         --bg:#0b0d12; --desktop:#101722; --panel:#151923; --panel2:#202634; --panel3:#262e3d;
@@ -195,12 +196,12 @@
         clone: "git clone https://github.com/fintie/agentos.git",
         branch: "git switch -c feature/agent-workspace",
       };
-      const state = { view: "system:trading", useCases: [], agents: [], config: {}, trading: null, shard: null, tradingProfile: "balanced" };
+      const state = { view: "system:trading", useCases: [], agents: [], config: {}, trading: null, shard: null, x402: null, tradingProfile: "balanced" };
 
       // ── boot ──────────────────────────────────────────────────────
       async function boot() {
-        [state.useCases, state.agents, state.config, state.trading, state.shard] = await Promise.all([
-          get("/api/usecases"), get("/api/agents"), get("/api/config"), get("/api/trading"), get("/api/shard"),
+        [state.useCases, state.agents, state.config, state.trading, state.shard, state.x402] = await Promise.all([
+          get("/api/usecases"), get("/api/agents"), get("/api/config"), get("/api/trading"), get("/api/shard"), get("/api/x402"),
         ]);
         const badge = $("#modeBadge");
         if (state.config.mockMode || (state.config.liveModels || []).length === 0) {
@@ -228,7 +229,7 @@
       }
 
       function iconFor(id) {
-        return ({ trading: "TA", care: "CA", stem: "ST", voice: "VO", developer: "DV", review: "RV", incident: "IN" }[id] || "UC");
+        return ({ x402: "X4", trading: "TA", care: "CA", stem: "ST", voice: "VO", developer: "DV", review: "RV", incident: "IN" }[id] || "UC");
       }
 
       function agentFlow() {
@@ -421,6 +422,7 @@ $ git push origin HEAD</div>
         $("#main").innerHTML = `
           <h2>${h(uc.name)}</h2>
           <p class="desc">${h(uc.description)}</p>
+          ${id === "x402" ? renderX402Overview(state.x402) : ""}
           ${id === "developer" ? renderDistributedInference(state.shard) : ""}
           <h3 style="margin:18px 0 8px">Shared AgentOS modules</h3>
           ${renderSharedModules(uc)}
@@ -582,5 +584,6 @@ $ git push origin HEAD</div>
     </script>
     <script src="/trading.js"></script>
     <script src="/shard.js"></script>
+    <script src="/x402.js"></script>
   </body>
 </html>

@@ -1,0 +1,479 @@
+{
+  "generatedAt": "2026-06-20T04:10:00.000Z",
+  "deterministicMode": true,
+  "protocolMode": "mock-no-chain",
+  "resources": [
+    {
+      "resourceId": "agentos-shard-inference",
+      "name": "Shard Inference Network",
+      "description": "Shard Inference Network exposed as a deterministic pay-per-use AgentOS resource.",
+      "category": "inference",
+      "baseUrl": "mock://x402/agentos-shard-inference",
+      "discoveryPath": "/.well-known/x402",
+      "providerName": "AgentOS Demo Provider",
+      "capabilities": [
+        "distributed-inference",
+        "proof-receipt"
+      ],
+      "healthStatus": "healthy",
+      "reliabilityScore": 0.992,
+      "proofRequirements": [
+        "output-hash",
+        "token-hash",
+        "evaluation-hash",
+        "shard-receipt"
+      ],
+      "endpoints": [
+        {
+          "endpointId": "agentos-shard-inference-endpoint",
+          "method": "POST",
+          "path": "/v1/infer",
+          "description": "Call Shard Inference Network",
+          "inputSchema": {
+            "type": "object"
+          },
+          "outputSchema": {
+            "type": "object"
+          },
+          "pricing": {
+            "unit": "token",
+            "unitAmount": 0.00012,
+            "maximumAmount": 0.05,
+            "currency": "USD-DEMO"
+          }
+        }
+      ]
+    },
+    {
+      "resourceId": "agentos-market-intelligence",
+      "name": "Market Intelligence Feed",
+      "description": "Market Intelligence Feed exposed as a deterministic pay-per-use AgentOS resource.",
+      "category": "data",
+      "baseUrl": "mock://x402/agentos-market-intelligence",
+      "discoveryPath": "/.well-known/x402",
+      "providerName": "AgentOS Demo Provider",
+      "capabilities": [
+        "market-data",
+        "news-catalyst"
+      ],
+      "healthStatus": "healthy",
+      "reliabilityScore": 0.978,
+      "proofRequirements": [
+        "output-hash",
+        "token-hash",
+        "evaluation-hash"
+      ],
+      "endpoints": [
+        {
+          "endpointId": "agentos-market-intelligence-endpoint",
+          "method": "GET",
+          "path": "/v1/market/snapshot",
+          "description": "Call Market Intelligence Feed",
+          "inputSchema": {
+            "type": "object"
+          },
+          "outputSchema": {
+            "type": "object"
+          },
+          "pricing": {
+            "unit": "request",
+            "unitAmount": 0.0025,
+            "currency": "USD-DEMO"
+          }
+        }
+      ]
+    },
+    {
+      "resourceId": "agentos-research-tool",
+      "name": "Evidence Research Tool",
+      "description": "Evidence Research Tool exposed as a deterministic pay-per-use AgentOS resource.",
+      "category": "tool",
+      "baseUrl": "mock://x402/agentos-research-tool",
+      "discoveryPath": "/.well-known/x402",
+      "providerName": "AgentOS Demo Provider",
+      "capabilities": [
+        "web-research",
+        "source-verification"
+      ],
+      "healthStatus": "healthy",
+      "reliabilityScore": 0.966,
+      "proofRequirements": [
+        "output-hash",
+        "token-hash",
+        "evaluation-hash"
+      ],
+      "endpoints": [
+        {
+          "endpointId": "agentos-research-tool-endpoint",
+          "method": "POST",
+          "path": "/v1/research",
+          "description": "Call Evidence Research Tool",
+          "inputSchema": {
+            "type": "object"
+          },
+          "outputSchema": {
+            "type": "object"
+          },
+          "pricing": {
+            "unit": "upto",
+            "unitAmount": 0.004,
+            "maximumAmount": 0.04,
+            "currency": "USD-DEMO"
+          }
+        }
+      ]
+    },
+    {
+      "resourceId": "agentos-local-compute",
+      "name": "Local Model Compute",
+      "description": "Local Model Compute exposed as a deterministic pay-per-use AgentOS resource.",
+      "category": "compute",
+      "baseUrl": "mock://x402/agentos-local-compute",
+      "discoveryPath": "/.well-known/x402",
+      "providerName": "AgentOS Demo Provider",
+      "capabilities": [
+        "structured-output",
+        "private-inference"
+      ],
+      "healthStatus": "healthy",
+      "reliabilityScore": 0.984,
+      "proofRequirements": [
+        "output-hash",
+        "token-hash",
+        "evaluation-hash"
+      ],
+      "endpoints": [
+        {
+          "endpointId": "agentos-local-compute-endpoint",
+          "method": "POST",
+          "path": "/v1/generate",
+          "description": "Call Local Model Compute",
+          "inputSchema": {
+            "type": "object"
+          },
+          "outputSchema": {
+            "type": "object"
+          },
+          "pricing": {
+            "unit": "token",
+            "unitAmount": 0.00004,
+            "maximumAmount": 0.02,
+            "currency": "USD-DEMO"
+          }
+        }
+      ]
+    }
+  ],
+  "lifecycle": {
+    "resource": {
+      "resourceId": "agentos-shard-inference",
+      "name": "Shard Inference Network",
+      "description": "Shard Inference Network exposed as a deterministic pay-per-use AgentOS resource.",
+      "category": "inference",
+      "baseUrl": "mock://x402/agentos-shard-inference",
+      "discoveryPath": "/.well-known/x402",
+      "providerName": "AgentOS Demo Provider",
+      "capabilities": [
+        "distributed-inference",
+        "proof-receipt"
+      ],
+      "healthStatus": "healthy",
+      "reliabilityScore": 0.992,
+      "proofRequirements": [
+        "output-hash",
+        "token-hash",
+        "evaluation-hash",
+        "shard-receipt"
+      ],
+      "endpoints": [
+        {
+          "endpointId": "agentos-shard-inference-endpoint",
+          "method": "POST",
+          "path": "/v1/infer",
+          "description": "Call Shard Inference Network",
+          "inputSchema": {
+            "type": "object"
+          },
+          "outputSchema": {
+            "type": "object"
+          },
+          "pricing": {
+            "unit": "token",
+            "unitAmount": 0.00012,
+            "maximumAmount": 0.05,
+            "currency": "USD-DEMO"
+          }
+        }
+      ]
+    },
+    "quote": {
+      "quoteId": "quote_adfbe445f87a6626d0",
+      "resourceId": "agentos-shard-inference",
+      "endpointId": "agentos-shard-inference-endpoint",
+      "pricingUnit": "token",
+      "unitPrice": 0.00012,
+      "authorizedMaximum": 0.05,
+      "estimatedAmount": 0.0144,
+      "currency": "USD-DEMO",
+      "expiresAt": "2026-06-20T04:15:00.000Z",
+      "quoteHash": "adfbe445f87a6626d0b4b0c406736e9a62f225b8ee7e3f46519707d5e9694f6c"
+    },
+    "paymentRequirement": {
+      "status": 402,
+      "quote": {
+        "quoteId": "quote_adfbe445f87a6626d0",
+        "resourceId": "agentos-shard-inference",
+        "endpointId": "agentos-shard-inference-endpoint",
+        "pricingUnit": "token",
+        "unitPrice": 0.00012,
+        "authorizedMaximum": 0.05,
+        "estimatedAmount": 0.0144,
+        "currency": "USD-DEMO",
+        "expiresAt": "2026-06-20T04:15:00.000Z",
+        "quoteHash": "adfbe445f87a6626d0b4b0c406736e9a62f225b8ee7e3f46519707d5e9694f6c"
+      },
+      "acceptedMethods": [
+        "mock-balance",
+        "x402-compatible-adapter"
+      ],
+      "facilitatorId": "agentos-mock-facilitator"
+    },
+    "authorization": {
+      "authorizationId": "auth_fb5be3888bb5b7617d",
+      "quoteId": "quote_adfbe445f87a6626d0",
+      "subjectId": "agent-software-engineering",
+      "budgetPolicyId": "policy-agentos-demo",
+      "authorizedMaximum": 0.05,
+      "status": "authorized",
+      "authorizationHash": "fb5be3888bb5b7617d70055464c596b744442b07061745f231b15d975c96d045"
+    },
+    "binding": {
+      "executionReceiptHash": "d1a30e12198e7515d36385702204534ff745427affb43af4abbb3dce05bf375b",
+      "evaluationHash": "07b1a596d5f1056a7b4473a6c9cb22e43d95ce9afaaf92be807c1048c250d268",
+      "outputHash": "adb5dcfc532beb02d09c83e120ddf58cfde7fc213d36ed81fa7fa29e827e3ab4",
+      "tokenHash": "1d8a7c729c3aaf5553c96b4f1d0192d4f44bb8ddc3d9870737998782e3cc22d2"
+    },
+    "settlement": {
+      "settlementId": "settle_1491ae1b029d9596ff",
+      "quoteId": "quote_adfbe445f87a6626d0",
+      "authorizationId": "auth_fb5be3888bb5b7617d",
+      "resourceId": "agentos-shard-inference",
+      "actualAmount": 0.01152,
+      "currency": "USD-DEMO",
+      "binding": {
+        "executionReceiptHash": "d1a30e12198e7515d36385702204534ff745427affb43af4abbb3dce05bf375b",
+        "evaluationHash": "07b1a596d5f1056a7b4473a6c9cb22e43d95ce9afaaf92be807c1048c250d268",
+        "outputHash": "adb5dcfc532beb02d09c83e120ddf58cfde7fc213d36ed81fa7fa29e827e3ab4",
+        "tokenHash": "1d8a7c729c3aaf5553c96b4f1d0192d4f44bb8ddc3d9870737998782e3cc22d2"
+      },
+      "settlementStatus": "settled",
+      "settlementReference": "1491ae1b029d9596ffbd66f0580e315920687889beb5ed78ab2bf2a98837ffa2",
+      "deterministicMode": true,
+      "timestamp": "2026-06-20T04:05:00.000Z"
+    }
+  },
+  "stats": {
+    "sourceLabel": "Deterministic ecosystem benchmark demo",
+    "period": "12 months",
+    "transactions": [
+      {
+        "period": "Jul",
+        "value": 180000
+      },
+      {
+        "period": "Aug",
+        "value": 240000
+      },
+      {
+        "period": "Sep",
+        "value": 310000
+      },
+      {
+        "period": "Oct",
+        "value": 420000
+      },
+      {
+        "period": "Nov",
+        "value": 610000
+      },
+      {
+        "period": "Dec",
+        "value": 830000
+      },
+      {
+        "period": "Jan",
+        "value": 1160000
+      },
+      {
+        "period": "Feb",
+        "value": 1720000
+      },
+      {
+        "period": "Mar",
+        "value": 2380000
+      },
+      {
+        "period": "Apr",
+        "value": 3140000
+      },
+      {
+        "period": "May",
+        "value": 4210000
+      },
+      {
+        "period": "Jun",
+        "value": 5240000
+      }
+    ],
+    "volume": [
+      {
+        "period": "Jul",
+        "value": 30000
+      },
+      {
+        "period": "Aug",
+        "value": 50000
+      },
+      {
+        "period": "Sep",
+        "value": 80000
+      },
+      {
+        "period": "Oct",
+        "value": 130000
+      },
+      {
+        "period": "Nov",
+        "value": 190000
+      },
+      {
+        "period": "Dec",
+        "value": 270000
+      },
+      {
+        "period": "Jan",
+        "value": 380000
+      },
+      {
+        "period": "Feb",
+        "value": 520000
+      },
+      {
+        "period": "Mar",
+        "value": 680000
+      },
+      {
+        "period": "Apr",
+        "value": 820000
+      },
+      {
+        "period": "May",
+        "value": 970000
+      },
+      {
+        "period": "Jun",
+        "value": 1110000
+      }
+    ],
+    "buyers": [
+      {
+        "period": "Jul",
+        "value": 4100
+      },
+      {
+        "period": "Aug",
+        "value": 5800
+      },
+      {
+        "period": "Sep",
+        "value": 8200
+      },
+      {
+        "period": "Oct",
+        "value": 11900
+      },
+      {
+        "period": "Nov",
+        "value": 17400
+      },
+      {
+        "period": "Dec",
+        "value": 24800
+      },
+      {
+        "period": "Jan",
+        "value": 35600
+      },
+      {
+        "period": "Feb",
+        "value": 49200
+      },
+      {
+        "period": "Mar",
+        "value": 66800
+      },
+      {
+        "period": "Apr",
+        "value": 84300
+      },
+      {
+        "period": "May",
+        "value": 104700
+      },
+      {
+        "period": "Jun",
+        "value": 126090
+      }
+    ],
+    "sellers": [
+      {
+        "period": "Jul",
+        "value": 1800
+      },
+      {
+        "period": "Aug",
+        "value": 2400
+      },
+      {
+        "period": "Sep",
+        "value": 3200
+      },
+      {
+        "period": "Oct",
+        "value": 4500
+      },
+      {
+        "period": "Nov",
+        "value": 6100
+      },
+      {
+        "period": "Dec",
+        "value": 8300
+      },
+      {
+        "period": "Jan",
+        "value": 11400
+      },
+      {
+        "period": "Feb",
+        "value": 15200
+      },
+      {
+        "period": "Mar",
+        "value": 20100
+      },
+      {
+        "period": "Apr",
+        "value": 26500
+      },
+      {
+        "period": "May",
+        "value": 34100
+      },
+      {
+        "period": "Jun",
+        "value": 42000
+      }
+    ]
+  }
+}

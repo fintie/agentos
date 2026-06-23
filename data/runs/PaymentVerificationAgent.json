@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "model": "deepseek-v4-pro",
+  "confidence": 0.82,
+  "decision": {
+    "model": "deepseek-v4-pro",
+    "backend": "provider",
+    "ruleId": "final_judge.default",
+    "reason": "LLM-as-judge / final validation → DeepSeek V4 Pro.",
+    "candidates": [
+      "deepseek-v4-pro"
+    ],
+    "estimatedCostUsd": 0.0018576,
+    "escalated": false
+  },
+  "parsed": {
+    "authorization_id": "mock-authorization_id",
+    "quote_hash_valid": false,
+    "budget_valid": false,
+    "resource_allowed": false,
+    "decision": "authorize",
+    "reason": "Mock reason: system: You are the AgentOS Payment Verification Agent. Operate in deterministic",
+    "confidence": 0.82
+  },
+  "raw": "{\"authorization_id\":\"mock-authorization_id\",\"quote_hash_valid\":false,\"budget_valid\":false,\"resource_allowed\":false,\"decision\":\"authorize\",\"reason\":\"Mock reason: system: You are the AgentOS Payment Verification Agent. Operate in deterministic\",\"confidence\":0.82}",
+  "recordId": "cd40d337-3003-41df-9ad9-f04474b069ea"
+}

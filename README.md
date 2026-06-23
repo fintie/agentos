@@ -159,6 +159,21 @@ verified `ShardRunReceipt` and `SettlementRecord[]` to the existing evaluation r
 the result through the same audit API. Two included demos model a 78-layer GLM-5.2-style 6×13 WAN
 ring and a 36-layer gpt-oss-120B-style 3×12 WAN ring.
 
+## X402 Agent System
+
+The X402 Agent System models pay-per-use agent commerce without requiring a wallet, blockchain,
+stablecoin, or external facilitator. It separates service discovery, execution quoting, budget
+authorization, proof-bound execution, evaluation, and settlement into explicit deterministic contracts.
+
+- `X402ResourceManifest` publishes capabilities, schemas, health, pricing, and proof requirements at a conventional `/.well-known/x402` path.
+- `X402ResourceRegistry` discovers and ranks resources by capability, category, health, and reliability.
+- `MockX402Facilitator` creates hashed quotes, emits a 402-style payment requirement, applies budget policies, verifies authorization, and produces a receipt-bound mock settlement.
+- Execution settlements bind output, token, evaluation, and AgentOS execution-receipt hashes before they can reach `settled` status.
+- The dashboard includes a Resource Marketplace, the five-stage execution lifecycle, and deterministic 12-month charts for Transactions, Volume, Buyers, and Sellers.
+
+All monetary values use `USD-DEMO`. Production payment adapters remain intentionally feature-gated;
+AgentOS does not store private keys or claim real payment finality.
+
 ## Configuration
 
 All keys come from the environment (see [.env.example](.env.example)). Set

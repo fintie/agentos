@@ -14,6 +14,7 @@ import {
   StrategyEvaluationAgent,
   TechnicalAnalysisAgent,
 } from "./trading.js";
+import { ExecutionPricingAgent, PaymentVerificationAgent, ResourceDiscoveryAgent, X402SettlementAgent } from "./x402.js";
 
 export * from "./types.js";
 export * from "./care.js";
@@ -22,6 +23,7 @@ export * from "./voice.js";
 export * from "./developer.js";
 export * from "./review.js";
 export * from "./trading.js";
+export * from "./x402.js";
 
 /**
  * Central registry of reusable agents. The eight headline agents from the spec
@@ -52,6 +54,10 @@ export const AGENTS = {
   RiskManagementAgent,
   PortfolioManagerAgent,
   NotificationAgent,
+  ResourceDiscoveryAgent,
+  ExecutionPricingAgent,
+  PaymentVerificationAgent,
+  X402SettlementAgent,
 } as const;
 
 export type AgentName = keyof typeof AGENTS;

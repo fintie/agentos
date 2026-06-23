@@ -27,6 +27,13 @@ export type SharedModuleId = "model-router" | "agent-memory" | "workflow-runtime
 
 export const USE_CASES: UseCase[] = [
   {
+    id: "x402",
+    name: "X402 Agent System",
+    description: "Discover pay-per-use resources, negotiate execution quotes, authorize budgets, bind proof receipts, and simulate settlement without live wallets or chains.",
+    agents: ["ResourceDiscoveryAgent", "ExecutionPricingAgent", "PaymentVerificationAgent", "X402SettlementAgent"],
+    sharedModules: ["model-router", "agent-memory", "workflow-runtime", "evaluation", "notifications", "human-review", "audit-log"],
+  },
+  {
     id: "trading",
     name: "Trading Agent System",
     description: "Discover, validate, backtest, risk-check, rank, and deliver market opportunities through an event-driven agent pipeline.",
@@ -77,6 +84,10 @@ export const USE_CASES: UseCase[] = [
 
 /** Example inputs used to prefill the dashboard "run agent" forms. */
 export const AGENT_EXAMPLES: Record<string, unknown> = {
+  ResourceDiscoveryAgent: { capability: "distributed-inference", healthyOnly: true, maximumPrice: 0.05 },
+  ExecutionPricingAgent: { resourceId: "agentos-shard-inference", endpointId: "agentos-shard-inference-endpoint", estimatedTokens: 120 },
+  PaymentVerificationAgent: { quoteId: "quote_demo", subjectId: "agent-software-engineering", budgetPolicyId: "policy-agentos-demo" },
+  X402SettlementAgent: { quoteId: "quote_demo", executionReceiptHash: "receipt://shard-demo", evaluationScore: 0.91 },
   MarketScannerAgent: { markets: ["US", "ASX"], filters: { minRelativeVolume: 2, minPrice: 2 } },
   NewsCatalystAgent: { symbol: "NVDA", lookbackHours: 72 },
   TechnicalAnalysisAgent: { symbol: "NVDA", timeframe: "1D", bars: "provider://market-data/NVDA" },

@@ -1,5 +1,253 @@
 [
   {
+    "id": "x402",
+    "name": "X402 Agent System",
+    "description": "Discover pay-per-use resources, negotiate execution quotes, authorize budgets, bind proof receipts, and simulate settlement without live wallets or chains.",
+    "agents": [
+      {
+        "name": "ResourceDiscoveryAgent",
+        "description": "Discover and rank machine-readable resources by capability, health, proof, and price.",
+        "taskType": "agent_planning",
+        "defaultRisk": "medium",
+        "defaultLatency": null,
+        "promptVersion": "x402.discovery.v1",
+        "multimodal": false,
+        "routedModel": "kimi-k2.6",
+        "live": false,
+        "candidates": [
+          "kimi-k2.6",
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "resource_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "selected_resource_id": {
+              "type": "string"
+            },
+            "capability_match": {
+              "type": "number"
+            },
+            "rationale": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "resource_ids",
+            "selected_resource_id",
+            "capability_match",
+            "rationale",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "capability": "distributed-inference",
+          "healthyOnly": true,
+          "maximumPrice": 0.05
+        }
+      },
+      {
+        "name": "ExecutionPricingAgent",
+        "description": "Create an execution quote and evaluate it against the requesting agent's budget policy.",
+        "taskType": "agent_planning",
+        "defaultRisk": "high",
+        "defaultLatency": null,
+        "promptVersion": "x402.pricing.v1",
+        "multimodal": false,
+        "routedModel": "deepseek-v4-pro",
+        "live": false,
+        "candidates": [
+          "kimi-k2.6",
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "quote_id": {
+              "type": "string"
+            },
+            "pricing_unit": {
+              "type": "string",
+              "enum": [
+                "request",
+                "token",
+                "upto"
+              ]
+            },
+            "estimated_amount": {
+              "type": "number"
+            },
+            "authorized_maximum": {
+              "type": "number"
+            },
+            "currency": {
+              "type": "string"
+            },
+            "within_budget": {
+              "type": "boolean"
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "quote_id",
+            "pricing_unit",
+            "estimated_amount",
+            "authorized_maximum",
+            "currency",
+            "within_budget",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "resourceId": "agentos-shard-inference",
+          "endpointId": "agentos-shard-inference-endpoint",
+          "estimatedTokens": 120
+        }
+      },
+      {
+        "name": "PaymentVerificationAgent",
+        "description": "Verify quote integrity, budget authorization, and resource allowlists before execution.",
+        "taskType": "final_judge",
+        "defaultRisk": "high",
+        "defaultLatency": null,
+        "promptVersion": "x402.verification.v1",
+        "multimodal": false,
+        "routedModel": "deepseek-v4-pro",
+        "live": false,
+        "candidates": [
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "authorization_id": {
+              "type": "string"
+            },
+            "quote_hash_valid": {
+              "type": "boolean"
+            },
+            "budget_valid": {
+              "type": "boolean"
+            },
+            "resource_allowed": {
+              "type": "boolean"
+            },
+            "decision": {
+              "type": "string",
+              "enum": [
+                "authorize",
+                "decline"
+              ]
+            },
+            "reason": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "authorization_id",
+            "quote_hash_valid",
+            "budget_valid",
+            "resource_allowed",
+            "decision",
+            "reason",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "quoteId": "quote_demo",
+          "subjectId": "agent-software-engineering",
+          "budgetPolicyId": "policy-agentos-demo"
+        }
+      },
+      {
+        "name": "X402SettlementAgent",
+        "description": "Bind execution and evaluation receipts to a deterministic settlement result.",
+        "taskType": "compliance_review",
+        "defaultRisk": "high",
+        "defaultLatency": null,
+        "promptVersion": "x402.settlement.v1",
+        "multimodal": false,
+        "routedModel": "deepseek-v4-pro",
+        "live": false,
+        "candidates": [
+          "deepseek-v4-pro"
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "settlement_id": {
+              "type": "string"
+            },
+            "receipt_bound": {
+              "type": "boolean"
+            },
+            "evaluation_bound": {
+              "type": "boolean"
+            },
+            "actual_amount": {
+              "type": "number"
+            },
+            "settlement_status": {
+              "type": "string",
+              "enum": [
+                "pending",
+                "settled",
+                "failed"
+              ]
+            },
+            "contribution_reason": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "settlement_id",
+            "receipt_bound",
+            "evaluation_bound",
+            "actual_amount",
+            "settlement_status",
+            "contribution_reason",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        "example": {
+          "quoteId": "quote_demo",
+          "executionReceiptHash": "receipt://shard-demo",
+          "evaluationScore": 0.91
+        }
+      }
+    ],
+    "sharedModules": [
+      "model-router",
+      "agent-memory",
+      "workflow-runtime",
+      "evaluation",
+      "notifications",
+      "human-review",
+      "audit-log"
+    ],
+    "workflow": null
+  },
+  {
     "id": "trading",
     "name": "Trading Agent System",
     "description": "Discover, validate, backtest, risk-check, rank, and deliver market opportunities through an event-driven agent pipeline.",
