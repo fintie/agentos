@@ -10,7 +10,7 @@ export const X402SettlementSchema = z.object({ settlement_id: z.string(), receip
 
 function messages(role: string, input: unknown): Message[] {
   return [
-    { role: "system", content: `You are the AgentOS ${role}. Operate in deterministic mock mode. Never claim real payment finality, wallet access, or on-chain settlement. Return structured JSON.` },
+    { role: "system", content: `You are the AgentOS ${role}. Use only supplied resource, pricing, authorization, and receipt evidence. Never claim payment finality or wallet access without a verified settlement reference. Return structured JSON.` },
     { role: "user", content: JSON.stringify(input) },
   ];
 }
@@ -31,7 +31,7 @@ export const PaymentVerificationAgent: AgentDefinition<unknown, z.infer<typeof P
   buildMessages: (input) => messages("Payment Verification Agent", input),
 };
 export const X402SettlementAgent: AgentDefinition<unknown, z.infer<typeof X402SettlementSchema>> = {
-  name: "X402SettlementAgent", description: "Bind execution and evaluation receipts to a deterministic settlement result.",
+  name: "X402SettlementAgent", description: "Bind execution and evaluation receipts to a verifiable settlement result.",
   taskType: "compliance_review", defaultRisk: "high", promptVersion: "x402.settlement.v1", schema: X402SettlementSchema,
   buildMessages: (input) => messages("X402 Settlement Agent", input),
 };

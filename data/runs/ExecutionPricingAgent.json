@@ -1,7 +1,7 @@
 {
   "ok": true,
   "model": "deepseek-v4-pro",
-  "confidence": 0.82,
+  "confidence": 0.96,
   "decision": {
     "model": "deepseek-v4-pro",
     "backend": "provider",
@@ -15,14 +15,14 @@
     "escalated": true
   },
   "parsed": {
-    "quote_id": "mock-quote_id",
+    "quote_id": "quote_x402_resource",
     "pricing_unit": "request",
-    "estimated_amount": 1,
-    "authorized_maximum": 1,
-    "currency": "mock-currency",
-    "within_budget": false,
-    "confidence": 0.82
+    "estimated_amount": 0.01,
+    "authorized_maximum": 0.05,
+    "currency": "USDC",
+    "within_budget": true,
+    "confidence": 0.96
   },
-  "raw": "{\"quote_id\":\"mock-quote_id\",\"pricing_unit\":\"request\",\"estimated_amount\":1,\"authorized_maximum\":1,\"currency\":\"mock-currency\",\"within_budget\":false,\"confidence\":0.82}",
+  "raw": "{\"quote_id\":\"quote_x402_resource\",\"pricing_unit\":\"request\",\"estimated_amount\":0.01,\"authorized_maximum\":0.05,\"currency\":\"USDC\",\"within_budget\":true,\"confidence\":0.96}",
   "recordId": "1f6874b0-473c-438a-93ac-c090aa621606"
 }

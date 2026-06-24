@@ -86,8 +86,8 @@ export const USE_CASES: UseCase[] = [
 export const AGENT_EXAMPLES: Record<string, unknown> = {
   ResourceDiscoveryAgent: { capability: "distributed-inference", healthyOnly: true, maximumPrice: 0.05 },
   ExecutionPricingAgent: { resourceId: "agentos-shard-inference", endpointId: "agentos-shard-inference-endpoint", estimatedTokens: 120 },
-  PaymentVerificationAgent: { quoteId: "quote_demo", subjectId: "agent-software-engineering", budgetPolicyId: "policy-agentos-demo" },
-  X402SettlementAgent: { quoteId: "quote_demo", executionReceiptHash: "receipt://shard-demo", evaluationScore: 0.91 },
+  PaymentVerificationAgent: { quoteId: "quote_x402_resource", subjectId: "agent-software-engineering", budgetPolicyId: "policy-agentos" },
+  X402SettlementAgent: { quoteId: "quote_x402_resource", executionReceiptHash: "receipt://shard-run", evaluationScore: 0.91 },
   MarketScannerAgent: { markets: ["US", "ASX"], filters: { minRelativeVolume: 2, minPrice: 2 } },
   NewsCatalystAgent: { symbol: "NVDA", lookbackHours: 72 },
   TechnicalAnalysisAgent: { symbol: "NVDA", timeframe: "1D", bars: "provider://market-data/NVDA" },

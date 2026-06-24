@@ -1,7 +1,7 @@
 {
   "ok": true,
   "model": "kimi-k2.6",
-  "confidence": 0.82,
+  "confidence": 0.94,
   "decision": {
     "model": "kimi-k2.6",
     "backend": "provider",
@@ -16,13 +16,14 @@
   },
   "parsed": {
     "resource_ids": [
-      "mock-resource_ids_item"
+      "x402scan-resource-index",
+      "x402scan-facilitator-stats"
     ],
-    "selected_resource_id": "mock-selected_resource_id",
+    "selected_resource_id": "x402scan-resource-index",
     "capability_match": 1,
-    "rationale": "mock-rationale",
-    "confidence": 0.82
+    "rationale": "The indexed endpoint matches resource discovery and exposes a published x402 price in USDC.",
+    "confidence": 0.94
   },
-  "raw": "{\"resource_ids\":[\"mock-resource_ids_item\"],\"selected_resource_id\":\"mock-selected_resource_id\",\"capability_match\":1,\"rationale\":\"mock-rationale\",\"confidence\":0.82}",
+  "raw": "{\"resource_ids\":[\"x402scan-resource-index\",\"x402scan-facilitator-stats\"],\"selected_resource_id\":\"x402scan-resource-index\",\"capability_match\":1,\"rationale\":\"The indexed endpoint matches resource discovery and exposes a published x402 price in USDC.\",\"confidence\":0.94}",
   "recordId": "c83d8851-c3a0-4383-bdd2-b4bd3e91a980"
 }

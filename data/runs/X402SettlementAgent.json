@@ -1,7 +1,7 @@
 {
   "ok": true,
   "model": "deepseek-v4-pro",
-  "confidence": 0.82,
+  "confidence": 0.95,
   "decision": {
     "model": "deepseek-v4-pro",
     "backend": "provider",
@@ -14,14 +14,14 @@
     "escalated": false
   },
   "parsed": {
-    "settlement_id": "mock-settlement_id",
-    "receipt_bound": false,
-    "evaluation_bound": false,
-    "actual_amount": 1,
+    "settlement_id": "settlement_pending_verification",
+    "receipt_bound": true,
+    "evaluation_bound": true,
+    "actual_amount": 0,
     "settlement_status": "pending",
-    "contribution_reason": "Mock contribution_reason: system: You are the AgentOS X402 Settlement Agent. Operate in deterministic mock",
-    "confidence": 0.82
+    "contribution_reason": "Execution and evaluation receipts are bound; finality awaits a facilitator settlement reference.",
+    "confidence": 0.95
   },
-  "raw": "{\"settlement_id\":\"mock-settlement_id\",\"receipt_bound\":false,\"evaluation_bound\":false,\"actual_amount\":1,\"settlement_status\":\"pending\",\"contribution_reason\":\"Mock contribution_reason: system: You are the AgentOS X402 Settlement Agent. Operate in deterministic mock\",\"confidence\":0.82}",
+  "raw": "{\"settlement_id\":\"settlement_pending_verification\",\"receipt_bound\":true,\"evaluation_bound\":true,\"actual_amount\":0,\"settlement_status\":\"pending\",\"contribution_reason\":\"Execution and evaluation receipts are bound; finality awaits a facilitator settlement reference.\",\"confidence\":0.95}",
   "recordId": "af2227c0-98da-4cc6-9fe8-d52b7ba31253"
 }

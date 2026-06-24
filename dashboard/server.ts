@@ -23,7 +23,7 @@ import { runTradingWorkflow } from "../src/trading/engine.js";
 import { buildDistributedInferenceDemo } from "../src/shard/dashboardData.js";
 import { DEMO_SHARD_TOPOLOGIES } from "../src/shard/demoTopologies.js";
 import type { ExecutionBackend } from "../src/types.js";
-import { buildX402SystemDemo } from "../src/x402/demoData.js";
+import { getX402SystemData } from "../src/x402/ecosystemData.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const config = loadConfig();
@@ -91,8 +91,8 @@ app.get("/api/trading", async (_req, res) => {
 app.get("/api/shard", (_req, res) => {
   res.json(buildDistributedInferenceDemo());
 });
-app.get("/api/x402", (_req, res) => {
-  res.json(buildX402SystemDemo());
+app.get("/api/x402", async (_req, res) => {
+  res.json(await getX402SystemData());
 });
 
 // ── Run ──────────────────────────────────────────────────────────────

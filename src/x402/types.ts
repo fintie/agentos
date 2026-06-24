@@ -25,6 +25,7 @@ export interface X402ResourceManifest {
   healthStatus: "healthy" | "degraded" | "offline";
   reliabilityScore: number;
   proofRequirements: Array<"output-hash" | "token-hash" | "evaluation-hash" | "shard-receipt">;
+  sourceUrl?: string;
 }
 
 export interface X402ExecutionQuote {

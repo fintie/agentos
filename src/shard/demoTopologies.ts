@@ -13,7 +13,7 @@ const gptNodes = ShardNodeRegistry.mockNodes({
 
 export const GLM_52_WAN_TOPOLOGY: ShardTopology = assertValidShardTopology({
   topologyId: "topology-glm52-wan-6x13",
-  modelName: "GLM-5.2 style mock model",
+  modelName: "GLM-5.2 compatible topology",
   totalLayers: 78,
   coordinatorNodeId: "glm52-coordinator-wa",
   draftModelName: "GLM-4-9B draft mock",
@@ -26,7 +26,7 @@ export const GLM_52_WAN_TOPOLOGY: ShardTopology = assertValidShardTopology({
 
 export const GPT_OSS_120B_WAN_TOPOLOGY: ShardTopology = assertValidShardTopology({
   topologyId: "topology-gptoss120b-wan-3x12",
-  modelName: "gpt-oss-120B style mock model",
+  modelName: "gpt-oss-120B compatible topology",
   totalLayers: 36,
   coordinatorNodeId: "gptoss-coordinator-nv",
   draftModelName: "gpt-oss-20B draft mock",

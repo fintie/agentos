@@ -5,7 +5,7 @@
     {
       "topology": {
         "topologyId": "topology-glm52-wan-6x13",
-        "modelName": "GLM-5.2 style mock model",
+        "modelName": "GLM-5.2 compatible topology",
         "totalLayers": 78,
         "coordinatorNodeId": "glm52-coordinator-wa",
         "draftModelName": "GLM-4-9B draft mock",
@@ -304,7 +304,7 @@
         "receiptId": "shard_f71076cb15e5de231bf9970a",
         "taskId": "demo-shard-1",
         "agentName": "DeveloperAgent",
-        "modelName": "GLM-5.2 style mock model",
+        "modelName": "GLM-5.2 compatible topology",
         "topologyId": "topology-glm52-wan-6x13",
         "coordinatorNodeId": "glm52-coordinator-wa",
         "shardNodeIds": [
@@ -538,7 +538,7 @@
     {
       "topology": {
         "topologyId": "topology-gptoss120b-wan-3x12",
-        "modelName": "gpt-oss-120B style mock model",
+        "modelName": "gpt-oss-120B compatible topology",
         "totalLayers": 36,
         "coordinatorNodeId": "gptoss-coordinator-nv",
         "draftModelName": "gpt-oss-20B draft mock",
@@ -733,7 +733,7 @@
         "receiptId": "shard_925be99fc7ed157ce52c2eb3",
         "taskId": "demo-shard-2",
         "agentName": "ReportAgent",
-        "modelName": "gpt-oss-120B style mock model",
+        "modelName": "gpt-oss-120B compatible topology",
         "topologyId": "topology-gptoss120b-wan-3x12",
         "coordinatorNodeId": "gptoss-coordinator-nv",
         "shardNodeIds": [

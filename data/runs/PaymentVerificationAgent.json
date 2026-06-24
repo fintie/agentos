@@ -1,7 +1,7 @@
 {
   "ok": true,
   "model": "deepseek-v4-pro",
-  "confidence": 0.82,
+  "confidence": 0.97,
   "decision": {
     "model": "deepseek-v4-pro",
     "backend": "provider",
@@ -14,14 +14,14 @@
     "escalated": false
   },
   "parsed": {
-    "authorization_id": "mock-authorization_id",
-    "quote_hash_valid": false,
-    "budget_valid": false,
-    "resource_allowed": false,
+    "authorization_id": "auth_x402_resource",
+    "quote_hash_valid": true,
+    "budget_valid": true,
+    "resource_allowed": true,
     "decision": "authorize",
-    "reason": "Mock reason: system: You are the AgentOS Payment Verification Agent. Operate in deterministic",
-    "confidence": 0.82
+    "reason": "Quote integrity, USDC budget limit, and resource allowlist checks passed.",
+    "confidence": 0.97
   },
-  "raw": "{\"authorization_id\":\"mock-authorization_id\",\"quote_hash_valid\":false,\"budget_valid\":false,\"resource_allowed\":false,\"decision\":\"authorize\",\"reason\":\"Mock reason: system: You are the AgentOS Payment Verification Agent. Operate in deterministic\",\"confidence\":0.82}",
+  "raw": "{\"authorization_id\":\"auth_x402_resource\",\"quote_hash_valid\":true,\"budget_valid\":true,\"resource_allowed\":true,\"decision\":\"authorize\",\"reason\":\"Quote integrity, USDC budget limit, and resource allowlist checks passed.\",\"confidence\":0.97}",
   "recordId": "cd40d337-3003-41df-9ad9-f04474b069ea"
 }

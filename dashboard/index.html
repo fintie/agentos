@@ -205,7 +205,7 @@
         ]);
         const badge = $("#modeBadge");
         if (state.config.mockMode || (state.config.liveModels || []).length === 0) {
-          badge.className = "badge mock"; badge.textContent = "MOCK MODE";
+          badge.className = "badge"; badge.textContent = "LOCAL ADAPTERS";
         } else {
           badge.className = "badge live"; badge.textContent = "LIVE: " + state.config.liveModels.join(", ");
         }

@@ -1,12 +1,15 @@
 .x402-shell { margin:18px 0 24px; }
 .x402-mode { display:flex; align-items:center; gap:7px; flex-wrap:wrap; margin-bottom:14px; }
 .x402-mode .mode-mark { width:9px; height:9px; border-radius:50%; background:#69dda4; box-shadow:0 0 12px #69dda4; }
+.x402-source { margin-left:auto; color:#72c9ed; font-size:10px; text-decoration:none; }
 .x402-charts { display:grid; grid-template-columns:repeat(4,minmax(180px,1fr)); gap:10px; }
 .metric-chart { min-height:180px; border:1px solid var(--line); border-radius:8px; background:#121923; padding:12px; overflow:hidden; }
 .metric-chart-head { display:flex; justify-content:space-between; gap:8px; align-items:flex-start; }
 .metric-chart h4 { margin:0; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
 .metric-chart .metric-value { display:block; font-size:23px; font-weight:900; margin-top:2px; }
 .metric-chart .metric-delta { color:var(--green); font-size:10px; }
+.metric-chart .metric-delta.negative { color:#ef9b8f; }
+.metric-period { display:block; color:var(--muted); font-size:8px; margin-top:2px; }
 .spark-bars { height:78px; display:flex; align-items:flex-end; gap:3px; margin-top:12px; border-bottom:1px solid #334151; }
 .spark-bar { flex:1; min-width:4px; border-radius:2px 2px 0 0; background:#69dca4; opacity:.78; }
 .metric-chart:nth-child(2) .spark-bar { background:#72c9ed; }.metric-chart:nth-child(3) .spark-bar { background:#e8b96e; }.metric-chart:nth-child(4) .spark-bar { background:#be97e9; }
@@ -16,7 +19,8 @@
 .x402-panel-head { display:flex; justify-content:space-between; gap:10px; align-items:center; padding:11px 13px; background:#1b2430; border-bottom:1px solid var(--line); }
 .x402-panel-head h3 { margin:0; font-size:13px; }.x402-panel-body { padding:12px; }
 .resource-list { display:grid; gap:7px; }
-.resource-row { display:grid; grid-template-columns:minmax(150px,1fr) 90px 90px 80px; gap:8px; align-items:center; padding:10px; border:1px solid var(--line); border-radius:7px; }
+.resource-row { display:grid; grid-template-columns:minmax(150px,1fr) 80px minmax(120px,.7fr) 90px; gap:8px; align-items:center; padding:10px; border:1px solid var(--line); border-radius:7px; color:inherit; text-decoration:none; }
+.resource-row:hover { border-color:#46657c; background:#17212c; }
 .resource-row b { font-size:12px; }.resource-row .capabilities { display:flex; gap:4px; flex-wrap:wrap; margin-top:4px; }
 .capability { padding:2px 5px; border-radius:4px; background:#202b38; color:#9eb5ca; font-size:9px; }
 .resource-price { color:#7fe4b0; font-weight:800; text-align:right; }

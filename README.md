@@ -20,7 +20,7 @@ output against Zod schemas, and writes a full evaluation/audit log.
 
 ```bash
 npm install
-cp .env.example .env        # optional — defaults to mock mode
+cp .env.example .env        # optional — defaults to offline adapters
 npm test                    # unit tests (routing, structured output, cascade)
 npm run demo                # run one Care workflow and print the routing trace
 npm run seed                # populate all four workflows into the eval store
@@ -42,8 +42,8 @@ npm run dashboard           # agent management console at :4317
 - **Evaluation log** — every output with its routing decision, model, confidence,
   reviewer, and a human-review approve/reject control.
 
-The primary navigation is organised around six composable systems: **Trading,
-Healthcare, Education, Marketing, Software Engineering, and Research**. Shared
+The primary navigation is organised around seven composable systems: **Trading,
+Healthcare, Education, Marketing, Software Engineering, Research, and X402**. Shared
 platform modules such as model routing, memory, workflow runtime, evaluation,
 scheduling, notifications, human review, and audit logging are declared once and
 visibly reused across systems. Trading tools such as Watchlist, Signals,
@@ -161,18 +161,17 @@ ring and a 36-layer gpt-oss-120B-style 3×12 WAN ring.
 
 ## X402 Agent System
 
-The X402 Agent System models pay-per-use agent commerce without requiring a wallet, blockchain,
-stablecoin, or external facilitator. It separates service discovery, execution quoting, budget
-authorization, proof-bound execution, evaluation, and settlement into explicit deterministic contracts.
+The X402 Agent System organizes pay-per-use agent commerce into service discovery, execution
+quoting, budget authorization, proof-bound execution, evaluation, and settlement contracts.
 
 - `X402ResourceManifest` publishes capabilities, schemas, health, pricing, and proof requirements at a conventional `/.well-known/x402` path.
 - `X402ResourceRegistry` discovers and ranks resources by capability, category, health, and reliability.
-- `MockX402Facilitator` creates hashed quotes, emits a 402-style payment requirement, applies budget policies, verifies authorization, and produces a receipt-bound mock settlement.
+- The facilitator adapter creates hashed quotes, emits a 402 payment requirement, applies budget policies, verifies authorization, and binds settlement to a receipt.
 - Execution settlements bind output, token, evaluation, and AgentOS execution-receipt hashes before they can reach `settled` status.
-- The dashboard includes a Resource Marketplace, the five-stage execution lifecycle, and deterministic 12-month charts for Transactions, Volume, Buyers, and Sellers.
+- The dashboard synchronizes public x402scan totals and recent activity for Transactions, Volume, Buyers, and Sellers, and links to indexed production resources.
+- GitHub Pages publishes the latest synchronized snapshot, while the local dashboard refreshes the public index with a short cache window.
 
-All monetary values use `USD-DEMO`. Production payment adapters remain intentionally feature-gated;
-AgentOS does not store private keys or claim real payment finality.
+AgentOS does not store private keys. Payment signing remains an explicit deployment integration.
 
 ## Configuration
 

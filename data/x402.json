@@ -1,74 +1,29 @@
 {
-  "generatedAt": "2026-06-20T04:10:00.000Z",
-  "deterministicMode": true,
-  "protocolMode": "mock-no-chain",
+  "generatedAt": "2026-06-23T23:17:48.751Z",
+  "dataMode": "live",
   "resources": [
     {
-      "resourceId": "agentos-shard-inference",
-      "name": "Shard Inference Network",
-      "description": "Shard Inference Network exposed as a deterministic pay-per-use AgentOS resource.",
-      "category": "inference",
-      "baseUrl": "mock://x402/agentos-shard-inference",
-      "discoveryPath": "/.well-known/x402",
-      "providerName": "AgentOS Demo Provider",
-      "capabilities": [
-        "distributed-inference",
-        "proof-receipt"
-      ],
-      "healthStatus": "healthy",
-      "reliabilityScore": 0.992,
-      "proofRequirements": [
-        "output-hash",
-        "token-hash",
-        "evaluation-hash",
-        "shard-receipt"
-      ],
-      "endpoints": [
-        {
-          "endpointId": "agentos-shard-inference-endpoint",
-          "method": "POST",
-          "path": "/v1/infer",
-          "description": "Call Shard Inference Network",
-          "inputSchema": {
-            "type": "object"
-          },
-          "outputSchema": {
-            "type": "object"
-          },
-          "pricing": {
-            "unit": "token",
-            "unitAmount": 0.00012,
-            "maximumAmount": 0.05,
-            "currency": "USD-DEMO"
-          }
-        }
-      ]
-    },
-    {
-      "resourceId": "agentos-market-intelligence",
-      "name": "Market Intelligence Feed",
-      "description": "Market Intelligence Feed exposed as a deterministic pay-per-use AgentOS resource.",
+      "resourceId": "x402scan-resource-index",
+      "name": "x402scan Resource Index",
+      "description": "Search the public x402 resource directory.",
       "category": "data",
-      "baseUrl": "mock://x402/agentos-market-intelligence",
+      "baseUrl": "https://www.x402scan.com",
       "discoveryPath": "/.well-known/x402",
-      "providerName": "AgentOS Demo Provider",
+      "providerName": "x402scan",
       "capabilities": [
-        "market-data",
-        "news-catalyst"
+        "resource-search",
+        "discovery"
       ],
       "healthStatus": "healthy",
-      "reliabilityScore": 0.978,
-      "proofRequirements": [
-        "output-hash",
-        "token-hash",
-        "evaluation-hash"
-      ],
+      "reliabilityScore": 1,
+      "proofRequirements": [],
+      "sourceUrl": "https://www.x402scan.com/server/a50f19f7-56a9-4fb9-adea-ff0707b9ca1f",
       "endpoints": [
         {
-          "endpointId": "agentos-market-intelligence-endpoint",
+          "endpointId": "x402scan-resource-index-endpoint",
           "method": "GET",
-          "path": "/v1/market/snapshot",
-          "description": "Call Market Intelligence Feed",
+          "path": "/api/x402/resources",
+          "description": "Search the public x402 resource directory.",
           "inputSchema": {
             "type": "object"
           },
@@ -77,37 +32,70 @@
           },
           "pricing": {
             "unit": "request",
-            "unitAmount": 0.0025,
-            "currency": "USD-DEMO"
+            "unitAmount": 0.01,
+            "currency": "USDC"
           }
         }
       ]
     },
     {
-      "resourceId": "agentos-research-tool",
-      "name": "Evidence Research Tool",
-      "description": "Evidence Research Tool exposed as a deterministic pay-per-use AgentOS resource.",
+      "resourceId": "x402scan-facilitator-stats",
+      "name": "x402scan Facilitator Stats",
+      "description": "Read aggregate activity for indexed x402 facilitators.",
+      "category": "data",
+      "baseUrl": "https://www.x402scan.com",
+      "discoveryPath": "/.well-known/x402",
+      "providerName": "x402scan",
+      "capabilities": [
+        "facilitator-stats",
+        "analytics"
+      ],
+      "healthStatus": "healthy",
+      "reliabilityScore": 1,
+      "proofRequirements": [],
+      "sourceUrl": "https://www.x402scan.com/server/a50f19f7-56a9-4fb9-adea-ff0707b9ca1f",
+      "endpoints": [
+        {
+          "endpointId": "x402scan-facilitator-stats-endpoint",
+          "method": "GET",
+          "path": "/api/x402/facilitators/stats",
+          "description": "Read aggregate activity for indexed x402 facilitators.",
+          "inputSchema": {
+            "type": "object"
+          },
+          "outputSchema": {
+            "type": "object"
+          },
+          "pricing": {
+            "unit": "request",
+            "unitAmount": 0.01,
+            "currency": "USDC"
+          }
+        }
+      ]
+    },
+    {
+      "resourceId": "purch-product-search",
+      "name": "Purch Product Search",
+      "description": "Search products and purchasable digital resources through x402.",
       "category": "tool",
-      "baseUrl": "mock://x402/agentos-research-tool",
+      "baseUrl": "https://api.purch.xyz",
       "discoveryPath": "/.well-known/x402",
-      "providerName": "AgentOS Demo Provider",
+      "providerName": "Purch",
       "capabilities": [
-        "web-research",
-        "source-verification"
+        "product-search",
+        "commerce"
       ],
       "healthStatus": "healthy",
-      "reliabilityScore": 0.966,
-      "proofRequirements": [
-        "output-hash",
-        "token-hash",
-        "evaluation-hash"
-      ],
+      "reliabilityScore": 1,
+      "proofRequirements": [],
+      "sourceUrl": "https://www.x402scan.com/server/ad1c686d-5f67-4160-ad50-72175071d9a7",
       "endpoints": [
         {
-          "endpointId": "agentos-research-tool-endpoint",
-          "method": "POST",
-          "path": "/v1/research",
-          "description": "Call Evidence Research Tool",
+          "endpointId": "purch-product-search-endpoint",
+          "method": "GET",
+          "path": "/x402/search",
+          "description": "Search products and purchasable digital resources through x402.",
           "inputSchema": {
             "type": "object"
           },
@@ -115,39 +103,35 @@
             "type": "object"
           },
           "pricing": {
-            "unit": "upto",
-            "unitAmount": 0.004,
-            "maximumAmount": 0.04,
-            "currency": "USD-DEMO"
+            "unit": "request",
+            "unitAmount": 0.01,
+            "currency": "USDC"
           }
         }
       ]
     },
     {
-      "resourceId": "agentos-local-compute",
-      "name": "Local Model Compute",
-      "description": "Local Model Compute exposed as a deterministic pay-per-use AgentOS resource.",
-      "category": "compute",
-      "baseUrl": "mock://x402/agentos-local-compute",
+      "resourceId": "claw-hunter-research",
+      "name": "Claw Hunter Research",
+      "description": "Research Pump.fun projects using an indexed x402 endpoint.",
+      "category": "tool",
+      "baseUrl": "https://clawhunter.xyz",
       "discoveryPath": "/.well-known/x402",
-      "providerName": "AgentOS Demo Provider",
+      "providerName": "Claw Hunter",
       "capabilities": [
-        "structured-output",
-        "private-inference"
+        "project-research",
+        "crypto"
       ],
       "healthStatus": "healthy",
-      "reliabilityScore": 0.984,
-      "proofRequirements": [
-        "output-hash",
-        "token-hash",
-        "evaluation-hash"
-      ],
+      "reliabilityScore": 1,
+      "proofRequirements": [],
+      "sourceUrl": "https://www.x402scan.com/server/fca76b3b-e1f6-44e7-b0a6-6e769b2a4868",
       "endpoints": [
         {
-          "endpointId": "agentos-local-compute-endpoint",
-          "method": "POST",
-          "path": "/v1/generate",
-          "description": "Call Local Model Compute",
+          "endpointId": "claw-hunter-research-endpoint",
+          "method": "GET",
+          "path": "/api/v1/projects/{mint}/research",
+          "description": "Research Pump.fun projects using an indexed x402 endpoint.",
           "inputSchema": {
             "type": "object"
           },
@@ -155,324 +139,834 @@
             "type": "object"
           },
           "pricing": {
-            "unit": "token",
-            "unitAmount": 0.00004,
-            "maximumAmount": 0.02,
-            "currency": "USD-DEMO"
+            "unit": "request",
+            "unitAmount": 0.03,
+            "currency": "USDC"
           }
         }
       ]
     }
   ],
-  "lifecycle": {
-    "resource": {
-      "resourceId": "agentos-shard-inference",
-      "name": "Shard Inference Network",
-      "description": "Shard Inference Network exposed as a deterministic pay-per-use AgentOS resource.",
-      "category": "inference",
-      "baseUrl": "mock://x402/agentos-shard-inference",
-      "discoveryPath": "/.well-known/x402",
-      "providerName": "AgentOS Demo Provider",
-      "capabilities": [
-        "distributed-inference",
-        "proof-receipt"
-      ],
-      "healthStatus": "healthy",
-      "reliabilityScore": 0.992,
-      "proofRequirements": [
-        "output-hash",
-        "token-hash",
-        "evaluation-hash",
-        "shard-receipt"
-      ],
-      "endpoints": [
-        {
-          "endpointId": "agentos-shard-inference-endpoint",
-          "method": "POST",
-          "path": "/v1/infer",
-          "description": "Call Shard Inference Network",
-          "inputSchema": {
-            "type": "object"
-          },
-          "outputSchema": {
-            "type": "object"
-          },
-          "pricing": {
-            "unit": "token",
-            "unitAmount": 0.00012,
-            "maximumAmount": 0.05,
-            "currency": "USD-DEMO"
-          }
-        }
-      ]
-    },
-    "quote": {
-      "quoteId": "quote_adfbe445f87a6626d0",
-      "resourceId": "agentos-shard-inference",
-      "endpointId": "agentos-shard-inference-endpoint",
-      "pricingUnit": "token",
-      "unitPrice": 0.00012,
-      "authorizedMaximum": 0.05,
-      "estimatedAmount": 0.0144,
-      "currency": "USD-DEMO",
-      "expiresAt": "2026-06-20T04:15:00.000Z",
-      "quoteHash": "adfbe445f87a6626d0b4b0c406736e9a62f225b8ee7e3f46519707d5e9694f6c"
-    },
-    "paymentRequirement": {
-      "status": 402,
-      "quote": {
-        "quoteId": "quote_adfbe445f87a6626d0",
-        "resourceId": "agentos-shard-inference",
-        "endpointId": "agentos-shard-inference-endpoint",
-        "pricingUnit": "token",
-        "unitPrice": 0.00012,
-        "authorizedMaximum": 0.05,
-        "estimatedAmount": 0.0144,
-        "currency": "USD-DEMO",
-        "expiresAt": "2026-06-20T04:15:00.000Z",
-        "quoteHash": "adfbe445f87a6626d0b4b0c406736e9a62f225b8ee7e3f46519707d5e9694f6c"
-      },
-      "acceptedMethods": [
-        "mock-balance",
-        "x402-compatible-adapter"
-      ],
-      "facilitatorId": "agentos-mock-facilitator"
-    },
-    "authorization": {
-      "authorizationId": "auth_fb5be3888bb5b7617d",
-      "quoteId": "quote_adfbe445f87a6626d0",
-      "subjectId": "agent-software-engineering",
-      "budgetPolicyId": "policy-agentos-demo",
-      "authorizedMaximum": 0.05,
-      "status": "authorized",
-      "authorizationHash": "fb5be3888bb5b7617d70055464c596b744442b07061745f231b15d975c96d045"
-    },
-    "binding": {
-      "executionReceiptHash": "d1a30e12198e7515d36385702204534ff745427affb43af4abbb3dce05bf375b",
-      "evaluationHash": "07b1a596d5f1056a7b4473a6c9cb22e43d95ce9afaaf92be807c1048c250d268",
-      "outputHash": "adb5dcfc532beb02d09c83e120ddf58cfde7fc213d36ed81fa7fa29e827e3ab4",
-      "tokenHash": "1d8a7c729c3aaf5553c96b4f1d0192d4f44bb8ddc3d9870737998782e3cc22d2"
-    },
-    "settlement": {
-      "settlementId": "settle_1491ae1b029d9596ff",
-      "quoteId": "quote_adfbe445f87a6626d0",
-      "authorizationId": "auth_fb5be3888bb5b7617d",
-      "resourceId": "agentos-shard-inference",
-      "actualAmount": 0.01152,
-      "currency": "USD-DEMO",
-      "binding": {
-        "executionReceiptHash": "d1a30e12198e7515d36385702204534ff745427affb43af4abbb3dce05bf375b",
-        "evaluationHash": "07b1a596d5f1056a7b4473a6c9cb22e43d95ce9afaaf92be807c1048c250d268",
-        "outputHash": "adb5dcfc532beb02d09c83e120ddf58cfde7fc213d36ed81fa7fa29e827e3ab4",
-        "tokenHash": "1d8a7c729c3aaf5553c96b4f1d0192d4f44bb8ddc3d9870737998782e3cc22d2"
-      },
-      "settlementStatus": "settled",
-      "settlementReference": "1491ae1b029d9596ffbd66f0580e315920687889beb5ed78ab2bf2a98837ffa2",
-      "deterministicMode": true,
-      "timestamp": "2026-06-20T04:05:00.000Z"
-    }
-  },
   "stats": {
-    "sourceLabel": "Deterministic ecosystem benchmark demo",
-    "period": "12 months",
+    "sourceLabel": "x402scan public network index",
+    "sourceUrl": "https://www.x402scan.com",
+    "period": "Past 30 days",
+    "totals": {
+      "transactions": 9442968,
+      "volume": 1109608.06,
+      "buyers": 117724,
+      "sellers": 38387
+    },
     "transactions": [
       {
-        "period": "Jul",
-        "value": 180000
+        "period": "25 May",
+        "value": 72614
       },
       {
-        "period": "Aug",
-        "value": 240000
+        "period": "26 May",
+        "value": 73504
       },
       {
-        "period": "Sep",
-        "value": 310000
+        "period": "26 May",
+        "value": 73482
       },
       {
-        "period": "Oct",
-        "value": 420000
+        "period": "27 May",
+        "value": 64329
       },
       {
-        "period": "Nov",
-        "value": 610000
+        "period": "27 May",
+        "value": 68110
       },
       {
-        "period": "Dec",
-        "value": 830000
+        "period": "28 May",
+        "value": 62451
       },
       {
-        "period": "Jan",
-        "value": 1160000
+        "period": "29 May",
+        "value": 58482
       },
       {
-        "period": "Feb",
-        "value": 1720000
+        "period": "29 May",
+        "value": 76692
       },
       {
-        "period": "Mar",
-        "value": 2380000
+        "period": "30 May",
+        "value": 62156
       },
       {
-        "period": "Apr",
-        "value": 3140000
+        "period": "31 May",
+        "value": 59337
       },
       {
-        "period": "May",
-        "value": 4210000
+        "period": "31 May",
+        "value": 74098
       },
       {
-        "period": "Jun",
-        "value": 5240000
+        "period": "01 June",
+        "value": 105025
+      },
+      {
+        "period": "01 June",
+        "value": 88105
+      },
+      {
+        "period": "02 June",
+        "value": 107151
+      },
+      {
+        "period": "03 June",
+        "value": 72638
+      },
+      {
+        "period": "03 June",
+        "value": 67112
+      },
+      {
+        "period": "04 June",
+        "value": 114403
+      },
+      {
+        "period": "05 June",
+        "value": 96408
+      },
+      {
+        "period": "05 June",
+        "value": 98504
+      },
+      {
+        "period": "06 June",
+        "value": 109690
+      },
+      {
+        "period": "06 June",
+        "value": 79924
+      },
+      {
+        "period": "07 June",
+        "value": 120517
+      },
+      {
+        "period": "08 June",
+        "value": 125540
+      },
+      {
+        "period": "08 June",
+        "value": 127929
+      },
+      {
+        "period": "09 June",
+        "value": 356983
+      },
+      {
+        "period": "10 June",
+        "value": 418861
+      },
+      {
+        "period": "10 June",
+        "value": 313194
+      },
+      {
+        "period": "11 June",
+        "value": 240946
+      },
+      {
+        "period": "11 June",
+        "value": 167345
+      },
+      {
+        "period": "12 June",
+        "value": 95551
+      },
+      {
+        "period": "13 June",
+        "value": 88522
+      },
+      {
+        "period": "13 June",
+        "value": 88276
+      },
+      {
+        "period": "14 June",
+        "value": 110871
+      },
+      {
+        "period": "15 June",
+        "value": 129630
+      },
+      {
+        "period": "15 June",
+        "value": 155811
+      },
+      {
+        "period": "16 June",
+        "value": 679319
+      },
+      {
+        "period": "16 June",
+        "value": 562034
+      },
+      {
+        "period": "17 June",
+        "value": 639028
+      },
+      {
+        "period": "18 June",
+        "value": 541455
+      },
+      {
+        "period": "18 June",
+        "value": 378027
+      },
+      {
+        "period": "19 June",
+        "value": 421067
+      },
+      {
+        "period": "20 June",
+        "value": 266986
+      },
+      {
+        "period": "20 June",
+        "value": 258638
+      },
+      {
+        "period": "21 June",
+        "value": 294774
+      },
+      {
+        "period": "21 June",
+        "value": 337712
+      },
+      {
+        "period": "22 June",
+        "value": 446419
+      },
+      {
+        "period": "23 June",
+        "value": 272014
+      },
+      {
+        "period": "23 June",
+        "value": 77057
       }
     ],
     "volume": [
       {
-        "period": "Jul",
-        "value": 30000
+        "period": "25 May",
+        "value": 25060.03
       },
       {
-        "period": "Aug",
-        "value": 50000
+        "period": "26 May",
+        "value": 31127.27
       },
       {
-        "period": "Sep",
-        "value": 80000
+        "period": "26 May",
+        "value": 24902.23
       },
       {
-        "period": "Oct",
-        "value": 130000
+        "period": "27 May",
+        "value": 23331.51
       },
       {
-        "period": "Nov",
-        "value": 190000
+        "period": "27 May",
+        "value": 19010.92
       },
       {
-        "period": "Dec",
-        "value": 270000
+        "period": "28 May",
+        "value": 16378.97
       },
       {
-        "period": "Jan",
-        "value": 380000
+        "period": "29 May",
+        "value": 22062.33
       },
       {
-        "period": "Feb",
-        "value": 520000
+        "period": "29 May",
+        "value": 23913.47
       },
       {
-        "period": "Mar",
-        "value": 680000
+        "period": "30 May",
+        "value": 26207.44
       },
       {
-        "period": "Apr",
-        "value": 820000
+        "period": "31 May",
+        "value": 24469.28
       },
       {
-        "period": "May",
-        "value": 970000
+        "period": "31 May",
+        "value": 25868.84
       },
       {
-        "period": "Jun",
-        "value": 1110000
+        "period": "01 June",
+        "value": 42635.85
+      },
+      {
+        "period": "01 June",
+        "value": 30053.31
+      },
+      {
+        "period": "02 June",
+        "value": 40505.41
+      },
+      {
+        "period": "03 June",
+        "value": 21453.27
+      },
+      {
+        "period": "03 June",
+        "value": 20245.27
+      },
+      {
+        "period": "04 June",
+        "value": 20559.5
+      },
+      {
+        "period": "05 June",
+        "value": 25072.37
+      },
+      {
+        "period": "05 June",
+        "value": 17242.72
+      },
+      {
+        "period": "06 June",
+        "value": 16752.27
+      },
+      {
+        "period": "06 June",
+        "value": 15083.46
+      },
+      {
+        "period": "07 June",
+        "value": 32634.48
+      },
+      {
+        "period": "08 June",
+        "value": 18495.73
+      },
+      {
+        "period": "08 June",
+        "value": 20284.68
+      },
+      {
+        "period": "09 June",
+        "value": 23275.49
+      },
+      {
+        "period": "10 June",
+        "value": 22156.53
+      },
+      {
+        "period": "10 June",
+        "value": 23445.59
+      },
+      {
+        "period": "11 June",
+        "value": 15818.68
+      },
+      {
+        "period": "11 June",
+        "value": 12450.69
+      },
+      {
+        "period": "12 June",
+        "value": 15181.52
+      },
+      {
+        "period": "13 June",
+        "value": 21105.08
+      },
+      {
+        "period": "13 June",
+        "value": 19196.4
+      },
+      {
+        "period": "14 June",
+        "value": 15215.97
+      },
+      {
+        "period": "15 June",
+        "value": 18151.78
+      },
+      {
+        "period": "15 June",
+        "value": 17223.32
+      },
+      {
+        "period": "16 June",
+        "value": 20263.36
+      },
+      {
+        "period": "16 June",
+        "value": 22772.7
+      },
+      {
+        "period": "17 June",
+        "value": 34333.06
+      },
+      {
+        "period": "18 June",
+        "value": 19191.52
+      },
+      {
+        "period": "18 June",
+        "value": 13700.28
+      },
+      {
+        "period": "19 June",
+        "value": 20360.34
+      },
+      {
+        "period": "20 June",
+        "value": 20167.26
+      },
+      {
+        "period": "20 June",
+        "value": 15779.24
+      },
+      {
+        "period": "21 June",
+        "value": 14957.6
+      },
+      {
+        "period": "21 June",
+        "value": 77719.98
+      },
+      {
+        "period": "22 June",
+        "value": 18581.93
+      },
+      {
+        "period": "23 June",
+        "value": 16322.84
+      },
+      {
+        "period": "23 June",
+        "value": 5354.68
       }
     ],
     "buyers": [
       {
-        "period": "Jul",
-        "value": 4100
+        "period": "25 May",
+        "value": 6841
       },
       {
-        "period": "Aug",
-        "value": 5800
+        "period": "26 May",
+        "value": 6124
       },
       {
-        "period": "Sep",
-        "value": 8200
+        "period": "26 May",
+        "value": 7016
       },
       {
-        "period": "Oct",
-        "value": 11900
+        "period": "27 May",
+        "value": 5070
       },
       {
-        "period": "Nov",
-        "value": 17400
+        "period": "27 May",
+        "value": 2415
       },
       {
-        "period": "Dec",
-        "value": 24800
+        "period": "28 May",
+        "value": 2489
       },
       {
-        "period": "Jan",
-        "value": 35600
+        "period": "29 May",
+        "value": 3680
       },
       {
-        "period": "Feb",
-        "value": 49200
+        "period": "29 May",
+        "value": 5156
       },
       {
-        "period": "Mar",
-        "value": 66800
+        "period": "30 May",
+        "value": 6453
       },
       {
-        "period": "Apr",
-        "value": 84300
+        "period": "31 May",
+        "value": 3522
       },
       {
-        "period": "May",
-        "value": 104700
+        "period": "31 May",
+        "value": 3194
       },
       {
-        "period": "Jun",
-        "value": 126090
+        "period": "01 June",
+        "value": 7520
+      },
+      {
+        "period": "01 June",
+        "value": 7655
+      },
+      {
+        "period": "02 June",
+        "value": 7482
+      },
+      {
+        "period": "03 June",
+        "value": 8448
+      },
+      {
+        "period": "03 June",
+        "value": 6708
+      },
+      {
+        "period": "04 June",
+        "value": 4341
+      },
+      {
+        "period": "05 June",
+        "value": 6350
+      },
+      {
+        "period": "05 June",
+        "value": 4046
+      },
+      {
+        "period": "06 June",
+        "value": 4367
+      },
+      {
+        "period": "06 June",
+        "value": 5465
+      },
+      {
+        "period": "07 June",
+        "value": 3797
+      },
+      {
+        "period": "08 June",
+        "value": 6931
+      },
+      {
+        "period": "08 June",
+        "value": 4459
+      },
+      {
+        "period": "09 June",
+        "value": 4079
+      },
+      {
+        "period": "10 June",
+        "value": 4909
+      },
+      {
+        "period": "10 June",
+        "value": 4203
+      },
+      {
+        "period": "11 June",
+        "value": 7294
+      },
+      {
+        "period": "11 June",
+        "value": 5957
+      },
+      {
+        "period": "12 June",
+        "value": 4493
+      },
+      {
+        "period": "13 June",
+        "value": 4208
+      },
+      {
+        "period": "13 June",
+        "value": 4882
+      },
+      {
+        "period": "14 June",
+        "value": 4199
+      },
+      {
+        "period": "15 June",
+        "value": 6974
+      },
+      {
+        "period": "15 June",
+        "value": 4374
+      },
+      {
+        "period": "16 June",
+        "value": 4694
+      },
+      {
+        "period": "16 June",
+        "value": 4574
+      },
+      {
+        "period": "17 June",
+        "value": 3997
+      },
+      {
+        "period": "18 June",
+        "value": 4489
+      },
+      {
+        "period": "18 June",
+        "value": 3975
+      },
+      {
+        "period": "19 June",
+        "value": 4728
+      },
+      {
+        "period": "20 June",
+        "value": 4639
+      },
+      {
+        "period": "20 June",
+        "value": 4494
+      },
+      {
+        "period": "21 June",
+        "value": 4692
+      },
+      {
+        "period": "21 June",
+        "value": 4520
+      },
+      {
+        "period": "22 June",
+        "value": 4358
+      },
+      {
+        "period": "23 June",
+        "value": 5478
+      },
+      {
+        "period": "23 June",
+        "value": 2527
       }
     ],
     "sellers": [
       {
-        "period": "Jul",
-        "value": 1800
+        "period": "25 May",
+        "value": 3030
       },
       {
-        "period": "Aug",
-        "value": 2400
+        "period": "26 May",
+        "value": 6311
       },
       {
-        "period": "Sep",
-        "value": 3200
+        "period": "26 May",
+        "value": 5683
       },
       {
-        "period": "Oct",
-        "value": 4500
+        "period": "27 May",
+        "value": 2778
       },
       {
-        "period": "Nov",
-        "value": 6100
+        "period": "27 May",
+        "value": 5672
       },
       {
-        "period": "Dec",
-        "value": 8300
+        "period": "28 May",
+        "value": 4557
       },
       {
-        "period": "Jan",
-        "value": 11400
+        "period": "29 May",
+        "value": 7576
       },
       {
-        "period": "Feb",
-        "value": 15200
+        "period": "29 May",
+        "value": 7659
       },
       {
-        "period": "Mar",
-        "value": 20100
+        "period": "30 May",
+        "value": 1738
       },
       {
-        "period": "Apr",
-        "value": 26500
+        "period": "31 May",
+        "value": 6902
       },
       {
-        "period": "May",
-        "value": 34100
+        "period": "31 May",
+        "value": 6386
       },
       {
-        "period": "Jun",
-        "value": 42000
+        "period": "01 June",
+        "value": 4299
+      },
+      {
+        "period": "01 June",
+        "value": 4815
+      },
+      {
+        "period": "02 June",
+        "value": 3766
+      },
+      {
+        "period": "03 June",
+        "value": 5004
+      },
+      {
+        "period": "03 June",
+        "value": 3210
+      },
+      {
+        "period": "04 June",
+        "value": 3135
+      },
+      {
+        "period": "05 June",
+        "value": 3459
+      },
+      {
+        "period": "05 June",
+        "value": 1692
+      },
+      {
+        "period": "06 June",
+        "value": 2305
+      },
+      {
+        "period": "06 June",
+        "value": 5051
+      },
+      {
+        "period": "07 June",
+        "value": 2881
+      },
+      {
+        "period": "08 June",
+        "value": 4291
+      },
+      {
+        "period": "08 June",
+        "value": 6670
+      },
+      {
+        "period": "09 June",
+        "value": 2132
+      },
+      {
+        "period": "10 June",
+        "value": 6961
+      },
+      {
+        "period": "10 June",
+        "value": 4435
+      },
+      {
+        "period": "11 June",
+        "value": 2147
+      },
+      {
+        "period": "11 June",
+        "value": 4657
+      },
+      {
+        "period": "12 June",
+        "value": 2530
+      },
+      {
+        "period": "13 June",
+        "value": 2293
+      },
+      {
+        "period": "13 June",
+        "value": 2386
+      },
+      {
+        "period": "14 June",
+        "value": 1723
+      },
+      {
+        "period": "15 June",
+        "value": 1868
+      },
+      {
+        "period": "15 June",
+        "value": 2160
+      },
+      {
+        "period": "16 June",
+        "value": 1380
+      },
+      {
+        "period": "16 June",
+        "value": 1983
+      },
+      {
+        "period": "17 June",
+        "value": 994
+      },
+      {
+        "period": "18 June",
+        "value": 1166
+      },
+      {
+        "period": "18 June",
+        "value": 843
+      },
+      {
+        "period": "19 June",
+        "value": 656
+      },
+      {
+        "period": "20 June",
+        "value": 1063
+      },
+      {
+        "period": "20 June",
+        "value": 959
+      },
+      {
+        "period": "21 June",
+        "value": 669
+      },
+      {
+        "period": "21 June",
+        "value": 1071
+      },
+      {
+        "period": "22 June",
+        "value": 896
+      },
+      {
+        "period": "23 June",
+        "value": 1057
+      },
+      {
+        "period": "23 June",
+        "value": 316
+      }
+    ],
+    "latestBlockTimestamp": "2026-06-23T22:45:27.000Z"
+  },
+  "protocol": {
+    "version": "x402-v2",
+    "networks": [
+      "Base",
+      "Solana"
+    ],
+    "settlementAsset": "USDC",
+    "stages": [
+      {
+        "title": "Discover",
+        "description": "Select a resource from its published contract and runtime 402 challenge.",
+        "status": "indexed"
+      },
+      {
+        "title": "Quote",
+        "description": "Read price, network, asset, expiry and payment requirements.",
+        "status": "ready"
+      },
+      {
+        "title": "Authorize",
+        "description": "Apply the agent budget policy before signing a payment payload.",
+        "status": "policy"
+      },
+      {
+        "title": "Execute + Prove",
+        "description": "Bind the response to execution, output and evaluation receipts.",
+        "status": "verified"
+      },
+      {
+        "title": "Settle",
+        "description": "Verify and settle through an x402-compatible facilitator.",
+        "status": "facilitated"
       }
     ]
   }
