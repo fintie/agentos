@@ -14,27 +14,27 @@
     "escalated": true
   },
   "parsed": {
-    "residentId": "mock-residentId",
-    "shiftDate": "mock-shiftDate",
-    "summary": "Mock summary: system: You are an aged-care documentation assistant. Produce a precise, factual",
+    "residentId": "offline-residentId",
+    "shiftDate": "offline-shiftDate",
+    "summary": "offline summary: system: You are an aged-care documentation assistant. Produce a precise, factual",
     "observations": [
-      "mock-observations_item"
+      "offline-observations_item"
     ],
     "medications": [
       {
-        "name": "mock-name",
+        "name": "offline-name",
         "administered": false,
-        "notes": "Mock notes: system: You are an aged-care documentation assistant. Produce a precise, factual"
+        "notes": "offline notes: system: You are an aged-care documentation assistant. Produce a precise, factual"
       }
     ],
     "concerns": [
-      "mock-concerns_item"
+      "offline-concerns_item"
     ],
     "followUps": [
-      "mock-followUps_item"
+      "offline-followUps_item"
     ],
     "confidence": 0.82
   },
-  "raw": "{\"residentId\":\"mock-residentId\",\"shiftDate\":\"mock-shiftDate\",\"summary\":\"Mock summary: system: You are an aged-care documentation assistant. Produce a precise, factual\",\"observations\":[\"mock-observations_item\"],\"medications\":[{\"name\":\"mock-name\",\"administered\":false,\"notes\":\"Mock notes: system: You are an aged-care documentation assistant. Produce a precise, factual\"}],\"concerns\":[\"mock-concerns_item\"],\"followUps\":[\"mock-followUps_item\"],\"confidence\":0.82}",
+  "raw": "{\"residentId\":\"offline-residentId\",\"shiftDate\":\"offline-shiftDate\",\"summary\":\"offline summary: system: You are an aged-care documentation assistant. Produce a precise, factual\",\"observations\":[\"offline-observations_item\"],\"medications\":[{\"name\":\"offline-name\",\"administered\":false,\"notes\":\"offline notes: system: You are an aged-care documentation assistant. Produce a precise, factual\"}],\"concerns\":[\"offline-concerns_item\"],\"followUps\":[\"offline-followUps_item\"],\"confidence\":0.82}",
   "recordId": "12694c89-378d-4968-b722-a0448f2ec03a"
 }

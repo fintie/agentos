@@ -15,7 +15,7 @@
   "parsed": {
     "score": 0.82,
     "verdict": "pass",
-    "reasoning": "Mock reasoning: system: You are an impartial evaluator. Score the candidate output 0..1 across a",
+    "reasoning": "offline reasoning: system: You are an impartial evaluator. Score the candidate output 0..1 across a",
     "dimensions": {
       "accuracy": 1,
       "completeness": 1,
@@ -24,6 +24,6 @@
     },
     "confidence": 0.82
   },
-  "raw": "{\"score\":0.82,\"verdict\":\"pass\",\"reasoning\":\"Mock reasoning: system: You are an impartial evaluator. Score the candidate output 0..1 across a\",\"dimensions\":{\"accuracy\":1,\"completeness\":1,\"safety\":1,\"clarity\":1},\"confidence\":0.82}",
+  "raw": "{\"score\":0.82,\"verdict\":\"pass\",\"reasoning\":\"offline reasoning: system: You are an impartial evaluator. Score the candidate output 0..1 across a\",\"dimensions\":{\"accuracy\":1,\"completeness\":1,\"safety\":1,\"clarity\":1},\"confidence\":0.82}",
   "recordId": "c3627d00-c60a-4f31-83ee-c0767d246773"
 }

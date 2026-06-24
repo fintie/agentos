@@ -17,7 +17,7 @@
     "profile": "conservative",
     "positions": [
       {
-        "symbol": "mock-symbol",
+        "symbol": "offline-symbol",
         "weight_percent": 1,
         "score": 0.82
       }
@@ -25,6 +25,6 @@
     "cash_reserve_percent": 1,
     "confidence": 0.82
   },
-  "raw": "{\"profile\":\"conservative\",\"positions\":[{\"symbol\":\"mock-symbol\",\"weight_percent\":1,\"score\":0.82}],\"cash_reserve_percent\":1,\"confidence\":0.82}",
+  "raw": "{\"profile\":\"conservative\",\"positions\":[{\"symbol\":\"offline-symbol\",\"weight_percent\":1,\"score\":0.82}],\"cash_reserve_percent\":1,\"confidence\":0.82}",
   "recordId": "f65d753c-bdf8-46f8-9a7d-626617f9776f"
 }

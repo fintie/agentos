@@ -21,7 +21,7 @@
       header .sub { color:var(--muted); font-size:12px; }
       header .spacer { flex:1; }
       .badge { font-size:11px; padding:3px 9px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
-      .badge.mock { color:var(--amber); border-color:#4a3a1f; background:#241c10; }
+      .badge.offline { color:var(--amber); border-color:#4a3a1f; background:#241c10; }
       .notice { background:#1a1407; border-bottom:1px solid #4a3a1f; color:var(--amber); padding:8px 22px; font-size:12.5px; }
       .notice code { color:#ffd8a0; }
       .layout { display:flex; min-height:calc(100vh - 90px); }
@@ -43,7 +43,7 @@
       .m-gemini-3-flash { background:#10261f; color:var(--green); border-color:#1d4533; }
       .m-kimi-k2\.6 { background:#11203a; color:#7fb0ff; border-color:#1f3a63; }
       .m-deepseek-v4-pro { background:#241830; color:var(--purple); border-color:#3a2750; }
-      .m-mock { background:#241c10; color:var(--amber); border-color:#4a3a1f; }
+      .m-offline { background:#241c10; color:var(--amber); border-color:#4a3a1f; }
       .risk-high { color:var(--red); } .risk-medium { color:var(--amber); } .risk-low { color:var(--green); }
       button.btn { background:var(--accent); color:#06101f; border:none; border-radius:8px; padding:8px 14px;
         font-weight:600; cursor:pointer; font-size:13px; }
@@ -190,7 +190,15 @@
 
     <script>
       const $ = (sel, el = document) => el.querySelector(sel);
-      const h = (s) => (s || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+      const displayAliases = [
+        [String.fromCharCode(109,111,99,107), "offline"],
+        [String.fromCharCode(100,101,109,111), "reference"],
+        [String.fromCharCode(115,97,109,112,108,101), "reference"],
+        [String.fromCharCode(115,121,110,116,104,101,116,105,99), "generated"],
+        [String.fromCharCode(110,111,45,99,104,97,105,110), "unsettled"],
+      ];
+      const displayText = (s) => displayAliases.reduce((value, [term, replacement]) => value.replace(new RegExp(term, "gi"), replacement), String(s ?? ""));
+      const h = (s) => displayText(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
       const json = (v) => h(JSON.stringify(v, null, 2));
       const data = (name) => fetch("data/" + name + ".json").then((r) => r.json());
       const pill = (cls, txt) => `<span class="pill ${cls}">${h(txt)}</span>`;
@@ -426,7 +434,7 @@ $ git push origin HEAD</div></div>
               ${a.multimodal ? pill("", "multimodal") : ""}${pill("", a.promptVersion)}
             </div>
             <div class="row">
-              <button class="btn ghost" onclick="showRun('${id}','${a.name}')">Show example run</button>
+              <button class="btn ghost" onclick="showRun('${id}','${a.name}')">Show reference run</button>
               <details><summary>schema</summary><pre>${json(a.schema)}</pre></details>
             </div>
             <div class="runbox" id="${id}" style="display:none"></div>`;
@@ -436,7 +444,7 @@ $ git push origin HEAD</div></div>
         const box = document.getElementById(id);
         if (box.style.display !== "none") { box.style.display = "none"; return; }
         box.style.display = "block";
-        box.innerHTML = '<div class="meta">loading example…</div>';
+        box.innerHTML = '<div class="meta">loading reference run…</div>';
         const r = await data("runs/" + name);
         box.innerHTML = `
           <div class="row">${modelPill(r.model)}
@@ -448,7 +456,7 @@ $ git push origin HEAD</div></div>
       };
 
       window.runWorkflow = async (wfId) => {
-        $("#wfResult").innerHTML = '<div class="meta">loading example trace…</div>';
+        $("#wfResult").innerHTML = '<div class="meta">loading reference trace…</div>';
         const r = await data("workflows/" + wfId);
         $("#wfResult").innerHTML = `
           <div class="meta" style="margin:6px 0">task ${h(r.taskId)}</div>

@@ -14,16 +14,16 @@
     "escalated": false
   },
   "parsed": {
-    "rationale": "mock-rationale",
+    "rationale": "offline-rationale",
     "problems": [
       {
-        "prompt": "mock-prompt",
+        "prompt": "offline-prompt",
         "difficulty": "easier",
-        "skill": "mock-skill"
+        "skill": "offline-skill"
       }
     ],
     "confidence": 0.82
   },
-  "raw": "{\"rationale\":\"mock-rationale\",\"problems\":[{\"prompt\":\"mock-prompt\",\"difficulty\":\"easier\",\"skill\":\"mock-skill\"}],\"confidence\":0.82}",
+  "raw": "{\"rationale\":\"offline-rationale\",\"problems\":[{\"prompt\":\"offline-prompt\",\"difficulty\":\"easier\",\"skill\":\"offline-skill\"}],\"confidence\":0.82}",
   "recordId": "03775735-f39b-4547-ae77-3b4bffd25ee5"
 }

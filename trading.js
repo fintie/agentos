@@ -31,7 +31,7 @@ function renderTradingSystem() {
     ${tradingPortfolio(snapshot)}
     <details class="system-module"><summary>Backtesting module <span>30D / 90D / 1Y results</span></summary>${tradingBacktests(snapshot)}</details>
     <details class="system-module"><summary>News catalyst module <span>${snapshot.signals.length} researched candidates</span></summary>${tradingNews(snapshot)}</details>
-    <div class="trade-disclaimer">Research workspace only. Demo data is synthetic and delayed; outputs are not financial advice or an offer to trade. Connect an approved market-data provider and broker compliance controls before live use.</div>
+    <div class="trade-disclaimer">Research workspace only. Market snapshots are delayed; outputs are not financial advice or an offer to trade. Connect an approved market-data provider and broker compliance controls before live use.</div>
   </div>`;
 }
 
@@ -58,7 +58,7 @@ function renderTrading(view) {
     ${selected === "portfolio" ? tradingPortfolio(snapshot) : ""}
     ${selected === "news" ? tradingNews(snapshot) : ""}
     ${selected === "activity" ? tradingActivity(snapshot) : ""}
-    <div class="trade-disclaimer">Research workspace only. Demo data is synthetic and delayed; outputs are not financial advice or an offer to trade. Connect an approved market-data provider and broker compliance controls before live use.</div>
+    <div class="trade-disclaimer">Research workspace only. Market snapshots are delayed; outputs are not financial advice or an offer to trade. Connect an approved market-data provider and broker compliance controls before live use.</div>
   </div>`;
 }
 

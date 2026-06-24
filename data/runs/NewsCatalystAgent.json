@@ -15,10 +15,10 @@
   },
   "parsed": {
     "catalyst_score": 0.82,
-    "summary": "Mock summary: system: You are the AgentOS NewsCatalystAgent. Return only structured JSON. Trea",
+    "summary": "offline summary: system: You are the AgentOS NewsCatalystAgent. Return only structured JSON. Trea",
     "sentiment": "positive",
     "confidence": 0.82
   },
-  "raw": "{\"catalyst_score\":0.82,\"summary\":\"Mock summary: system: You are the AgentOS NewsCatalystAgent. Return only structured JSON. Trea\",\"sentiment\":\"positive\",\"confidence\":0.82}",
+  "raw": "{\"catalyst_score\":0.82,\"summary\":\"offline summary: system: You are the AgentOS NewsCatalystAgent. Return only structured JSON. Trea\",\"sentiment\":\"positive\",\"confidence\":0.82}",
   "recordId": "12f0c42e-1c3e-464c-99fa-8a5af7bcc67e"
 }

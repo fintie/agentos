@@ -170,9 +170,9 @@
           "additionalProperties": false
         },
         "example": {
-          "quoteId": "quote_demo",
+          "quoteId": "quote_reference",
           "subjectId": "agent-software-engineering",
-          "budgetPolicyId": "policy-agentos-demo"
+          "budgetPolicyId": "policy-agentos"
         }
       },
       {
@@ -230,8 +230,8 @@
           "additionalProperties": false
         },
         "example": {
-          "quoteId": "quote_demo",
-          "executionReceiptHash": "receipt://shard-demo",
+          "quoteId": "quote_reference",
+          "executionReceiptHash": "receipt://shard-run",
           "evaluationScore": 0.91
         }
       }

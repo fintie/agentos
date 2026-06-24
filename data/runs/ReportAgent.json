@@ -14,13 +14,13 @@
     "escalated": false
   },
   "parsed": {
-    "title": "mock-title",
-    "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
+    "title": "offline-title",
+    "summary": "offline summary: system: You write clear, well-structured summaries for a non-technical audience.",
     "highlights": [
-      "mock-highlights_item"
+      "offline-highlights_item"
     ],
     "confidence": 0.82
   },
-  "raw": "{\"title\":\"mock-title\",\"summary\":\"Mock summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"mock-highlights_item\"],\"confidence\":0.82}",
+  "raw": "{\"title\":\"offline-title\",\"summary\":\"offline summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"offline-highlights_item\"],\"confidence\":0.82}",
   "recordId": "5f387e6c-6918-4861-abd2-057a62f5952c"
 }

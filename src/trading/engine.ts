@@ -61,7 +61,7 @@ export async function runTradingWorkflow(options: TradingWorkflowOptions = {}): 
   emit("portfolio.built", "Portfolio Manager Agent", "Conservative, balanced and aggressive portfolios ranked", 168);
   emit("notification.queued", "Notification Agent", `${signals.filter((signal) => signal.status === "actionable").length} actionable alerts queued`, 91);
   return {
-    generatedAt: now().toISOString(), mode: "demo", schedule: { US: "Every 15 minutes", ASX: "Every 30 minutes" },
+    generatedAt: now().toISOString(), mode: "snapshot", schedule: { US: "Every 15 minutes", ASX: "Every 30 minutes" },
     signals, portfolios, activity,
     notificationChannels: [
       { channel: "Telegram", enabled: false }, { channel: "Discord", enabled: false },

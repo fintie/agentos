@@ -23,6 +23,7 @@ import type { RoutingContext } from "../src/types.js";
 import { runTradingWorkflow } from "../src/trading/engine.js";
 import { buildDistributedInferenceDemo } from "../src/shard/dashboardData.js";
 import { getX402SystemData } from "../src/x402/ecosystemData.js";
+import { sanitizePublicValue } from "./publicData.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -62,7 +63,7 @@ function agentMeta(name: string) {
 function write(rel: string, data: unknown) {
   const path = join(DATA, rel);
   mkdirSync(dirname(path), { recursive: true });
-  writeFileSync(path, JSON.stringify(data, null, 2));
+  writeFileSync(path, JSON.stringify(sanitizePublicValue(data), null, 2));
 }
 
 async function main() {
@@ -77,7 +78,7 @@ async function main() {
   }));
   write("usecases.json", usecases);
   write("agents.json", agents.list().map((a) => agentMeta(a.name)));
-  write("config.json", { static: true, mockMode: true, evalStore: "static", liveModels: [] });
+  write("config.json", { static: true, offlineMode: true, evalStore: "static", liveModels: [] });
   write("trading.json", await runTradingWorkflow({ now: () => new Date("2026-06-20T02:15:00.000Z") }));
   write("shard.json", buildDistributedInferenceDemo());
   write("x402.json", await getX402SystemData({ forceRefresh: true }));

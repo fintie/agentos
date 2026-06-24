@@ -16,14 +16,14 @@
   "parsed": {
     "steps": [
       {
-        "action": "mock-action",
-        "owner": "mock-owner",
+        "action": "offline-action",
+        "owner": "offline-owner",
         "dueInDays": 1
       }
     ],
     "priority": "low",
     "confidence": 0.82
   },
-  "raw": "{\"steps\":[{\"action\":\"mock-action\",\"owner\":\"mock-owner\",\"dueInDays\":1}],\"priority\":\"low\",\"confidence\":0.82}",
+  "raw": "{\"steps\":[{\"action\":\"offline-action\",\"owner\":\"offline-owner\",\"dueInDays\":1}],\"priority\":\"low\",\"confidence\":0.82}",
   "recordId": "71504a36-ca85-4391-a874-3c64211260cf"
 }

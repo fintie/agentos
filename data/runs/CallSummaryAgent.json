@@ -14,14 +14,14 @@
     "escalated": false
   },
   "parsed": {
-    "topic": "mock-topic",
-    "summary": "Mock summary: system: You summarise customer/support calls concisely and extract action items.",
+    "topic": "offline-topic",
+    "summary": "offline summary: system: You summarise customer/support calls concisely and extract action items.",
     "sentiment": "positive",
     "actionItems": [
-      "mock-actionItems_item"
+      "offline-actionItems_item"
     ],
     "confidence": 0.82
   },
-  "raw": "{\"topic\":\"mock-topic\",\"summary\":\"Mock summary: system: You summarise customer/support calls concisely and extract action items.\",\"sentiment\":\"positive\",\"actionItems\":[\"mock-actionItems_item\"],\"confidence\":0.82}",
+  "raw": "{\"topic\":\"offline-topic\",\"summary\":\"offline summary: system: You summarise customer/support calls concisely and extract action items.\",\"sentiment\":\"positive\",\"actionItems\":[\"offline-actionItems_item\"],\"confidence\":0.82}",
   "recordId": "b7ba356d-f3b5-4c61-8a5c-4b27064e2a93"
 }

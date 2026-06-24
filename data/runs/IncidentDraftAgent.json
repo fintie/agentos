@@ -16,16 +16,16 @@
   "parsed": {
     "incidentType": "fall",
     "severity": "low",
-    "narrative": "mock-narrative",
+    "narrative": "offline-narrative",
     "immediateActions": [
-      "mock-immediateActions_item"
+      "offline-immediateActions_item"
     ],
     "peopleInvolved": [
-      "mock-peopleInvolved_item"
+      "offline-peopleInvolved_item"
     ],
     "notifyFamily": false,
     "confidence": 0.82
   },
-  "raw": "{\"incidentType\":\"fall\",\"severity\":\"low\",\"narrative\":\"mock-narrative\",\"immediateActions\":[\"mock-immediateActions_item\"],\"peopleInvolved\":[\"mock-peopleInvolved_item\"],\"notifyFamily\":false,\"confidence\":0.82}",
+  "raw": "{\"incidentType\":\"fall\",\"severity\":\"low\",\"narrative\":\"offline-narrative\",\"immediateActions\":[\"offline-immediateActions_item\"],\"peopleInvolved\":[\"offline-peopleInvolved_item\"],\"notifyFamily\":false,\"confidence\":0.82}",
   "recordId": "e7b2c1db-ce48-4af5-9ba6-2b6a12aef4a7"
 }

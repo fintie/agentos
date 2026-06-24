@@ -10,11 +10,11 @@
       "output": {
         "isCorrect": true,
         "score": 0.82,
-        "feedback": "Mock feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f",
+        "feedback": "offline feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f",
         "misconceptions": [
-          "mock-misconceptions_item"
+          "offline-misconceptions_item"
         ],
-        "encouragement": "mock-encouragement",
+        "encouragement": "offline-encouragement",
         "confidence": 0.82
       }
     },
@@ -26,8 +26,8 @@
       "ruleId": "final_judge.default",
       "output": {
         "verifiedCorrect": true,
-        "expectedAnswer": "mock-expectedAnswer",
-        "errorAnalysis": "mock-errorAnalysis",
+        "expectedAnswer": "offline-expectedAnswer",
+        "errorAnalysis": "offline-errorAnalysis",
         "confidence": 0.82
       }
     },
@@ -38,12 +38,12 @@
       "escalated": false,
       "ruleId": "agent_planning.default",
       "output": {
-        "rationale": "mock-rationale",
+        "rationale": "offline-rationale",
         "problems": [
           {
-            "prompt": "mock-prompt",
+            "prompt": "offline-prompt",
             "difficulty": "easier",
-            "skill": "mock-skill"
+            "skill": "offline-skill"
           }
         ],
         "confidence": 0.82
@@ -56,10 +56,10 @@
       "escalated": false,
       "ruleId": "fast_summary.default",
       "output": {
-        "title": "mock-title",
-        "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
+        "title": "offline-title",
+        "summary": "offline summary: system: You write clear, well-structured summaries for a non-technical audience.",
         "highlights": [
-          "mock-highlights_item"
+          "offline-highlights_item"
         ],
         "confidence": 0.82
       }

@@ -10,12 +10,12 @@
       "output": {
         "incidentType": "fall",
         "severity": "low",
-        "narrative": "mock-narrative",
+        "narrative": "offline-narrative",
         "immediateActions": [
-          "mock-immediateActions_item"
+          "offline-immediateActions_item"
         ],
         "peopleInvolved": [
-          "mock-peopleInvolved_item"
+          "offline-peopleInvolved_item"
         ],
         "notifyFamily": false,
         "confidence": 0.82
@@ -29,17 +29,17 @@
       "ruleId": "compliance_review.default",
       "output": {
         "compliant": true,
-        "framework": "mock-framework",
+        "framework": "offline-framework",
         "riskScore": 0.82,
         "violations": [
           {
-            "rule": "mock-rule",
+            "rule": "offline-rule",
             "severity": "low",
-            "detail": "mock-detail"
+            "detail": "offline-detail"
           }
         ],
         "recommendations": [
-          "mock-recommendations_item"
+          "offline-recommendations_item"
         ],
         "requiresHumanReview": false,
         "confidence": 0.82

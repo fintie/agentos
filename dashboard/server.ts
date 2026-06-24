@@ -77,7 +77,7 @@ app.get("/api/agents", (_req, res) => {
 
 app.get("/api/config", (_req, res) => {
   res.json({
-    mockMode: config.forceMock,
+    offlineMode: config.forceMock,
     evalStore: config.evalStore,
     liveModels: (["gemini-3-flash", "kimi-k2.6", "deepseek-v4-pro"] as const).filter((m) =>
       orchestrator.registry.isLive(m),
@@ -181,7 +181,7 @@ app.get("/x402.js", (_req, res) => res.sendFile(join(__dirname, "x402.js")));
 
 app.listen(config.dashboardPort, () => {
   console.log(`AgentOS dashboard → http://localhost:${config.dashboardPort}`);
-  console.log(`Mode: ${config.forceMock ? "MOCK" : "live where keys present"} | store: ${config.evalStore}`);
+  console.log(`Mode: ${config.forceMock ? "offline adapters" : "live where keys present"} | store: ${config.evalStore}`);
 });
 
 function str(v: unknown): string | undefined {

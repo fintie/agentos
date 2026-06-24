@@ -14,21 +14,21 @@
     "escalated": false
   },
   "parsed": {
-    "overview": "mock-overview",
+    "overview": "offline-overview",
     "components": [
       {
-        "name": "mock-name",
-        "responsibility": "mock-responsibility"
+        "name": "offline-name",
+        "responsibility": "offline-responsibility"
       }
     ],
     "risks": [
-      "mock-risks_item"
+      "offline-risks_item"
     ],
     "milestones": [
-      "mock-milestones_item"
+      "offline-milestones_item"
     ],
     "confidence": 0.82
   },
-  "raw": "{\"overview\":\"mock-overview\",\"components\":[{\"name\":\"mock-name\",\"responsibility\":\"mock-responsibility\"}],\"risks\":[\"mock-risks_item\"],\"milestones\":[\"mock-milestones_item\"],\"confidence\":0.82}",
+  "raw": "{\"overview\":\"offline-overview\",\"components\":[{\"name\":\"offline-name\",\"responsibility\":\"offline-responsibility\"}],\"risks\":[\"offline-risks_item\"],\"milestones\":[\"offline-milestones_item\"],\"confidence\":0.82}",
   "recordId": "5c44c5cc-484e-4485-a6b1-65d9275d5d51"
 }

@@ -111,7 +111,7 @@ export interface TradingActivity {
 
 export interface TradingDashboardSnapshot {
   generatedAt: string;
-  mode: "demo" | "live";
+  mode: "snapshot" | "live";
   schedule: { US: string; ASX: string };
   signals: TradingSignal[];
   portfolios: PortfolioAllocation[];

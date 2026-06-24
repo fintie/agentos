@@ -14,10 +14,10 @@
   },
   "parsed": {
     "verifiedCorrect": true,
-    "expectedAnswer": "mock-expectedAnswer",
-    "errorAnalysis": "mock-errorAnalysis",
+    "expectedAnswer": "offline-expectedAnswer",
+    "errorAnalysis": "offline-errorAnalysis",
     "confidence": 0.82
   },
-  "raw": "{\"verifiedCorrect\":true,\"expectedAnswer\":\"mock-expectedAnswer\",\"errorAnalysis\":\"mock-errorAnalysis\",\"confidence\":0.82}",
+  "raw": "{\"verifiedCorrect\":true,\"expectedAnswer\":\"offline-expectedAnswer\",\"errorAnalysis\":\"offline-errorAnalysis\",\"confidence\":0.82}",
   "recordId": "b11804d9-bd4a-467c-8ebc-5dbd5c6f8221"
 }

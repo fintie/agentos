@@ -13,20 +13,20 @@
     "escalated": false
   },
   "parsed": {
-    "cleanedText": "Mock cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand",
+    "cleanedText": "offline cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand",
     "entities": {
       "residents": [
-        "mock-residents_item"
+        "offline-residents_item"
       ],
       "times": [
-        "mock-times_item"
+        "offline-times_item"
       ],
       "medications": [
-        "mock-medications_item"
+        "offline-medications_item"
       ]
     },
     "confidence": 0.82
   },
-  "raw": "{\"cleanedText\":\"Mock cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand\",\"entities\":{\"residents\":[\"mock-residents_item\"],\"times\":[\"mock-times_item\"],\"medications\":[\"mock-medications_item\"]},\"confidence\":0.82}",
+  "raw": "{\"cleanedText\":\"offline cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand\",\"entities\":{\"residents\":[\"offline-residents_item\"],\"times\":[\"offline-times_item\"],\"medications\":[\"offline-medications_item\"]},\"confidence\":0.82}",
   "recordId": "66465c28-c927-4140-b0bc-aa957bf998af"
 }

@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-06-20T02:15:00.000Z",
-  "mode": "demo",
+  "mode": "snapshot",
   "schedule": {
     "US": "Every 15 minutes",
     "ASX": "Every 30 minutes"

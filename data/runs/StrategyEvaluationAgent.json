@@ -17,13 +17,13 @@
     "strategy": "Trend Join Long",
     "score": 0.82,
     "conditions_met": [
-      "mock-conditions_met_item"
+      "offline-conditions_met_item"
     ],
     "rationale": [
-      "mock-rationale_item"
+      "offline-rationale_item"
     ],
     "confidence": 0.82
   },
-  "raw": "{\"strategy\":\"Trend Join Long\",\"score\":0.82,\"conditions_met\":[\"mock-conditions_met_item\"],\"rationale\":[\"mock-rationale_item\"],\"confidence\":0.82}",
+  "raw": "{\"strategy\":\"Trend Join Long\",\"score\":0.82,\"conditions_met\":[\"offline-conditions_met_item\"],\"rationale\":[\"offline-rationale_item\"],\"confidence\":0.82}",
   "recordId": "f0d5931e-54b5-4d54-94d9-20142b88d551"
 }

@@ -6,20 +6,20 @@
     "promptVersion": "dev.architecture.v1",
     "inputHash": "a49c75d95642362369814ac3418982477d5f12ea06986dfe5cae9f9cfd64b668",
     "rawInputReference": "requirement:Offline-first sync",
-    "rawOutput": "{\"overview\":\"mock-overview\",\"components\":[{\"name\":\"mock-name\",\"responsibility\":\"mock-responsibility\"}],\"risks\":[\"mock-risks_item\"],\"milestones\":[\"mock-milestones_item\"],\"confidence\":0.82}",
+    "rawOutput": "{\"overview\":\"offline-overview\",\"components\":[{\"name\":\"offline-name\",\"responsibility\":\"offline-responsibility\"}],\"risks\":[\"offline-risks_item\"],\"milestones\":[\"offline-milestones_item\"],\"confidence\":0.82}",
     "parsedOutput": {
-      "overview": "mock-overview",
+      "overview": "offline-overview",
       "components": [
         {
-          "name": "mock-name",
-          "responsibility": "mock-responsibility"
+          "name": "offline-name",
+          "responsibility": "offline-responsibility"
         }
       ],
       "risks": [
-        "mock-risks_item"
+        "offline-risks_item"
       ],
       "milestones": [
-        "mock-milestones_item"
+        "offline-milestones_item"
       ],
       "confidence": 0.82
     },
@@ -88,15 +88,15 @@
     "promptVersion": "dev.review.v1",
     "inputHash": "ad786632e3db2cbaf3ea427e4f02d613ffe5975e160fa096bef71238e4804816",
     "rawInputReference": "inline",
-    "rawOutput": "{\"approved\":true,\"summary\":\"Mock summary: system: You are a rigorous code reviewer. Identify correctness, security, and ma\",\"issues\":[{\"severity\":\"nit\",\"file\":\"mock-file\",\"detail\":\"mock-detail\"}],\"confidence\":0.82}",
+    "rawOutput": "{\"approved\":true,\"summary\":\"offline summary: system: You are a rigorous code reviewer. Identify correctness, security, and ma\",\"issues\":[{\"severity\":\"nit\",\"file\":\"offline-file\",\"detail\":\"offline-detail\"}],\"confidence\":0.82}",
     "parsedOutput": {
       "approved": true,
-      "summary": "Mock summary: system: You are a rigorous code reviewer. Identify correctness, security, and ma",
+      "summary": "offline summary: system: You are a rigorous code reviewer. Identify correctness, security, and ma",
       "issues": [
         {
           "severity": "nit",
-          "file": "mock-file",
-          "detail": "mock-detail"
+          "file": "offline-file",
+          "detail": "offline-detail"
         }
       ],
       "confidence": 0.82
@@ -161,12 +161,12 @@
     "promptVersion": "report.v1",
     "inputHash": "93dbb61c5c5d2fc008e1dd6b3e6ed837c68a529bff0ea42c9a81d950db88d56e",
     "rawInputReference": "inline",
-    "rawOutput": "{\"title\":\"mock-title\",\"summary\":\"Mock summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"mock-highlights_item\"],\"confidence\":0.82}",
+    "rawOutput": "{\"title\":\"offline-title\",\"summary\":\"offline summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"offline-highlights_item\"],\"confidence\":0.82}",
     "parsedOutput": {
-      "title": "mock-title",
-      "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
+      "title": "offline-title",
+      "summary": "offline summary: system: You write clear, well-structured summaries for a non-technical audience.",
       "highlights": [
-        "mock-highlights_item"
+        "offline-highlights_item"
       ],
       "confidence": 0.82
     },
@@ -236,12 +236,12 @@
     "promptVersion": "report.v1",
     "inputHash": "716e134fd242549b08c875bb99203e504d3f2a4acb9675650420c688029aae28",
     "rawInputReference": "inline",
-    "rawOutput": "{\"title\":\"mock-title\",\"summary\":\"Mock summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"mock-highlights_item\"],\"confidence\":0.82}",
+    "rawOutput": "{\"title\":\"offline-title\",\"summary\":\"offline summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"offline-highlights_item\"],\"confidence\":0.82}",
     "parsedOutput": {
-      "title": "mock-title",
-      "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
+      "title": "offline-title",
+      "summary": "offline summary: system: You write clear, well-structured summaries for a non-technical audience.",
       "highlights": [
-        "mock-highlights_item"
+        "offline-highlights_item"
       ],
       "confidence": 0.82
     },
@@ -311,13 +311,13 @@
     "promptVersion": "voice.summary.v1",
     "inputHash": "bc9170518033bfc8537b568cf192ecbdfd6acd447eb3bc4474928537d25cec4d",
     "rawInputReference": "call:C-9001",
-    "rawOutput": "{\"topic\":\"mock-topic\",\"summary\":\"Mock summary: system: You summarise customer/support calls concisely and extract action items.\",\"sentiment\":\"positive\",\"actionItems\":[\"mock-actionItems_item\"],\"confidence\":0.82}",
+    "rawOutput": "{\"topic\":\"offline-topic\",\"summary\":\"offline summary: system: You summarise customer/support calls concisely and extract action items.\",\"sentiment\":\"positive\",\"actionItems\":[\"offline-actionItems_item\"],\"confidence\":0.82}",
     "parsedOutput": {
-      "topic": "mock-topic",
-      "summary": "Mock summary: system: You summarise customer/support calls concisely and extract action items.",
+      "topic": "offline-topic",
+      "summary": "offline summary: system: You summarise customer/support calls concisely and extract action items.",
       "sentiment": "positive",
       "actionItems": [
-        "mock-actionItems_item"
+        "offline-actionItems_item"
       ],
       "confidence": 0.82
     },
@@ -387,12 +387,12 @@
     "promptVersion": "voice.followup.v1",
     "inputHash": "84948d08a7cffb7c4ae067e6e449089da8c5eab276ed4c6ca7af1d8e6582b250",
     "rawInputReference": "inline",
-    "rawOutput": "{\"steps\":[{\"action\":\"mock-action\",\"owner\":\"mock-owner\",\"dueInDays\":1}],\"priority\":\"low\",\"confidence\":0.82}",
+    "rawOutput": "{\"steps\":[{\"action\":\"offline-action\",\"owner\":\"offline-owner\",\"dueInDays\":1}],\"priority\":\"low\",\"confidence\":0.82}",
     "parsedOutput": {
       "steps": [
         {
-          "action": "mock-action",
-          "owner": "mock-owner",
+          "action": "offline-action",
+          "owner": "offline-owner",
           "dueInDays": 1
         }
       ],
@@ -464,10 +464,10 @@
     "promptVersion": "voice.escalation.v1",
     "inputHash": "a539974f9849ef0ac11be123b03a6fd4d6fab1887b5f4f4950da3590326611d4",
     "rawInputReference": "inline",
-    "rawOutput": "{\"escalate\":false,\"reason\":\"Mock reason: system: You assess risk and compliance signals in calls (complaints, safety, leg\",\"urgency\":\"none\",\"confidence\":0.82}",
+    "rawOutput": "{\"escalate\":false,\"reason\":\"offline reason: system: You assess risk and compliance signals in calls (complaints, safety, leg\",\"urgency\":\"none\",\"confidence\":0.82}",
     "parsedOutput": {
       "escalate": false,
-      "reason": "Mock reason: system: You assess risk and compliance signals in calls (complaints, safety, leg",
+      "reason": "offline reason: system: You assess risk and compliance signals in calls (complaints, safety, leg",
       "urgency": "none",
       "confidence": 0.82
     },
@@ -531,15 +531,15 @@
     "promptVersion": "stem.feedback.v1",
     "inputHash": "69fc21fd66cec0d6a04aa00851bb4dad672dc38526c0221af65fe4a1b4feb4d4",
     "rawInputReference": "student-answer:stem-dc6c556e-775c-46dd-82c6-f0258ee40554",
-    "rawOutput": "{\"isCorrect\":true,\"score\":0.82,\"feedback\":\"Mock feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f\",\"misconceptions\":[\"mock-misconceptions_item\"],\"encouragement\":\"mock-encouragement\",\"confidence\":0.82}",
+    "rawOutput": "{\"isCorrect\":true,\"score\":0.82,\"feedback\":\"offline feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f\",\"misconceptions\":[\"offline-misconceptions_item\"],\"encouragement\":\"offline-encouragement\",\"confidence\":0.82}",
     "parsedOutput": {
       "isCorrect": true,
       "score": 0.82,
-      "feedback": "Mock feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f",
+      "feedback": "offline feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f",
       "misconceptions": [
-        "mock-misconceptions_item"
+        "offline-misconceptions_item"
       ],
-      "encouragement": "mock-encouragement",
+      "encouragement": "offline-encouragement",
       "confidence": 0.82
     },
     "confidenceScore": 0.82,
@@ -608,11 +608,11 @@
     "promptVersion": "stem.correctness.v1",
     "inputHash": "69fc21fd66cec0d6a04aa00851bb4dad672dc38526c0221af65fe4a1b4feb4d4",
     "rawInputReference": "inline",
-    "rawOutput": "{\"verifiedCorrect\":true,\"expectedAnswer\":\"mock-expectedAnswer\",\"errorAnalysis\":\"mock-errorAnalysis\",\"confidence\":0.82}",
+    "rawOutput": "{\"verifiedCorrect\":true,\"expectedAnswer\":\"offline-expectedAnswer\",\"errorAnalysis\":\"offline-errorAnalysis\",\"confidence\":0.82}",
     "parsedOutput": {
       "verifiedCorrect": true,
-      "expectedAnswer": "mock-expectedAnswer",
-      "errorAnalysis": "mock-errorAnalysis",
+      "expectedAnswer": "offline-expectedAnswer",
+      "errorAnalysis": "offline-errorAnalysis",
       "confidence": 0.82
     },
     "confidenceScore": 0.82,
@@ -675,14 +675,14 @@
     "promptVersion": "stem.nextpractice.v1",
     "inputHash": "377722ab10dcd4f20695d3360453a4bc2fdbfd46e92adb7c2505b829ffa163dc",
     "rawInputReference": "inline",
-    "rawOutput": "{\"rationale\":\"mock-rationale\",\"problems\":[{\"prompt\":\"mock-prompt\",\"difficulty\":\"easier\",\"skill\":\"mock-skill\"}],\"confidence\":0.82}",
+    "rawOutput": "{\"rationale\":\"offline-rationale\",\"problems\":[{\"prompt\":\"offline-prompt\",\"difficulty\":\"easier\",\"skill\":\"offline-skill\"}],\"confidence\":0.82}",
     "parsedOutput": {
-      "rationale": "mock-rationale",
+      "rationale": "offline-rationale",
       "problems": [
         {
-          "prompt": "mock-prompt",
+          "prompt": "offline-prompt",
           "difficulty": "easier",
-          "skill": "mock-skill"
+          "skill": "offline-skill"
         }
       ],
       "confidence": 0.82
@@ -752,12 +752,12 @@
     "promptVersion": "report.v1",
     "inputHash": "501aaa71ef56b7e473002576ea0b867a9eb43ac956295a45aec2fce8f89490e8",
     "rawInputReference": "inline",
-    "rawOutput": "{\"title\":\"mock-title\",\"summary\":\"Mock summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"mock-highlights_item\"],\"confidence\":0.82}",
+    "rawOutput": "{\"title\":\"offline-title\",\"summary\":\"offline summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"offline-highlights_item\"],\"confidence\":0.82}",
     "parsedOutput": {
-      "title": "mock-title",
-      "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
+      "title": "offline-title",
+      "summary": "offline summary: system: You write clear, well-structured summaries for a non-technical audience.",
       "highlights": [
-        "mock-highlights_item"
+        "offline-highlights_item"
       ],
       "confidence": 0.82
     },
@@ -827,20 +827,20 @@
     "promptVersion": "compliance.v1",
     "inputHash": "253654875fa5723af1fce8a06673f6fad56e1c94f652dc281408f55676093c7e",
     "rawInputReference": "inline",
-    "rawOutput": "{\"compliant\":true,\"framework\":\"mock-framework\",\"riskScore\":0.82,\"violations\":[{\"rule\":\"mock-rule\",\"severity\":\"low\",\"detail\":\"mock-detail\"}],\"recommendations\":[\"mock-recommendations_item\"],\"requiresHumanReview\":false,\"confidence\":0.82}",
+    "rawOutput": "{\"compliant\":true,\"framework\":\"offline-framework\",\"riskScore\":0.82,\"violations\":[{\"rule\":\"offline-rule\",\"severity\":\"low\",\"detail\":\"offline-detail\"}],\"recommendations\":[\"offline-recommendations_item\"],\"requiresHumanReview\":false,\"confidence\":0.82}",
     "parsedOutput": {
       "compliant": true,
-      "framework": "mock-framework",
+      "framework": "offline-framework",
       "riskScore": 0.82,
       "violations": [
         {
-          "rule": "mock-rule",
+          "rule": "offline-rule",
           "severity": "low",
-          "detail": "mock-detail"
+          "detail": "offline-detail"
         }
       ],
       "recommendations": [
-        "mock-recommendations_item"
+        "offline-recommendations_item"
       ],
       "requiresHumanReview": false,
       "confidence": 0.82
@@ -905,12 +905,12 @@
     "promptVersion": "report.v1",
     "inputHash": "cb9fcb9d3756edc18687e3cff0ba502b2dace6d6d82940f9bb7cd622c956bb74",
     "rawInputReference": "inline",
-    "rawOutput": "{\"title\":\"mock-title\",\"summary\":\"Mock summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"mock-highlights_item\"],\"confidence\":0.82}",
+    "rawOutput": "{\"title\":\"offline-title\",\"summary\":\"offline summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"offline-highlights_item\"],\"confidence\":0.82}",
     "parsedOutput": {
-      "title": "mock-title",
-      "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
+      "title": "offline-title",
+      "summary": "offline summary: system: You write clear, well-structured summaries for a non-technical audience.",
       "highlights": [
-        "mock-highlights_item"
+        "offline-highlights_item"
       ],
       "confidence": 0.82
     },
@@ -980,16 +980,16 @@
     "promptVersion": "care.incident.v1",
     "inputHash": "fe609059ee036fbd265face2301ba14a04dfe0f51eb1ffe128537d441141a608",
     "rawInputReference": "inline",
-    "rawOutput": "{\"incidentType\":\"fall\",\"severity\":\"low\",\"narrative\":\"mock-narrative\",\"immediateActions\":[\"mock-immediateActions_item\"],\"peopleInvolved\":[\"mock-peopleInvolved_item\"],\"notifyFamily\":false,\"confidence\":0.82}",
+    "rawOutput": "{\"incidentType\":\"fall\",\"severity\":\"low\",\"narrative\":\"offline-narrative\",\"immediateActions\":[\"offline-immediateActions_item\"],\"peopleInvolved\":[\"offline-peopleInvolved_item\"],\"notifyFamily\":false,\"confidence\":0.82}",
     "parsedOutput": {
       "incidentType": "fall",
       "severity": "low",
-      "narrative": "mock-narrative",
+      "narrative": "offline-narrative",
       "immediateActions": [
-        "mock-immediateActions_item"
+        "offline-immediateActions_item"
       ],
       "peopleInvolved": [
-        "mock-peopleInvolved_item"
+        "offline-peopleInvolved_item"
       ],
       "notifyFamily": false,
       "confidence": 0.82
@@ -1054,18 +1054,18 @@
     "promptVersion": "care.parse.v1",
     "inputHash": "97550768cb0e69f72625bb031145373995df800f676a0eaa2d6af1345421000a",
     "rawInputReference": "shift-note:R-1042:2026-06-17",
-    "rawOutput": "{\"cleanedText\":\"Mock cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand\",\"entities\":{\"residents\":[\"mock-residents_item\"],\"times\":[\"mock-times_item\"],\"medications\":[\"mock-medications_item\"]},\"confidence\":0.82}",
+    "rawOutput": "{\"cleanedText\":\"offline cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand\",\"entities\":{\"residents\":[\"offline-residents_item\"],\"times\":[\"offline-times_item\"],\"medications\":[\"offline-medications_item\"]},\"confidence\":0.82}",
     "parsedOutput": {
-      "cleanedText": "Mock cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand",
+      "cleanedText": "offline cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand",
       "entities": {
         "residents": [
-          "mock-residents_item"
+          "offline-residents_item"
         ],
         "times": [
-          "mock-times_item"
+          "offline-times_item"
         ],
         "medications": [
-          "mock-medications_item"
+          "offline-medications_item"
         ]
       },
       "confidence": 0.82
@@ -1131,26 +1131,26 @@
     "promptVersion": "care.note.v1",
     "inputHash": "b57b3794d1da5e01322be72d3cc6a2fd6d4d4bb499f0718be5a172a4b579cf31",
     "rawInputReference": "inline",
-    "rawOutput": "{\"residentId\":\"mock-residentId\",\"shiftDate\":\"mock-shiftDate\",\"summary\":\"Mock summary: system: You are an aged-care documentation assistant. Produce a precise, factual\",\"observations\":[\"mock-observations_item\"],\"medications\":[{\"name\":\"mock-name\",\"administered\":false,\"notes\":\"Mock notes: system: You are an aged-care documentation assistant. Produce a precise, factual\"}],\"concerns\":[\"mock-concerns_item\"],\"followUps\":[\"mock-followUps_item\"],\"confidence\":0.82}",
+    "rawOutput": "{\"residentId\":\"offline-residentId\",\"shiftDate\":\"offline-shiftDate\",\"summary\":\"offline summary: system: You are an aged-care documentation assistant. Produce a precise, factual\",\"observations\":[\"offline-observations_item\"],\"medications\":[{\"name\":\"offline-name\",\"administered\":false,\"notes\":\"offline notes: system: You are an aged-care documentation assistant. Produce a precise, factual\"}],\"concerns\":[\"offline-concerns_item\"],\"followUps\":[\"offline-followUps_item\"],\"confidence\":0.82}",
     "parsedOutput": {
-      "residentId": "mock-residentId",
-      "shiftDate": "mock-shiftDate",
-      "summary": "Mock summary: system: You are an aged-care documentation assistant. Produce a precise, factual",
+      "residentId": "offline-residentId",
+      "shiftDate": "offline-shiftDate",
+      "summary": "offline summary: system: You are an aged-care documentation assistant. Produce a precise, factual",
       "observations": [
-        "mock-observations_item"
+        "offline-observations_item"
       ],
       "medications": [
         {
-          "name": "mock-name",
+          "name": "offline-name",
           "administered": false,
-          "notes": "Mock notes: system: You are an aged-care documentation assistant. Produce a precise, factual"
+          "notes": "offline notes: system: You are an aged-care documentation assistant. Produce a precise, factual"
         }
       ],
       "concerns": [
-        "mock-concerns_item"
+        "offline-concerns_item"
       ],
       "followUps": [
-        "mock-followUps_item"
+        "offline-followUps_item"
       ],
       "confidence": 0.82
     },
@@ -1214,20 +1214,20 @@
     "promptVersion": "compliance.v1",
     "inputHash": "2f49ad0074a7874fa374731f6e484578511dfbde80d8da3e8b0c807b2dfac738",
     "rawInputReference": "inline",
-    "rawOutput": "{\"compliant\":true,\"framework\":\"mock-framework\",\"riskScore\":0.82,\"violations\":[{\"rule\":\"mock-rule\",\"severity\":\"low\",\"detail\":\"mock-detail\"}],\"recommendations\":[\"mock-recommendations_item\"],\"requiresHumanReview\":false,\"confidence\":0.82}",
+    "rawOutput": "{\"compliant\":true,\"framework\":\"offline-framework\",\"riskScore\":0.82,\"violations\":[{\"rule\":\"offline-rule\",\"severity\":\"low\",\"detail\":\"offline-detail\"}],\"recommendations\":[\"offline-recommendations_item\"],\"requiresHumanReview\":false,\"confidence\":0.82}",
     "parsedOutput": {
       "compliant": true,
-      "framework": "mock-framework",
+      "framework": "offline-framework",
       "riskScore": 0.82,
       "violations": [
         {
-          "rule": "mock-rule",
+          "rule": "offline-rule",
           "severity": "low",
-          "detail": "mock-detail"
+          "detail": "offline-detail"
         }
       ],
       "recommendations": [
-        "mock-recommendations_item"
+        "offline-recommendations_item"
       ],
       "requiresHumanReview": false,
       "confidence": 0.82
@@ -1292,12 +1292,12 @@
     "promptVersion": "trading.portfoliomanager.v1",
     "inputHash": "640b9562436ba7fc30dd944a201f84b5e62ffe23f6324dd64b431bb52431e82c",
     "rawInputReference": "inline",
-    "rawOutput": "{\"profile\":\"conservative\",\"positions\":[{\"symbol\":\"mock-symbol\",\"weight_percent\":1,\"score\":0.82}],\"cash_reserve_percent\":1,\"confidence\":0.82}",
+    "rawOutput": "{\"profile\":\"conservative\",\"positions\":[{\"symbol\":\"offline-symbol\",\"weight_percent\":1,\"score\":0.82}],\"cash_reserve_percent\":1,\"confidence\":0.82}",
     "parsedOutput": {
       "profile": "conservative",
       "positions": [
         {
-          "symbol": "mock-symbol",
+          "symbol": "offline-symbol",
           "weight_percent": 1,
           "score": 0.82
         }
@@ -1370,10 +1370,10 @@
     "promptVersion": "trading.notification.v1",
     "inputHash": "9ea41ab51d4d3d078213b2ca21c85a61257db0670979f31ccaacdf5182813b64",
     "rawInputReference": "inline",
-    "rawOutput": "{\"title\":\"mock-title\",\"message\":\"mock-message\",\"channels\":[\"Telegram\"],\"delivered\":false,\"confidence\":0.82}",
+    "rawOutput": "{\"title\":\"offline-title\",\"message\":\"offline-message\",\"channels\":[\"Telegram\"],\"delivered\":false,\"confidence\":0.82}",
     "parsedOutput": {
-      "title": "mock-title",
-      "message": "mock-message",
+      "title": "offline-title",
+      "message": "offline-message",
       "channels": [
         "Telegram"
       ],
@@ -1519,7 +1519,7 @@
     "promptVersion": "trading.riskmanagement.v1",
     "inputHash": "374faf0acaf740c17c2abc675ac0680faae6f19298b82a892035cdfc22df619e",
     "rawInputReference": "inline",
-    "rawOutput": "{\"accepted\":false,\"position_size\":1,\"entry\":1,\"stop_loss\":1,\"take_profit\":1,\"risk_reward_ratio\":1,\"rejection_reason\":\"Mock rejection_reason: system: You are the AgentOS RiskManagementAgent. Return only structured JSON. Tr\",\"confidence\":0.82}",
+    "rawOutput": "{\"accepted\":false,\"position_size\":1,\"entry\":1,\"stop_loss\":1,\"take_profit\":1,\"risk_reward_ratio\":1,\"rejection_reason\":\"offline rejection_reason: system: You are the AgentOS RiskManagementAgent. Return only structured JSON. Tr\",\"confidence\":0.82}",
     "parsedOutput": {
       "accepted": false,
       "position_size": 1,
@@ -1527,7 +1527,7 @@
       "stop_loss": 1,
       "take_profit": 1,
       "risk_reward_ratio": 1,
-      "rejection_reason": "Mock rejection_reason: system: You are the AgentOS RiskManagementAgent. Return only structured JSON. Tr",
+      "rejection_reason": "offline rejection_reason: system: You are the AgentOS RiskManagementAgent. Return only structured JSON. Tr",
       "confidence": 0.82
     },
     "confidenceScore": 0.82,
@@ -1668,15 +1668,15 @@
     "promptVersion": "trading.strategyevaluation.v1",
     "inputHash": "a0ab07f94fe7c34d9cd69140fe40ff9f5f8b0f948d1426515053bc23a96fba98",
     "rawInputReference": "inline",
-    "rawOutput": "{\"strategy\":\"Trend Join Long\",\"score\":0.82,\"conditions_met\":[\"mock-conditions_met_item\"],\"rationale\":[\"mock-rationale_item\"],\"confidence\":0.82}",
+    "rawOutput": "{\"strategy\":\"Trend Join Long\",\"score\":0.82,\"conditions_met\":[\"offline-conditions_met_item\"],\"rationale\":[\"offline-rationale_item\"],\"confidence\":0.82}",
     "parsedOutput": {
       "strategy": "Trend Join Long",
       "score": 0.82,
       "conditions_met": [
-        "mock-conditions_met_item"
+        "offline-conditions_met_item"
       ],
       "rationale": [
-        "mock-rationale_item"
+        "offline-rationale_item"
       ],
       "confidence": 0.82
     },
@@ -1745,18 +1745,18 @@
     "promptVersion": "trading.marketscanner.v1",
     "inputHash": "53bc7f542a33fe4960d1dc6da8bb10e10d0f9e8c1a1f40292faee737d36382bb",
     "rawInputReference": "inline",
-    "rawOutput": "{\"candidates\":[{\"symbol\":\"mock-symbol\",\"market\":\"US\",\"price\":1,\"volume\":1,\"gap_percent\":1,\"relative_volume\":1,\"tags\":[\"mock-tags_item\"]}],\"confidence\":0.82}",
+    "rawOutput": "{\"candidates\":[{\"symbol\":\"offline-symbol\",\"market\":\"US\",\"price\":1,\"volume\":1,\"gap_percent\":1,\"relative_volume\":1,\"tags\":[\"offline-tags_item\"]}],\"confidence\":0.82}",
     "parsedOutput": {
       "candidates": [
         {
-          "symbol": "mock-symbol",
+          "symbol": "offline-symbol",
           "market": "US",
           "price": 1,
           "volume": 1,
           "gap_percent": 1,
           "relative_volume": 1,
           "tags": [
-            "mock-tags_item"
+            "offline-tags_item"
           ]
         }
       ],
@@ -1821,10 +1821,10 @@
     "promptVersion": "trading.newscatalyst.v1",
     "inputHash": "8c02b1146f0ef9dd11b0898e33a1ea1de3fd233099bd6493e1995ac96e32dc5a",
     "rawInputReference": "inline",
-    "rawOutput": "{\"catalyst_score\":0.82,\"summary\":\"Mock summary: system: You are the AgentOS NewsCatalystAgent. Return only structured JSON. Trea\",\"sentiment\":\"positive\",\"confidence\":0.82}",
+    "rawOutput": "{\"catalyst_score\":0.82,\"summary\":\"offline summary: system: You are the AgentOS NewsCatalystAgent. Return only structured JSON. Trea\",\"sentiment\":\"positive\",\"confidence\":0.82}",
     "parsedOutput": {
       "catalyst_score": 0.82,
-      "summary": "Mock summary: system: You are the AgentOS NewsCatalystAgent. Return only structured JSON. Trea",
+      "summary": "offline summary: system: You are the AgentOS NewsCatalystAgent. Return only structured JSON. Trea",
       "sentiment": "positive",
       "confidence": 0.82
     },
@@ -1893,15 +1893,15 @@
     "promptVersion": "dev.review.v1",
     "inputHash": "38ec7972cb01a38c019daff31912c7ade6263b52a26df8e814a6bf8e03fab791",
     "rawInputReference": "inline",
-    "rawOutput": "{\"approved\":true,\"summary\":\"Mock summary: system: You are a rigorous code reviewer. Identify correctness, security, and ma\",\"issues\":[{\"severity\":\"nit\",\"file\":\"mock-file\",\"detail\":\"mock-detail\"}],\"confidence\":0.82}",
+    "rawOutput": "{\"approved\":true,\"summary\":\"offline summary: system: You are a rigorous code reviewer. Identify correctness, security, and ma\",\"issues\":[{\"severity\":\"nit\",\"file\":\"offline-file\",\"detail\":\"offline-detail\"}],\"confidence\":0.82}",
     "parsedOutput": {
       "approved": true,
-      "summary": "Mock summary: system: You are a rigorous code reviewer. Identify correctness, security, and ma",
+      "summary": "offline summary: system: You are a rigorous code reviewer. Identify correctness, security, and ma",
       "issues": [
         {
           "severity": "nit",
-          "file": "mock-file",
-          "detail": "mock-detail"
+          "file": "offline-file",
+          "detail": "offline-detail"
         }
       ],
       "confidence": 0.82
@@ -1965,10 +1965,10 @@
     "promptVersion": "voice.escalation.v1",
     "inputHash": "6b8bd55a713419a4b8530c2453ebca5aa76ab8b1a676e87b6bbc191d52252b36",
     "rawInputReference": "inline",
-    "rawOutput": "{\"escalate\":false,\"reason\":\"Mock reason: system: You assess risk and compliance signals in calls (complaints, safety, leg\",\"urgency\":\"none\",\"confidence\":0.82}",
+    "rawOutput": "{\"escalate\":false,\"reason\":\"offline reason: system: You assess risk and compliance signals in calls (complaints, safety, leg\",\"urgency\":\"none\",\"confidence\":0.82}",
     "parsedOutput": {
       "escalate": false,
-      "reason": "Mock reason: system: You assess risk and compliance signals in calls (complaints, safety, leg",
+      "reason": "offline reason: system: You assess risk and compliance signals in calls (complaints, safety, leg",
       "urgency": "none",
       "confidence": 0.82
     },
@@ -2031,14 +2031,14 @@
     "promptVersion": "stem.nextpractice.v1",
     "inputHash": "af25b9ab47a314e8e8429ea586d4f0d58e16c8727cc40fe99c5e8dcfd75ef53a",
     "rawInputReference": "inline",
-    "rawOutput": "{\"rationale\":\"mock-rationale\",\"problems\":[{\"prompt\":\"mock-prompt\",\"difficulty\":\"easier\",\"skill\":\"mock-skill\"}],\"confidence\":0.82}",
+    "rawOutput": "{\"rationale\":\"offline-rationale\",\"problems\":[{\"prompt\":\"offline-prompt\",\"difficulty\":\"easier\",\"skill\":\"offline-skill\"}],\"confidence\":0.82}",
     "parsedOutput": {
-      "rationale": "mock-rationale",
+      "rationale": "offline-rationale",
       "problems": [
         {
-          "prompt": "mock-prompt",
+          "prompt": "offline-prompt",
           "difficulty": "easier",
-          "skill": "mock-skill"
+          "skill": "offline-skill"
         }
       ],
       "confidence": 0.82
@@ -2108,12 +2108,12 @@
     "promptVersion": "voice.followup.v1",
     "inputHash": "6eb4d7a59e67635fe3aaeb995161135e8df2338ba30c57d9e8d417ee5f8fca32",
     "rawInputReference": "inline",
-    "rawOutput": "{\"steps\":[{\"action\":\"mock-action\",\"owner\":\"mock-owner\",\"dueInDays\":1}],\"priority\":\"low\",\"confidence\":0.82}",
+    "rawOutput": "{\"steps\":[{\"action\":\"offline-action\",\"owner\":\"offline-owner\",\"dueInDays\":1}],\"priority\":\"low\",\"confidence\":0.82}",
     "parsedOutput": {
       "steps": [
         {
-          "action": "mock-action",
-          "owner": "mock-owner",
+          "action": "offline-action",
+          "owner": "offline-owner",
           "dueInDays": 1
         }
       ],
@@ -2185,11 +2185,11 @@
     "promptVersion": "stem.correctness.v1",
     "inputHash": "d5a4576995fb8dc86142eb76af024f771103967dc75d867026d1f6a4664a9c2e",
     "rawInputReference": "inline",
-    "rawOutput": "{\"verifiedCorrect\":true,\"expectedAnswer\":\"mock-expectedAnswer\",\"errorAnalysis\":\"mock-errorAnalysis\",\"confidence\":0.82}",
+    "rawOutput": "{\"verifiedCorrect\":true,\"expectedAnswer\":\"offline-expectedAnswer\",\"errorAnalysis\":\"offline-errorAnalysis\",\"confidence\":0.82}",
     "parsedOutput": {
       "verifiedCorrect": true,
-      "expectedAnswer": "mock-expectedAnswer",
-      "errorAnalysis": "mock-errorAnalysis",
+      "expectedAnswer": "offline-expectedAnswer",
+      "errorAnalysis": "offline-errorAnalysis",
       "confidence": 0.82
     },
     "confidenceScore": 0.82,
@@ -2251,11 +2251,11 @@
     "promptVersion": "judge.v1",
     "inputHash": "2c7593c45dbe42fe30753b1d9e67d2a2f1df731537b3f77b9ffb2c1d6bd6bf80",
     "rawInputReference": "inline",
-    "rawOutput": "{\"score\":0.82,\"verdict\":\"pass\",\"reasoning\":\"Mock reasoning: system: You are an impartial evaluator. Score the candidate output 0..1 across a\",\"dimensions\":{\"accuracy\":1,\"completeness\":1,\"safety\":1,\"clarity\":1},\"confidence\":0.82}",
+    "rawOutput": "{\"score\":0.82,\"verdict\":\"pass\",\"reasoning\":\"offline reasoning: system: You are an impartial evaluator. Score the candidate output 0..1 across a\",\"dimensions\":{\"accuracy\":1,\"completeness\":1,\"safety\":1,\"clarity\":1},\"confidence\":0.82}",
     "parsedOutput": {
       "score": 0.82,
       "verdict": "pass",
-      "reasoning": "Mock reasoning: system: You are an impartial evaluator. Score the candidate output 0..1 across a",
+      "reasoning": "offline reasoning: system: You are an impartial evaluator. Score the candidate output 0..1 across a",
       "dimensions": {
         "accuracy": 1,
         "completeness": 1,
@@ -2323,18 +2323,18 @@
     "promptVersion": "care.parse.v1",
     "inputHash": "97550768cb0e69f72625bb031145373995df800f676a0eaa2d6af1345421000a",
     "rawInputReference": "inline",
-    "rawOutput": "{\"cleanedText\":\"Mock cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand\",\"entities\":{\"residents\":[\"mock-residents_item\"],\"times\":[\"mock-times_item\"],\"medications\":[\"mock-medications_item\"]},\"confidence\":0.82}",
+    "rawOutput": "{\"cleanedText\":\"offline cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand\",\"entities\":{\"residents\":[\"offline-residents_item\"],\"times\":[\"offline-times_item\"],\"medications\":[\"offline-medications_item\"]},\"confidence\":0.82}",
     "parsedOutput": {
-      "cleanedText": "Mock cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand",
+      "cleanedText": "offline cleanedText: system: You normalise aged-care shift notes. Fix obvious typos, expand shorthand",
       "entities": {
         "residents": [
-          "mock-residents_item"
+          "offline-residents_item"
         ],
         "times": [
-          "mock-times_item"
+          "offline-times_item"
         ],
         "medications": [
-          "mock-medications_item"
+          "offline-medications_item"
         ]
       },
       "confidence": 0.82
@@ -2400,20 +2400,20 @@
     "promptVersion": "compliance.v1",
     "inputHash": "2f19683880e8298be4073d53301431d45d3c1c617f437e50cfad5e03360c00aa",
     "rawInputReference": "inline",
-    "rawOutput": "{\"compliant\":true,\"framework\":\"mock-framework\",\"riskScore\":0.82,\"violations\":[{\"rule\":\"mock-rule\",\"severity\":\"low\",\"detail\":\"mock-detail\"}],\"recommendations\":[\"mock-recommendations_item\"],\"requiresHumanReview\":false,\"confidence\":0.82}",
+    "rawOutput": "{\"compliant\":true,\"framework\":\"offline-framework\",\"riskScore\":0.82,\"violations\":[{\"rule\":\"offline-rule\",\"severity\":\"low\",\"detail\":\"offline-detail\"}],\"recommendations\":[\"offline-recommendations_item\"],\"requiresHumanReview\":false,\"confidence\":0.82}",
     "parsedOutput": {
       "compliant": true,
-      "framework": "mock-framework",
+      "framework": "offline-framework",
       "riskScore": 0.82,
       "violations": [
         {
-          "rule": "mock-rule",
+          "rule": "offline-rule",
           "severity": "low",
-          "detail": "mock-detail"
+          "detail": "offline-detail"
         }
       ],
       "recommendations": [
-        "mock-recommendations_item"
+        "offline-recommendations_item"
       ],
       "requiresHumanReview": false,
       "confidence": 0.82
@@ -2477,12 +2477,12 @@
     "promptVersion": "report.v1",
     "inputHash": "1c97913828724a1f22bd8454222b62ca883281897e663a406ce6d62867d5679f",
     "rawInputReference": "inline",
-    "rawOutput": "{\"title\":\"mock-title\",\"summary\":\"Mock summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"mock-highlights_item\"],\"confidence\":0.82}",
+    "rawOutput": "{\"title\":\"offline-title\",\"summary\":\"offline summary: system: You write clear, well-structured summaries for a non-technical audience.\",\"highlights\":[\"offline-highlights_item\"],\"confidence\":0.82}",
     "parsedOutput": {
-      "title": "mock-title",
-      "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
+      "title": "offline-title",
+      "summary": "offline summary: system: You write clear, well-structured summaries for a non-technical audience.",
       "highlights": [
-        "mock-highlights_item"
+        "offline-highlights_item"
       ],
       "confidence": 0.82
     },
@@ -2552,20 +2552,20 @@
     "promptVersion": "dev.architecture.v1",
     "inputHash": "a49c75d95642362369814ac3418982477d5f12ea06986dfe5cae9f9cfd64b668",
     "rawInputReference": "inline",
-    "rawOutput": "{\"overview\":\"mock-overview\",\"components\":[{\"name\":\"mock-name\",\"responsibility\":\"mock-responsibility\"}],\"risks\":[\"mock-risks_item\"],\"milestones\":[\"mock-milestones_item\"],\"confidence\":0.82}",
+    "rawOutput": "{\"overview\":\"offline-overview\",\"components\":[{\"name\":\"offline-name\",\"responsibility\":\"offline-responsibility\"}],\"risks\":[\"offline-risks_item\"],\"milestones\":[\"offline-milestones_item\"],\"confidence\":0.82}",
     "parsedOutput": {
-      "overview": "mock-overview",
+      "overview": "offline-overview",
       "components": [
         {
-          "name": "mock-name",
-          "responsibility": "mock-responsibility"
+          "name": "offline-name",
+          "responsibility": "offline-responsibility"
         }
       ],
       "risks": [
-        "mock-risks_item"
+        "offline-risks_item"
       ],
       "milestones": [
-        "mock-milestones_item"
+        "offline-milestones_item"
       ],
       "confidence": 0.82
     },
@@ -2634,13 +2634,13 @@
     "promptVersion": "voice.summary.v1",
     "inputHash": "bc9170518033bfc8537b568cf192ecbdfd6acd447eb3bc4474928537d25cec4d",
     "rawInputReference": "inline",
-    "rawOutput": "{\"topic\":\"mock-topic\",\"summary\":\"Mock summary: system: You summarise customer/support calls concisely and extract action items.\",\"sentiment\":\"positive\",\"actionItems\":[\"mock-actionItems_item\"],\"confidence\":0.82}",
+    "rawOutput": "{\"topic\":\"offline-topic\",\"summary\":\"offline summary: system: You summarise customer/support calls concisely and extract action items.\",\"sentiment\":\"positive\",\"actionItems\":[\"offline-actionItems_item\"],\"confidence\":0.82}",
     "parsedOutput": {
-      "topic": "mock-topic",
-      "summary": "Mock summary: system: You summarise customer/support calls concisely and extract action items.",
+      "topic": "offline-topic",
+      "summary": "offline summary: system: You summarise customer/support calls concisely and extract action items.",
       "sentiment": "positive",
       "actionItems": [
-        "mock-actionItems_item"
+        "offline-actionItems_item"
       ],
       "confidence": 0.82
     },
@@ -2710,15 +2710,15 @@
     "promptVersion": "stem.feedback.v1",
     "inputHash": "69fc21fd66cec0d6a04aa00851bb4dad672dc38526c0221af65fe4a1b4feb4d4",
     "rawInputReference": "inline",
-    "rawOutput": "{\"isCorrect\":true,\"score\":0.82,\"feedback\":\"Mock feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f\",\"misconceptions\":[\"mock-misconceptions_item\"],\"encouragement\":\"mock-encouragement\",\"confidence\":0.82}",
+    "rawOutput": "{\"isCorrect\":true,\"score\":0.82,\"feedback\":\"offline feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f\",\"misconceptions\":[\"offline-misconceptions_item\"],\"encouragement\":\"offline-encouragement\",\"confidence\":0.82}",
     "parsedOutput": {
       "isCorrect": true,
       "score": 0.82,
-      "feedback": "Mock feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f",
+      "feedback": "offline feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f",
       "misconceptions": [
-        "mock-misconceptions_item"
+        "offline-misconceptions_item"
       ],
-      "encouragement": "mock-encouragement",
+      "encouragement": "offline-encouragement",
       "confidence": 0.82
     },
     "confidenceScore": 0.82,
@@ -2787,16 +2787,16 @@
     "promptVersion": "care.incident.v1",
     "inputHash": "fe609059ee036fbd265face2301ba14a04dfe0f51eb1ffe128537d441141a608",
     "rawInputReference": "inline",
-    "rawOutput": "{\"incidentType\":\"fall\",\"severity\":\"low\",\"narrative\":\"mock-narrative\",\"immediateActions\":[\"mock-immediateActions_item\"],\"peopleInvolved\":[\"mock-peopleInvolved_item\"],\"notifyFamily\":false,\"confidence\":0.82}",
+    "rawOutput": "{\"incidentType\":\"fall\",\"severity\":\"low\",\"narrative\":\"offline-narrative\",\"immediateActions\":[\"offline-immediateActions_item\"],\"peopleInvolved\":[\"offline-peopleInvolved_item\"],\"notifyFamily\":false,\"confidence\":0.82}",
     "parsedOutput": {
       "incidentType": "fall",
       "severity": "low",
-      "narrative": "mock-narrative",
+      "narrative": "offline-narrative",
       "immediateActions": [
-        "mock-immediateActions_item"
+        "offline-immediateActions_item"
       ],
       "peopleInvolved": [
-        "mock-peopleInvolved_item"
+        "offline-peopleInvolved_item"
       ],
       "notifyFamily": false,
       "confidence": 0.82
@@ -2866,26 +2866,26 @@
     "promptVersion": "care.note.v1",
     "inputHash": "09d4967225fbc0e49b7e4a16885d0e4d52f150363631b27122d2fa6d7eb8dd70",
     "rawInputReference": "inline",
-    "rawOutput": "{\"residentId\":\"mock-residentId\",\"shiftDate\":\"mock-shiftDate\",\"summary\":\"Mock summary: system: You are an aged-care documentation assistant. Produce a precise, factual\",\"observations\":[\"mock-observations_item\"],\"medications\":[{\"name\":\"mock-name\",\"administered\":false,\"notes\":\"Mock notes: system: You are an aged-care documentation assistant. Produce a precise, factual\"}],\"concerns\":[\"mock-concerns_item\"],\"followUps\":[\"mock-followUps_item\"],\"confidence\":0.82}",
+    "rawOutput": "{\"residentId\":\"offline-residentId\",\"shiftDate\":\"offline-shiftDate\",\"summary\":\"offline summary: system: You are an aged-care documentation assistant. Produce a precise, factual\",\"observations\":[\"offline-observations_item\"],\"medications\":[{\"name\":\"offline-name\",\"administered\":false,\"notes\":\"offline notes: system: You are an aged-care documentation assistant. Produce a precise, factual\"}],\"concerns\":[\"offline-concerns_item\"],\"followUps\":[\"offline-followUps_item\"],\"confidence\":0.82}",
     "parsedOutput": {
-      "residentId": "mock-residentId",
-      "shiftDate": "mock-shiftDate",
-      "summary": "Mock summary: system: You are an aged-care documentation assistant. Produce a precise, factual",
+      "residentId": "offline-residentId",
+      "shiftDate": "offline-shiftDate",
+      "summary": "offline summary: system: You are an aged-care documentation assistant. Produce a precise, factual",
       "observations": [
-        "mock-observations_item"
+        "offline-observations_item"
       ],
       "medications": [
         {
-          "name": "mock-name",
+          "name": "offline-name",
           "administered": false,
-          "notes": "Mock notes: system: You are an aged-care documentation assistant. Produce a precise, factual"
+          "notes": "offline notes: system: You are an aged-care documentation assistant. Produce a precise, factual"
         }
       ],
       "concerns": [
-        "mock-concerns_item"
+        "offline-concerns_item"
       ],
       "followUps": [
-        "mock-followUps_item"
+        "offline-followUps_item"
       ],
       "confidence": 0.82
     },

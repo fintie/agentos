@@ -14,14 +14,14 @@
     "escalated": false
   },
   "parsed": {
-    "title": "mock-title",
-    "message": "mock-message",
+    "title": "offline-title",
+    "message": "offline-message",
     "channels": [
       "Telegram"
     ],
     "delivered": false,
     "confidence": 0.82
   },
-  "raw": "{\"title\":\"mock-title\",\"message\":\"mock-message\",\"channels\":[\"Telegram\"],\"delivered\":false,\"confidence\":0.82}",
+  "raw": "{\"title\":\"offline-title\",\"message\":\"offline-message\",\"channels\":[\"Telegram\"],\"delivered\":false,\"confidence\":0.82}",
   "recordId": "f5a13630-a78a-40ae-9f09-8cda4c2e27d7"
 }

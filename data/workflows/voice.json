@@ -8,11 +8,11 @@
       "escalated": false,
       "ruleId": "fast_summary.default",
       "output": {
-        "topic": "mock-topic",
-        "summary": "Mock summary: system: You summarise customer/support calls concisely and extract action items.",
+        "topic": "offline-topic",
+        "summary": "offline summary: system: You summarise customer/support calls concisely and extract action items.",
         "sentiment": "positive",
         "actionItems": [
-          "mock-actionItems_item"
+          "offline-actionItems_item"
         ],
         "confidence": 0.82
       }
@@ -26,8 +26,8 @@
       "output": {
         "steps": [
           {
-            "action": "mock-action",
-            "owner": "mock-owner",
+            "action": "offline-action",
+            "owner": "offline-owner",
             "dueInDays": 1
           }
         ],
@@ -43,7 +43,7 @@
       "ruleId": "compliance_review.default",
       "output": {
         "escalate": false,
-        "reason": "Mock reason: system: You assess risk and compliance signals in calls (complaints, safety, leg",
+        "reason": "offline reason: system: You assess risk and compliance signals in calls (complaints, safety, leg",
         "urgency": "none",
         "confidence": 0.82
       }
@@ -55,10 +55,10 @@
       "escalated": false,
       "ruleId": "fast_summary.default",
       "output": {
-        "title": "mock-title",
-        "summary": "Mock summary: system: You write clear, well-structured summaries for a non-technical audience.",
+        "title": "offline-title",
+        "summary": "offline summary: system: You write clear, well-structured summaries for a non-technical audience.",
         "highlights": [
-          "mock-highlights_item"
+          "offline-highlights_item"
         ],
         "confidence": 0.82
       }

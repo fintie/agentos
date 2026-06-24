@@ -14,16 +14,16 @@
   },
   "parsed": {
     "approved": true,
-    "summary": "Mock summary: system: You are a rigorous code reviewer. Identify correctness, security, and ma",
+    "summary": "offline summary: system: You are a rigorous code reviewer. Identify correctness, security, and ma",
     "issues": [
       {
         "severity": "nit",
-        "file": "mock-file",
-        "detail": "mock-detail"
+        "file": "offline-file",
+        "detail": "offline-detail"
       }
     ],
     "confidence": 0.82
   },
-  "raw": "{\"approved\":true,\"summary\":\"Mock summary: system: You are a rigorous code reviewer. Identify correctness, security, and ma\",\"issues\":[{\"severity\":\"nit\",\"file\":\"mock-file\",\"detail\":\"mock-detail\"}],\"confidence\":0.82}",
+  "raw": "{\"approved\":true,\"summary\":\"offline summary: system: You are a rigorous code reviewer. Identify correctness, security, and ma\",\"issues\":[{\"severity\":\"nit\",\"file\":\"offline-file\",\"detail\":\"offline-detail\"}],\"confidence\":0.82}",
   "recordId": "5bbfe50b-af58-474e-84d8-ef6ac4f808ca"
 }

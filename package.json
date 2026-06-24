@@ -16,6 +16,7 @@
     "seed": "tsx scripts/seed.ts",
     "dashboard": "tsx dashboard/server.ts",
     "sync:x402": "tsx scripts/sync-x402.ts",
+    "sanitize:public": "tsx scripts/sanitize-public-data.ts",
     "build:pages": "tsx scripts/build-static.ts",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev"

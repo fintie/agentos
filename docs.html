@@ -118,7 +118,7 @@
         <section id="overview">
           <div class="eyebrow">Getting Started</div>
           <h1>Build agent workflows that route, validate, review, and remember every run.</h1>
-          <p class="lead">AgentOS is a TypeScript orchestration layer for composing specialist agents across Gemini, Kimi, DeepSeek, and deterministic mock adapters. It gives developers a local-first runtime, a dashboard, static docs, and a Pages-ready public console.</p>
+          <p class="lead">AgentOS is a TypeScript orchestration layer for composing specialist agents across Gemini, Kimi, DeepSeek, and offline adapters. It gives developers a local-first runtime, a dashboard, static docs, and a Pages-ready public console.</p>
           <div class="hero-actions">
             <a class="button primary" href="#quickstart">Start building</a>
             <a class="button" href="/">Open console</a>
@@ -133,7 +133,7 @@
 
         <section id="quickstart">
           <h2>Quickstart</h2>
-          <p>Run the whole stack locally without provider keys. Mock adapters keep demos deterministic and free.</p>
+          <p>Run the whole stack locally without provider keys. Offline adapters keep reference runs deterministic and free.</p>
           <pre><code>git clone https://github.com/fintie/agentos.git
 cd agentos
 npm install
@@ -169,10 +169,10 @@ npm run dashboard</code></pre>
           <table>
             <thead><tr><th>Agent</th><th>Purpose</th><th>Typical model</th></tr></thead>
             <tbody>
-              <tr><td><code>CareNoteAgent</code></td><td>Generate care summaries from structured shift data.</td><td>Kimi or mock</td></tr>
-              <tr><td><code>ComplianceReviewAgent</code></td><td>Review safety, compliance, and escalation requirements.</td><td>DeepSeek or mock</td></tr>
-              <tr><td><code>DeveloperAgent</code></td><td>Create implementation plans and architecture guidance.</td><td>Kimi or mock</td></tr>
-              <tr><td><code>JudgeAgent</code></td><td>Score and validate outputs as an LLM judge.</td><td>DeepSeek or mock</td></tr>
+              <tr><td><code>CareNoteAgent</code></td><td>Generate care summaries from structured shift data.</td><td>Kimi or offline</td></tr>
+              <tr><td><code>ComplianceReviewAgent</code></td><td>Review safety, compliance, and escalation requirements.</td><td>DeepSeek or offline</td></tr>
+              <tr><td><code>DeveloperAgent</code></td><td>Create implementation plans and architecture guidance.</td><td>Kimi or offline</td></tr>
+              <tr><td><code>JudgeAgent</code></td><td>Score and validate outputs as an LLM judge.</td><td>DeepSeek or offline</td></tr>
             </tbody>
           </table>
         </section>
@@ -218,7 +218,7 @@ npm run dashboard
 
         <section id="deploy">
           <h2>Deploy</h2>
-          <p>The public Pages site is static. Build it with deterministic mock data, then push the generated root files.</p>
+          <p>The public Pages site is static. Build it with deterministic reference data, then push the generated root files.</p>
 <pre><code>npm run build:pages
 git add dashboard docs.html index.html scripts/build-static.ts
 git commit -m "Add AgentOS docs page"

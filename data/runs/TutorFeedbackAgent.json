@@ -16,13 +16,13 @@
   "parsed": {
     "isCorrect": true,
     "score": 0.82,
-    "feedback": "Mock feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f",
+    "feedback": "offline feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f",
     "misconceptions": [
-      "mock-misconceptions_item"
+      "offline-misconceptions_item"
     ],
-    "encouragement": "mock-encouragement",
+    "encouragement": "offline-encouragement",
     "confidence": 0.82
   },
-  "raw": "{\"isCorrect\":true,\"score\":0.82,\"feedback\":\"Mock feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f\",\"misconceptions\":[\"mock-misconceptions_item\"],\"encouragement\":\"mock-encouragement\",\"confidence\":0.82}",
+  "raw": "{\"isCorrect\":true,\"score\":0.82,\"feedback\":\"offline feedback: system: You are a supportive STEM tutor. Give quick, specific, age-appropriate f\",\"misconceptions\":[\"offline-misconceptions_item\"],\"encouragement\":\"offline-encouragement\",\"confidence\":0.82}",
   "recordId": "42b2e6a2-342e-4a54-b9d9-e8ee549b5905"
 }
